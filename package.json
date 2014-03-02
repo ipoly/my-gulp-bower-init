@@ -1,0 +1,24 @@
+{
+  "name": "TvToggle",
+  "version": "0.0.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "gulp": "~3.5.2"
+  },
+  "devDependencies": {
+    "gulp-bower-files": "~0.1.11",
+    "gulp-coffee": "^1.4.1",
+    "gulp-jade": "^0.4.2",
+    "gulp-less": "^1.2.1",
+    "gulp-notify": "^1.0.0-beta",
+    "gulp-util": "^2.2.14",
+    "gulp-changed": "^0.2.1",
+    "gulp-cached": "0.0.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
