@@ -27,7 +27,7 @@ gulp.task("bower", function(){
     bowerFiles()
     .pipe(changed(dist.bower))
     .pipe(gulp.dest(dist.bower))
-    .pipe(notify('Bower updated: <%= file.relative %>'));
+    // .pipe(notify('Bower updated: <%= file.relative %>'));
 });
 
 gulp.task("jade", function(){
@@ -36,7 +36,7 @@ gulp.task("jade", function(){
     // .pipe(cache('jade'))
     .pipe(jade().on('error', gutil.log))
     .pipe(gulp.dest(dist.htmls))
-    .pipe(notify('Jade updated: <%= file.relative %>'));
+    // .pipe(notify('Jade updated: <%= file.relative %>'));
 });
 
 gulp.task("coffee", function(){
@@ -45,7 +45,7 @@ gulp.task("coffee", function(){
     // .pipe(cache('coffee'))
     .pipe(coffee({bare: true}).on('error', gutil.log))
     .pipe(gulp.dest(dist.scripts))
-    .pipe(notify('Coffee updated: <%= file.relative %>'));
+    // .pipe(notify('Coffee updated: <%= file.relative %>'));
 });
 
 gulp.task("less", function(){
@@ -54,11 +54,11 @@ gulp.task("less", function(){
     // .pipe(cache('less'))
     .pipe(less().on('error', gutil.log))
     .pipe(gulp.dest(dist.styles))
-    .pipe(notify('Less updated: <%= file.relative %>'));
+    // .pipe(notify('Less updated: <%= file.relative %>'));
 });
 
 gulp.task("watch", function(){
-    notify("Gulp Watching...")
+    gutil.log("Gulp Watching...")
     gulp.watch(src.bower, ['bower']);
     gulp.watch(src.jade, ['jade']);
     gulp.watch(src.coffee, ['coffee']);
