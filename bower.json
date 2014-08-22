@@ -1,8 +1,8 @@
 {
-  "name": "TvToggle",
+  "name": "myApp",
   "version": "0.0.0",
   "authors": [
-    "zengli <89490364a@gmail.com>"
+    "ipoly <mail@zeng.li>"
   ],
   "license": "MIT",
   "ignore": [
@@ -14,10 +14,9 @@
     "tests"
   ],
   "dependencies": {
-    "angular": "1.2.14",
-    "bootstrap": "3.1.1",
-    "font-awesome": "~4.0.3",
-    "jquery": "2.1.0",
+    "angular": "1.2.x",
+    "bootstrap": "3.2.x",
+    "font-awesome": "4.1.0",
     "underscore": "1.6.0"
   },
   "overrides": {
