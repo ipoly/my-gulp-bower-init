@@ -4,13 +4,14 @@ notify = require "gulp-notify"
 gutil = require 'gulp-util'
 cache = require 'gulp-cached'
 changed = require 'gulp-changed'
+plumber = require "gulp-plumber"
 
 bowerFiles = require "main-bower-files"
 coffee = require "gulp-coffee"
 jade = require "gulp-jade"
 less = require "gulp-less"
 
-src = {
+SRC = {
     bower: ['bower_components'],
     coffee: ["client/coffee/**/*.coffee"],
     jade: ["templates/**/*.jade"],
@@ -23,41 +24,55 @@ DIST = {
     styles: "app/styles/"
 }
 
+errorHandler = notify.onError
+                message: "Error: <%= error.message %>"
+                title: "ヽ(*。>Д<)o゜ "
+
+successHandler = (type)->
+    notify
+        onLast: true
+        message: "#{type} bulid success!"
+        title: "╰(*°▽°*)╯"
+
 gulp.task "bower", ->
-    gulp.src bowerFiles()
+    gulp.src bowerFiles(), base: './bower_components'
+    .pipe plumber {errorHandler}
     .pipe changed DIST.bower
     .pipe gulp.dest DIST.bower
-    # .pipe notify 'Bower updated: <%= file.relative %>'
+    .pipe successHandler('BOWER')
 
 gulp.task "jade", ->
-    return gulp.src src.jade
+    return gulp.src SRC.jade
+    .pipe plumber {errorHandler}
     .pipe changed DIST.htmls
-    # .pipe cache 'jade'
-    .pipe jade().on 'error', gutil.log
+    .pipe cache 'jade'
+    .pipe jade()
     .pipe gulp.dest DIST.htmls
-    # .pipe notify 'Jade updated: <%= file.relative %>'
+    .pipe successHandler('JADE')
 
 gulp.task "coffee", ->
-    return gulp.src src.coffee
+    return gulp.src SRC.coffee
+    .pipe plumber {errorHandler}
     .pipe changed DIST.scripts
-    # .pipe cache 'coffee'
-    .pipe coffee(bare: true).on 'error', gutil.log
+    .pipe cache 'coffee'
+    .pipe coffee(bare: true)
     .pipe gulp.dest DIST.scripts
-    # .pipe notify 'Coffee updated: <%= file.relative %>'
+    .pipe successHandler('COFFEE')
 
 gulp.task "less", ->
-    return gulp.src src.less
+    return gulp.src SRC.less
+    .pipe plumber {errorHandler}
     .pipe changed DIST.styles
-    # .pipe cache 'less'
-    .pipe less().on 'error', gutil.log
+    .pipe cache 'less'
+    .pipe less()
     .pipe gulp.dest DIST.styles
-    # .pipe notify 'Less updated: <%= file.relative %>'
+    .pipe successHandler('LESS')
 
 gulp.task "watch", ->
-    gulp.watch src.bower, ['bower']
-    gulp.watch src.jade, ['jade']
-    gulp.watch src.coffee, ['coffee']
-    gulp.watch src.less, ['less']
+    gulp.watch SRC.bower, ['bower']
+    gulp.watch SRC.jade, ['jade']
+    gulp.watch SRC.coffee, ['coffee']
+    gulp.watch SRC.less, ['less']
     gutil.log "Gulp Watching..."
 
 gulp.task "default", ['bower','jade','coffee','less','watch']

@@ -1,2 +1,2 @@
 "use restrict"
-angular.module('myApp',[])
+angular.module 'myApp',[]
