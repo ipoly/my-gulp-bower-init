@@ -12,16 +12,18 @@ jade = require "gulp-jade"
 less = require "gulp-less"
 
 SRC = {
-    bower: ['bower_components'],
-    coffee: ["client/coffee/**/*.coffee"],
-    jade: ["templates/**/*.jade"],
-    less: ["client/less/**/*.less"]
+    bower: ['bower_components']
+    coffee: ["src/coffee/**/*.coffee"]
+    jade: ["src/**/*.jade"]
+    less: ["src/less/**/*.less"]
+    img: ["src/img/**/*"]
 }
 DIST = {
     bower: "app/lib",
     scripts: "app/scripts/",
     htmls: "app/",
     styles: "app/styles/"
+    images: "app/img/"
 }
 
 errorHandler = notify.onError
@@ -46,7 +48,7 @@ gulp.task "jade", ->
     .pipe plumber {errorHandler}
     .pipe changed DIST.htmls
     .pipe cache 'jade'
-    .pipe jade()
+    .pipe jade pretty: true
     .pipe gulp.dest DIST.htmls
     .pipe successHandler('JADE')
 
