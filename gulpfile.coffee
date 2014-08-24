@@ -5,6 +5,7 @@ gutil = require 'gulp-util'
 cache = require 'gulp-cached'
 changed = require 'gulp-changed'
 plumber = require "gulp-plumber"
+sourcemaps = require('gulp-sourcemaps')
 
 bowerFiles = require "main-bower-files"
 coffee = require "gulp-coffee"
@@ -21,10 +22,10 @@ SRC = {
 }
 DIST = {
     bower: "app/lib",
-    scripts: "app/scripts/",
-    htmls: "app/",
-    styles: "app/styles/"
-    images: "app/img/"
+    scripts: "app/scripts",
+    htmls: "app",
+    styles: "app/styles"
+    images: "app/img"
 }
 
 errorHandler = notify.onError
@@ -67,7 +68,9 @@ gulp.task "coffee", ->
     .pipe plumber {errorHandler}
     .pipe changed DIST.scripts
     .pipe cache 'coffee'
-    .pipe coffee(bare: true)
+    .pipe sourcemaps.init()
+    .pipe coffee()
+    .pipe sourcemaps.write './maps'
     .pipe gulp.dest DIST.scripts
     .pipe successHandler('COFFEE')
 
