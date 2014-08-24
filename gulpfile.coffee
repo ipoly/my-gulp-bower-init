@@ -10,13 +10,14 @@ bowerFiles = require "main-bower-files"
 coffee = require "gulp-coffee"
 jade = require "gulp-jade"
 less = require "gulp-less"
+imagemin = require "gulp-imagemin"
 
 SRC = {
     bower: ['bower_components']
     coffee: ["src/coffee/**/*.coffee"]
     jade: ["src/**/*.jade"]
     less: ["src/less/**/*.less"]
-    img: ["src/img/**/*"]
+    images: ["src/img/**/*"]
 }
 DIST = {
     bower: "app/lib",
@@ -36,15 +37,24 @@ successHandler = (type)->
         message: "#{type} bulid success!"
         title: "╰(*°▽°*)╯"
 
+gulp.task "images", ->
+    gulp.src SRC.images
+    .pipe plumber {errorHandler}
+    .pipe changed DIST.images
+    .pipe imagemin()
+    .pipe gulp.dest DIST.images
+    .pipe successHandler('IMAGES')
+
 gulp.task "bower", ->
     gulp.src bowerFiles(), base: './bower_components'
     .pipe plumber {errorHandler}
     .pipe changed DIST.bower
+    .pipe cache 'bower'
     .pipe gulp.dest DIST.bower
     .pipe successHandler('BOWER')
 
 gulp.task "jade", ->
-    return gulp.src SRC.jade
+    gulp.src SRC.jade
     .pipe plumber {errorHandler}
     .pipe changed DIST.htmls
     .pipe cache 'jade'
@@ -53,7 +63,7 @@ gulp.task "jade", ->
     .pipe successHandler('JADE')
 
 gulp.task "coffee", ->
-    return gulp.src SRC.coffee
+    gulp.src SRC.coffee
     .pipe plumber {errorHandler}
     .pipe changed DIST.scripts
     .pipe cache 'coffee'
@@ -62,7 +72,7 @@ gulp.task "coffee", ->
     .pipe successHandler('COFFEE')
 
 gulp.task "less", ->
-    return gulp.src SRC.less
+    gulp.src SRC.less
     .pipe plumber {errorHandler}
     .pipe changed DIST.styles
     .pipe cache 'less'
@@ -71,10 +81,11 @@ gulp.task "less", ->
     .pipe successHandler('LESS')
 
 gulp.task "watch", ->
+    gulp.watch SRC.images, ['images']
     gulp.watch SRC.bower, ['bower']
     gulp.watch SRC.jade, ['jade']
     gulp.watch SRC.coffee, ['coffee']
     gulp.watch SRC.less, ['less']
     gutil.log "Gulp Watching..."
 
-gulp.task "default", ['bower','jade','coffee','less','watch']
+gulp.task "default", ['bower','jade','coffee','less','watch','images']

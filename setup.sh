@@ -1,3 +1,4 @@
+export PATH="./node_modules/.bin:$PATH"
 echo
 echo 'Installing npm package...'
 echo
