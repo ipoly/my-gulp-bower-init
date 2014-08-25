@@ -10,6 +10,8 @@ replace = require "gulp-replace"
 path = require "path"
 globs = require("glob").sync
 concat = require "gulp-concat"
+livereload = require "gulp-livereload"
+connect = require "connect"
 
 bowerFiles = require "main-bower-files"
 coffee = require "gulp-coffee"
@@ -91,12 +93,21 @@ gulp.task "less", ->
     .pipe less()
     .pipe gulp.dest DIST.styles
 
-gulp.task "watch", ->
+gulp.task "watch", ['build'], ->
     gulp.watch SRC.images, ['images']
     gulp.watch SRC.bower, ['bower']
     gulp.watch SRC.jade, ['jade']
     gulp.watch SRC.coffee, ['coffee']
     gulp.watch SRC.less, ['less']
-    gutil.log "Gulp Watching..."
 
-gulp.task "default", ['bower','jade','coffee','less','watch','images']
+    livereload.listen()
+    gulp.watch APP_ROOT + '/**'
+    .on 'change', livereload.changed
+
+gulp.task "webserver", (next)->
+  connect()
+  .use connect.static APP_ROOT
+  .listen process.env.PORT || 9000, next
+
+gulp.task "build", ['bower', 'jade', 'coffee', 'less', 'images']
+gulp.task "default", ['build', 'webserver', 'watch']
