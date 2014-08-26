@@ -19,6 +19,7 @@ a:hover,a:focus {
 .font-size-base {font-size: @font-size-base;}
 .font-size-large {font-size: @font-size-large;}
 
+
 .more {
   .pull-right;
   &:before {
@@ -39,6 +40,10 @@ a:hover,a:focus {
   }
   .feature-head {font-size: @font-size-h3;}
   .content {padding: 13px 40px;}
+}
+
+.products img {
+  width: 100%;
 }
 
 .header {
@@ -106,12 +111,21 @@ a:hover,a:focus {
 .btn-block {
   display: block;
 }
+.btn-customize {
+  .button-variant(@link-color; #fff; @btn-primary-border);
+}
 
 .text-overflow {
   .text-overflow();
 }
 
 [click-jump]{
+  cursor: pointer;
+}
+
+[go-top] {
+  .transition(height .3s ease);
+  overflow: hidden;
   cursor: pointer;
 }
 
@@ -178,8 +192,36 @@ a:hover,a:focus {
   }
 }
 
-[go-top] {
-  .transition(height .3s ease);
-  overflow: hidden;
-  cursor: pointer;
+#qa {
+  .padding-large;
+  position: relative;
+  .row > div {
+    height: 150px;
+    @line: darken(@hr-border, 10%);
+    > div {
+      overflow: hidden;
+    }
+    &:first-child {
+      border: 1px solid @line;
+      border-width: 0 1px 1px 0;
+    }
+    &:last-child {
+      border: 1px solid @line;
+      border-width: 1px 0 0 1px;
+      margin: -1px 0 0 -1px;
+    }
+    &:nth-child(3),&:nth-child(4) {
+      padding-top: 30px;
+    }
+  }
+  img {
+    position: absolute;
+    width: 256px;
+    height: 30px;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+  }
 }
