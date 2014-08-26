@@ -1,5 +1,178 @@
 extends layout
 
 block content
-    .container(ng-app='myApp')
-        h1 Hello,World!
+  .container
+    .row.features.show-grid
+      .col-md-3
+        .content(click-jump='')
+          img(src='/img/3-1.gif')
+          a.feature-head(href='') 高收益灵活投资
+          ul.list-primary
+            li 50元起投
+            li 预期12%-14%年化收益率
+            li 投资90天后即可债权转让
+      .col-md-3
+        .content(click-jump='')
+          img(src='/img/3-2.gif')
+          a.feature-head(href='') 全方位安全保障
+          ul.list-primary
+            li 5道安全防线
+            li 100%本金保障计划
+            li 专业的第三方资金托管
+      .col-md-3
+        .content(click-jump='')
+          img(src='/img/3-3.gif')
+          a.feature-head(href='') 一站式借款服务
+          ul.list-primary
+            li 无抵押信用贷款
+            li 24小时放款
+            li 提前还款可减免服务费
+      .col-md-3
+        .content(click-jump='')
+          img(src='/img/3-3.gif')
+          a.feature-head(href='') 一站式借款服务
+          ul.list-primary
+            li 无抵押信用贷款
+            li 24小时放款
+            li 提前还款可减免服务费
+
+  .container
+    .row.show-grid
+      .col-md-9
+        .content.padding-large(style='height:280px;')
+          h3.header
+            .strong 家财有道
+              small  T2014026 期
+            a.more.detail(href='')
+          hr
+          .row
+            .col-md-6
+              img(src='/img/index-j.jpg')
+            .col-md-6
+              .pull-right(style='width:302px;')
+                div.text-center(ng-if='countDown')
+                  p 募集金额：2,037,000元
+                  a.btn.btn-warning.btn-lg.btn-block
+                    i.fa.fa-clock-o
+                    | &nbsp;立即抢购
+                div(ng-if='!countDown')
+                  p 计划金额：2,037,000元
+                  p 距发售开始还有：
+                  .mb10(style='height:55px')
+                    .count-down-to(dead-line='2014-8-27 14:30', call-back='$parent.countDown=true')
+                  p.text-right 省时省心，自动抢购 &nbsp;
+                    a.btn.btn-primary(href='') 立即预约
+
+      .col-md-3
+        .content.padding-large
+          h4.header 最新公告
+            a.more(href='')
+          ul.list-primary
+            li
+              a.text-overflow(href='') 关于你我贷客户端的公告
+            li
+              a.text-overflow(href='') 关于网站借款频道升级公告
+          hr
+          h4.header 媒体报道
+            a.more(href='')
+          ul.list-primary
+            li
+              a.text-overflow(href='') 关于你我贷客户端的公告
+            li
+              a.text-overflow(href='') 关于网站借款频道升级公告
+
+  .container
+    .row.show-grid
+      .col-md-9
+        .content.padding-large
+          h3.header 债权列表
+            a.more
+          table.table.table-striped.table-fat
+            thead
+              tr
+                th 项目名称
+                th 借款年利率
+                th 期限
+                th 投资金额
+                th 进度
+                th
+            tbody
+              each item in [{type: '1', name: '诚信借款', rate: 13.2, limit: '24个月', invest: 8673.00, progress: 96.5 }, {type: '2', name: '济宁商户贷诚信借款', rate: 7.2, limit: '36个月', invest: 9585.00, progress: 41.05 }, {type: '3', name: '净值周转提前还款', rate: 3.5, limit: '90天', invest: 3628.00, progress: 20.5 }, {type: '4', name: '商户贷诚信借款', rate: 1.2, limit: '12个月', invest: 1603.00, progress: 86.25 }, {type: '5', name: '借款用于买房', rate: 1.2, limit: '12个月', invest: 4604.00, progress: 86.25 }, {type: '6', name: '临时周转请多多支持谢...', rate: 3.2, limit: '30天', invest: 1610.00, progress: 66.5 }]
+                tr
+                  td
+                    span.invest-icon(class='invest-'+item.type)= item.name
+                  td.text-warning.percentage= item.rate
+                  td= item.limit
+                  td= item.invest + '元'
+                  td
+                    .progress.progress-mini.progress-inline(progress=item.progress, type='warning')
+                    span.percentage= item.progress
+                  td
+                    a.btn.btn-warning.btn-fat 投 标
+      .col-md-3
+        .content.padding-large.show-grid
+          h4.header 关于我们
+            a.more(href='')
+          p 你我贷成立于2011年6月，旨在为有融资及投资需求的小微企业和个人建立起高效、透明、安全、便捷的互联网金融服务。
+          ul.list-primary
+            li.text-overflow
+              a.text-muted(href='') 上海现代服务业联合会副会长单位
+            li.text-overflow
+              a.text-muted(href='') 中国小额信贷机构联席会理事单位
+            li.text-overflow
+              a.text-muted(href='') 上海中小企业融资服务优秀合作伙伴
+
+        .content.padding-large
+          h4.header 论坛精华
+            a.more(href='')
+          ul.list-primary
+            li 关于你我贷客户端的公告
+            li 关于网站借款频道升级公告
+
+  .container
+    .row.show-grid
+      .col-md-9
+        .content.padding-large
+          h3 投资公开课
+            a.more(href='')
+          .row.vr.show-grid
+            .col-md-4
+              .padding-base.pull-left
+                img(src='/img/class1.png')
+              .padding-base.pull-left
+                p 第五课
+                p 轻松投资
+                p 稳赚收益
+                a.btn.btn-primary(href='') 进入课堂
+            .col-md-4
+              .padding-base.pull-left
+                img(src='/img/class2.png')
+              .padding-base.pull-left
+                p 第四课
+                p 什么是债权转让？
+                p 提高资金流动性
+                a.btn.btn-primary(href='') 进入课堂
+            .col-md-4
+              .padding-base.pull-left
+                img(src='/img/class3.png')
+              .padding-base.pull-left
+                p 第三课
+                p 预约设置
+                p 账户充值
+                a.btn.btn-primary(href='') 进入课堂
+      .col-md-3
+        #tools.content.padding-large
+          a(href='')
+            i.fa.fa-rocket.fa-2x
+            span.font-size-large 智能抢标
+          a(href='')
+            i.fa.fa-th-large.fa-2x
+            span.font-size-large 投资计算器
+          a(href='')
+            span.fa-stack.fa-lg
+              i.fa.fa-user.fa-stack-1x
+              i.fa.fa-ban.fa-stack-2x.text-danger
+            span.font-size-large 逾期黑名单
+
+
+

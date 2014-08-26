@@ -1,12 +1,30 @@
 doctype html
 head
-  title myApp
+  title 点金贷
   link(rel='stylesheet', href='/lib/font-awesome/css/font-awesome.css')
-  link(rel='stylesheet', href='/styles/app.css')
-  body
-    //content block begin
-    block content
-    //content block end
-    script(src='/lib/angular/angular.js')
-    script(src='/lib/underscore/underscore.js')
-    script(src='/scripts/**/*.js')
+  link(rel='stylesheet', href='/css/app.css')
+body(ng-app='dianJinDai')
+  //content block begin
+  .alert.alert-warning Header here2
+  block content
+  .alert.alert-warning Footer here
+  #side-tool-bar.content
+    ul.nav.nav-pills.nav-stacked.text-center
+      li
+        a(href='') 申请借款
+      li
+        a(href='') 意见反馈
+      li
+        a(href='')
+          i.fa.fa-comments-o.fa-4x
+          p 在线客服
+      li
+        a(go-top)
+          i.fa.fa-angle-up.fa-4x
+
+  //content block end
+  script(src='/lib/jquery/dist/jquery.js')
+  script(src='/lib/angular/angular.js')
+  script(src='/lib/angular-animate/angular-animate.js')
+  script(src='/lib/underscore/underscore.js')
+  script(src='/js/**/*.js')

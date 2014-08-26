@@ -28,9 +28,9 @@ SRC = {
 }
 DIST = {
     bower: "app/lib",
-    scripts: "app/scripts",
+    scripts: "app/js",
     htmls: "app",
-    styles: "app/styles"
+    styles: "app/css"
     images: "app/img"
 }
 
@@ -70,7 +70,6 @@ gulp.task "jade", ['coffee'], ->
     gulp.src SRC.jade
     .pipe plumber {errorHandler: errorHandler('JADE')}
     .pipe changed DIST.htmls
-    .pipe cache 'jade'
     .pipe jade pretty: true
     .pipe REPLACE_MULTI_SCRIPT_FUNC()
     .pipe gulp.dest DIST.htmls

@@ -1,0 +1,25 @@
+.count-down-to {
+  height: 55px;
+  display: inline-block;
+  font-size: 0;
+  i{
+    display: inline-block;
+    width: 10px;
+    height: 55px;
+    vertical-align: middle;
+    &:before {
+      content: ':';
+      font-style: normal;
+      font-size: 36px;
+    }
+  }
+  &.ng-enter {
+    .transition(all .3s cubic-bezier(.3,1.31,.53,1.17));
+    .scale(0);
+    opacity: 0;
+  }
+  &.ng-enter-active {
+    .scale(1);
+    opacity: 1;
+  }
+}
