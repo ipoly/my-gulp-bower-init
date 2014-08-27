@@ -68,18 +68,14 @@ block content
           h4.header 最新公告
             a.more(href='')
           ul.list-primary
-            li
-              a.text-overflow(href='') 关于你我贷客户端的公告
-            li
-              a.text-overflow(href='') 关于网站借款频道升级公告
+            li: a.text-overflow(href='') 关于你我贷客户端的公告
+            li: a.text-overflow(href='') 关于网站借款频道升级公告
           hr
           h4.header 媒体报道
             a.more(href='')
           ul.list-primary
-            li
-              a.text-overflow(href='') 关于你我贷客户端的公告
-            li
-              a.text-overflow(href='') 关于网站借款频道升级公告
+            li: a.text-overflow(href='') 关于你我贷客户端的公告
+            li: a.text-overflow(href='') 关于网站借款频道升级公告
 
   .container
     .row.show-grid
@@ -115,12 +111,9 @@ block content
             a.more(href='')
           p 你我贷成立于2011年6月，旨在为有融资及投资需求的小微企业和个人建立起高效、透明、安全、便捷的互联网金融服务。
           ul.list-primary
-            li.text-overflow
-              a.text-muted(href='') 上海现代服务业联合会副会长单位
-            li.text-overflow
-              a.text-muted(href='') 中国小额信贷机构联席会理事单位
-            li.text-overflow
-              a.text-muted(href='') 上海中小企业融资服务优秀合作伙伴
+            li.text-overflow: a.text-muted(href='') 上海现代服务业联合会副会长单位
+            li.text-overflow: a.text-muted(href='') 中国小额信贷机构联席会理事单位
+            li.text-overflow: a.text-muted(href='') 上海中小企业融资服务优秀合作伙伴
 
         .content.padding-large
           h4.header 论坛精华
@@ -133,7 +126,7 @@ block content
     .row.show-grid
       .col-md-9
         .content.padding-large
-          h3 投资公开课
+          h3.header 投资公开课
             a.more(href='')
           .row.vr.show-grid
             .col-md-4
@@ -174,5 +167,20 @@ block content
               i.fa.fa-ban.fa-stack-2x.text-danger
             span.font-size-large 逾期黑名单
 
+  .container
+    .row.show-grid
+      .col-md-9
+        .content.padding-large
+          h3.header 板块新闻
+          .row.show-grid
+            -var m = 0
+            while m++ < 2
+              .col-md-6
+                ul.list-primary
+                  -var n = 0
+                  while n++ < 6
+                    li
+                      a(href='') 薪金贷和小微企业类借款额度为3万
+                      .text-muted.pull-right 2014-8-28
 
 
