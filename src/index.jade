@@ -36,7 +36,6 @@ block content
             li 24小时放款
             li 提前还款可减免服务费
 
-  .container
     .row.show-grid
       .col-md-9
         .content.padding-large(style='height:264px;')
@@ -77,7 +76,6 @@ block content
             li: a.text-overflow(href='') 关于你我贷客户端的公告
             li: a.text-overflow(href='') 关于网站借款频道升级公告
 
-  .container
     .row.show-grid
       .col-md-9
         .content.padding-large
@@ -95,8 +93,7 @@ block content
             tbody
               each item in [{type: '1', name: '诚信借款', rate: 13.2, limit: '24个月', invest: 8673.00, progress: 96.5 }, {type: '2', name: '济宁商户贷诚信借款', rate: 7.2, limit: '36个月', invest: 9585.00, progress: 41.05 }, {type: '3', name: '净值周转提前还款', rate: 3.5, limit: '90天', invest: 3628.00, progress: 20.5 }, {type: '4', name: '商户贷诚信借款', rate: 1.2, limit: '12个月', invest: 1603.00, progress: 86.25 }, {type: '5', name: '借款用于买房', rate: 1.2, limit: '12个月', invest: 4604.00, progress: 86.25 }, {type: '6', name: '临时周转请多多支持谢...', rate: 3.2, limit: '30天', invest: 1610.00, progress: 66.5 }]
                 tr
-                  td
-                    span.invest-icon(class='invest-'+item.type)= item.name
+                  td: span.invest-icon(class='invest-'+item.type)= item.name
                   td.text-warning.percentage= item.rate
                   td= item.limit
                   td= item.invest + '元'
@@ -122,7 +119,6 @@ block content
             li 关于你我贷客户端的公告
             li 关于网站借款频道升级公告
 
-  .container
     .row.show-grid
       .col-md-9
         .content.padding-large
@@ -167,7 +163,6 @@ block content
               i.fa.fa-ban.fa-stack-2x.text-danger
             span.font-size-large 逾期黑名单
 
-  .container
     .row.show-grid
       .col-md-9
         .content.padding-large

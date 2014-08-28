@@ -6319,6 +6319,12 @@ a:focus {
 .progress-mini {
   height: 6px;
 }
+.progress-small {
+  height: 12px;
+}
+.progress-small.progress-inline {
+  min-width: 120px;
+}
 .progress-inline {
   display: inline-block;
   min-width: 60px;
@@ -6497,6 +6503,19 @@ fieldset[disabled] .btn-customize.active {
   font-size: 50%;
   color: #3e8dc0;
   margin-right: 1ex;
+}
+.product-list-table > tbody > tr > th,
+.product-list-table > tbody > tr > td {
+  vertical-align: middle;
+  border: none;
+}
+.product-list-table > tbody > tr > th:first-child a,
+.product-list-table > tbody > tr > td:first-child a,
+.product-list-table > tbody > tr > th:first-child img,
+.product-list-table > tbody > tr > td:first-child img {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
 }
 .color-watches {
   margin-bottom: 0 -5px;
