@@ -19,6 +19,10 @@ a:hover,a:focus {
 .font-size-base {font-size: @font-size-base;}
 .font-size-large {font-size: @font-size-large;}
 
+.line-height-base {line-height: @line-height-base;}
+.line-height-large {line-height: @line-height-large;}
+.line-height-small {line-height: @line-height-small;}
+
 
 .more {
   .pull-right;
@@ -59,6 +63,11 @@ a:hover,a:focus {
     margin-bottom: -10px;
     display: inline-block;
     border-bottom: 2px solid @brand-danger;
+  }
+  .label {
+    border-radius: 100px;
+    padding-left: 1em;
+    padding-right: 1em;
   }
 }
 
@@ -224,4 +233,10 @@ a:hover,a:focus {
     bottom: 0;
     margin: auto;
   }
+}
+
+.product-detail-form-container {
+  padding: 30px;
+  padding-left: 0;
+  margin-left: -15px;
 }

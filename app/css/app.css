@@ -2392,13 +2392,13 @@ input[type="date"].input-sm,
 input[type="time"].input-sm,
 input[type="datetime-local"].input-sm,
 input[type="month"].input-sm {
-  line-height: 30px;
+  line-height: 27px;
 }
 input[type="date"].input-lg,
 input[type="time"].input-lg,
 input[type="datetime-local"].input-lg,
 input[type="month"].input-lg {
-  line-height: 46px;
+  line-height: 55px;
 }
 .form-group {
   margin-bottom: 15px;
@@ -2476,15 +2476,15 @@ fieldset[disabled] .checkbox label {
 }
 .input-sm,
 .form-horizontal .form-group-sm .form-control {
-  height: 30px;
+  height: 27px;
   padding: 5px 10px;
   font-size: 12px;
-  line-height: 1.5;
+  line-height: 1.33;
   border-radius: 3px;
 }
 select.input-sm {
-  height: 30px;
-  line-height: 30px;
+  height: 27px;
+  line-height: 27px;
 }
 textarea.input-sm,
 select[multiple].input-sm {
@@ -2492,15 +2492,15 @@ select[multiple].input-sm {
 }
 .input-lg,
 .form-horizontal .form-group-lg .form-control {
-  height: 46px;
+  height: 55px;
   padding: 10px 16px;
   font-size: 18px;
-  line-height: 1.33;
+  line-height: 1.8;
   border-radius: 6px;
 }
 select.input-lg {
-  height: 46px;
-  line-height: 46px;
+  height: 55px;
+  line-height: 55px;
 }
 textarea.input-lg,
 select[multiple].input-lg {
@@ -2524,14 +2524,14 @@ select[multiple].input-lg {
   text-align: center;
 }
 .input-lg + .form-control-feedback {
-  width: 46px;
-  height: 46px;
-  line-height: 46px;
+  width: 55px;
+  height: 55px;
+  line-height: 55px;
 }
 .input-sm + .form-control-feedback {
-  width: 30px;
-  height: 30px;
-  line-height: 30px;
+  width: 27px;
+  height: 27px;
+  line-height: 27px;
 }
 .has-success .help-block,
 .has-success .control-label,
@@ -2696,7 +2696,7 @@ select[multiple].input-lg {
 }
 @media (min-width: 768px) {
   .form-horizontal .form-group-lg .control-label {
-    padding-top: 14.3px;
+    padding-top: 19px;
   }
 }
 @media (min-width: 768px) {
@@ -3035,21 +3035,21 @@ fieldset[disabled] .btn-link:focus {
 .btn-group-lg > .btn {
   padding: 10px 16px;
   font-size: 18px;
-  line-height: 1.33;
+  line-height: 1.8;
   border-radius: 6px;
 }
 .btn-sm,
 .btn-group-sm > .btn {
   padding: 5px 10px;
   font-size: 12px;
-  line-height: 1.5;
+  line-height: 1.33;
   border-radius: 3px;
 }
 .btn-xs,
 .btn-group-xs > .btn {
   padding: 1px 5px;
   font-size: 12px;
-  line-height: 1.5;
+  line-height: 1.33;
   border-radius: 3px;
 }
 .btn-block {
@@ -3423,17 +3423,17 @@ tbody.collapse.in {
 .input-group-lg > .form-control,
 .input-group-lg > .input-group-addon,
 .input-group-lg > .input-group-btn > .btn {
-  height: 46px;
+  height: 55px;
   padding: 10px 16px;
   font-size: 18px;
-  line-height: 1.33;
+  line-height: 1.8;
   border-radius: 6px;
 }
 select.input-group-lg > .form-control,
 select.input-group-lg > .input-group-addon,
 select.input-group-lg > .input-group-btn > .btn {
-  height: 46px;
-  line-height: 46px;
+  height: 55px;
+  line-height: 55px;
 }
 textarea.input-group-lg > .form-control,
 textarea.input-group-lg > .input-group-addon,
@@ -3446,17 +3446,17 @@ select[multiple].input-group-lg > .input-group-btn > .btn {
 .input-group-sm > .form-control,
 .input-group-sm > .input-group-addon,
 .input-group-sm > .input-group-btn > .btn {
-  height: 30px;
+  height: 27px;
   padding: 5px 10px;
   font-size: 12px;
-  line-height: 1.5;
+  line-height: 1.33;
   border-radius: 3px;
 }
 select.input-group-sm > .form-control,
 select.input-group-sm > .input-group-addon,
 select.input-group-sm > .input-group-btn > .btn {
-  height: 30px;
-  line-height: 30px;
+  height: 27px;
+  line-height: 27px;
 }
 textarea.input-group-sm > .form-control,
 textarea.input-group-sm > .input-group-addon,
@@ -4049,8 +4049,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   margin-bottom: 8px;
 }
 .navbar-btn.btn-sm {
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin-top: 11.5px;
+  margin-bottom: 11.5px;
 }
 .navbar-btn.btn-xs {
   margin-top: 14px;
@@ -6202,6 +6202,15 @@ a:focus {
 .font-size-large {
   font-size: 18px;
 }
+.line-height-base {
+  line-height: 1.42857143;
+}
+.line-height-large {
+  line-height: 1.8;
+}
+.line-height-small {
+  line-height: 1.33;
+}
 .more {
   float: right !important;
 }
@@ -6262,6 +6271,11 @@ a:focus {
   margin-bottom: -10px;
   display: inline-block;
   border-bottom: 2px solid #d9534f;
+}
+.header .label {
+  border-radius: 100px;
+  padding-left: 1em;
+  padding-right: 1em;
 }
 .percentage:after {
   content: '%';
@@ -6465,12 +6479,17 @@ fieldset[disabled] .btn-customize.active {
   bottom: 0;
   margin: auto;
 }
+.product-detail-form-container {
+  padding: 30px;
+  padding-left: 0;
+  margin-left: -15px;
+}
 .list-primary {
   padding-left: 0;
   list-style: none;
 }
 .list-primary li {
-  line-height: 28px;
+  line-height: 1.8;
 }
 .list-primary li:before {
   content: '\f1db';

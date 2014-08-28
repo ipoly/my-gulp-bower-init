@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<head>
+  <title>点金贷</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.css">
+  <link rel="stylesheet" href="/css/app.css">
+</head>
+<body ng-app="dianJinDai">
+  <!--content block begin-->
+  <div class="alert alert-warning">Header here2</div>
+  <div class="container">
+    <ol class="breadcrumb">
+      <li><a href=""> 首页</a></li>
+      <li><a href="">我要借款</a></li>
+      <li class="active">借款产品</li>
+    </ol>
+    <div class="text-center show-grid"><img src="/img/page186_a.gif"></div>
+    <div class="content show-grid">
+      <div class="row">
+        <div class="col-md-7"><img src="/img/page186_b.gif" style="width:100%;"></div>
+        <div class="col-md-5">
+          <div class="product-detail-form-container">
+            <form class="form-horizontal">
+              <div class="form-group">
+                <label class="col-md-3 control-label">居住城市</label>
+                <div class="col-md-9">
+                  <select required name="city" class="form-control">
+                    <option>请选择</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-md-3 control-label">真实姓名</label>
+                <div class="col-md-9">
+                  <input type="text" required name="name" placeholder="请输入真实姓名" class="form-control">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-md-3 control-label">移动电话</label>
+                <div class="col-md-9">
+                  <input type="text" required name="mobile" placeholder="请输入11位手机号" class="form-control">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-md-3 control-label">称谓</label>
+                <div class="col-md-9">
+                  <div class="radio">
+                    <label>
+                      <input type="radio" name="gender">男
+                    </label>
+                    <label>
+                      <input type="radio" name="gender">女
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-md-3 control-label">出生日期</label>
+                <div class="col-md-9">
+                  <input type="text" required name="birthday" placeholder="yyyy-mm-dd" class="form-control">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-md-3 control-label">借款金额</label>
+                <div class="col-md-9">
+                  <div class="input-group">
+                    <input type="number" required name="amount" placeholder="3万-30万" class="form-control"><span class="input-group-addon">元</span>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-md-3 control-label">借款期限</label>
+                <div class="col-md-9">
+                  <select required name="limit" class="form-control">
+                    <option>12</option>
+                    <option>24</option>
+                    <option>48</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-md-3 control-label">月收入</label>
+                <div class="col-md-9">
+                  <div class="input-group">
+                    <input type="number" required name="icome" placeholder="请填写月收入金额" class="form-control"><span class="input-group-addon">元</span>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-md-9 col-md-offset-3">
+                  <button class="btn btn-warning btn-lg btn-block">立即申请</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="content show-grid padding-large">
+      <div class="row vr">
+        <div class="col-md-4">
+          <h3 class="header">
+            <div class="label label-primary">申请资格</div>
+          </h3>
+          <ul class="text-muted line-height-large">
+            <li>年龄23周岁-60周岁的中国大陆公民（港、澳、台除外）</li>
+            <li>企业或商户经营时间满1年及以上</li>
+            <li>企业或商户月均流水须3万以上</li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h3 class="header">
+            <div class="label label-primary">额度期限</div>
+          </h3>
+          <ul class="text-muted line-height-large">
+            <li>借款额度：3万-30万元</li>
+            <li>借款期限：12、18、24个月</li>
+            <li>还款方式：等额本息，每月还款</li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h3 class="header">
+            <div class="label label-primary">所需材料</div>
+          </h3>
+          <ul class="text-muted line-height-large">
+            <li>申请人二代身份证</li>
+            <li>申请人1个月内信用报告</li>
+            <li>企业/商户经营场所证明材料</li>
+            <li>现居住地证明材料</li>
+            <li>近6个月对公或对私银行流水或POS交易流水</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="row show-grid">
+      <div class="col-md-7">
+        <div class="content padding-large">
+          <h3 class="header">费用说明</h3>
+          <hr>
+          <h4>每月还款费用</h4>
+          <ul class="list-inline show-grid">
+            <li>本金及利息：13.2% 支付给投资人</li>
+            <li>平台管理费：0.3% 由你我贷平台收取</li>
+          </ul>
+          <h4>放款时一次性费用</h4>
+          <div class="row">
+            <div class="col-md-6">
+              <dl>
+                <dt>风险管理费</dt>
+                <dd class="line-height-large">
+                  <p class="text-muted">
+                    根据平台审核认定的客户等级收取对应比例<br>
+                    由你我贷平台收取
+                  </p>
+                </dd>
+                <dt>委托查询费</dt>
+                <dd class="line-height-large">
+                  <p class="text-muted">200元 由你我贷平台收取</p>
+                </dd>
+                <dt>借款服务费</dt>
+                <dd class="line-height-large">
+                  <p class="text-muted">
+                    （包括征信服务费和贷后管理费）<br>
+                    由提供实地征信及贷后管理服务的你我贷平台合作伙伴根据不同的客户等级和借款期限收取
+                  </p>
+                </dd>
+              </dl>
+            </div>
+            <div class="col-md-6">
+              <table class="table table-bordered table-condensed">
+                <thead>
+                  <tr class="active">
+                    <th>客户等级</th>
+                    <th>风险管理费收取比例</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>AA</td>
+                    <td>0.0%</td>
+                  </tr>
+                  <tr>
+                    <td>A</td>
+                    <td>1.0%</td>
+                  </tr>
+                  <tr>
+                    <td>B</td>
+                    <td>1.5%</td>
+                  </tr>
+                  <tr>
+                    <td>C</td>
+                    <td>2.0%</td>
+                  </tr>
+                  <tr>
+                    <td>D</td>
+                    <td>3.0%</td>
+                  </tr>
+                  <tr>
+                    <td>E</td>
+                    <td>4.0%</td>
+                  </tr>
+                  <tr>
+                    <td>F</td>
+                    <td>5.0%</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-5">
+        <div class="content padding-large">
+          <h3 class="header"><i class="fa fa-th-large text-primary"></i>&nbsp;借款计算器</h3>
+          <hr>
+          <form class="form-horizontal">
+            <div class="form-group">
+              <label class="col-md-3 control-label">借款金额</label>
+              <div class="col-md-9">
+                <div class="input-group">
+                  <input type="number" required name="amount" placeholder="3万-30万" class="form-control"><span class="input-group-addon">元</span>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-3 control-label">借款期限</label>
+              <div class="col-md-9">
+                <div class="input-group">
+                  <input type="number" name="limit" placeholder="请输入借款期限" class="form-control"><span class="input-group-addon">月</span>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-3 control-label">借款利率</label>
+              <div class="col-md-9">
+                <div class="input-group">
+                  <input type="rate" required name="amount" placeholder="贷款利率范围1%-26.24%之间" class="form-control"><span class="input-group-addon">%</span>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-3 control-label">还款方式</label>
+              <div class="col-md-9">
+                <select required name="type" class="form-control">
+                  <option>等额本息还款</option>
+                  <option>等本等息还款</option>
+                  <option>按月付息到期还本</option>
+                  <option>一次付息到期还本</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-md-9 col-md-offset-3">
+                <button class="btn btn-primary btn-lg btn-block mb10">开始计算</button>
+                <div class="font-size-small text-muted">*利率范围：不超过中国人民银行基准利率的4倍</div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="alert alert-warning">Footer here</div>
+  <div id="side-tool-bar" class="content">
+    <ul class="nav nav-pills nav-stacked text-center">
+      <li><a href="">申请借款</a></li>
+      <li><a href="">意见反馈</a></li>
+      <li><a href=""><i class="fa fa-comments-o fa-4x"></i>
+          <div>在线客服</div></a></li>
+      <li><a go-top><i class="fa fa-angle-up fa-4x"></i></a></li>
+    </ul>
+  </div>
+  <!--content block end-->
+  <script src="/lib/jquery/dist/jquery.js"></script>
+  <script src="/lib/angular/angular.js"></script>
+  <script src="/lib/angular-animate/angular-animate.js"></script>
+  <script src="/lib/underscore/underscore.js"></script>
+  <script src="/js/app.js"></script>
+  <script src="/js/directive/click-jump.js"></script>
+  <script src="/js/directive/count-down-to.js"></script>
+  <script src="/js/directive/go-top.js"></script>
+  <script src="/js/directive/progress-bar.js"></script>
+</body>
