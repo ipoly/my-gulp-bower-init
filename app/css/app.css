@@ -6486,6 +6486,9 @@ fieldset[disabled] .btn-customize.active {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+.btn[disabled] {
+  cursor: not-allowed;
+}
 [click-jump] {
   cursor: pointer;
 }
