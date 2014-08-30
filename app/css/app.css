@@ -6347,9 +6347,9 @@ a:focus {
   font-size: 12px;
   top: 100%;
   margin: -1px 0;
-  -webkit-transition: all 0.3s cubic-bezier(0.17, 0.67, 0.66, 1.71);
-  -o-transition: all 0.3s cubic-bezier(0.17, 0.67, 0.66, 1.71);
-  transition: all 0.3s cubic-bezier(0.17, 0.67, 0.66, 1.71);
+  -webkit-transition: all 0.2s cubic-bezier(0.17, 0.67, 0.66, 1.71);
+  -o-transition: all 0.2s cubic-bezier(0.17, 0.67, 0.66, 1.71);
+  transition: all 0.2s cubic-bezier(0.17, 0.67, 0.66, 1.71);
   -webkit-transform-origin: 10px -5px;
   -moz-transform-origin: 10px -5px;
   -ms-transform-origin: 10px -5px;

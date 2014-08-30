@@ -14,7 +14,7 @@ angular.module 'validation.directive',[]
         ngModel.$error
       , ->
         if ngModel.$dirty
-          msg = ngModel.$invalid and 'get error'
+          msg = ngModel.$invalid and ($attr.title or $attr.placeholder)
           $elm.trigger 'validationChanged', msg
       , true
 ]

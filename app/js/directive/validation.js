@@ -16,7 +16,7 @@
           }, function() {
             var msg;
             if (ngModel.$dirty) {
-              msg = ngModel.$invalid && 'get error';
+              msg = ngModel.$invalid && ($attr.title || $attr.placeholder);
               return $elm.trigger('validationChanged', msg);
             }
           }, true);
