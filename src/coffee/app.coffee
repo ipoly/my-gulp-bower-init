@@ -5,6 +5,7 @@ modules = [
   'progrress-bar.directive'
   'click-jump.directive'
   'go-top.directive'
+  'validation.directive'
 ]
 angular.module 'dianJinDai', modules
 

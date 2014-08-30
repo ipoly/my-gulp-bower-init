@@ -6332,6 +6332,107 @@ a:focus {
   margin-right: 1ex;
   vertical-align: middle;
 }
+.error-msg {
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background-color: #fbeae2;
+  border-color: #f8d2cc;
+  color: #ff6600;
+  display: block;
+  position: absolute;
+  z-index: 1000;
+  padding: 5px;
+  font-size: 12px;
+  top: 100%;
+  margin: -1px 0;
+  -webkit-transition: all 0.3s cubic-bezier(0.17, 0.67, 0.66, 1.71);
+  -o-transition: all 0.3s cubic-bezier(0.17, 0.67, 0.66, 1.71);
+  transition: all 0.3s cubic-bezier(0.17, 0.67, 0.66, 1.71);
+  -webkit-transform-origin: 10px -5px;
+  -moz-transform-origin: 10px -5px;
+  -ms-transform-origin: 10px -5px;
+  transform-origin: 10px -5px;
+}
+.error-msg h4 {
+  margin-top: 0;
+  color: inherit;
+}
+.error-msg .alert-link {
+  font-weight: bold;
+}
+.error-msg > p,
+.error-msg > ul {
+  margin-bottom: 0;
+}
+.error-msg > p + p {
+  margin-top: 5px;
+}
+.error-msg hr {
+  border-top-color: #f5bfb5;
+}
+.error-msg .alert-link {
+  color: #cc5200;
+}
+.error-msg:before {
+  content: '';
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background-color: #fbeae2;
+  border-color: #f8d2cc;
+  color: #ff6600;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+  position: absolute;
+  border-radius: 0;
+  border-width: 1px 0 0 1px;
+  top: -5px;
+  left: 10px;
+  padding: 0;
+  width: 10px;
+  height: 10px;
+}
+.error-msg:before h4 {
+  margin-top: 0;
+  color: inherit;
+}
+.error-msg:before .alert-link {
+  font-weight: bold;
+}
+.error-msg:before > p,
+.error-msg:before > ul {
+  margin-bottom: 0;
+}
+.error-msg:before > p + p {
+  margin-top: 5px;
+}
+.error-msg:before hr {
+  border-top-color: #f5bfb5;
+}
+.error-msg:before .alert-link {
+  color: #cc5200;
+}
+.error-msg.ng-enter,
+.error-msg.ng-leave-active {
+  opacity: 0;
+  -webkit-transform: scale(0);
+  -ms-transform: scale(0);
+  -o-transform: scale(0);
+  transform: scale(0);
+}
+.error-msg.ng-enter-active,
+.error-msg.gn-leave {
+  opacity: 1;
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  -o-transform: scale(1);
+  transform: scale(1);
+}
 .btn-fat {
   padding-left: 2em;
   padding-right: 2em;

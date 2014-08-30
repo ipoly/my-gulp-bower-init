@@ -120,6 +120,43 @@ a:hover,a:focus {
   vertical-align: middle;
 }
 
+.error-msg {
+  .alert;
+  .alert-variant(@alert-warning-bg; @alert-warning-border; @alert-warning-text);
+  display: block;
+  position: absolute;
+  z-index: 1000;
+  padding: 5px;
+  font-size: 12px;
+  top: 100%;
+  margin: -1px 0;
+  @size: 10px;
+  &:before {
+    content: '';
+    .alert;
+    .alert-variant(@alert-warning-bg; @alert-warning-border; @alert-warning-text);
+    .rotate(45deg);
+    position: absolute;
+    border-radius: 0;
+    border-width: 1px 0 0 1px;
+    top: -@size/2;
+    left: @size;
+    padding: 0;
+    width: @size;
+    height: @size;
+  }
+  .transition(all .3s cubic-bezier(.17,.67,.66,1.71));
+  .transform-origin(@size -@size/2);
+  &.ng-enter, &.ng-leave-active {
+    opacity: 0;
+    .scale(0);
+  }
+  &.ng-enter-active, &.gn-leave {
+    opacity: 1;
+    .scale(1);
+  }
+}
+
 .btn-fat {
   padding-left: 2em;
   padding-right: 2em;
