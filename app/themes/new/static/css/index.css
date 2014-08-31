@@ -1,0 +1,314 @@
+#ie6-warning{
+	width: 100%;
+	text-align: center;
+	font-size: 18px;
+	font-weight: bold;
+	height: 35px;
+	line-height: 35px;
+	color: #F00;
+	border-bottom: 2px solid #CCC;
+}
+#full-screen-slider {
+	width:100%;
+	height:356px;
+	float:left;
+	position:relative
+}
+#slides {
+	display:block;
+	width:100%;
+	height:356px;
+	list-style:none;
+	padding:0;
+	margin:0;
+	position:relative
+}
+#slides li {
+	display:block;
+	width:100%;
+	height:100%;
+	list-style:none;
+	padding:0;
+	margin:0;
+	position:absolute
+}
+#slides li a {
+	display:block;
+	width:100%;
+	height:100%;
+	text-indent:-9999px
+}
+#pagination {
+	display:block;
+	list-style:none;
+	position:absolute;
+	left:50%;
+	top:320px;
+	z-index:9900;
+	padding:5px 15px 5px 0;
+	margin:0
+}
+#pagination li {
+    -webkit-transition: all 275ms;
+	transition: all 275ms;
+	display:block;
+	list-style:none;
+	width:15px;
+	height:15px;
+	float:left;
+	margin-left:15px;
+	border-radius:15px;
+	background:#FFF;
+	box-shadow:0 1px 4px rgba(0,0,0,.2);
+}
+#pagination li a {
+	display:block;
+	width:100%;
+	height:100%;
+	padding:0;
+	margin:0;
+	text-indent:-9999px;
+}
+#pagination li.current {
+	background:#0092CE
+}
+.pg-header-banner{
+	height:356px;
+}
+.pg-header-post{
+	height:51px;
+	border-bottom:1px solid #eaeaea;
+	background:#fafafa;
+}
+.pg-header-post-grid{
+	height:51px;
+	line-height:51px;
+	position:relative;
+}
+.pg-header-post-grid .date{
+	position:absolute;
+	right:175px;
+	top:0px;
+}
+.pg-header-post-grid .more{
+	position:absolute;
+	right:0px;
+	top:15px;
+}
+.pg-header-post-title{
+	color:#282828;
+	font-size:16px;
+	border-right:1px solid #e5e5e5;
+	margin-right:-1px;
+}
+.pg-header-post-cnt{
+	overflow:hidden;
+}
+.pg-header-post-cnt .c{
+	color:#ababab;
+}
+#pg-index .intro span{
+	display:block;
+	padding-right:30px;
+}
+#pg-index .intro-title{
+	font-size:24px;
+}
+#pg-index .intro-fig{
+	width:106px;
+	height:106px;
+}
+#pg-index .intro-fig-1{
+	background:url(../img/icon/intro_1.png) no-repeat 0px 0;
+}
+#pg-index .intro-fig-2{
+	background:url(../img/icon/intro_2.png) no-repeat 0px 0;
+}
+#pg-index .intro-fig-3{
+	background:url(../img/icon/intro_3.png) no-repeat 0px 0;
+}
+#pg-index .intro-link:hover .intro-fig-1{
+	background:url(../img/icon/intro_1.png) no-repeat 0px -106px;
+}
+#pg-index .intro-link:hover .intro-fig-2{
+	background:url(../img/icon/intro_2.png) no-repeat 0px -106px;
+}
+#pg-index .intro-link:hover .intro-fig-3{
+	background:url(../img/icon/intro_3.png) no-repeat 0px -106px;
+}
+#pg-index .intro-link:hover .intro-desc{
+	color:#5e5e5e;
+}
+#pg-index .invest-title{
+	color:#067bce;
+	position:relative;
+}
+#pg-index .invest-bg{
+	position:absolute;
+	right:0px;
+	height:21px;
+	width:860px;
+	float:right;
+	background:url(../img/bg/index-invest-bg.gif) 0 1px repeat-x;
+}
+#pg-index .invest-bg.div2{
+	width:400px;
+}
+#pg-index .invest-list-title span,#pg-index .invest-list-item span{
+	display:inline-block;
+}
+#pg-index .invest-list-item{
+	height:50px;
+	line-height:50px;
+	border-bottom:1px solid #ebebeb;
+}
+#pg-index .invest-list-item .title{
+	text-align:left;
+}
+#pg-index .invest-list-more{
+	background:#f7f7f7;
+	height:40px;
+	line-height:40px;
+	border-bottom:1px solid #ebebeb;
+}
+#pg-index .invest-list-speed{
+	width:136px;
+	height:9px;
+	border-radius: 5px;
+	position:relative;
+}
+#pg-index .invest-list-speed .bg{
+	float:left;
+	height:9px;
+	overflow:hidden;
+}
+#pg-index .invest-list-speed .point{
+	width:17px;
+	height:16px;
+	overflow:hidden;
+	position:absolute;
+	background-image:url(../img/bg/speed-p.png);
+}
+#pg-index .invest-list-speed-1{
+	border:1px solid #d88e19;
+} 
+#pg-index .invest-list-speed-1 .bg{
+	background:url(../img/bg/speed_1.jpg) repeat-x;
+} 
+#pg-index .invest-list-speed-1 .point{
+	background-position:0px -32px;
+}
+#pg-index .invest-list-speed-2{
+	border:1px solid #d83d00;
+} 
+#pg-index .invest-list-speed-2 .bg{
+	background:url(../img/bg/speed_2.jpg) repeat-x;
+} 
+#pg-index .invest-list-speed-2 .point{
+	background-position:0px 0px;
+}
+#pg-index .invest-list-speed-3{
+	border:1px solid #7ca707;
+} 
+#pg-index .invest-list-speed-3 .bg{
+	background:url(../img/bg/speed_3.jpg) repeat-x;
+} 
+#pg-index .invest-list-speed-3 .point{
+	background-position:0px -16px;
+}
+#pg-index .index-data{
+	background:#69adf8;
+	height:120px;
+}
+#pg-index .index-data-bg{
+	height:120px;
+	background:url(../img/bg/index-data-bg.jpg) no-repeat;
+}
+#pg-index .index-data-bg .more{
+	width:90px;
+	height:25px;
+	/* background:url(../img/icon/data-more.png) no-repeat 60px 0px; */
+	color:#fff;
+}
+#pg-index .index-data-bg .more a{
+	color:#fff;
+}
+#pg-index .index-data-bg .data{
+	width:100%;
+	text-indent:190px;
+	font-size:16px;
+	color:#fff;
+}
+#pg-index .index-data-bg .data em{
+	font-weight:bolder;
+	font-size:30px;
+	color:#efd000;
+}
+#pg-index .news-list li{
+	border-left:5px #cfcfcf solid;
+	height:40px;
+	line-height:40px;
+	text-indent:20px;
+	margin:0 0 1px 0;
+	position:relative;
+}
+#pg-index .news-list li p{
+	border-bottom:1px solid #f1f1f1;
+}
+#pg-index .news-list .date{
+	position:absolute;
+	right:0;
+	top:0px;
+}
+#pg-index .news-list li:hover{
+	background:#f9f9f9;
+	border-left:5px #067bce solid;
+}
+#pg-index .news-list li span,#pg-index .news-list li em{
+	color:#999;
+}
+#pg-index .news-list-more{
+	border-bottom:1px solid #f1f1f1;
+	background:#f7f7f7;
+	height:40px;
+	line-height:40px;
+}
+/* 首页 a里面文字太长出现省略号 */
+.toea{
+display:inline;
+white-space:nowrap;
+overflow:hidden;
+text-overflow:ellipsis; 
+-o-text-overflow:ellipsis;
+width:186px;
+}
+small{
+font-size:12px;
+}
+/* 修改 梦想起航 处css */
+.leiji{
+display:block;
+float:right;
+margin-top:10px;
+}
+.chenjiao{
+color:#fff;
+font-size:16px;
+text-align:right;
+}
+.tdata{
+color:#EFD000;
+font-weight:bold;
+font-size:30px;
+text-align:right;
+}
+.yesterday{
+color:#fff;
+text-align:right;
+padding-top:8px;
+}
+.wan{
+font-size:18px;
+color:#efd000;
+padding: 0px 4px;
+}

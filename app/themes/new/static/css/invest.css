@@ -1,0 +1,398 @@
+.wrapperMain{
+width:100%;
+background:#fafafa;
+padding-bottom:40px;
+float:left;
+}
+.wMain{
+width:1000px;
+margin:0 auto;
+}
+.wMain02{
+width:1000px;
+float:left;
+}
+#page-invest-list .filter{
+	width:660px;
+	height:140px;
+	border-right:1px solid #e2e2e2;
+}
+#page-invest-list .filter-tag{
+	display: block;
+	float: left;
+	font-size: 14px;
+	padding: 0 15px;
+	margin: 0 5px;
+	border-radius: 12px;
+	cursor: pointer;
+}
+#page-invest-list .filter-tag:hover{
+	background:#d6d6d6;
+	color:#4f4f4f;
+}
+#page-invest-list .filter-tag.active{
+	background:#047acd;
+	color:#fff;
+}
+#page-invest-list .filter-title{
+	float: left;
+	width: 80px;
+}
+#page-invest-list .before{
+	width:270px;
+	height:140px;
+	padding:0 0 0 20px;
+	position:relative;
+}
+#page-invest-list .before-item{
+	height:25px;
+	line-height:25px;
+}
+#page-invest-list .before-item label{
+	text-align:right;
+	display:inline-block;
+}
+#page-invest-list .before-list-tab{
+	position:absolute;
+	top:5px;
+	right:10px;
+}
+#page-invest-list .before-list-tab span.active,#page-invest-list .before-list-tab span.active:hover{
+	border: 3px solid #0092CE;
+	background: none;
+}
+#page-invest-list .before-list-tab span{
+	-webkit-transition: all 475ms;
+	transition: all 475ms;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	-ms-border-radius: 10px;
+	-o-border-radius: 10px;
+	border-radius: 10px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	width: 15px;
+	height: 15px;
+	margin: 0 5px;
+	display: block;
+	background-color: #D1D1D1;
+	border: none;
+	float:left;
+}
+#page-invest-list .invest-list{
+	min-height:628px;
+}
+
+#page-invest-list .invest-list .list-field{
+	height: 56px;
+	line-height: 56px;
+}
+#page-invest-list .invest-list-item{
+	border-bottom:1px solid #ebebeb;
+}
+#page-invest-list .invest-list-item:hover{
+	background:#f7f7f7;
+	cursor:pointer;
+}
+.pg-invest .invest-list-speed{
+	width:100px;
+	height:9px;
+	border-radius: 5px;
+	position:relative;
+	display:inline-block;
+}
+.pg-invest .invest-list-speed.d2{
+	width: 170px;
+}
+.pg-invest .invest-list-speed .bg{
+	float:left;
+	height:9px;
+	overflow:hidden;
+}
+.pg-invest .invest-list-speed .point{
+	width:17px;
+	height:16px;
+	overflow:hidden;
+	position:absolute;
+	background-image:url(../img/bg/speed-p.png);
+}
+.pg-invest .invest-list-speed-1{
+	border:1px solid #d88e19;
+} 
+.pg-invest .invest-list-speed-1 .bg{
+	background:url(../img/bg/speed_1.jpg) repeat-x;
+} 
+.pg-invest .invest-list-speed-1 .point{
+	background-position:0px -32px;
+}
+.pg-invest .invest-list-speed-2{
+	border:1px solid #d83d00;
+} 
+.pg-invest .invest-list-speed-2 .bg{
+	background:url(../img/bg/speed_2.jpg) repeat-x;
+} 
+.pg-invest .invest-list-speed-2 .point{
+	background-position:0px 0px;
+}
+.pg-invest .invest-list-speed-3{
+	border:1px solid #7ca707;
+} 
+.pg-invest .invest-list-speed-3 .bg{
+	background:url(../img/bg/speed_3.jpg) repeat-x;
+} 
+.pg-invest .invest-list-speed-3 .point{
+	background-position:0px -16px;
+}
+#page-invest-page .invest-intro{
+	width:645px;
+}
+#page-invest-page .invest-qucik-tender{
+	width:280px;
+}
+#page-invest-page .invest-intro-title{
+	padding-bottom:10px;
+	border-bottom:1px solid #ebebeb;
+}
+#page-invest-page  .tender-money{
+	width:193px;
+	height:24px;
+	line-height:24px;
+	padding:8px 77px 8px 8px;
+	border: 1px solid #c5c5c5;
+}
+#page-invest-page .invest-tender-btn{
+	width:100%;
+	display:block;
+	text-align:center;
+	height:38px;
+	line-height:38px;
+	background:#067bce;
+	color:#fff;
+}
+#page-invest-page .invest-tender-btn:hover{
+	background:#0667ad;
+}
+#page-invest-page .invest-tender-btn.gray{
+	background:gray;
+}
+#page-invest-page .invest-tab-item{
+	border-top:4px solid #fafafa;
+	margin-right:5px;
+}
+#page-invest-page .invest-tab-item.current{
+	border-top:4px solid #1181d0;
+}
+#page-invest-page .invest-tab-item-link{
+	padding:0 31px;
+	height:35px;
+	line-height:35px;
+	color:gray;
+	display:block;
+}
+#page-invest-page .invest-tab-item-link.current{
+	background:#fff;
+	border-left: 1px solid #d9d9d9;
+	border-right: 1px solid #d9d9d9;
+	color:#4f4f4f;
+}
+#page-invest-page .invest-tab-item:hover{
+	border-top:4px solid #1181d0;
+}
+#page-invest-page .invest-tab-item-link:hover{
+	color:#4f4f4f;
+}
+#page-invest-page .invest-tab-container{
+	background:#fff;
+	border:1px solid #d9d9d9;
+	display:none;
+	width:958px;
+}
+#page-invest-page .invest-container-title{
+	height: 36px;
+	line-height: 36px;
+	border-bottom: 1px solid #d0e8fd;
+	background: #ecf5fd;
+	text-indent: 15px;
+	color: #067bce;
+}
+#page-invest-page .invest-container-item{
+	height:32px;
+	line-height:32px;
+}
+#page-invest-page .invest-check{
+	width:515px;
+}
+#page-invest-page .invest-check-list{
+	border:1px solid #dfdfdf;
+}
+#page-invest-page .invest-check-list .br{
+	border-right:1px solid #dfdfdf;
+}
+#page-invest-page .invest-check-list .bg{
+	background:#f7f7f7;
+}
+#page-invest-page .invest-check-item{
+	height:32px;
+	line-height:32px;
+}
+#page-invest-page .invest-check-title{
+	background:#f3f3f3;
+	height:32px;
+	line-height:32px;	
+}
+#page-invest-page .invest-vouch{
+	width:415px;
+}
+#page-invest-page .invest-vouch-title{
+	border-bottom:1px solid #dfdfdf;
+}
+#page-invest-page .invest-vouch-container{
+	border:1px solid #dfdfdf;
+	background:#f9f9f9;
+}
+#page-invest-page .invest-pic-item{
+	width:208px;
+	height:265px;
+	border:2px solid #dbf0ff;
+	float:left;
+	text-align:center;
+	vertical-align:middle;
+	padding-top:15px;
+	margin-left:55px;
+	margin-right:40px;
+	margin-bottom:30px;
+}
+#page-invest-page .invest-pic-item:hover{
+	border:2px solid #5faee7;
+}
+#page-invest-page .invest-pic-item img{	
+}
+/* 改成table样式后的css */
+.investcustom{
+padding:10px 20px 20px 20px;
+}
+.cusinfortit{
+width:958px;
+height: 36px;
+line-height: 36px;
+border-bottom: 1px solid #d0e8fd;
+background: #ecf5fd;
+text-indent: 15px;
+color: #067bce;
+float:left;
+margin:10px 0px 10px 0px;
+}
+.custominfor{
+display:block;
+width:958px;
+float:left;
+margin:0px;
+padding:0px;
+border-collapse:collapse;
+border:none;
+}
+.custominfor tr{
+margin:0px;
+}
+.custominfor td{
+float:left;
+padding:5px;
+text-align:left;
+}
+.shenHe{
+width:958px;
+float:left;
+}
+.briefIntro{
+float:left;
+}
+.bfDetail{
+line-height:26px;
+padding-left:20px;
+}
+.intr{
+padding-right:20px;
+}
+.itemTable{
+border-collapse:collapse;
+margin:10px 0px 0px 0px;
+border:1px solid #DFDFDF;
+}
+.itemTable th,.itemTable td{
+border-left:1px solid #DFDFDF;
+border-right:1px solid #DFDFDF;
+border-top:0px;
+border-bottom:0px;
+}
+/* 投资详细页面之投标记录css */
+.bidFather{
+float:left;
+width:958px;
+padding:20px;
+background:#fff;
+position:relative;
+min-height:300px;
+}
+.bidbox{
+float:left;
+width:660px;
+padding-right:20px;
+}
+.bid{
+display:block;
+float:left;
+margin:0px;
+width:660px;
+border-collapse:collapse;
+border-top:2px solid #fff;
+border-left:2px solid #fff;
+}
+.bid tr{
+margin:0px;
+width:660px;
+height:40px;
+line-height:40px;
+vertical-align:middle;
+float:left;
+}
+.bid thead{
+margin:0px;
+padding:0px;
+border:none; 
+}
+.bid thead tr th{
+display:block;
+float:left;
+background-color:#3BAFDA;
+border-right:2px solid #fff;
+border-bottom:2px solid #fff;
+text-align:center;
+font-size:16px;
+color:#fff;
+}
+.bid td{
+border-right:2px solid #fff;
+border-bottom:2px solid #fff;
+margin:0px;
+display:block;
+float:left;
+}
+.totalAmount{
+background-color:#f1f9ff;
+border-radius: 4px;
+-moz-border-radius: 4px;
+-webkit-border-radius: 4px;
+width:258px;
+padding:20px 0px 20px 20px;
+}
+.posa{
+position:absolute;
+z-index:100;
+top:20px;
+left:701px;
+}
+.fix {
+position: fixed;
+top:0;
+}

@@ -1,0 +1,681 @@
+.pg-container{
+position: relative;
+height: 100%;
+_height: 100%;
+background: #FAFAFA;
+padding-bottom: 40px;
+}
+.div_clb{
+clear:both;
+}
+.pg-account{
+	min-height:550px;
+}
+.account-nav{
+	border-top:1px solid #d2d2d2;
+	width:160px;
+}
+.account-nav-item-link{
+	height:49px;
+	line-height:49px;
+	display:block;
+	text-indent:35px;
+	border-bottom:1px solid #d2d2d2;
+	background-color:#ededed;
+	background-repeat:no-repeat;
+	background-image:url(../img/icon/account-nav.png);
+	position:relative;
+	cursor:pointer;
+}
+.account-nav-item-link .account{
+	background-position:0 0;
+}
+.account-nav .log{
+	background-position:0 -49px;
+}
+.account-nav .invest{
+	background-position:0 -98px;
+}
+.account-nav .borrow{
+	background-position:0 -147px;
+}
+.account-nav .user{
+	background-position:0 -196px;
+}
+.account-nav .msg{
+	background-position:0 -245px;
+}
+.account-nav .nav-icon{
+	width:9px;
+	height:9px;
+	left:13px;
+	top:20px;;
+	position:absolute;
+}
+.account-nav .hidden{
+	background:url(../img/bg/account-nav.png) no-repeat 0 0;
+}
+.account-nav .list{
+	background:url(../img/bg/account-nav.png) no-repeat 0 -48px;
+}
+.account-nav-item-link:hover{
+	color:#0279cd;
+	background-color:#fafafa;
+}
+.account-nav-son{
+	display:none;
+}
+.account-nav-son li a{
+	display:block;
+	height:49px;
+	line-height:49px;
+	border-bottom:#e9e9e9 1px solid;
+	text-indent:40px;
+}
+.account-nav-son li a:hover{
+	background:#f2f2f2;
+}
+#pg-account-index .box{
+	background: #fff;
+	border: 1px solid #e0e0e0;
+	box-shadow: 0 0 2px 1px #efefef;
+	position:relative;
+}
+.userinfobox{ 
+float:left;
+padding:0px 20px 0px 20px;
+width:758px;
+border: 1px solid #E0E0E0;
+box-shadow: 0 0 2px 1px #EFEFEF;
+}
+.top-money{
+display:block;
+float:left;
+width:758px;
+padding:0px;
+margin:0px 0px 10px 0px;
+border-bottom:1px solid #efefef;
+
+}
+.top-money li{
+display:block;
+margin:0px;
+height:54px;
+padding:0px;
+line-height:54px;
+vertical-align:middle;
+float:left;
+}
+.wangcai{
+float:left;
+width:355px;
+white-space:nowrap;
+overflow:hidden;
+text-overflow:ellipsis; 
+-o-text-overflow:ellipsis;
+}
+.usemoney{
+font-size:18px;
+padding-left:30px;
+}
+.user-avatar-container{
+float:left;
+width:112px;
+height:112px;
+margin:20px 0px 0px 0px;
+border:1px solid #888888;
+}
+.user-info-container{
+padding:14px 0px 6px 30px;
+float:left;
+}
+#pg-account-index .user-info-safe{
+float:left;
+width:270px;
+}
+.user-info-cash{
+float:left;
+padding:0px 0px 0px 10px;
+width:310px;
+}
+.recharge{
+	width:73px;
+	height:32px;
+	line-height:30px;
+	display:inline-block;
+	color:#fff;
+	background:url(../img/btn/btn-blue-green.png) no-repeat;
+}
+.cash{
+	width:73px;
+	height:32px;
+	line-height:30px;
+	display:inline-block;
+	color:#fff;
+	background:url(../img/btn/btn-blue-green.png) -74px 0 no-repeat;
+}
+#pg-account-index .user-info-cash .money{ 
+	display:inline-block;
+	padding:10px;
+}
+.account_info{
+display:block;
+float:left;
+border: 1px solid #e0e0e0;
+box-shadow: 0 0 2px 1px #efefef;
+padding:20px;
+margin-top:10px;
+width:758px;
+}
+.uicp{
+display:block;
+margin-left:0px;
+margin-right:0px;
+width:300px;
+float:left;
+}
+#pg-account-index .formula{
+	border-bottom: 2px solid #f2f2f2;
+	padding-bottom:10px;
+}
+#pg-account-index .formula .center{
+	width:147px;
+	text-align:center;
+}
+#pg-account-index .formula .num{
+	font-size:22px;
+}
+#pg-account-index .formula .symbol{
+	width: 30px;
+	height: 40px;
+	line-height: 80px;
+	margin: 0 10px;
+	font-family: arial;
+	font-size: 32px;
+	text-align: center;
+}
+#pg-account-index .summary, #pg-account-index .summary p{
+	height:50px;
+	line-height:50px;
+}
+#pg-account-index .ui-list-header{
+	background: #fbfbfb;
+	border-top: 1px solid #f2f2f2;
+	border-bottom: 1px solid #f2f2f2;
+}
+#pg-account-index .ui-list-title{
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+}
+#pg-account-index .ui-list-item{
+	background: #fff;
+	border-bottom: 1px solid #efefef;
+}
+#pg-account-index .ui-list-field{
+	height:40px;
+	line-height:40px;
+}
+.pg-account .box-summary-left{
+	padding-right:20px;
+	width:200px;
+}
+.pg-account .box-summary-right {
+	border-left: 1px solid #e0e0e0;
+	padding-left: 19px;
+	width: 510px;
+}
+.pg-account .box-summary-right .field{
+	width:120px;
+	margin:0 5px;
+	float:left;
+}
+.pg-account .gray-title{
+	background:#ededed;
+}
+.pg-account .gray-txt{
+	border:1px solid #cbcbcb;
+	border-radius: 2px;
+}
+.pg-account .recharge-label,.pg-account .cash-label{
+	width:125px;
+	padding-right:10px;
+	text-align:right;
+	display:inline-block;
+}
+.pg-account .cash-label{
+	width:200px;
+}
+.pg-account .recharge-bank-item{
+	width:149px;
+	height:45px;
+	line-height:45px;
+	float:left;
+	display:inline-block;
+	cursor:pointer;
+	border:1px dashed #c9c9c9;
+	text-align:center;
+	margin:0 20px 20px 0;
+	position:relative;
+}
+.pg-account .recharge-bank-item .icon{
+	width:20px;
+	height:18px;
+	background:url(../img/icon/recharge-current.jpg) no-repeat;
+	display:block;
+	position:absolute;
+	bottom:0px;
+	right:0px;
+	display:none;
+}
+.pg-account .recharge-bank-item.current{
+	border:1px solid #86bb2a;
+}
+.pg-account .add-cash-bank{
+	width:194px;
+	height:104px;
+	border:1px solid #c9c9c9;
+	display:inline-block;
+	color:#0279cd;
+	background:url(../img/icon/icon-cash-add.jpg) no-repeat 50% 35%;
+	border-radius:5px;
+}
+.pg-account .add-cash-bank span{
+	margin-top:80px;
+	display:block;
+	border-top:1px solid #c9c9c9;
+	text-align:center;
+	width:100%;
+}
+.pg-account .account-tab-item{
+	border-top:4px solid #fafafa;
+	margin-right:5px;
+}
+.pg-account .account-tab-item.current{
+	border-top:4px solid #1181d0;
+}
+.pg-account .account-tab-item-link{
+	padding:0 31px;
+	height:35px;
+	line-height:35px;
+	color:gray;
+	display:block;
+	border-left: 1px solid #fafafa;
+	border-right: 1px solid #fafafa;
+	cursor:pointer;
+}
+.pg-account .account-tab-item-link.current{
+	background:#fff;
+	border-left: 1px solid #d9d9d9;
+	border-right: 1px solid #d9d9d9;
+	color:#4f4f4f;
+}
+.pg-account .account-tab-item:hover{
+	border-top:4px solid #1181d0;
+}
+.pg-account .account-tab-item-link:hover{
+	color:#4f4f4f;
+}
+.pg-account .account-tab-content{
+	display:none;
+	margin-top:-1px;
+	background:#fff;
+	border: 1px solid #d9d9d9;
+	min-height:280px;
+	padding-top:10px;
+	width: 800px;
+}
+.pg-account .account-tab-content .boder-gray:hover{
+	/*
+	background:#f7f7f7;
+	cursor:pointer;
+	*/
+}
+.pg-account .userphoto{
+	top:80px;
+	left:30px;
+}
+.pg-account .userinfo-edit{
+	display:none;
+}
+.pg-account .safe-icon{
+	display:inline-block;
+	width:40px;
+	height:40px;
+	background-image:url(../img/icon/icon-safe.png);
+	margin-left:15px;
+}
+.pg-account .safe-icon.phone{
+	background-position:0 -40px;
+}
+.pg-account .safe-icon.mail{
+	background-position:0 -80px;
+}
+.pg-account .safe-icon.video{
+	background-position:0 -120px;
+}
+.pg-account .safe-icon.scene{
+	background-position:0 -160px;
+}
+.pg-account .safe-icon.password{
+	background-position:0 -200px;
+}
+.pg-account .safe-icon.pay-password{
+	background-position:0 -240px;
+}
+.pg-account .remind-title{
+	border-top:2px solid #a0dcff;
+	background:#f7fcff;
+	border-bottom:1px solid #d7f0ff;
+}
+/* .pg-account .msg-icon,.msg-icon{
+	width:16px;
+	height:16px;
+	display:inline-block;
+	background-image:url(../img/icon/icon-msg.png);
+}
+.pg-account .msg-icon.read, .msg-icon.read{
+	background-position:0 -16px;
+}
+.pg-account .msg-icon.title, .msg-icon.title{
+	background-position:0 -32px;
+} */
+.pg-account .account-index{
+	border-bottom: 4px solid #C5C5C5;
+}
+.pg-account .account-index-tab{
+	float: left;
+	position: relative;
+	top: 4px;
+	padding: 5px 20px;
+	background: 0 0;
+	color: #09D;
+	font-size: 18px;
+}
+.pg-account .account-index-tab.active{
+	border-bottom: 4px solid #09D;
+}
+.pg-account .account-index-tab.active a{
+	color:#09D;
+}
+.pg-account .account-title-blue{
+	background:#1bb8e2;
+	color:#fff;
+}
+.pg-account .account-title-green{
+	background:#5cad22;
+	color:#fff;
+}
+.pg-account .account-title-lightgreen{
+	background:#d8fabf;
+	color:#5e5e5e;
+}
+.pg-account .account-title-org{
+	background:#ffa200;
+	color:#fff;
+}
+
+/*Id css*/
+#msg-list{
+	min-height:458px;
+}
+#over_detail,#now_detail,#tender_detail{
+	min-height:468px;
+}
+#invest-lv .invest-lv{
+	height:15px;
+	width:40px;
+	overflow:hidden;
+	display:inline-block; 
+    text-align:left;
+	background-image:url(../img/icon/invest-lv.png);
+	position:relative;
+	top:2px;
+	*+top:-1px;
+}
+#invest-lv .invest-lv.Xinshou{
+	background-position:0px 0px;
+}
+#invest-lv .invest-lv.Zhuli{
+	background-position:0px -15px;
+}
+#invest-lv .invest-lv.Jingli{
+	background-position:0px -30px;
+}
+#invest-lv .invest-lv.Zongjian{
+	background-position:0px -45px;
+}
+#invest-lv .invest-lv.Daheng{
+	background-position:0px -60px;
+}
+#invest-lv .invest-lv.Yinhangjia{
+	background-position:0px -75px;
+}
+#invest-lv .invest-lv.Dae{
+	background-position:0px -90px;
+}
+#invest-lv .invest-lv.Guatou{
+	background-position:0px -105px;
+	outline:none; 
+	hide-focus:expression(this.hideFocus=true);
+}
+#invest-lv .invest-lv.Fuhao{
+	background-position:0px -120px;
+}
+#invest-lv .invest-lv.LV10{
+	background-position:0px -135px;
+}
+#invest-lv .invest-lv.LV11{
+	background-position:0px -150px;
+}
+#invest-lv .invest-lv.LV12{
+	background-position:0px -165px;
+}
+.borrowmoneyul{
+display:block;
+float:left;
+margin:0px;
+width:770px;
+}
+/* 进度条的css */
+.list-field{
+	height: 56px;
+	line-height: 56px;
+}
+.invest-list-speed{
+	width:100px;
+	height:9px;
+	border-radius: 5px;
+	position:relative;
+	display:inline-block;
+}
+.invest-list-speed .bg{
+	float:left;
+	height:9px;
+	overflow:hidden;
+}
+.invest-list-speed .point{
+	width:17px;
+	height:16px;
+	overflow:hidden;
+	position:absolute;
+	background-image:url(../img/bg/speed-p.png);
+}
+.invest-list-speed-1{
+	border:1px solid #d88e19;
+} 
+.invest-list-speed-1 .bg{
+	background:url(../img/bg/speed_1.jpg) repeat-x;
+} 
+.invest-list-speed-1 .point{
+	background-position:0px -32px;
+}
+.invest-list-speed-2{
+	border:1px solid #d83d00;
+} 
+.invest-list-speed-2 .bg{
+	background:url(../img/bg/speed_2.jpg) repeat-x;
+} 
+.invest-list-speed-2 .point{
+	background-position:0px 0px;
+}
+.invest-list-speed-3{
+	border:1px solid #7ca707;
+} 
+.invest-list-speed-3 .bg{
+	background:url(../img/bg/speed_3.jpg) repeat-x;
+} 
+.invest-list-speed-3 .point{
+	background-position:0px -16px;
+}
+/* 处理右下方加载内容错位的css */
+.tabox{
+display:block;
+float:left;
+}
+.acctab{
+display:block;
+float:left;
+width:758px;
+border:none; 
+margin:0px;
+}
+.acctab tr{
+padding: 10px 0px;
+margin:0px;
+border:none; 
+float:left;
+}
+.acctab tr th{ 
+height:40px;
+line-height:40px;
+vertical-align:middle;
+background-color:#EDEDED;
+margin:0px;
+padding:0px;
+border:none; 
+float:left;
+}
+.detailDiv{
+display:block;
+float:left;
+width:758px;
+border:none;
+}
+.acctab02{
+display:block;
+float:left;
+width:758px;
+border:none; 
+margin:0px;
+border-collapse:collapse;
+padding-bottom:20px;
+}
+.acctab03{
+display:block;
+float:left;
+width:758px;
+border:none; 
+margin:0px;
+border-collapse:collapse;
+padding-bottom:20px;
+}
+.acctab03 tr td{
+padding: 10px 0px;
+}
+.tenderbox{
+display:block;
+float:left;
+}
+.othercolor a{
+color:#067BCE;
+}
+.borrow-wait{
+display:block;
+float:left;
+height:450px;
+}
+.loading {
+width:200px;
+height:140px;
+margin:0 auto;
+}
+.borrul{
+display:block;
+margin:0px;
+}
+.borrul li{
+width:714px;
+}
+.borbox{
+width:758px;
+display:block;
+float:left;
+}
+/* 对金额正负加颜色 */
+.poscolor{
+color:#53A000;
+}
+.negcolor{
+color:#F37800;
+}
+/* 我的帐户 改版 */
+.investGradeUl{
+margin:0px;
+padding:0px;
+display:block;
+width:270px;
+float:left;
+position:relative;
+top:-12px;
+}
+.investGradeUl li{
+display:block;
+margin-left:0px;
+margin-right:0px;
+width:270px;
+float:left;
+text-align:left;
+}
+.lipad0000{
+padding:0px;
+}
+.lipad1010{
+padding:14px 0px 0px 0px;
+}
+.invP{
+display:block;
+float:left;
+height:20px;
+line-height:20px;
+vertical-align:middle;
+text-align:left;
+margin:0px 0px 6px 0px;
+padding: 10px 0px;
+border-bottom:1px dashed #DBDBDB;
+}
+.investGradeL02{ 
+margin-top:0px;
+*+margin-top:6px;
+}
+.e7{
+background-color:#E7FAFF;
+}
+.e9{
+background-color:#E9FFE1;
+}
+.ruit{
+color:#FF8200;
+padding:0px 4px 0px 0px;
+}
+.bracket{
+color:#7D7D7D;
+}
+.totCredit{
+cursor:default;
+}
+.warmprompt{
+line-height:30px;
+vertical-align:middle;
+}
+#button{border:0;border-radius:2px;background:#4d90fe;color:#fff;font-weight:700;font-size:14px;width:100px;height:37px;line-height:37px;cursor:pointer;float:left;display:inline}

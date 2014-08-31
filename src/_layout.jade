@@ -3,14 +3,29 @@ head
   title 点金贷
   meta(charset='utf-8')
   meta(name='viewport', content='width=device-width')
-  link(rel='stylesheet', href='/lib/font-awesome/css/font-awesome.css')
-  link(rel='stylesheet', href='/css/app.css')
+  link(rel='shortcut icon', href='/themes/new/static/themes/ipoly/img/icon/favicon.ico')
+  link(rel='stylesheet', href='/themes/new/static/css/global.css')
+  link(rel='stylesheet', href='/themes/new/static/css/index.css')
+  link(rel='stylesheet', href='/themes/new/static/css/one.css')
+  link(rel='stylesheet', href='/themes/new/static/css/account.css')
+  link(href='/themes/new/css/style.css', rel='stylesheet', type='text/css')
+  link(href='/themes/new/css/user.css', rel='stylesheet', type='text/css')
+  link(href='/themes/new/css/public.css', rel='stylesheet', type='text/css')
+  link(href='/themes/new/css/other.css', rel='stylesheet', type='text/css')
+  link(href='/themes/new/css/tipswindown.css', rel='stylesheet', type='text/css')
+  link(rel='stylesheet', href='/themes/ipoly/lib/font-awesome/css/font-awesome.css')
+  link(rel='stylesheet', href='/themes/ipoly/css/app.css')
+
 body(ng-app='dianJinDai')
+  include _header
+
   //content block begin
-  .alert.alert-warning Header here2
   block content
-  .alert.alert-warning Footer here
-  #side-tool-bar.content
+  //content block end
+
+  include _footer
+
+  #side-tool-bar.content-block
     ul.nav.nav-pills.nav-stacked.text-center
       li: a(href='') 申请借款
       li: a(href='') 意见反馈
@@ -21,8 +36,19 @@ body(ng-app='dianJinDai')
           i.fa.fa-angle-up.fa-4x
 
   //content block end
-  script(src='/lib/jquery/dist/jquery.js')
-  script(src='/lib/angular/angular.js')
-  script(src='/lib/angular-animate/angular-animate.js')
-  script(src='/lib/underscore/underscore.js')
-  script(src='/js/**/*.js')
+  script(src='/themes/ipoly/lib/jquery/dist/jquery.js')
+
+  script(src='/themes/new/js/tipswindown.js')
+  script(src='/themes/new/js/deayou.js')
+  script(src='/themes/new/js/base.js')
+  script(src='/themes/new/js/lhgdialog.js')
+  script(src='/plugins/timepicker/WdatePicker.js')
+  script(src='/themes/new/js/showtime.js')
+  script(src='/themes/new/static/js/jquery.global.js')
+  script(src='/themes/new/static/js/jquery.jslides.js')
+
+
+  script(src='/themes/ipoly/lib/angular/angular.js')
+  script(src='/themes/ipoly/lib/angular-animate/angular-animate.js')
+  script(src='/themes/ipoly/lib/underscore/underscore.js')
+  script(src='/themes/ipoly/js/**/*.js')

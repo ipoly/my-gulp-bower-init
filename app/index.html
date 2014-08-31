@@ -3,16 +3,88 @@
   <title>点金贷</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.css">
-  <link rel="stylesheet" href="/css/app.css">
+  <link rel="shortcut icon" href="/themes/new/static/themes/ipoly/img/icon/favicon.ico">
+  <link rel="stylesheet" href="/themes/new/static/css/global.css">
+  <link rel="stylesheet" href="/themes/new/static/css/index.css">
+  <link rel="stylesheet" href="/themes/new/static/css/one.css">
+  <link rel="stylesheet" href="/themes/new/static/css/account.css">
+  <link href="/themes/new/css/style.css" rel="stylesheet" type="text/css">
+  <link href="/themes/new/css/user.css" rel="stylesheet" type="text/css">
+  <link href="/themes/new/css/public.css" rel="stylesheet" type="text/css">
+  <link href="/themes/new/css/other.css" rel="stylesheet" type="text/css">
+  <link href="/themes/new/css/tipswindown.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/themes/ipoly/lib/font-awesome/css/font-awesome.css">
+  <link rel="stylesheet" href="/themes/ipoly/css/app.css">
 </head>
 <body ng-app="dianJinDai">
+  <!-- header block begin-->
+  <div class="pg-header">
+    <div class="pg-header-top">
+      <div class="container_10 pt5">
+        <div class="grid_7"><img src="/themes/new/static/img/icon/phone.png">全国服务热线：400-800-800</div>
+        <div class="grid_3 txtRight"><a href="?user">我的账户</a><a id="msg-notice" href="account-msg.html" class="hide"><em style="top: 3px;" class="msg-icon title relative"></em><span>
+              | [
+              span#msg-count 0
+              | ]</span></a>|<a href="/">首页</a>|<a href="/help/index.html">帮助</a>|<a href="/bbs/" target="_blank">论坛</a></div>
+      </div>
+    </div>
+    <div class="pg-header-main">
+      <div class="container_10">
+        <div class="grid_3 pg-header-grid"><a href="/"><img src="/themes/new/static/img/icon/logo.png"></a></div>
+        <div class="grid_5 pg-header-grid">
+          <ul class="main-nav">
+            <li class="main-nav-item"><a href="/invest/index.html" class="main-nav-item-link">我要理财</a></li>
+            <li class="main-nav-item"><a href="/financing/index.html" class="main-nav-item-link">我要融资</a></li>
+            <li class="main-nav-item"><a href="/tzzbz/index.html" class="main-nav-item-link">新手帮助</a></li>
+            <li class="main-nav-item"><a href="/aboutus/index.html" class="main-nav-item-link">关于我们</a>
+              <ul class="main-nav-son">
+                <li><a href="/aboutus/index.html">关于我们</a></li>
+                <li><a href="/aboutzz/index.html">证照资质</a></li>
+                <li><a href="/aboutgwtd/index.html">顾问团队</a></li>
+                <li><a href="/abouthz/index.html">合作伙伴</a></li>
+                <li><a href="/lxwm/index.html">联系我们</a></li>
+                <li><a href="/aboutzp/index.html">招聘信息</a></li><span class="triangle_bg"></span><span class="triangle"></span>
+              </ul>
+              <div class="icon icon-down"></div>
+            </li>
+          </ul>
+        </div>
+        <div class="grid_2 pg-header-grid">
+          <ul id="top-reg" class="main-nav main-nav-login nav-right">
+            <li><a style="color: #0279cd;" href="/index.php?user&amp;q=reg" class="main-nav-login-item f16">注册</a></li>
+            <li><a href="/index.php?user&amp;q=login" class="main-nav-login-item f16">登录</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="width: 320px; height: 270px; z-index: 2; top: 150px; right: 212px;" class="trans-login-div absolute white">
+    <div style="height: 270px; background-color: rgb(0, 0, 0); opacity: 0.2; border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; z-index: -1; background-position: initial initial; background-repeat: initial initial;" class="opacity-div absolute wp100"></div>
+    <div id="unknown-user" style="padding: 20px 35px; display: block;">
+      <p class="f20">点金贷年化收益率</p>
+      <p><span class="f36 org">12%</span><span class="f36">-</span><span class="f36 org">15%</span></p>
+      <p><span class="f18 org">40</span>倍活期存款收益<span class="f18 org">5</span>倍余额宝收益</p>
+      <p><a href="/index.php?user&amp;q=reg" style="color: #fff; background: #ff5301; letter-spacing: 2px;" class="block wp100 h45 txtC f18 mt10 mb10">免费注册</a></p>
+      <p class="txtRight">已有账号?<a href="/index.php?user&amp;q=login" style="color: #fff; text-decoration: underline;">立即登录</a></p>
+    </div>
+  </div>
+  <div class="pg-header-banner">
+    <div id="full-screen-slider">
+      <ul id="slides">
+        <li style="background: url('http://dianjindai.com/data/upfiles/images/2014-03/22/1_scrollpic_new_1395458117859.jpg') no-repeat center top;"><a href="" target="_blank"></a></li>
+        <li style="background: url('http://dianjindai.com/data/upfiles/images/2014-03/22/1_scrollpic_new_1395458108801.jpg') no-repeat center top;"><a href="" target="_blank"></a></li>
+        <li style="background: url('http://dianjindai.com/data/upfiles/images/2014-03/22/1_scrollpic_new_1395458097364.jpg') no-repeat center top;"><a href="" target="_blank"></a></li>
+        <li style="background: url('http://dianjindai.com/data/upfiles/images/2014-03/22/1_scrollpic_new_1395458089330.jpg') no-repeat center top;"><a href="" target="_blank"></a></li>
+        <li style="background: url('http://dianjindai.com/data/upfiles/images/2014-03/22/1_scrollpic_new_1395458082133.jpg') no-repeat center top;"><a href="" target="_blank"></a></li>
+      </ul>
+    </div>
+  </div>
+  <!-- header block end-->
   <!--content block begin-->
-  <div class="alert alert-warning">Header here2</div>
   <div class="container">
     <div class="row features show-grid">
       <div class="col-md-3">
-        <div click-jump="" class="content"><img src="/img/3-1.gif"><a href="" class="feature-head">高收益灵活投资</a>
+        <div click-jump="" class="content-block"><img src="/themes/ipoly/img/3-1.gif"><a href="" class="feature-head">高收益灵活投资</a>
           <ul class="list-primary">
             <li>50元起投</li>
             <li>预期12%-14%年化收益率</li>
@@ -21,7 +93,7 @@
         </div>
       </div>
       <div class="col-md-3">
-        <div click-jump="" class="content"><img src="/img/3-2.gif"><a href="" class="feature-head">全方位安全保障</a>
+        <div click-jump="" class="content-block"><img src="/themes/ipoly/img/3-2.gif"><a href="" class="feature-head">全方位安全保障</a>
           <ul class="list-primary">
             <li>5道安全防线</li>
             <li>100%本金保障计划</li>
@@ -30,7 +102,7 @@
         </div>
       </div>
       <div class="col-md-3">
-        <div click-jump="" class="content"><img src="/img/3-3.gif"><a href="" class="feature-head">一站式借款服务</a>
+        <div click-jump="" class="content-block"><img src="/themes/ipoly/img/3-3.gif"><a href="" class="feature-head">一站式借款服务</a>
           <ul class="list-primary">
             <li>无抵押信用贷款</li>
             <li>24小时放款</li>
@@ -39,7 +111,7 @@
         </div>
       </div>
       <div class="col-md-3">
-        <div click-jump="" class="content"><img src="/img/3-3.gif"><a href="" class="feature-head">一站式借款服务</a>
+        <div click-jump="" class="content-block"><img src="/themes/ipoly/img/3-3.gif"><a href="" class="feature-head">一站式借款服务</a>
           <ul class="list-primary">
             <li>无抵押信用贷款</li>
             <li>24小时放款</li>
@@ -50,13 +122,13 @@
     </div>
     <div class="row show-grid">
       <div class="col-md-9">
-        <div style="height:264px;" class="content padding-large">
+        <div style="height:264px;" class="content-block padding-large">
           <h3 class="header">
             <div class="strong">家财有道<small> T2014026 期</small></div><a href="" class="more detail"></a>
           </h3>
           <hr>
           <div class="row">
-            <div class="col-md-6"><img src="/img/index-j.jpg"></div>
+            <div class="col-md-6"><img src="/themes/ipoly/img/index-j.jpg"></div>
             <div class="col-md-6">
               <div style="width:302px;" class="pull-right">
                 <div ng-if="countDown" class="text-center">
@@ -76,7 +148,7 @@
         </div>
       </div>
       <div class="col-md-3">
-        <div class="content padding-large">
+        <div class="content-block padding-large">
           <h4 class="header">最新公告<a href="" class="more"></a></h4>
           <ul class="list-primary">
             <li><a href="" class="text-overflow">关于你我贷客户端的公告</a></li>
@@ -93,7 +165,7 @@
     </div>
     <div class="row show-grid">
       <div class="col-md-9">
-        <div class="content padding-large">
+        <div class="content-block padding-large">
           <h3 class="header">债权列表<a class="more"></a></h3>
           <table class="table table-striped table-fat">
             <thead>
@@ -172,7 +244,7 @@
         </div>
       </div>
       <div class="col-md-3">
-        <div class="content padding-large show-grid">
+        <div class="content-block padding-large show-grid">
           <h4 class="header">关于我们<a href="" class="more"></a></h4>
           <p>你我贷成立于2011年6月，旨在为有融资及投资需求的小微企业和个人建立起高效、透明、安全、便捷的互联网金融服务。</p>
           <ul class="list-primary">
@@ -181,7 +253,7 @@
             <li class="text-overflow"><a href="" class="text-muted">上海中小企业融资服务优秀合作伙伴</a></li>
           </ul>
         </div>
-        <div class="content padding-large">
+        <div class="content-block padding-large">
           <h4 class="header">论坛精华<a href="" class="more"></a></h4>
           <ul class="list-primary">
             <li>关于你我贷客户端的公告</li>
@@ -192,11 +264,11 @@
     </div>
     <div class="row show-grid">
       <div class="col-md-9">
-        <div class="content padding-large">
+        <div class="content-block padding-large">
           <h3 class="header">投资公开课<a href="" class="more"></a></h3>
           <div class="row vr show-grid">
             <div class="col-md-4">
-              <div class="padding-base pull-left"><img src="/img/class1.png"></div>
+              <div class="padding-base pull-left"><img src="/themes/ipoly/img/class1.png"></div>
               <div class="padding-base pull-left">
                 <p>第五课</p>
                 <p>轻松投资</p>
@@ -204,7 +276,7 @@
               </div>
             </div>
             <div class="col-md-4">
-              <div class="padding-base pull-left"><img src="/img/class2.png"></div>
+              <div class="padding-base pull-left"><img src="/themes/ipoly/img/class2.png"></div>
               <div class="padding-base pull-left">
                 <p>第四课</p>
                 <p>什么是债权转让？</p>
@@ -212,7 +284,7 @@
               </div>
             </div>
             <div class="col-md-4">
-              <div class="padding-base pull-left"><img src="/img/class3.png"></div>
+              <div class="padding-base pull-left"><img src="/themes/ipoly/img/class3.png"></div>
               <div class="padding-base pull-left">
                 <p>第三课</p>
                 <p>预约设置</p>
@@ -223,12 +295,12 @@
         </div>
       </div>
       <div class="col-md-3">
-        <div id="tools" class="content padding-large"><a href=""><i class="fa fa-rocket fa-2x"></i><span class="font-size-large">智能抢标</span></a><a href=""><i class="fa fa-th-large fa-2x"></i><span class="font-size-large">投资计算器</span></a><a href=""><span class="fa-stack fa-lg"><i class="fa fa-user fa-stack-1x"></i><i class="fa fa-ban fa-stack-2x text-danger"></i></span><span class="font-size-large">逾期黑名单</span></a></div>
+        <div id="tools" class="content-block padding-large"><a href=""><i class="fa fa-rocket fa-2x"></i><span class="font-size-large">智能抢标</span></a><a href=""><i class="fa fa-th-large fa-2x"></i><span class="font-size-large">投资计算器</span></a><a href=""><span class="fa-stack fa-lg"><i class="fa fa-user fa-stack-1x"></i><i class="fa fa-ban fa-stack-2x text-danger"></i></span><span class="font-size-large">逾期黑名单</span></a></div>
       </div>
     </div>
     <div class="row show-grid">
       <div class="col-md-9">
-        <div class="content padding-large">
+        <div class="content-block padding-large">
           <h3 class="header">板块新闻</h3>
           <div class="row show-grid">
             <div class="col-md-6">
@@ -280,8 +352,54 @@
       </div>
     </div>
   </div>
-  <div class="alert alert-warning">Footer here</div>
-  <div id="side-tool-bar" class="content">
+  <!--content block end-->
+  <!-- footer block begin-->
+  <div class="pg-footer">
+    <div style="height: auto;" class="pg-footer-main">
+      <div class="container pt30">
+        <div class="row">
+          <div class="col-md-6">
+            <ul class="pg-footer-link">
+              <li><a href="/aboutus/index.html">关于我们</a></li>
+              <li><a href="/tzzbz/index.html">新手指引</a></li>
+              <li><a href="/media/index.html">媒体报道</a></li>
+              <li><a href="/aboutzp/index.html">诚聘英才</a></li>
+              <li><a href="/lxwm/index.html">联系我们</a></li>
+              <li><a href="/bbs/">论坛专区</a></li>
+            </ul>
+            <dl class="pg-footer-focus">
+              <dt class="f16">关注我们：</dt>
+              <dd><a target="_blank" title="新浪微博" href="http://www.weibo.com/" class="pg-footer-icon weibo">新浪微博</a></dd>
+              <dd><a title="官方微信" href="/lxwm/index.html" class="pg-footer-icon weixin">官方微信</a></dd>
+              <dd><a title="收藏本站" href="javascript:;" onclick="addBookmark()" style="background-color:transparent;" class="pg-footer-icon mark">收藏本站</a></dd>
+            </dl>
+          </div>
+          <div class="col-md-6 txtRight pg-footer-info">
+            <div class="f16">服务热线</div>
+            <div class="f20">400-800-800</div>
+            <div class="f12">9:30-18:30</div>
+            <div class="pt10"><a href="http://www.baidu.com/" title="在线客服" target="_blank" style="margin-right: -15px;" class="pg-footer-icon online">在线客服</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pg-footer-other">
+      <div class="container">
+        <div align="left" class="h30">友情链接：<a href="http://www.baidu.com/" target="_blank" title="">网络系统</a><a href="http://www.baidu.com/" target="_blank" title="">人人货币</a></div>
+        <div class="row">
+          <div class="col-md-8">点金贷  Copyright Reserved 2011-2014  |<a href="http://www.miitbeian.gov.cn/state/outPortal/loginPortal.action" target="_blank">10001122211</a>|</div>
+          <div class="col-md-4 pt20"><a style="width: 33px; margin-right: 0px;" title="网络社会征信网" href="http://pinggu.zx110.org/review_url_http://dianjindai.com" target="_blank" class="pg-footer-icon zhengxin fRight">网络社会征信网</a><a style="width: 34px;" title="工信部备案信息" href="http://www.miibeian.gov.cn/" target="_blank" class="pg-footer-icon gongxin fRight">工信部备案信息</a>
+            <!--
+            <a style="width:44px;" title="瑞星安全认证" href="#" class="pg-footer-icon rueixin fRight">瑞星安全认证</a>
+            
+            -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- footer block end-->
+  <div id="side-tool-bar" class="content-block">
     <ul class="nav nav-pills nav-stacked text-center">
       <li><a href="">申请借款</a></li>
       <li><a href="">意见反馈</a></li>
@@ -291,14 +409,22 @@
     </ul>
   </div>
   <!--content block end-->
-  <script src="/lib/jquery/dist/jquery.js"></script>
-  <script src="/lib/angular/angular.js"></script>
-  <script src="/lib/angular-animate/angular-animate.js"></script>
-  <script src="/lib/underscore/underscore.js"></script>
-  <script src="/js/app.js"></script>
-  <script src="/js/directive/click-jump.js"></script>
-  <script src="/js/directive/count-down-to.js"></script>
-  <script src="/js/directive/go-top.js"></script>
-  <script src="/js/directive/progress-bar.js"></script>
-  <script src="/js/directive/validation.js"></script>
+  <script src="/themes/ipoly/lib/jquery/dist/jquery.js"></script>
+  <script src="/themes/new/js/tipswindown.js"></script>
+  <script src="/themes/new/js/deayou.js"></script>
+  <script src="/themes/new/js/base.js"></script>
+  <script src="/themes/new/js/lhgdialog.js"></script>
+  <script src="/plugins/timepicker/WdatePicker.js"></script>
+  <script src="/themes/new/js/showtime.js"></script>
+  <script src="/themes/new/static/js/jquery.global.js"></script>
+  <script src="/themes/new/static/js/jquery.jslides.js"></script>
+  <script src="/themes/ipoly/lib/angular/angular.js"></script>
+  <script src="/themes/ipoly/lib/angular-animate/angular-animate.js"></script>
+  <script src="/themes/ipoly/lib/underscore/underscore.js"></script>
+  <script src="/themes/ipoly/js/app.js"></script>
+  <script src="/themes/ipoly/js/directive/click-jump.js"></script>
+  <script src="/themes/ipoly/js/directive/count-down-to.js"></script>
+  <script src="/themes/ipoly/js/directive/go-top.js"></script>
+  <script src="/themes/ipoly/js/directive/progress-bar.js"></script>
+  <script src="/themes/ipoly/js/directive/validation.js"></script>
 </body>

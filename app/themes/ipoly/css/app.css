@@ -6167,7 +6167,7 @@ a:hover,
 a:focus {
   text-decoration: none;
 }
-.content {
+.content-block {
   background-color: #fff;
   -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
@@ -6211,6 +6211,26 @@ a:focus {
 .line-height-small {
   line-height: 1.33;
 }
+.bt-alert {
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+.bt-alert h4 {
+  margin-top: 0;
+  color: inherit;
+}
+.bt-alert .alert-link {
+  font-weight: bold;
+}
+.bt-alert > p,
+.bt-alert > ul {
+  margin-bottom: 0;
+}
+.bt-alert > p + p {
+  margin-top: 5px;
+}
 .more {
   float: right !important;
 }
@@ -6236,7 +6256,7 @@ a:focus {
 .features .feature-head {
   font-size: 24px;
 }
-.features .content {
+.features .content-block {
   padding: 13px 40px;
 }
 .products img {

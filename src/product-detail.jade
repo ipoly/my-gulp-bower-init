@@ -5,12 +5,12 @@ block content
     include _breadcrumb
 
     .text-center.show-grid
-      img(src='/img/page186_a.gif')
+      img(src='/themes/ipoly/img/page186_a.gif')
 
-    .content.show-grid
+    .content-block.show-grid
       .row
         .col-md-7
-          img(src='/img/page186_b.gif', style='width:100%;')
+          img(src='/themes/ipoly/img/page186_b.gif', style='width:100%;')
         .col-md-5: .product-detail-form-container
           form.form-horizontal(name='loan', novalidate, action='#', method='post')
             .form-group
@@ -52,13 +52,13 @@ block content
             .form-group
               label.col-md-3.control-label 动态码
               .col-md-4: input.form-control(type='text', required, name='vcode', ng-model='vcode', placeholder='请输入验证码')
-              .col-md-5: img(src='/img/get_img.jpg', alt='点击刷新验证码', style='height:34px;')
+              .col-md-5: img(src='/themes/ipoly/img/get_img.jpg', alt='点击刷新验证码', style='height:34px;')
             .form-group
               .col-md-9.col-md-offset-3
                 button.btn.btn-warning.btn-lg.btn-block(ng-disabled='loan.$invalid') 立即申请
 
 
-    .content.show-grid.padding-large
+    .content-block.show-grid.padding-large
       .row.vr
         .col-md-4
           h3.header: .label.label-primary 申请资格
@@ -83,7 +83,7 @@ block content
 
     .row.show-grid
       .col-md-7
-        .content.padding-large
+        .content-block.padding-large
           h3.header 费用说明
           hr
           h4 每月还款费用
@@ -132,7 +132,7 @@ block content
                     td 5.0%
 
       .col-md-5
-        .content.padding-large
+        .content-block.padding-large
           h3.header
             i.fa.fa-th-large.text-primary
             | &nbsp;借款计算器
