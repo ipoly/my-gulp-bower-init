@@ -1,0 +1,62 @@
+<div class="grid_2" style="margin-left:0px; width:160px">
+            	<ul class="account-nav">
+                	<li>
+                    	<a class="account-nav-item-link account" href="/?user">账户总览</a>
+                    </li>
+                    <li>
+                    	<a class="account-nav-item-link log"><em class="nav-icon hidden"></em>资金管理</a>
+                        <ul class="account-nav-son" {if $_U.query_class=="account" && ($_U.query_type=="detail"||$_U.query_type=="log")}style="display: block;"{/if}{if $_U.query_class=="account" && ($_U.query_type=="recharge"||$_U.query_type=="cash_new"||$_U.query_type=="cash"||$_U.query_type=="recharge_new")}style="display: block;"{/if}{if $_U.query_class=="account" && ($_U.query_type=="bank_new" || $_U.query_type=="bank")}style="display: block;"{/if}>
+						
+						<li><a href="/?user&q=code/account/detail">资金详情</a></li>
+                        	<li><a href="/?user&q=code/account/recharge_new">充值提现</a></li>
+                            <li><a href="/?user&q=code/account/bank_new&user_id=112">银行账号</a></li>
+                        </ul>
+                    </li>
+                	<li>
+                    	<a class="account-nav-item-link invest"><em class="nav-icon hidden"></em>投资管理</a>
+                        <ul class="account-nav-son" {if $_U.query_class=="account" && $_U.query_type=="tender_count"}style="display: block;"{/if} {if $_U.query_type=="tender"  && ( $magic.request.p=="now" || $magic.request.p=="recover" || $magic.request.p=="yes" || $magic.request.p=="detail"|| $magic.request.p=="over"|| $magic.request.p=="late") }style="display: block;"{/if}{if $_U.query_type=="tender" && $magic.request.p=="wait"}style="display: block;"{/if}{if $_U.query_class=="borrow" && ($_U.query_type=="auto" || $_U.query_type=="auto_new"|| $_U.query_type=="auto_list")}style="display: block;"{/if}>
+                        <li><a href="/?user&q=code/account/tender_count">投资统计</a></li>
+                          <li><a href="/?user&q=code/borrow/tender&p=now">我的投资</a></li>
+                          <li><a href="/?user&q=code/borrow/tender&p=wait">回款计划</a></li>
+                          <li><a href="/?user&q=code/borrow/auto">自动投资</a></li>
+<li><a href="/?user&q=code/borrow/change">债权转让</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                    	<a class="account-nav-item-link borrow"><em class="nav-icon hidden"></em>借款管理</a>          
+						
+						<ul class="account-nav-son" {if $_U.query_type=="loan" && $magic.request.p=="count"}style="display: block;"{/if} {if $_U.query_type=="loan" && $magic.request.p=="now" && $magic.request.type!="detail"}style="display: block;"{/if}{if $_U.query_type=="loan" && $magic.request.p=="nowing" && $magic.request.type!="detail"}style="display: block;"{/if}{if $_U.query_type=="loan" && $magic.request.p=="repay" && $magic.request.type!="detail" }style="display: block;"{/if}{if $_U.query_type=="loan" && $magic.request.p=="repay" && $magic.request.type=="detail"}style="display: block;"{/if}{if $_U.query_type=="amount" }style="display: block;"{/if} >
+                         <li><a href="/?user&q=code/borrow/loan&p=count">借款统计</a></li>
+						 
+						 	<li><a href="/?user&q=code/borrow/loan&p=now">我的借款</a></li>
+                            <li><a href="/?user&q=code/borrow/loan&p=nowing">正在借款</a></li>
+							<li><a href="/?user&q=code/borrow/loan&p=repay">偿还的借款</a></li>
+							<li><a href="/?user&q=code/borrow/amount">申请额度</a></li>
+                            <li><a href="/?user&q=code/borrow/loan&p=repay&type=detail">还款计划</a></li>                      
+                                                       
+                        </ul>
+                    </li>
+                    <li>
+                    	<a class="account-nav-item-link user"><em class="nav-icon hidden"></em>账户管理</a>
+                        <ul class="account-nav-son" {if $_U.query_class=="rating" && ($_U.query_type=="basic" || $_U.query_type=="job"|| $_U.query_type=="company"|| $_U.query_type=="contact"|| $_U.query_type=="finance"|| $_U.query_type=="houses")}style="display: block;"{/if}{if $_U.query_class=="users" && ($_U.query_type=="userpwd"||$_U.query_type=="paypwd"||$_U.query_type=="loginlog"||$_U.query_type=="avatar")}style="display: block;"{/if}{if $_U.query_class=="users" && ($_U.query_type=="reginvite"|| $_U.query_type=="myfriend") }style="display: block;"{/if} {if $_U.query_class=="approve" && $_U.query_type=="phone" }style="display: block;"{/if}{if $_U.query_class=="spreads" && $_U.query_type=="list"}style="display: block;"{/if}{if $_U.query_class=="spreads" && $_U.query_type=="users"}style="display: block;"{/if}{if $_U.query_class=="spreads" && $_U.query_type=="log"}style="display: block;"{/if}>
+                        	<li><a href="/?user&q=code/rating/basic">个人信息</a></li>
+                            <li><a href="/?user&q=code/users/userpwd">修改密码</a></li>
+							<li><a href="/?user&q=code/users/reginvite">邀请管理</a></li>
+							<li><a href="/?user&q=code/approve/phone">手机绑定</a></li>
+							
+							
+                            <li><a href="/?user&q=code/spreads/list">推广管理</a></li>
+                            <li><a href="/?user&q=code/approve/myapp">我的认证</a></li>
+                           
+                        </ul>
+                    </li>
+                    <li>
+                    	<a class="account-nav-item-link msg"><em class="nav-icon hidden"></em>消息中心</a>
+                        <ul class="account-nav-son" {if $_U.query_class=="users" && $_U.query_type=="remind" }style="display: block;"{/if}{if $_U.query_class=="message" }style="display: block;"{/if}>
+                         <li><a href="/?user&q=code/message">站内短信</a></li>
+                         <li><a href="/?user&q=code/users/remind">提醒设置</a></li>
+                        </ul>
+                    </li>
+  </ul>   
+                 <a href="/?user&amp;q=code/borrow/auto"><img src="{$tpldir}/static/img/banner/account-auto.gif" alt="" border="0" class="mt20"></a>
+                </div>

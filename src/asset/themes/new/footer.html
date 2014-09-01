@@ -1,0 +1,58 @@
+   </div><div class="pg-footer">
+    	<div class="pg-footer-main">
+        	<div class="container_10 pt30">
+            	<div class="grid_6">
+                    <ul class="pg-footer-link">
+                        <li><a href="/aboutus/index.html">关于我们</a></li>
+                        <li><a href="/tzzbz/index.html">新手指引</a></li>
+                        <li><a href="/media/index.html">媒体报道</a></li>
+                        <li><a href="/aboutzp/index.html">诚聘英才</a></li>
+                        <li><a href="/lxwm/index.html">联系我们</a></li>
+                        <li><a href="/bbs/">论坛专区</a></li>
+                    </ul>                   	<dl class="pg-footer-focus">
+                    	<dt class="f16">关注我们：</dt>
+                        <dd><a class="pg-footer-icon weibo" target="_blank" title="新浪微博" href="{$_G.system.con_weibo}">新浪微博</a></dd>
+                        <dd><a class="pg-footer-icon weixin" title="官方微信" href="/lxwm/index.html">官方微信</a></dd>
+                        <dd><a class="pg-footer-icon mark" title="收藏本站" href="javascript:;" onClick="addBookmark()">收藏本站</a></dd>
+                    </dl>
+                </div>
+                <div class="grid_4 txtRight pg-footer-info">
+                	<p class="f16">服务热线</p>
+                    <p class="f20">{$_G.system.con_header_num}</p>
+                    <p class="f12">9:30-18:30</p>
+                    <p class="pt10"><a href="{$_G.system.con_kflink}" title="在线客服" target="_blank" class="pg-footer-icon online" style="margin-right:-15px;">在线客服</a>                    </p>
+                </div>
+            
+            </div>
+        </div>
+		<div class="pg-footer-other">
+        <div class="container_10">
+            <p align="left" class="h30">
+                &nbsp;&nbsp;友情链接：
+{loop module="links" function="GetList" limit="8" var="cvar" linktype='1'}
+{if $cvar.status==1}&nbsp;<a href="{$cvar.url}" target="_blank" title="{$cvar.summary}">{$cvar.webname}</a>&nbsp;&nbsp;{/if}
+ {/loop} 
+            </p>
+            <div class="grid_8">{$_G.system.con_webname}  Copyright Reserved 2011-2014  |  <a href="http://www.miitbeian.gov.cn/state/outPortal/loginPortal.action" target="_blank">{$_G.system.con_beian}</a>  |
+                    
+				
+                </div>
+                <div class="grid_2 pt20">
+                    <a style="width:33px; margin-right:0px;" title="网络社会征信网" href="http://pinggu.zx110.org/review_url_{$_G.web_domain}" target="_blank" class="pg-footer-icon zhengxin fRight">网络社会征信网</a>
+                    <a style="width:34px;" title="工信部备案信息" href="http://www.miibeian.gov.cn/" target="_blank" class="pg-footer-icon gongxin fRight">工信部备案信息</a>
+                	<!--<a style="width:44px;" title="瑞星安全认证" href="#" class="pg-footer-icon rueixin fRight">瑞星安全认证</a>-->
+                </div>
+        </div>
+    </div>
+ 
+ <div class="server-center">
+    <div class="server-panel cc bold " style="top:0px; right:0px;">
+        <em class="server-icon"></em>
+        在<br>线<br>客<br>服<br>
+    </div>
+    <div class="server-main box p20 hide">
+
+    </div>
+</div>
+    <script type='text/javascript' src='{$tpldir}/static/js/jquery.global.js'></script>
+    <script type='text/javascript' src='{$tpldir}/static/js/jquery.jslides.js'></script>

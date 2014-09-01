@@ -1,0 +1,118 @@
+<form action="/?user&q=code/rating/contact" method="post" name="formx" onsubmit="return formcheck();">
+
+{articles module="rating" function="GetContactOne" user_id="$_G.user_id" var="var"}
+<div class="item_group" style="width: auto">联系方式</div>
+<div class="user_info_box clearfix" style="width: auto">
+	<div class="user_info_item">
+		<span class="user_info_item_left">居住地电话：</span> <span>
+		<input value="{$var.live_tel}" class="input180 " name="live_tel" id="live_tel">
+		</span>
+	</div>
+	<!-- <div class="user_info_item">
+		<span class="user_info_item_left">手机号码：</span> <span>
+		<input value="{$var.phone}" class="input180 " name="phone" id="phone">
+		</span>
+	</div>-->
+	<div class="user_info_item">
+		<span class="user_info_item_left">居住所在省市：</span> <span> 
+		{areas type="p,c,a" value="$var.live_area" name="live_"}
+		</span>
+	</div>
+	<div class="user_info_item">
+		<span class="user_info_item_left">居住地邮编：</span> <span>
+		<input value="{$var.live_code}" class="input180 " name="live_code" id="live_code">
+		</span>
+	</div>
+	<div class="user_info_item">
+		<span class="user_info_item_left">现居住地址：</span> <span> 
+		<input value="{$var.live_address}" class="input180 " name="live_address" id="live_address">
+		</span>
+	</div>
+	<div class="user_info_item">
+		<span class="user_info_item_left">MSN：</span> <span> 
+		<input value="{$var.msn}" class="input180 " name="msn" id="msn">
+		</span>
+	</div>
+	<div class="user_info_item">
+		<span class="user_info_item_left">QQ：</span> <span> 
+		<input value="{$var.qq}" class="input180 " name="qq" id="qq">
+		</span>
+	</div>
+	<div class="user_info_item">
+		<span class="user_info_item_left">旺旺：</span> <span> 
+		<input value="{$var.taobao}" class="input180 " name="taobao" id="taobao">
+		</span>
+	</div></div><br/>
+<div class="item_group" style="width: auto">联系人一</div>
+<div class="user_info_box clearfix" style="width: auto">
+	<div class="user_info_item">
+		<span class="user_info_item_left">姓名：</span> <span> 
+		<input value="{$var.linkman2}" class="input180 " name="linkman2" id="linkman2">
+		</span>
+	</div>
+	<div class="user_info_item">
+		<span class="user_info_item_left">关系：</span> <span> 
+		 {linkages nid="rating_relation" name="relationship2" type="value" value="$var.relationship2"  style="width:120px; border:#BFBFBF solid 1px; "}
+		</span>
+	</div>
+	<!-- <div class="user_info_item">
+		<span class="user_info_item_left">电话：</span> <span> 
+		<input value="{$var.tel2}" class="input180 " name="tel2" id="tel2">
+		</span>
+	</div> -->
+	<div class="user_info_item">
+		<span class="user_info_item_left">手机：</span> <span> 
+		<input value="{$var.phone2}" class="input180 " name="phone2" id="phone2">
+		</span>
+	</div></div><br/>
+<div class="item_group" style="width: auto">联系人二</div>
+<div class="user_info_box clearfix" style="width: auto">
+	<div class="user_info_item">
+		<span class="user_info_item_left">姓名：</span> <span> 
+		<input value="{$var.linkman3}" class="input180 " name="linkman3" id="linkman3">
+		</span>
+	</div>
+	<div class="user_info_item">
+		<span class="user_info_item_left">关系：</span> <span> 
+		{linkages nid="rating_relation" name="relationship3" type="value" value="$var.relationship3"  style="width:120px; border:#BFBFBF solid 1px; "}
+		</span>
+	</div>
+	<!-- <div class="user_info_item">
+		<span class="user_info_item_left">电话：</span> <span> 
+		<input value="{$var.tel3}" class="input180 " name="tel3" id="tel3">
+		</span>
+	</div> -->
+	<div class="user_info_item">
+		<span class="user_info_item_left">手机：</span> <span> 
+		<input value="{$var.phone3}" class="input180 " name="phone3" id="phone3">
+		</span>
+	</div></div><br/>
+<div class="item_group" style="width: auto">联系人三</div>
+<div class="user_info_box clearfix" style="width: auto">
+	<div class="user_info_item">
+		<span class="user_info_item_left">姓名：</span> <span> 
+		<input value="{$var.linkman4}" class="input180 " name="linkman4" id="linkman4">
+		</span>
+	</div>
+	<div class="user_info_item">
+		<span class="user_info_item_left">关系：</span> <span> 
+		{linkages nid="rating_relation" name="relationship4" type="value" value="$var.relationship4"  style="width:120px; border:#BFBFBF solid 1px; "}
+		</span>
+	</div>
+	<!-- <div class="user_info_item">
+		<span class="user_info_item_left">电话：</span> <span> 
+		<input value="{$var.tel4}" class="input180 " name="tel4" id="tel4">
+		</span>
+	</div> -->
+	<div class="user_info_item">
+		<span class="user_info_item_left">手机：</span> <span> 
+		<input value="{$var.phone4}" class="input180 " name="phone4" id="phone4">
+		</span>
+	</div>
+	{/articles}
+    <div style="padding:10px 0; margin-left:170px">
+				  <input  id="button" type="submit" name="submit" id="submit" value="提交" />
+			    
+    </div>
+	</div>
+       </form>        

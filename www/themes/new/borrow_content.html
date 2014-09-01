@@ -1,0 +1,433 @@
+{include file="header.html"}
+<script>
+{literal}
+if (user_id==""){
+	alert("请先登录后再查看！");
+	location.href='/?user&q=login';
+}
+{/literal}
+</script>
+<link rel="stylesheet" href="{$tpldir}/static/css/invest.css">
+  <div class="wMain">
+    <div class="wMain02">
+   {articles module="borrow" function="GetView" var="var" borrow_nid=$magic.request.article_id hits="auto"}
+
+
+{if $var.status==0 && $_G.user_id!=$var.user_id}
+<script>alert("借款正在初审中，不能查看详情信息" );
+location.href='/invest/index.html';
+</script>
+{/if}
+{if $var.borrow_type=="roam"}
+    {include file="borrow_roam_content.html"}
+
+{else}
+    <!--内容开始-->
+    <div class="pg-invest" id="page-invest-page" >
+       
+    	<div class="container_10 fn-clear mt10"><a href="/invest/index.html">项目理财列表</a> > <a href="#">查看详细</a></div>
+        <div class="container_10 fn-clear mt10">
+        	<div class="invest-intro box p20 fn-clear fLeft">
+                <div class="invest-intro-title fn-clear">
+                 
+                      <h4 class="f20 fLeft mt10" id='bname'>{$var.name} 借贷编号：{$var.borrow_nid}
+				  <img src="{$tpldir}/dyp2p/borrow_type_{$var.borrow_type}.gif" align="absmiddle" title="{$var.borrow_type|linkages:'borrow_all_type'}" />
+                   {if $var.group_id>0}
+				<img src="{$tempdir}/dyp2p/quan.gif" align="absmiddle" title="圈内借款" />
+                {/if}</h4>
+
+                      <span class="fRight mt5" id='username'>借款用户：{$var.username}{articles module="borrow" function = "GetBorrowCredit" user_id="$var.user_id" var="Credit_var"}{$Credit_var.credit_total|credit:"borrow"}{/articles}</span>
+                </div>
+                <ul class="fn-clear mt15">
+                	<li class="fn-clear pb10">
+                    	<span class="fLeft w300">借款金额</span>
+                        <span class="fLeft w160">年利率</span>
+                        <span class="fLeft w160">借款期限</span>
+                    </li>
+									<li class="fn-clear pb10 boder-gray">
+									  	<span class="fLeft w300" ><em class="f30 bold" id='account'>{$var.account}</em> 元</span>
+									    <span class="fLeft w160" ><em class="f30 bold" id='apr'>{$var.borrow_apr}</em> %</span>
+									    <span class="fLeft w160" id='time_limit'><em class="f30 bold">{$var.borrow_period_name}</em> </span>
+									</li>
+                	<li class="fn-clear pb20 pt20 boder-gray">
+										<span class="fLeft w300" id='left_time'><span id="left_time_msg"></span>{if $var.borrow_account_scale!=100}{if $var.status==3}剩余时间：<span style="color:red">0天0时0分</span>{else}剩余时间： {if $var.status==0}审核中{else}<span id="endtime">{$var.borrow_other_time}</span>{/if}{/if}{else}剩余时间:已满标{/if}</span>
+									  <span class="fLeft w300" id='score'>
+									  	投标进度：
+									  	<span class="invest-list-speed-1 invest-list-speed">
+									      	<span class="bg" style="width:{$var.borrow_account_scale}%"></span>
+									      	<span class="point" style="left:0%; top:-4px;"></span>
+									    </span> 
+									    {$var.borrow_account_scale}%
+									  </span>
+				  </li>
+                	<li class="fn-clear pb20 pt20 boder-gray">
+									  	<span class="fLeft w300" id='repay_type'>还款方式：{$var.style_title}</span>
+									    <span class="fLeft w300" id='add_time'>发布时间：{$var.verify_time|date_format:"Y-m-d"}</span>
+				  </li>
+                	<li class="fn-clear pb10 pt20 boder-gray">
+                        <span class="fLeft w300" id="vouch-img"><img width="145" style="margin-top:-5px; display:none;" title="100%本金利息保障" alt="100%本金利息保障" height="29" src="static/img/bg/bg-vouch.png" /></span>
+                     借款用途：{$var.borrow_use|linkages:"borrow_use"|default:"$var.borrow_use"} 
+
+ <span class="fLeft w300" id='add_time'>  借款状态：投标{$var.tender_times|default:0}次成功，{if $var.borrow_account_scale!=100}借款进行中..{else}已满标
+
+{/if}</span></li>
+                </ul>
+            </div>
+            <div class="invest-qucik-tender box p10 fn-clear fRight">
+           	  <div class="fn-clear boder-gray pb10 pt10"	>
+            		<h5 class="fLeft f24">我要投标</h5>
+                  <a id="agreement" class="blue fRight pt10" target="_blank" href="/protocol/index.html"><span class="mr10">借款协议<span id="fb">（范本）</span></span></a>                </div>
+                <div class="fn-clear pt15 pb10 boder-gray">
+				{articles module="account"  function="GetOne" var="Avar" user_id="$_G.user_id"}
+                	<p class="f12">账户余额</p>
+                  <p style="margin-top:-5px;"><em class="f30 bold" id='use_money'>{$Avar.total|default:0.00}</em>元<a class="fRight icon-gree-link f16 mr20" style="padding:3px 15px;" href="/?user&q=code/account/recharge_new" target="_blank">充值</a></p>
+				  
+				  {/articles}
+                </div>
+                <div class="fn-clear pt10 pb20">
+                	<p>满标还差：<em class="gray f30" id='left_account'>{$var.borrow_account_wait|default:0}</em>元</p>
+                 
+                  <p class="f12 pt15">起投金额：{$var.tender_account_min}元 <span id="most-account"></span><input type="button" class="icon-gree-link2 fRight" style="display:none;" id="auto-input" value="自动填写" /></p>
+				 <div class="fn-clear pt15 pb10 boder-gray">{if $var.borrow_type=="second" || $var.borrow_type=="day"}
+		满标还差：到期还本息：{$var.repay_month_account|default:0.00}元
+	{else}
+		月还款本息：{$var.repay_month_account|default:0.00}元
+	{/if}</span> </div>
+                  <p class="pt15">
+				  {if $var.borrow_status_nid==late}借贷编号：{$var.borrow_nid}已过期{else}
+				  {if $var.borrow_account_scale==100}
+				   <a id="invest_button" class="invest-tender-btn f16 gray" href="javascript:void();" >已满标</a>
+				  {else}
+				   <a id="invest_button" class="invest-tender-btn f16" href="/?user&q=code/borrow/tender&p=invest&borrow_nid={$var.borrow_nid}" >投标</a>
+				  {/if}{/if}
+				 
+				  
+				  <!--<a id="tender-full" style="display:none" class="invest-tender-btn gray f16 hide" href="#">还款中</a><a id="tender-fail" style="display:none" class="invest-tender-btn gray f16 hide" href="#">已流标</a>-->
+				  
+				  </p>
+                </div>
+            </div>
+        </div>
+			{literal}
+
+<script type="text/javascript">
+
+var CID = "endtime";
+
+if(window.CID != null){
+
+    var iTime = document.getElementById(CID).innerHTML;
+
+    var Account;
+
+    RemainTime();
+
+}
+
+function RemainTime(){
+
+var iDay,iHour,iMinute,iSecond;
+
+var sDay="",sTime="";
+
+    if (iTime >= 0){
+
+        iDay = parseInt(iTime/24/3600);
+
+        iHour = parseInt((iTime/3600)%24);
+
+        iMinute = parseInt((iTime/60)%60);
+
+        iSecond = parseInt(iTime%60);
+
+  
+
+   if (iDay > 0){ 
+
+    sDay = iDay + "天"; 
+
+   }
+
+   sTime =sDay + iHour + "小时" + iMinute + "分钟" + iSecond + "秒";
+
+  
+
+        if(iTime==0){
+
+           clearTimeout(Account);
+
+           sTime="<span style='color:green'>时间到了！</span>";
+
+        }else{
+
+           Account = setTimeout("RemainTime()",1000);
+
+        }
+
+        iTime=iTime-1;
+
+    }else{
+
+        sTime="<span style='color:red'>0天0时0分</span>";
+
+    }
+
+document.getElementById(CID).innerHTML = sTime;
+
+}
+
+</script>
+
+{/literal}
+        <div class="container_10">
+        	<div class="invest-tab pt15">
+            	<ul class="fn-clear">
+                	<li class="fLeft invest-tab-item current"><a class="invest-tab-item-link current" href="javascript:void(0)">借款者信息</a></li>
+                    <li class="fLeft invest-tab-item"><a class="invest-tab-item-link" href="javascript:void(0)" onclick="toubian();">投标记录</a></li>
+                    <li class="fLeft invest-tab-item"><a class="invest-tab-item-link" href="javascript:void(0)" >信息披露</a></li>
+                   <!--  <li class="fLeft invest-tab-item" id="refund-link"><a class="invest-tab-item-link" href="javascript:void(0)" >还款记录</a></li> -->
+                </ul>
+            </div>
+        </div>
+        <div class="container_10" style="margin-top:-1px;">
+        <!--tab1-->
+        	<div class="invest-tab-container investcustom" style="display:block;float:left;">
+				{articles module="rating" function="GetInfoOne" var="Ivar" user_id="$var.user_id"}
+				{articles module="approve" function="GetEduOne" var="Evar" user_id="$var.user_id"}
+    			<p class="cusinfortit">用户信息</p>
+    			<table  class="custominfor"  cellspacing="0">
+        			<tr class="">
+        			  <td width="34"></td>
+        			  <td width="70">性　　别：</td><td width="210" id='sex'>{$Ivar.sex|linkages:"rating_sex"|default:"未填"}</td>
+        			  <td width="70">年　　龄：</td><td width="210" id='age'>{$Ivar.birthday|date_format:"Y-m-d"|default:"未填"}</td>		
+        			  <td width="70">学　　历：</td><td width="210" id='edu'>{if $Evar.degree!=''}{$Evar.degree|default:"未填"}{else}{$Ivar.edu|linkages:"rating_education"|default:"未填"}{/if}</td>
+        			  <td ></td>
+        			</tr>
+        			<tr class="">
+        			  <td width="34"></td>
+        			  <td width="70">婚姻状况：</td><td width="210" id='marry'>{$Ivar.marry|linkages:"rating_marry"|default:"未填"}</td>
+        			  <td width="70">收入范围：</td><td width="210" id='month_income'>{$Ivar.income|linkages:"rating_income"|default:"未填"}</td>	
+        			  <td width="70" id="shebao-title">职　　位：</td><td width="210" id='shebao'>{$Jvar.office|default:"未填"}</td>
+        			  <td ></td>
+        			</tr>
+        			<tr class="">
+        			  <td width="34"></td>
+        			  <td width="70">住房条件：</td><td width="210" id='house'>{$Ivar.house|linkages:"rating_house"|default:"未填"}</td>
+        			  <td width="70" id="car-title">是否购车：</td><td width="210" id='car'>{$Ivar.is_car|linkages:"rating_car"|default:"未填"}</td>	
+        			  <td width="70">户籍城市：</td><td width="210" id='industry'>{articles module="rating" function="GetContactOne" var="Ivar" user_id=$var.user_id}
+			{$Ivar.live_city|areas:"p,c,a"|default:"未填"}
+			{/articles}</td>
+        			  <td ></td>
+        			</tr> 
+        		
+    			</table>         
+              {/articles}{/articles}    
+         
+                <p class="cusinfortit">账户详情</p>
+					{articles module="borrow" plugins="count" function="GetUsersCount" var="Cvar" user_id="$var.user_id"}
+    			<table  class="custominfor"  cellspacing="0">
+        			<tr class="">
+        			  <td width="34"></td>
+        			  <td width="98">发布借款笔数：</td><td id='sum_wait_repayment_account' width="182">{$Cvar.borrow_times|default:"0"}</td>
+					  {articles module="borrow" plugins="count" function="GetUsersRepayCount" var="repay_var" user_id="$var.user_id"}
+        			  <td width="98">成功借款笔数：</td><td id='sum_wait_collection_account' width="182">{$repay_var.borrow_success_num|default:0}</td>		
+        			  <td width="98">还清笔数：</td><td id='creditLimit' class="txtLeft" width="182">{$repay_var.repay_yes_times|default:0}</td>
+        			  <td ></td>
+        			</tr>
+        			<tr class="">
+        			  <td width="34"></td>
+        			  <td width="98">逾期次数：</td><td id="sum_borrow_account" width="182">{$repay_var.repay_late_no_num|default:0}</td>
+        			  <td width="98">严重逾期次数：</td><td id='sum_over_repayment_account' width="182">{$Cvar.borrow_times_late|default:"0"}</td>
+        			  <td width="98"></td><td width="182"></td>
+        			  <td ></td>
+        			</tr>
+        			<tr class="">
+                    	<td width="34"></td>
+                    	<td width="98">共计借入：</td><td id="sum_invest_account" width="182">{$repay_var.borrow_success_account|default:0.00}</td>
+                    	<td width="98">待收本息：</td><td id='sum_over_collection_account' width="182">{$Cvar.tender_recover_wait|default:"0"}</td> 
+                    <!-- <td class="txtLeft" width="">垫付未还：<span class="" id="sum_rxdai_repayment_account"></span></td> --> 
+                        <td width="98"></td><td width="182"></td> 
+                    	<td ></td>{/articles}
+                    </tr> 	
+		      </table>  
+
+
+    			<p class="cusinfortit">还款信用</p>
+		<table width="900" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td style="10%">{articles module="borrow" function = "GetBorrowCredit" user_id="$var.user_id" var="Credit_var"}
+				信用等级：{$var.credit|credit:"borrow"}<!-- （{$Credit_var.approve_credit}） -->                    
+			{/articles}</td>
+    <td style="90%">
+	{articles module="borrow" plugins="Amount" function="GetAmountUsers" user_id="$var.user_id" var="_amount"}
+			{if $var.borrow_type=="credit"}	信用额度：{$_amount.credit|default:"0"}（借款后的可用额度：{$_amount.credit_use|default:"0"}）
+			{elseif $var.borrow_type=="vouch"}担保额度：{$_amount.vouch|default:"0"}（借款后的可用担保额度：{$_amount.vouch_use|default:"0"}）
+			{elseif $var.borrow_type=="pawn"}抵押额度：{$_amount.pawn|default:"0"}（借款后的可用抵押额度：{$_amount.pawn_use|default:"0"}）
+			{elseif $var.borrow_type=="worth"}信用额度：{$_amount.credit|default:"0"}（借款后的可用额度：{$_amount.credit_use|default:"0"}）
+			{elseif $var.borrow_type=="day"}信用额度：{$_amount.credit|default:"0"}（借款后的可用额度：{$_amount.credit_use|default:"0"}）
+			{elseif $var.borrow_type=="second"}信用额度：{$_amount.credit|default:"0"}（借款后的可用额度：{$_amount.credit_use|default:"0"}）
+			{/if}
+			{/articles} 
+			</td>
+  </tr>
+</table>
+                      <!--<span class="w190 fLeft ti15">迟还款笔数：0</span>-->
+                        
+                        
+              
+				      
+                <div class="pt20 shenHe">                 
+                    <div class="invest-vouch fLeft intr">
+                        <h5 class="f18 invest-container-title">详细介绍</h5>
+                        <div class="mt10 briefIntro">
+                            <p class="pb5"><span class="blue" id='borrow_content_username'></span>对本次借款的介绍说明：</p>
+                            <div class="bfDetail" id='borrow_content'>
+ {$var.borrow_contents}
+                            </div>
+                        
+                        </div><!--briefIntro-->
+                    </div><!--intr-->
+                    
+                    
+                    <div class="invest-check fLeft">
+                        <h5 class="f18 ti10 invest-container-title">审核状况</h5>
+            			<table  class="itemTable"  cellspacing="0" width="513">
+            			    <thead>
+                				<tr class="invest-check-title">
+                				  <th class="ti20" width="300">审核项目</th>
+                				  <th class="txtC">状态</th>
+                				  <th class="txtC">审核时间</th>
+                				</tr>
+                			</thead>
+            			    <tbody id="invest-check-list">	{list module="attestations" function="GetAttestationsList" var="loop" user_id="$var.user_id"  status="1"}
+		{foreach from="$loop.list" item="bvar"}
+                        
+                            <tr style="height: 30px;">
+                                <td bgcolor="#FFFFFF">
+                                    <div align="left" style="padding: 0 5px;">
+                                        {$bvar.type_name}
+                                    </div>
+                              </td>
+                                <td bgcolor="#FFFFFF">
+                                    <div align="center" style="padding: 0 5px;">
+                                        {if $bvar.status==1}
+										<img alt="通过" src="{$tempdir}/images/answer_success.jpg">
+										{else}
+										<img alt="未通过" src="{$tempdir}/images/ca.gif">
+										{/if}
+                                    </div>
+                              </td>
+                                <td bgcolor="#FFFFFF">
+                                    <div align="center" style="padding: 0 5px;">
+                                       {$bvar.addtime|date_format:Y-m-d"}
+                                    </div>
+                              </td>
+                                <!-- <td bgcolor="#FFFFFF">
+                                    <div align="center" style="padding: 0 5px;">
+                                       {$bvar.verify_time|date_format:Y-m-d"}
+                                    </div>
+                              </td> -->
+                            </tr>
+		{/foreach}
+		{/list}				</tbody>
+            			</table>                     
+                    </div>
+            	</div> <!--shenHe-->       
+            </div>
+			<!-- tab1 end -->
+            <!--tab2-->
+            <div class="invest-tab-container bidFather">
+            	<div class="bidbox">
+				<table  class="bid"  cellspacing="0">
+					<thead><tr class=""><th class="" width="148">投标人</th><th class="" width="158">投标金额</th><th class="" width="198">投标时间</th></tr></thead>
+				<tbody id="tender-list" class="tender-list">
+				
+				   {loop module="borrow" plugins="Tender" function="GetTenderList" limit="all" var="vat" borrow_nid="$_G.article_id" }              	
+  
+						
+				<tr style="background-color: rgb(255, 255, 255); "><td width="148" class="txtC">{$vat.username|truncate:3}**</td><td width="128" class="txtRight pr30">{$vat.account}元</td><td width="198" class="txtC"> {$vat.addtime|date_format:"Y-m-d H:i:s"}</td></tr>
+				
+			{/loop}	
+				
+				</tbody>
+				</table>                   
+                </div>
+                <div class="totalAmount posa fn-clear" id="totalAmount">
+                	<p class="f16">总投标金额￥</p>
+                    <p><em class="f24" id="total-money">{$var.borrow_account_yes}</em>元</p>
+                    <p class="f16 mt20">剩余投标金额￥</p>
+                    <p><em class="f24" id="total-time">{$var.borrow_account_wait}</em>元</p>
+                </div>
+            </div>
+            <!--tab2 end-->
+            <!--tab3 start-->
+            <div class="invest-tab-container p20">
+            	<ul class="fn-clear p20 pl5" id="attachment">
+                	
+                 	{foreach from=$var.upfiles_pic item="_item"}
+					<li class="invest-pic-item"><a href="{$_item.fileurl}"  title="{$_item.contents}"><img src="{$_item.fileurl|litpic:100,75}" /></a></li>
+	
+		{/foreach}
+                </ul>
+            </div>
+
+           
+            <!-- tab4 end --> 
+        </div>
+	</div><!-- wMain02-->
+	</div><!-- wMain-->
+</div><!--wrapperMain-->
+<!--尾部开始-->
+ <div class="div_clb"></div>
+     <script type='text/javascript' src='{$tpldir}/static/js/jquery.min.js'></script>
+    <script type='text/javascript' src='{$tpldir}/static/js/jquery.global.js'></script>
+    <script type='text/javascript' src='{$tpldir}/static/js/jquery.jslides.js'></script>
+    <script type='text/javascript' src='{$tpldir}/tools/rxdai/xl.js'></script>
+    <script type='text/javascript' src='{$tpldir}/tools/rxdai/rxdai.js'></script>
+ {literal}
+ <script>
+$(document).ready(function(){
+        var pWidth=window.innerWidth,width=$("#loading_log").width();
+        var pHeight=window.innerHeight,height=$("#loading_log").height();
+        var top=(pHeight-height)/2+50,left=(pWidth-width)/2-150;
+        $("#loading_log").css("top",top);
+        $("#loading_log").css("left",left);
+        $("#loading_log").css("position","relative");
+        
+        $(".invest-tab-item").click(function(){
+            index = $(".invest-tab-item").index($(this));   
+            $(".invest-tab-container").hide().eq(index).show();
+            $(".invest-tab-item").removeClass("current").find("a").removeClass("current");
+            $(this).addClass("current").find("a").addClass("current");
+        });
+        
+        $("#tender_money").blur(function(){
+            $(this).val(rxdai.fixMoney(checkMoney($(this).val())));
+        });
+        
+
+    })
+
+
+/*点击 投标记录*/
+function toubian(){
+  fix($("#totalAmount"));
+}
+/*定位的方法*/
+function fix(obj){
+    $(window).resize(function(){ 
+	var objleft=$(obj).offset().left;
+	var hidtop=$(document).scrollTop();	
+	hidtop>=610 ? obj.removeClass("posa").addClass("fix").css("left",objleft+"px") : obj.removeClass("fix").addClass("posa").css("left","701px"); 
+    });	   
+    $(window).scroll(function(){ 
+    var objleft=$(obj).offset().left;
+	var hidtop=$(document).scrollTop(); 
+	hidtop>=610 ? obj.removeClass("posa").addClass("fix").css("left",objleft+"px") : obj.removeClass("fix").addClass("posa").css("left","701px");  
+    });	        
+} 
+</script>
+
+{/literal}{/if}
+{/articles}
+{include file="footer.html"}

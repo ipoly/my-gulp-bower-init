@@ -1,0 +1,190 @@
+{include file="header.html"}
+	<div class="conbox t20">
+	      <div class="main_left">
+          <div>
+ <div class="main_r_bor"> 
+				        <div class="m_r_title1" style="margin:0"><h1></h1></div>
+						<div>
+		       <table width="100%" cellspacing="0" cellpadding="0" border="0" class="sea_tab">
+  <tbody><tr>
+    <td bgcolor="#FFFFFF">
+	    <table width="100%" cellspacing="0" cellpadding="0" border="0">
+  </table>
+	</td>
+    </tr>
+  <tr>
+    <td bgcolor="#FFFFFF"><table width="100%" cellspacing="0" cellpadding="0" border="0">
+      <tbody><tr>
+        <td align="right" class="sea_tableft">金额：</td>
+        <td class="sea_tabright">
+     
+        <a href="{$_A.query_url_all}?borrow_type={$magic.request.borrow_type}&borrow_interestrate={$magic.request.borrow_interestrate}&spread_month={$magic.request.spread_month}&account_status=" {if $magic.request.account_status==""}style="font-weight:bold; color:#2976a4"{/if}>不限</a>
+        {foreach from=$_G.linkages.account_status key="key" item="item"}
+          <a {if $magic.request.account_status==$key}style="font-weight:bold; color:#2976a4"{/if} href="{$_A.query_url_all}?keywords={$magic.request.keywords}&borrow_area_city={$magic.request.borrow_area_city}&order={$magic.request.order}&hasinvest={$magic.request.hasinvest}&borrow_use={$magic.request.borrow_use}&borrow_type={$magic.request.borrow_type}&borrow_interestrate={$magic.request.borrow_interestrate}&spread_month={$magic.request.spread_month}&account_status={$key}">{$item}</a>   
+        {/foreach}
+	    <span style="width:150px;float:center;padding-left: 10px;">
+            <form method="get" name="form1" id="form1" style="width:150px" action="{$_A.url_all}?borrow_type={$magic.request.borrow_type}&borrow_interestrate={$magic.request.borrow_interestrate}&spread_month={$magic.request.spread_month}&keywords={$magic.request.keywords}&startacount={$magic.request.startacount}&endacount={$magic.request.endacount}">
+                <input  id="button" type="submit" class="input_btn2"   value="" id="sx" style="">
+              <input type="text" class="input_btn1" id="pr1" name="startacount" value="">
+              -
+              <input type="text" class="input_btn1" id="pr2" name="endacount" value="">
+              万
+           
+            </form>
+            </span></div></td>
+      </tr>
+    </tbody></table></td>
+    </tr>
+  <tr>
+    <td bgcolor="#FFFFFF"><table width="100%" cellspacing="0" cellpadding="0" border="0">
+      <tbody><tr>
+        <td align="right" class="sea_tableft"> 利率：</td>
+        <td class="sea_tabright">
+        <a href="{$_A.query_url_all}?borrow_type={$magic.request.borrow_type}&account_status={$magic.request.account_status}&borrow_interestrate=&spread_month={$magic.request.spread_month}" {if $magic.request.borrow_interestrate==""}style="font-weight:bold; color:#2976a4"{/if}>不限</a>
+        {foreach from=$_G.linkages.borrow_interestrate item="item" key="key"}
+          <a {if $magic.request.borrow_interestrate==$key}style="font-weight:bold; color:#2976a4"{/if}  href="{$_A.query_url_all}?keywords={$magic.request.keywords}&borrow_area_city={$magic.request.borrow_area_city}&order={$magic.request.order}&hasinvest={$magic.request.hasinvest}&borrow_use={$magic.request.borrow_use}&borrow_type={$magic.request.borrow_type}&borrow_interestrate={$key}&spread_month={$magic.request.spread_month}&account_status={$magic.request.account_status}">{$item}</a>   
+        {/foreach}
+        </td>
+		<td></td>
+      </tr>
+    </tbody></table></td>
+    </tr>
+  
+  
+ 
+</tbody></table>
+
+		  </div>
+          <div class="search_result">
+          <div class="search_result_l">
+            <form class="ico_01" method="get" name="form2" id="form2" action="{$_G.query_url_all}?borrow_type={$magic.request.borrow_type}&account_status={$magic.request.account_status}&borrow_interestrate={$magic.request.borrow_interestrate}&spread_month={$magic.request.spread_month}&keywords={$magic.request.keywords}">
+              <input type="text" class="input_btn3" id="kw2" name="keywords">
+              <input type="hidden" name="borrow_type" value="{$magic.request.borrow_type}">
+			  <input type="hidden" name="account_status" value="{$magic.request.account_status}">
+              <input type="hidden" name="borrow_interestrate" value="{$magic.request.borrow_interestrate}">
+              <input type="hidden" name="spread_month" value="{$magic.request.spread_month}">
+              <input  id="button" type="submit" class="ico_02" value="">
+            </form>
+          </div>
+          <div class="search_result_r">
+            <table width="100%" cellspacing="5" cellpadding="0" border="0">
+  </table>
+          </div>
+        </div>
+         <div class="bbot">
+				        <table width="100%" cellspacing="0" cellpadding="0" border="0">
+  <tbody><tr>
+    <td align="left"><img width="11" height="12" src="/themes/blue/images/botleft.gif"></td>
+    <td align="right"><img width="11" height="12" src="/themes/blue/images/botright.gif"></td>
+  </tr>
+</tbody></table>
+
+				   </div>
+   </div></div>
+         
+		  {include file="borrow_xh.html"}
+		       <div class="main_box">
+         	{list module='borrow' function='GetChangeList' plugins="change" status='2' late_status=1 keywords="request" account_status="request" borrow_interestrate="request" var="loop" order="status"}
+
+	<div class="px_bor"><div class="jk_list_l">找到相关借款<b style=" color:#FF0000">{$loop.total|default:"0"}</b>条</div>
+  {/list}  
+	<div class="jk_list_r">排序：
+       <select onChange="checkorder()" id="checkordertype" name="type">
+            <option {if $magic.request.order==""}selected=true{/if} value="1">默认排序</option>
+            <option {if $magic.request.order=="account_down"}selected=true{/if} value="2">金额从小到大</option>
+            <option {if $magic.request.order=="account_up"}selected=true{/if} value="3">金额从大到小</option>
+            <option {if $magic.request.order=="apr_down"}selected=true{/if} value="4">利率从低到高</option>
+            <option {if $magic.request.order=="apr_up"}selected=true{/if} value="5">利率从高到低</option>
+        </select>
+		<a href="/{$_G.site_result.nid}/index.html?order={if $magic.request.order!='account_up' || $magic.request.order=='account_down'}account_up{elseif $magic.request.order=='account_up'}account_down{/if}" {if $magic.request.order=="account_up"} class="h_arrow1"{elseif $magic.request.order=="account_down"} class="h_arrow2"{else} class="h_arrow"{/if}>金额
+		</a> 
+	<!--	<a href="/{$_G.site_result.nid}/index.html?order={if $magic.request.order!='period_up' || $magic.request.order=='period_down'}period_up{elseif $magic.request.order=='period_up'}period_down{/if}" {if $magic.request.order=="period_up"} class="h_arrow1"{elseif $magic.request.order=="period_down"} class="h_arrow2"{else} class="h_arrow"{/if}>期限</a> 
+	-->	<a href="/{$_G.site_result.nid}/index.html?order={if $magic.request.order!='apr_up' || $magic.request.order=='apr_down'}apr_up{elseif $magic.request.order=='apr_up'}apr_down{/if}" {if  $magic.request.order=="apr_up"} class="h_arrow1"{elseif $magic.request.order=="apr_down"} class="h_arrow2"{else} class="h_arrow"{/if}>利率</a> 
+	<!--	<a href="/{$_G.site_result.nid}/index.html?order={if $magic.request.order!='scale_up' ||$magic.request.order=='scale_down'}scale_up{elseif $magic.request.order=='scale_up'}scale_down{/if}" {if  $magic.request.order=="scale_up"} class="h_arrow1"{elseif $magic.request.order=="scale_down"} class="h_arrow2"{else} class="h_arrow"{/if}>进度</a>
+-->
+	</div></div>
+	{literal}
+     <script>
+    function checkorder(){
+        var type=document.getElementById('checkordertype').value;
+        switch(type){
+            case "1": 
+            location.href="?order=";
+            break;
+            case "2":
+            location.href="?order=account_down&borrow_type="+Request.QueryString("borrow_type")+"&account_status="+Request.QueryString("account_status")+"&borrow_interestrate="+Request.QueryString("borrow_interestrate")+"&spread_month="+Request.QueryString("spread_month")+"";
+            break;
+            case "3":
+            location.href="?order=account_up&borrow_type="+Request.QueryString("borrow_type")+"&account_status="+Request.QueryString("account_status")+"&borrow_interestrate="+Request.QueryString("borrow_interestrate")+"&spread_month="+Request.QueryString("spread_month")+"";
+            break;
+            case "4":
+            location.href="?order=apr_down&borrow_type="+Request.QueryString("borrow_type")+"&account_status="+Request.QueryString("account_status")+"&borrow_interestrate="+Request.QueryString("borrow_interestrate")+"&spread_month="+Request.QueryString("spread_month")+"";
+            break;
+            case "5":
+            location.href="?order=apr_up&borrow_type="+Request.QueryString("borrow_type")+"&account_status="+Request.QueryString("account_status")+"&borrow_interestrate="+Request.QueryString("borrow_interestrate")+"&spread_month="+Request.QueryString("spread_month")+"";
+            break;
+        }
+     }
+   Request = {
+ QueryString : function(item){
+  var svalue = location.search.match(new RegExp("[\?\&]" + item + "=([^\&]*)(\&?)","i"));
+  
+  return svalue ? svalue[1] : "";
+ }
+}
+</script>	{/literal}	
+			        <div class="">
+					     <div class="zq_list">
+						 <ul>
+	{list module='borrow' function='GetChangeList' plugins="change" status='2' late_status=1 keywords="request" account_status="request" borrow_interestrate="request" var="loop" order="request"}
+	{foreach from="$loop.list" item="item"}
+						    <li>
+							    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td colspan="4"><a href="/invest/a{$item.borrow_nid}.html">{$item.borrow_name}</a></td>
+    </tr>
+  <tr>
+    <td width="20%">债权人：<a href="/invest/a{$item.borrow_nid}.html">{$item.change_username}</a></td>
+    <td width="35%">转让期数/总期数：{$item.change_period|default:0}期/{$item._borrow_period}期</td>
+    <td width="25%">借款利率：{$item.borrow_apr}%</td>
+    <td width="20%">转让价格：￥{$item.account}</td>
+  </tr>
+  <tr>
+    <td>债务人：<a href="/u/{$item.borrow_userid}" target="_blank">{$item.borrow_username}</a></td>
+    <td>待收本金/利息：￥{$item.recover_account_capital_wait}/￥{$item.recover_account_interest_wait}</td>
+    <td>最后还款时间：{$item.repay_last_time|date_format:"Y-m-d"}</td>
+    <td><a href="javascript:;" class="change_buy" data-id="{$item.tender_id}">购买债权</a></td>
+  </tr>
+</table>
+							</li>
+      {/foreach}
+						 </ul>
+
+			   </div>
+<div class="pages">{$loop.pages|showpage:"3"}</div>
+					</div>
+			  </div>
+  {/list}
+		  </div>
+          	 
+{literal}
+<script>
+$(".change_buy").live("click",function(){
+    var _id = $(this).attr("data-id");
+var dia = $.dialog({
+				id: 'change_borrow',title:'购买债权',content: 'url:/?user&q=code/borrow/change&p=buy&id='+_id,max: false,
+				min: false,lock:true});
+    
+})
+$(function(){$(".input_btn1").focus(function(){$(".input_btn2").css({"display":"block"})});
+              $(".input_btn1").blur(function(){$(".input_btn2").css({"display":"block"})})
+			  })
+</script>
+
+{/literal}	
+ 	  
+{include file="tender_right.html"} 
+		 <div class="cle"></div>
+	</div>
+
+{include file="footer.html"}

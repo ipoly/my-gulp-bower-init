@@ -1,0 +1,86 @@
+{include file="header.html"}
+
+<div class="conbox t10">
+<div class="con_left">
+     <div>
+	      <div class="con_bor">
+		       <div class="pos_bor"><span><a href="#">我的圈子</a> > 圈子首页 </span></div>
+		    <div class="con1">
+					{list module="group" function="GetGroupList" var="loop" status=1 nid='$magic.request.nid' }
+				       <div class="qz_tit">
+					        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><h1>{if $magic.request.nid=="my"}我的圈子{else}{$loop.type_name}{/if}</h1></td>
+    <td align="right"></td>
+  </tr>
+</table>
+					   </div>
+					 
+				  <div class="t20">
+				      
+					   <div class="qz_list">
+					        <ul>
+							{foreach from="$loop.list" item="item"}
+							    <li>
+								<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="35%" align="left" valign="top"><img src="/{$item.litpic_url}" width="64" height="64" style="border:1px solid #CCCCCC; padding:1px" /></td>
+    <td width="65%" align="left" valign="top"><a href="/group/a{$item.id}.html">{$item.name}</a><span></span><br />
+       主题：{$item.articles_count|default:0} 成员数：{$item.member_count|default:1}</td>
+  </tr>
+</table>
+								</li>
+								{/foreach}
+								
+							</ul>
+							<div class="cle"></div>
+					   </div>
+					   <div style="line-height:30px; text-align:center">{$loop.pages|showpage:"3,dy_article"}</div>
+				  </div>
+				  
+				{/list}
+				  
+
+				  
+			</div>
+	   </div>
+	   
+    </div>
+</div>
+<div class="con_right">
+<div>
+		        <div class="r_tit">最新加入成员</div>
+	  <div class="r_cen">
+	       <div class="cy_list">
+		   <ul>
+				{loop module="group" function="GetGroupMemberList" status=1 var="Mvar" group_id=all limit="6" my_userid=$_G.user_id}
+		        <li><a href="/u/{$Mvar.user_id}"><img src="{$Mvar.user_id|avatar}" height=50 width=50 /><br />{$Mvar.username}</a></li>
+				{/loop}
+			</ul>
+			<div class="cle"></div>
+		   </div>
+	  </div>
+				<div class="r_bot"></div>
+    </div>
+	
+	<div class="t10">
+		        <div class="r_tit">圈内借款动态</div>
+	  <div class="r_cen">
+	       <div class="jk_action">
+		        <ul>
+				{loop module="borrow" function="GetList" var="Bvar" group_id=all limit="6" my_userid="$_G.user_id"}
+				    <li>
+					<div><a href="/invest/a{$Bvar.borrow_nid}.html">{$Bvar.username}</a> 于{$var.verify_time|time_format}</div>
+					<div>金额：<span>{$Bvar.account}元</span>{$Bvar.name}</div>
+					</li>
+				{/loop}
+				</ul>
+		   </div>
+	  </div>
+				<div class="r_bot"></div>
+    </div>
+</div>
+<div class="cle"></div>
+</div>
+
+{include file="footer.html"}

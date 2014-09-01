@@ -1,0 +1,114 @@
+{include file="header.html"}
+<link rel="stylesheet" href="{$tpldir}/static/css/invest.css">
+
+<link rel="stylesheet" href="{$tpldir}/css/style.css">
+<div class="pg-invest" id="page-invest-list" >
+    	<div class="container_10 fn-clear mt10">我的账户 > <a href="#">项目理财列表</a></div>
+        <div class="container_10 fn-clear mt10">
+        	<div class="box p20 fn-clear">
+            	<div class="main_r_bor">
+
+						<div>
+		       <table width="100%" cellspacing="0" cellpadding="0" border="0" class="sea_tab">
+  <tbody><tr>
+    <td bgcolor="#FFFFFF">
+	    <table width="100%" cellspacing="0" cellpadding="0" border="0">
+  <tbody><tr>
+    <td align="right" class="sea_tableft">标种：  </td>
+    <td class="sea_tabright">
+    
+    <a href="{$_A.query_url_all}?borrow_type=" {if $magic.request.borrow_type==""}style="font-weight:bold; color:#2976a4"{/if}>不限</a>
+    {foreach from=$_G.linkages.borrow_all_type key="key" item="item"}
+          <a {if $magic.request.borrow_type==$key}style="font-weight:bold; color:#2976a4"{/if} href="{$_A.query_url_all}?keywords={$magic.request.keywords}&borrow_area_city={$magic.request.borrow_area_city}&order={$magic.request.order}&hasinvest={$magic.request.hasinvest}&borrow_use={$magic.request.borrow_use}&borrow_type={$key}&borrow_interestrate={$magic.request.borrow_interestrate}&spread_month={$magic.request.spread_month}&account_status={$magic.request.account_status}">{$item}</a>   
+        {/foreach}
+    </td>
+	 <td></td>
+  </tr>
+</tbody></table>
+	</td>
+    </tr>
+  <tr>
+    <td bgcolor="#FFFFFF"><table width="100%" cellspacing="0" cellpadding="0" border="0">
+      <tbody><tr>
+        <td align="right" class="sea_tableft">金额：</td>
+        <td class="sea_tabright">
+     
+        <a href="{$_A.query_url_all}?borrow_type={$magic.request.borrow_type}&borrow_interestrate={$magic.request.borrow_interestrate}&spread_month={$magic.request.spread_month}&account_status=" {if $magic.request.account_status==""}style="font-weight:bold; color:#2976a4"{/if}>不限</a>
+        {foreach from=$_G.linkages.account_status key="key" item="item"}
+          <a {if $magic.request.account_status==$key}style="font-weight:bold; color:#2976a4"{/if} href="{$_A.query_url_all}?keywords={$magic.request.keywords}&borrow_area_city={$magic.request.borrow_area_city}&order={$magic.request.order}&hasinvest={$magic.request.hasinvest}&borrow_use={$magic.request.borrow_use}&borrow_type={$magic.request.borrow_type}&borrow_interestrate={$magic.request.borrow_interestrate}&spread_month={$magic.request.spread_month}&account_status={$key}">{$item}</a>   
+        {/foreach}
+	   </td>
+      </tr>
+    </tbody></table></td>
+    </tr>
+  <tr>
+    <td bgcolor="#FFFFFF"><table width="100%" cellspacing="0" cellpadding="0" border="0">
+      <tbody><tr>
+        <td align="right" class="sea_tableft"> 利率：</td>
+        <td class="sea_tabright">
+        <a href="{$_A.query_url_all}?borrow_type={$magic.request.borrow_type}&account_status={$magic.request.account_status}&borrow_interestrate=&spread_month={$magic.request.spread_month}" {if $magic.request.borrow_interestrate==""}style="font-weight:bold; color:#2976a4"{/if}>不限</a>
+        {foreach from=$_G.linkages.borrow_interestrate item="item" key="key"}
+          <a {if $magic.request.borrow_interestrate==$key}style="font-weight:bold; color:#2976a4"{/if}  href="{$_A.query_url_all}?keywords={$magic.request.keywords}&borrow_area_city={$magic.request.borrow_area_city}&order={$magic.request.order}&hasinvest={$magic.request.hasinvest}&borrow_use={$magic.request.borrow_use}&borrow_type={$magic.request.borrow_type}&borrow_interestrate={$key}&spread_month={$magic.request.spread_month}&account_status={$magic.request.account_status}">{$item}</a>   
+        {/foreach}
+        </td>
+		<td></td>
+      </tr>
+    </tbody></table></td>
+    </tr>
+  <tr>
+    <td bgcolor="#FFFFFF"><table width="100%" cellspacing="0" cellpadding="0" border="0">
+      <tbody><tr>
+        <td align="right" class="sea_tableft"> 期限：</td>
+        <td class="sea_tabright">
+        <a href="{$_A.query_url_all}?borrow_type={$magic.request.borrow_type}&account_status={$magic.request.account_status}&borrow_interestrate={$magic.request.borrow_interestrate}&spread_month=" {if $magic.request.spread_month==""}style="font-weight:bold; color:#2976a4"{/if}>不限</a>
+        {foreach from=$_G.linkages.spread_month item="item" key="key"}
+          <a {if $magic.request.spread_month==$key}style="font-weight:bold; color:#2976a4"{/if} href="{$_A.query_url_all}?keywords={$magic.request.keywords}&borrow_area_city={$magic.request.borrow_area_city}&order={$magic.request.order}&hasinvest={$magic.request.hasinvest}&borrow_use={$magic.request.borrow_use}&borrow_type={$magic.request.borrow_type}&borrow_interestrate={$magic.request.borrow_interestrate}&spread_month={$key}&account_status={$magic.request.account_status}">{$item}</a>   
+        {/foreach}
+        </td>
+		<td></td>
+      </tr>
+    </tbody></table></td>
+    </tr>
+  
+ 
+</tbody></table>
+
+		  </div>
+                
+            </div>
+        
+       	</div>
+        <div class="container_10 fn-clear mt20">
+        	<div class="box p20">
+            	<p><em class="f24">理财项目列表</em>
+                    <a class="icon-lightgreen-link ml10" href="/tools/index.html">理财计算器</a>
+                    <a class="icon-lightblue-link ml10" href="/?user&q=code/borrow/auto">自动投标</a>  <a class="icon-lightblue-link ml10" href="/transfer/index.html">债权转让</a>               </p>
+                <ul class="invest-list fn-clear pt10" >
+                	
+                	<li class="fn-clear">
+                        <span class="list-title gray fLeft" style="width:240px;">项目名称</span>
+                        <span class="list-title gray fLeft" style="width:65px;">信用等级</span>
+                        <span class="list-title gray fLeft pr20" style="width:105px;text-align:right;">融资金额</span>
+                        <span class="list-title gray fLeft" style="width:65px;">年利率</span>
+                    	<span class="list-title gray fLeft" style="width:125px;">发布时间</span>
+                        <span class="list-title gray fLeft" style="width:85px;">借款期限 </span>
+                        <span class="list-title gray w120 fLeft pr30">投标进度</span>
+                    </li>
+                 <!--  <div id='borrow_list'>
+                                         Ajax
+                 </div> -->
+				  {list module="borrow" function="GetList" var="loop" borrow_name="request" type="request" flag="request" account_status="request" borrow_period="request" spread_month="request" award_status ="request" keywords="request" province="request" city="request"  epage="10" order="$magic.request.order"  borrow_style="request" borrow_type="request" borrow_interestrate="request" status_nid="$_G.site_result.nid"  query_type="$_G.site_result.nid"}
+{foreach from="$loop.list" item="var" }
+				 <li class="invest-list-item fn-clear"><span class="fLeft list-field f16 mr10" style="text-overflow:ellipsis; overflow:hidden; width:230px;"><em class="icon-invest-type  f14">{$var.borrow_type|linkages:'borrow_all_type'}</em><a target='_blank' href='/invest/a{$var.borrow_nid}.html'  class='toea'>{$var.name}</a></span><span class="fLeft list-field txtC" style="width:65px;">{articles module="borrow" function = "GetBorrowCredit" user_id="$var.user_id" var="Credit_var"}{$Credit_var.credit_total|credit:"borrow"}{/articles}</span>
+				 
+				 <span class="fLeft list-field txtRight pr20" style="width:105px;">{$var.account}<span style="font-size:12px;">元</span></span><span class="fLeft list-field txtC" style="width:65px;">{$var.borrow_apr}<span style="font-size:12px;">%</span></span><span class="fLeft list-field txtC" style="width:125px;"><span style="font-size:12px;">{$var.verify_time|date_format:"Y-m-d"}</span></span><span class="w60 fLeft list-field txtC">{$var.borrow_period_name}<span style="font-size:12px;"></span></span><span class="w160 fLeft list-field txtLeft pl30"><span class="invest-list-speed-3 invest-list-speed mt20 mr10"><span class="bg" style="width:{$var.borrow_account_scale|round}%"></span><span class="point" style="left:-3%; top:-4px;"></span></span> <span class="ml5 w50">{$var.borrow_account_scale|round}<span style="font-size:12px;">%</span></span></span><span class="w80 fLeft list-field txtC"><a href='/invest/a{$var.borrow_nid}.html' class='btn-invest {if $$var.end_time<0}display mt15{elseif $var.borrow_account_scale==100.00}display mt15{else}mt10{/if}'>{if $$var.end_time<0}还款中{elseif $var.borrow_account_scale==100.00}已满标{else}投标{/if}</a></span></li>
+          {/foreach}   
+		  <div id="page-list" class="page-list mt20 fn-clear">{$loop.pages|showpage:"2,dy"}</div>
+		  {/list}
+		     </ul>
+                
+        	</div>
+        </div>
+    </div>
+
+{include file="footer.html"}

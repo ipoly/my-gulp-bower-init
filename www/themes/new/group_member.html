@@ -1,0 +1,10 @@
+ <div><b style="color:#D20000; font-size:14px">>> 圈子成员列表</b></div>
+				   <div class="cy_list1">
+		   <ul>
+  {loop module="group" function="GetGroupMemberList" limit="all" group_id="$_G.article_id" var="var_m" status=1}
+		        <li><div style=" background:url('{$tpldir}/images/group_litpic.gif') no-repeat; width:60px; height:90px; text-align:center ">
+		<a href="/u/{$var_m.user_id}" target="_blank" style=" display:block; height:64px"><img src="{$var_m.user_id|avatar}" width="50" height="50" style="padding:3px;" align="left"  /></a>{$var_m.username}</div></li>
+				{/loop}
+			</ul>
+			<div style="clear:both"></div>
+		</div>

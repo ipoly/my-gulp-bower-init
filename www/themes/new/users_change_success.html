@@ -1,0 +1,35 @@
+<!-- <div class="user_main_title1">
+<strong style="color:#ff0000">温馨提示：</strong>转让有效期均为7天。<br>
+</div> -->
+<div >
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tabyel">
+<tr class="ytit">
+				<td colspan="8">成功转让的债权</td>
+			</tr>
+<tr class="ytit1" >
+<td  >投标标题</td>
+<td  >利率</td>
+<td  >转让期数/总期数</td>
+<td  >待收本息</td>
+<td  >转让价格</td>
+<td  >转让时间</td>
+<td  >购买者</td>
+<td  >协议书</td>
+</tr>
+{list module='borrow' plugins="Change" function='GetChangeList'  status='1' var="item"  user_id='$_G.user_id' var="loop"}
+{foreach from="$loop.list" item="item"}
+<tr>
+<td  ><a href="/invest/a{$item.borrow_nid}.html">{$item.borrow_name}</a></td>
+<td  >{$item.borrow_apr}%</td>
+<td  >{$item.change_period|default:0}期/{$item._borrow_period}期</td>
+<td  >￥{$item.recover_account_wait}</td>
+<td  >￥{$item.account}</td>
+<td  >{$item.buy_time|date_format}</td>
+<td  >{if $item.buy_username==""}网站{else}<a href="/u/{$item.buy_userid}">{$item.buy_username}</a>{/if}</td>
+<td  ><a href="/?user&q=code/borrow/change&p=protocol&tender_id={$item.tender_id}">查看</a>&nbsp;<!--a href="/?user&q=code/borrow/change&p=protocol&tender_id={$item.tender_id}&_type=down">下载</a--></td>
+</tr>
+{/foreach}
+</table>
+<div style="padding:10px 0; text-align:center">{$loop.pages|showpage}</div>
+{/list}
+</div>

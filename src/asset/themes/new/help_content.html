@@ -1,0 +1,27 @@
+{include file="header.html"}
+<div class="pg-one" id="page-one" >
+    	<div class="container_10 fn-clear mt10">{$_G.system.con_webname} > <a href="/help/index.html" class="f16">°ïÖúÖÐÐÄ</a></div>
+        <div class="container_10 mt10 fn-clear">
+        	<div class="page-one-nav relative">
+            	<ul class="fn-clear">
+				 {loop module="articles" function="GetTypeList" var="var" limit ="all" pid="2"}
+				<li><a href="/{$var.nid}/index.html" {if $magic.request.nid==$var.nid}class="current"{/if}>{$var.name}</a></li>
+			{/loop}
+  
+                </ul>
+            </div>
+            <div class="page-one-main relative">
+            	<div class="p20">
+                	<div class="pb20 f24">{$_G.articles.name}</div>
+                    <div class="report-list">
+                        <div class="report-tab-container">
+					<div class="hide news-txt p20" style="border: 1px solid rgb(237, 234, 234); display: block; ">
+					{$_G.articles.contents}
+					</div>
+						</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{include file="footer.html"}

@@ -1,0 +1,284 @@
+<!--邮箱认证 开始-->
+
+{if $_G.user_info.email_status==1&&$magic.request.action==""}
+{articles module="approve" function="GetEmailOne" user_id="$_G.user_id" var="pvar"}
+<div class="user_main_title1">您的邮箱已经通过认证：<b>{$pvar.email}</b> &nbsp;&nbsp;<a href="{$_A.query_url_all}?user&q=code/approve/email&action=modifyemial"><img src="{$tpldir}/images/email_xg.gif" border="0" / align="absmiddle"></a> </div>
+{/articles}
+{elseif $_G.user_info.email_status!=1&&$magic.request.action==""}
+
+<div class="user_main_title1">您的邮箱还没通过认证：<b>{$_U.user_result.email}</b></div>
+
+<div class="user_right_border">
+
+	<div class="c">
+
+		<form action="" method="post" onsubmit="this.elements['submit'].disabled='disabled';return true;">
+
+		您的邮箱：<input type="text" name="email" value="{$_G.user_result.email}" readOnly/>&nbsp;<input  id="button" type="submit" name="submit" value="点击发送激活邮件"  />
+
+		</form>
+
+	</div>
+
+</div>
+
+
+{/if}
+
+<!--邮箱认证 结束-->
+<!--邮箱修改开始-->
+{if $magic.request.action=="modifyemial"&&$magic.request.action!=""}
+<div class="bind_email t40">
+ <div><img src="{$tpldir}/images/email_verify1.gif" border="0" / align="absmiddle"></div>
+ 
+ <div class="bind_email t20">
+ <div style="padding:10px 0 40px 0"><img src="{$tpldir}/images/email_verify_bg.gif" border="0" / align="absmiddle"> 修改成功后，原邮箱将无法继续再次登录。所有信息保存到新邮箱中。</div>
+ <div  style="padding-left:100px">
+ 
+ <table border="0" cellspacing="0" cellpadding="0">
+
+  <tr>
+    <td width="91" align="right">请输入原邮箱：</td>
+    <td width="158"><input type="text" class="in_text1" name="oldemail" id="oldemail" style="width:150px" ></td>
+    <td width="330" id="other0"><img src="{$tpldir}/images/email_verify_bg1.gif" border="0" / align="absmiddle"> <span  style=" color:#808080">请输入正确的原邮箱地址</span></td>
+  </tr>
+  <tr>
+    <td align="right">请输入新邮箱：</td>
+    <td><input type="text" class="in_text1" name="newemail" id="newemail" style="width:150px" ></td>
+    <td id="other"> <img src="{$tpldir}/images/email_verify_bg1.gif" border="0" / align="absmiddle"> <span style=" color:#808080">此邮箱可作为登录账户，请选择常用邮箱</span></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><a href="#"  onclick="updateemail()"><img src="{$tpldir}/images/bind_email_next.gif" border="0" / align="absmiddle"></a></td>
+    <td></td>
+  </tr>
+</table>
+
+</div>
+ </div>
+</div>
+{elseif $_G.user_info.email_status!=1&&$magic.request.action!=""}
+<div class="bind_email t40" style="display: block;" id="updateemail">
+ <div><img border="0" align="absmiddle" src="/themes/blue/images/email_verify2.gif"></div>
+ 
+ <div class="bind_email t20" style=" padding-left:150px">
+ <table cellspacing="0" cellpadding="0" border="0">
+  <tbody>
+  <tr>
+    <td width="91" align="right">您的邮箱：</td>
+    <td width="121" id="newmai">{$_G.user_result.email}</td>
+    <td width="367">&nbsp;</td>
+  </tr>
+  <tr>
+    <td align="right">&nbsp;</td>
+    <td><input id="sendcode_ver" type="submit" onclick="sendverify()" tabindex="6" size="30" value="免费获取验证码" name="name"></td>
+    <td id="codesend" style="display: none;"><img border="0" align="absmiddle" src="{$tpldir}/images/t1.gif"> <span style=" color:#808080">验证码已发送！</span> </td>
+  </tr>
+  <tr>
+    <td align="right">验证码：</td>
+    <td><input type="text" style="width:105px" id="verifycode" onkeyup="value=value.replace(/[^0-9]/g,'')" name="verifycode" class="in_text1" /></td>
+    <td id="codeno" style="display: none;"><img border="0" align="absmiddle" src="{$tpldir}/images/t2.gif"> <span id="codecontent" style=" color: #FF0000">不能为空</span></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><a href="#" onclick="updateemailsuccess()"><img border="0" align="absmiddle" src="{$tpldir}/images/bind_email_next.gif"></a></td>
+    <td></td>
+  </tr>
+  
+</tbody></table>
+ </div>
+</div>
+
+<div class="bind_email t40" style="display: none;" id="updateemailsuccess">
+ <div><img border="0" align="absmiddle" src="{$tpldir}/images/email_verify3.gif"></div>
+ 
+ <div class="bind_email t20">
+ <div style="padding-top:15px; text-align: center"><span style=" font-size:14px; color:#FF0000">恭喜您！邮箱修改成功!</span> &nbsp;&nbsp;<a href="/?user&q=code/approve/email"><img border="0" align="absmiddle" src="/themes/blue/images/bind_email_return.gif"></a></div>
+ </div>
+</div>
+{/if}
+<!--邮箱修改结束-->
+{literal}
+<script>
+
+$('#oldemail').live("blur",function(){
+    var reg1 = /([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)/;
+    var oldemail=$('#oldemail').val();  
+    if(oldemail==""){
+        	$('#other0').html('<img src="/themes/blue/images/t2.gif" border="0" / align="absmiddle"> <span  style=" color:#808080">不能为空</span>');
+    }else if (!reg1.test(oldemail)){
+			//msg = "邮箱格式错误";
+			$('#other0').html('<img src="/themes/blue/images/t2.gif" border="0" / align="absmiddle"> <span  style=" color:#808080">邮箱格式有误</span>');
+            return '';
+	} else if(reg1.test(oldemail)){
+	    var url='/?user&q=code/approve/email&action=updateemail';
+        url=url+'&oldemail='+oldemail+'';
+        $.ajax({
+    	type:"get",
+    	url:url,
+    	data:'',
+    	success:function(result){
+    		if (result=="4"){
+    			$('#other0').html('<img src="/themes/blue/images/t2.gif" border="0" / align="absmiddle"> <span  style=" color:#808080">原邮箱不存在</span>');
+    		}else if(result=='2'){
+    			$('#other0').html('<img src="/themes/blue/images/t1.gif" border="0" / align="absmiddle"> <span  style=" color:#808080">原邮箱填写正确</span>');	
+    		}	
+    	},
+    	cache:false
+        });
+	}
+    
+})
+$('#newemail').live("blur",function(){
+    var reg1 = /([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)/;
+    var newemial=$('#newemail').val();
+    if(newemial==""){
+        	$('#other').html('<img src="/themes/blue/images/t2.gif" border="0" / align="absmiddle"> <span style=" color:#808080">不能为空</span>');
+    }else if (!reg1.test(newemial)){
+			//msg = "邮箱格式错误";
+			$('#other').html('<img src="/themes/blue/images/t2.gif" border="0" / align="absmiddle"> <span style=" color:#808080">邮箱格式有误</span>');
+            return '';
+	}else if(reg1.test(newemial)){
+	    var url='/?user&q=code/approve/email&action=updateemail';
+        url=url+'&newemail='+newemial+'';
+        $.ajax({
+    	type:"get",
+    	url:url,
+    	data:'',
+    	success:function(result){
+    		if (result=="3"){
+    			$('#other').html('<img src="/themes/blue/images/t2.gif" border="0" / align="absmiddle"> <span style=" color:#808080">该邮箱已存在</span>');
+    		}else{
+                $('#other').html('<img src="/themes/blue/images/t1.gif" border="0" / align="absmiddle"> <span style=" color:#808080">新邮箱填写正确</span>');
+    		}
+    		
+    	},
+    	cache:false
+        });
+	}
+    
+})
+
+$('#verifycode').live("blur",function(){
+    var codeno=$('#verifycode').val();
+    if(codeno==''){
+        $('#codeno').attr('style','display:block');
+        $('#codecontent').html('不能为空');
+        return '';
+    }
+    var url='/?user&q=code/approve/email&action=updateemailsuccess';
+    var verifycode=$('#verifycode').val();
+    var newmai='';
+    url=url+'&verifycode='+verifycode+'&newmail='+newmai+'';
+    $.ajax({
+	type:"get",
+	url:url,
+	data:'',
+	success:function(result){
+	   if(result=='2'){
+		   $('#codeno').attr('style','display:block');
+           $('#codecontent').html('验证码不正确');
+		   return '';
+		}else if(result=='5'){
+		   $('#codeno').attr('style','display:none');
+		  $('#codecontent').html('');
+           return '';
+		}
+	},
+	cache:false
+    });
+})
+
+function updateemail(){    
+    var url='/?user&q=code/approve/email&action=updateemail';
+    var newemial=$('#newemail').val();
+    var oldemail=$('#oldemail').val();
+    url=url+'&oldemail='+oldemail+'&newemail='+newemial+'';
+    $.ajax({
+	type:"get",
+	url:url,
+	data:'',
+	success:function(result){
+		if (result=="0"){
+			$('#other0').html("修改失败");
+		}else if(result=='1'){			
+		     location.href='/?user&q=code/approve/email&action=updateemail1';
+		}
+	},
+	cache:false
+    });
+}
+
+function sendverify(){
+    var o=$("#sendcode_ver");
+    o.attr("disabled",true);
+    var url='/?user&q=code/approve/email&action=sendemailverfy';
+    //location.href=url;
+    $.ajax({
+	type:"get",
+	url:url,
+	data:'',
+	success:function(result){
+		if (result=="1"){
+			$('#codesend').html('发送失败');
+            o.removeAttr("disabled");
+            	$('#codesend').attr('style','display:block');
+        }else if(result=="2"){
+           // $('#codesend').html('请1分钟后再发送');
+         
+            //$('#codesend').attr('style','display:block');
+             var o=$("#sendcode_ver");
+               o.val("请1分钟后再发送");
+              //o.attr("disabled",true);
+        	var wait=60;
+        	//if($("#tex").val()==0){
+        	   var timeID=setInterval(function(){
+        		if(wait==-1){clearInterval(timeID);o.val("免费获取验证码");o.removeAttr("disabled");}
+        	    else{o.val("重新发送"+wait);wait--;o.attr("disabled",true)}},1000); 
+		}else if(result=="0"){
+		  var email=$('#newmai').html();
+          var earr=email.split('@');
+		  $('#codesend').html('<img border="0" align="absmiddle" src="/themes/blue/images/t1.gif"> <span style=" color:#808080">验证码已发送！</span><a  href="http://mail.'+earr[1]+'" target="_bank">点此登录邮箱</a>');
+			$('#codesend').attr('style','display:block');
+             var o=$("#sendcode_ver");
+              //o.attr("disabled",true);
+        	var wait=60;
+        	//if($("#tex").val()==0){
+        	   var timeID=setInterval(function(){
+        		if(wait==-1){clearInterval(timeID);o.val("免费获取验证码");o.removeAttr("disabled");}
+        	    else{o.val("重新发送"+wait);wait--;o.attr("disabled",true)}},1000); 
+        	//}
+		}
+	
+	},
+	cache:false
+    });
+}
+
+function updateemailsuccess(){
+    var url='/?user&q=code/approve/email&action=updateemailsuccess';
+    var verifycode=$('#verifycode').val();
+    var newmai=$('#newmai').html();
+    url=url+'&verifycode='+verifycode+'&newmail='+newmai+'';
+    var codeno=$('#verifycode').val();
+    if(codeno==''){
+      alert('验证码不能为空');
+        return '';
+    }
+    $.ajax({
+	type:"get",
+	url:url,
+	data:'',
+	success:function(result){
+		if (result=="0"){
+		   $('#updateemailsuccess').attr('style','display:block');
+		   	$('#updateemail').attr('style','display:none');
+		}else if(result=='1'){
+		   alert('激活失败');
+		}
+	},
+	cache:false
+    });
+}
+</script>
+{/literal}

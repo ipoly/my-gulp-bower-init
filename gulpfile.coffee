@@ -28,15 +28,15 @@ SRC = {
     assets: ["src/asset/**"]
 }
 DIST = {
-    bower: "app/themes/ipoly/lib",
-    scripts: "app/themes/ipoly/js",
-    htmls: "app",
-    styles: "app/themes/ipoly/css"
-    images: "app/themes/ipoly/img"
-    assets: "app"
+    bower: "www/themes/new/lib",
+    scripts: "www/themes/new/gulp/js",
+    htmls: "www/themes/new",
+    styles: "www/themes/new/gulp/css"
+    images: "www/themes/new/gulp/img"
+    assets: "www"
 }
 
-APP_ROOT = 'app'
+APP_ROOT = 'app/themes/new'
 
 MULTI_SCRIPT_REGEX = /[\s\t]*<script src=(['"])\/(.+\*.+)\1><\/script>/igm
 
@@ -56,18 +56,16 @@ errorHandler = (task)->
 gulp.task "assets", ->
     gulp.src SRC.assets
     .pipe plumber {errorHandler: errorHandler('ASSETS')}
-    .pipe changed DIST.assets
-    .pipe cache 'asset'
     .pipe gulp.dest DIST.assets
 
-gulp.task "images", ->
+gulp.task "images", ['assets'], ->
     gulp.src SRC.images
     .pipe plumber {errorHandler: errorHandler('IMAGES')}
     .pipe changed DIST.images
     .pipe imagemin()
     .pipe gulp.dest DIST.images
 
-gulp.task "bower", ->
+gulp.task "bower", ['assets'], ->
     gulp.src bowerFiles(), base: SRC.bower
     .pipe plumber {errorHandler: errorHandler('BOWER')}
     .pipe changed DIST.bower
@@ -82,7 +80,7 @@ gulp.task "jade", ['coffee'], ->
     .pipe REPLACE_MULTI_SCRIPT_FUNC()
     .pipe gulp.dest DIST.htmls
 
-gulp.task "coffee", ->
+gulp.task "coffee", ['assets'], ->
     gulp.src SRC.coffee
     .pipe plumber {errorHandler: errorHandler('COFFEE')}
     .pipe changed DIST.scripts
@@ -92,7 +90,7 @@ gulp.task "coffee", ->
     .pipe sourcemaps.write './maps'
     .pipe gulp.dest DIST.scripts
 
-gulp.task "less", ->
+gulp.task "less", ['assets'], ->
     gulp.src SRC.less
     .pipe plumber {errorHandler: errorHandler('LESS')}
     .pipe changed DIST.styles
@@ -106,7 +104,6 @@ gulp.task "watch", ['build'], ->
     gulp.watch SRC.jade, ['jade']
     gulp.watch SRC.coffee, ['coffee']
     gulp.watch SRC.less, ['less']
-    gulp.watch SRC.assets, ['assets']
 
     livereload.listen()
     gulp.watch APP_ROOT + '/**'

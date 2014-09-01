@@ -1,0 +1,53 @@
+  <div style="margin-top:10px">
+  <form action="/?user&q=code/group/articles&group_id={$var_group.id}&ajax=1" method="post" id="checkform">
+				       <table width="100%" border="0" cellspacing="10" cellpadding="0">
+  <tr>
+    <td>>>发表新话题</td>
+  </tr>
+  <tr>
+    <td>标题：<input type="text" name="name" id="name" style="border:#C2C2C2 solid 1px; background:#fff; height:20px; width:400px"/></td>
+  </tr>
+  <tr>
+    <td><textarea id="contents" class="contents" name="contents"  style="width:100%;height:100px;visibility:hidden;"></textarea>	
+			{literal}
+<script src="/plugins/dyeditor/dyeditor.js" type="text/javascript"></script>
+<script src="/plugins/dyeditor/lang/cn.js" type="text/javascript"></script>
+<script>
+var editor;
+DyEditor.ready(function(D) {
+editor = D.create('#contents',{filterMode : true});
+})</script>
+	{/literal}
+	</td>
+  </tr>
+  <tr>
+    <td align="left"><input type="hidden" name="ajax" value="1"><input  id="button" type="submit" value="提 交" class="bbs_input" id="bbs_input" style="float:none; margin:0"></td>
+  </tr>
+</table>
+</form>
+</div>
+
+<script src="{$tpldir}/js/jquery.form.js" type="text/javascript"></script>
+<script>
+var group_id={$var_group.id};
+{literal}
+
+$("#checkform").live("submit",function(){
+	if($("#name").val()==''){
+		alert("标题不能为空");return false;
+	}else{
+		$("#checkform").ajaxSubmit({									  
+		 success: function (result, status) {			
+			  if(result==1){
+				alert("添加话题成功");
+				location.href="/group/a"+group_id+".html";
+			  }else{
+				alert(result);
+			  }			
+			}
+		});
+		return false; 
+	}	
+})
+</script>
+{/literal}

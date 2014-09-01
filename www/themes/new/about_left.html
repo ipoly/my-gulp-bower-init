@@ -1,0 +1,13 @@
+    <div class="help_left1">
+	<div class="he_le_bor">
+		<div class="he_le_title"><h1>关于我们</h1></div>
+			<div class="help_menu">
+			       <ul>
+				   {loop module="admin" function="GetSiteList" var="var" limit="all" pid=155}
+				       <li>·<a href="/{$var.nid}/index.html" {if $_G.site_result.nid==$var.nid}style="color:red"{/if}>{$var.name}</a></li>
+					   {/loop}
+				   </ul>
+			  </div>
+    </div>
+	</div>
+           

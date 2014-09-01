@@ -1,0 +1,103 @@
+{articles module="borrow" function="GetOne" borrow_nid="$_G.article_id" var="var"}
+<div class="conbox t20">
+	<div>
+		<div class="tool_bor">
+	      <h1>借款协议书</h1>
+			<div class="con1">
+				<div class="con">
+	<div class="t10">
+    <div><h4 style=" font-size:20px;text-align:center; padding-bottom:10px">借款协议书</h4></div>
+    <div style="border:#CCC solid 1px; padding:5px 20px">贷款号：{$var.borrow_nid}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;借款人：{$var.username}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;还款方式：
+	{$var.style_title}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;出借人：详见本协议第一条&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;签订日期：{$var.borrow_success_time|date_format:"Y-m-d"}<br /></div>
+    <div class="t10" style="background:#eef4fe; padding:5px 20px">借款人通过{$_G.system.con_webname}投资--领先的P2P网络借贷平台网站(以下简称"本网站")的居间,就有关借款事项与各出借人达成如下协议：</div>
+	</div>
+	<div class="t20"><h2 style="text-align: center; font-size:12px">第一条：借款详情如下表所示：</h2>
+		  <div style="text-align:center; padding:5px 0">1、出借人名录：</div>
+          <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tabyel">
+              <tr class="head">
+                <td>出借人</td>
+                <td>借款金额</td>
+                <td>借款期限</td>
+                <td>年利率</td>
+                <td>借款开始日</td>
+                <td>借款到期日</td>
+                 {if $var.borrow_type!="roam"}
+                <td>月截止还款日</td>
+                {else}
+                <td></td>
+                {/if}
+                <td>总还款本息</td>
+              </tr>
+			  {loop module="borrow" plugins="tender" var="bor" function="GetTenderList" borrow_nid="$_G.article_id" tender_id="$_G.user_id" borrow_id="$var.user_id" limit="all" }
+		
+			 <tr {if $key%2==1} class="ynow"{/if}>
+                <td>{$bor.username}</td>
+				<td>{$bor.account}元</td>
+				<td>{$var.borrow_period_name}</td>
+				<td>{$var.borrow_apr}%</td>
+                {if $var.borrow_type=="roam"}
+                <td>{$var.addtime|date_format:"Y-m-d"}</td>
+                {else}
+				<td>{$var.borrow_success_time|date_format:"Y-m-d"}</td>
+                {/if}
+				<td>{$var.repay_last_time|date_format:"Y-m-d"}</td>
+                 {if $var.borrow_type!="roam"}
+    				{if $var.borrow_type==day}
+    				<td>{$var.repay_last_time|date_format:"Y-m-d"}</td>
+    				{else}
+    				<td>{$var.repay_each_time}</td>
+    				{/if}
+        {else}
+        <td></td>
+                {/if}
+				<td>{$bor.recover_account_all} 元</td>
+              </tr>
+			  
+			{/loop}
+			<tr>
+				<td><strong>总金额：</strong></td>
+				<td><strong>{$var.account}元</strong></td>
+				{if $var.borrow_type == "day"}
+				<td><strong>{$var.borrow_period}天</strong></td>
+				{else}
+				<td><strong>{$var.borrow_period}个月</strong></td>
+				{/if}				
+				<td><strong>{$var.borrow_apr}%</strong></td>
+				<td><strong>{$var.borrow_success_time|date_format:"Y-m-d"}</strong></td>
+				<td><strong>{$var.repay_last_time|date_format:"Y-m-d"}</strong></td>
+				<td><strong>总还款本息：</strong></td>
+				<td><strong>{$var.repay_account_all} 元</strong></td>
+			</tr>
+          </table>
+		  </div>
+		  <div class="t20">
+		  <div style="text-align:center; padding:5px 0">2、还款明细：</div>
+		  <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tabyel">
+              <tr class="head">
+                <td>借款期数</td>
+                <td>年利率</td>
+                <td>应还时间</td>
+                <td>还款本息</td>
+                <td>还款本金</td>
+                <td>还款利息</td>
+              </tr>
+			{loop module="borrow" var="bor" plugins="tender" function="GetRecoverList" borrow_nid="$_G.article_id" limit="all" tender_id="$_G.user_id" borrow_id="$var.user_id" borrow_uerid="$var.user_id" protocol='1'}
+              <tr {if $key%2==1} class="ynow"{/if}>
+				<td>{$bor.recover_period}</td>
+				<td>{$var.borrow_apr}%</td>
+				<td>{$bor.recover_time|date_format:"Y-m-d"}</td>
+				<td>{$bor.recover_account}</td>
+				<td>{$bor.recover_capital}</td>
+				<td>{$bor.recover_interest}</td>
+              </tr>
+			{/loop}
+          </table>
+			</div>
+	<div class="t20">{$_G.page_result.contents}</div>
+	</div>
+					</div>
+				</div>
+			</div>
+		</div>
+{/articles}
+

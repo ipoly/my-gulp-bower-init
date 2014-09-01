@@ -1,0 +1,223 @@
+<div class="us_r_bor1" >
+{if $_U.account_bank_result==""}<br />
+<br />
+<br />
+
+			<center>
+			你还没设置银行账户，请先设置。 点击这里 <a href="/?user&q=code/account/bank_new" style="color:#FF0000"><strong>添加银行账户</strong></a>
+			</center><br />
+<br />
+<br />
+<br />
+
+
+		
+		{else}
+        <form action="" method="post" id="account_cash_form"  onsubmit="return checkform();">
+        {articles module="users" function="GetUsersVip" user_id="$_G.user_id" var="Vvar"}
+		<div style="margin:10px">注：
+              1、请输入您要取出金额,我们将在1至3个工作日(国家节假日除外)之内将钱转入您网站上填写的银行帐号。 <br />
+			  2、如你急需要把钱转到你的帐号或者24小时之内网站未将钱转入到你的银行帐号,请联系客服中心。 <br />
+			  3、确保您的银行帐号的姓名和您的网站上的真实姓名一致。 <br />
+			  4、每笔提现金额至少为100元以上。 <br />
+			  5、每笔提现金额最高
+              {if $Vvar.status==1}
+                {if $_U.account_fee_result.vip_account_scale_max ==0}
+                    不限。
+                {else}
+                    不能超过<font style="color:#FF0000;">{$_U.account_fee_result.vip_account_scale_max}</font>元以上。
+                {/if}
+              {else}
+                {if $_U.account_fee_result.all_account_scale_max ==0}
+                    不限。
+                {else}
+                    不能超过<font style="color:#FF0000;">{$_U.account_fee_result.all_account_scale_max}</font>元以上。
+                {/if}
+              {/if}
+               <br />
+              6、重要！！如果您填写的开户行支行不正确，提现交易将无法成功，提现费用不予返还。如果您不确定开户行支行名称，可以打电话到当地所在银行的营业网点询问或者上网查询。
+		</div>
+        {if $Vvar.status==1}
+            {if $_U.account_fee_result.vip_account_scale_max ==0}
+                <input type="hidden" value="999999999" id="money_max" name="money_max">
+            {else}
+                <input type="hidden" value="{$_U.account_fee_result.vip_account_scale_max}" id="money_max" name="money_max">
+            {/if}
+        {else}
+            {if $_U.account_fee_result.all_account_scale_max ==0}
+                 <input type="hidden" value="999999999" id="money_max" name="money_max">
+            {else}
+                 <input type="hidden" value="{$_U.account_fee_result.all_account_scale_max}" id="money_max" name="money_max">
+            {/if}
+           
+        {/if}
+		{/articles}
+		<div class="user_right_border">
+			<div class="l">用户名：</div>
+			<div class="c">
+				{$_G.user_result.username}
+			</div>
+		</div>
+		<div class="user_right_border">
+			<div class="l">提现账户：</div>
+			<div class="c">
+				{if $_G.user_info.realname!=''}
+				{$_G.user_info.realname|truncate:1}**
+				{/if}				
+			</div>
+		</div>
+		{articles module="account" function="GetOne" var="var" user_id="$_G.user_id"}
+		<div class="user_right_border">
+			<div class="l">可用余额：</div>
+			<div class="c">
+				{$var.balance|default:0.00}元
+			</div>
+		</div>
+		{/articles}
+		
+		<div class="user_right_border">
+			<div class="l">银行账号：</div>
+			<div class="c">
+				{loop module="account" function="GetUsersBankList" user_id="$_G.user_id" limit="all"}
+				{$var.bank_name} {$var.city|areas:"p,c"} {$var.branch} {$var.account}<br />
+				{/loop}
+			</div>
+		</div>
+		<div class="user_right_border">
+			<div class="l"><font color="#FF0000">*</font>交易密码：</div>
+			<div class="c">
+				{if $_G.user_result.paypassword==""}<a href="/?user&q=code/users/paypwd"><font color="#FF0000">请先设置一个支付密码</font></a>{else}<input type="password" name="paypassword" id="paypassword" value="" />{/if}
+			</div>
+		</div>
+		<div class="user_right_border">
+			<div class="l"><font color="#FF0000">*</font>提现金额：</div>
+			<div class="c">
+				<input type="text" name="money" class="money" value=""  size="10" onkeyup="commit(this);" maxlength="9"  tabindex="2"/>
+			</div>
+		</div>
+		<div class="user_right_border">
+			<div class="l"><font color="#FF0000">*</font>提现费用：</div>
+				<div class="c">
+						
+					<font color="#FF0000" id="real_money">0</font> 元
+				</div>
+		</div>
+		<div class="user_right_border">
+			<div class="l"><font color="#FF0000">*</font>实际到账金额：</div>
+				<div class="c">						
+					<font color="#FF0000" id="r_money">0</font> 元
+				</div>
+		</div>
+	
+		<div class="user_right_border">
+			<div class="l"><font color="#FF0000">*</font>手机验证码：</div>
+			<div class="c">
+                {articles module="approve" function="GetSmsOne" status=1 user_id="$_G.user_result.user_id" var="tel"}
+                <input type="hidden" name="ajax_phone" id="ajax_phone" value="{$tel.phone}">
+                {/articles}
+				<input type="text" name="ajax_phone_code" id="ajax_phone_code" onkeyup="value=value.replace(/[^0-9Xx]/g,'')" size="10"/> <input type="button" id="ajax_phone_get_tixian" value="获取验证码" />&nbsp;<span style="color:red" id="ajax_phone_msg"></span>
+			</div>
+		</div>
+		<div class="user_right_border">
+			<div class="l"></div>
+			<div class="c">
+				<input  id="button" type="submit" name="name"  value="确认提交" size="30"/> 
+				
+			</div>
+		</div>
+			<input type="hidden" name="type" value="ajax" />
+		</form>
+		<div class="user_right_foot">
+		* 重要提示：如果你的手机无法收到验证码，请用手机编辑短信XDWLZM至13568525848获取验证码。或至电13568525848获取。
+		</div>
+		<div class="user_right_foot">
+		* 温馨提示：禁止信用卡套现
+		</div>
+	{/if}	
+	
+</div>
+</div></div>
+</div>
+<script>
+{articles module="account" plugins="Fee" function="GetFeeOne" id=2 var="_var"}
+var vip_fee = {$_var.vip_account_scale};
+var all_fee = {$_var.all_account_scale};
+var vip_max = {$_var.vip_account_scale_max};
+var all_max = {$_var.all_account_scale_max};
+{/articles}
+ var vip_status = {$_G.user_result.vip_status|default:0};
+	{articles module="users" plugins="vip" function="GetUsersVip" user_id="$_G.user_id" var="_vip"}
+		var status={$_vip.status};
+	{/articles}	
+		var real_money=5;
+		{literal}
+		if(status==1){
+		  fee = vip_fee;
+		}else{
+		  fee = all_fee;
+		}
+		function commit(obj) {
+		  if (parseFloat(obj.value) > 0 ) 
+			{
+			     obj.value=obj.value.replace(/^(\-)*(\d+)\.(\d\d).*$/,'$1$2.$3');
+               	var realMoney=parseFloat(obj.value);
+                 $.ajax({
+                   type: "get",
+                   url: "/?user&q=code/account/get_fee&type=cash_success",
+                   data: "vip_status="+vip_status+"&account="+obj.value,
+                   success: function(account){
+                    $("#real_money").text(account);
+    				$("#r_money").text(Math.round(parseFloat(realMoney-parseFloat(account))*100)/100);
+                   }
+                });
+			
+				
+			}else{
+				var realMoney=parseFloat(obj.value);
+				document.getElementById("real_money").innerText =0;
+				document.getElementById("r_money").innerText =0;
+			}
+		}
+		</script>
+<script>
+deayou.use("account_cash_form",function(e){e.cash();});
+$("account_cash_form").submit(function(e){
+	var member = $(".money").attr("value");
+	if(member = ""){
+		alert("请输入提现金额");
+	}elseif(member<100 || member>49999){
+		alert("输入的提取金额应在100-49999之间");
+	}
+});
+</script>{/literal}
+{literal}
+<script>
+function checkform(){
+	var money = $(".money").val();
+    var paypassword = $("#paypassword").val();
+    var ajax_phone_code = $("#ajax_phone_code").val();
+    var money_max = parseFloat($("#money_max").val());
+	var msg = '';
+    if(paypassword==''){
+		msg += "请输入交易密码\n\n";
+	}	
+	if(money==''){
+		msg += "请输入提现金额\n\n";	
+	}
+	if(ajax_phone_code==''){
+		msg += "手机验证码不能为空\n\n";
+	}
+    if(money>money_max){
+		msg += "提现金额不能超过最高额度["+money_max+"]元\n\n";
+	}
+	if(msg!=''){
+		alert(msg);
+		return false;
+	}
+	
+}
+</script>
+{/literal}
+{literal}
+<script>deayou.use("rating",function(e){e.check_phone();});</script>
+{/literal}

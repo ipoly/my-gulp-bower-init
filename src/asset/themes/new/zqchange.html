@@ -1,0 +1,54 @@
+<script src="{$_G.web_domain}{$tempdir}/js/jquery.js"></script>
+{if $magic.request.buy_id!=""}
+	<form action="/?user&q=code/borrow/change" name="form1" method="post" onsubmit="return check_form()" enctype="multipart/form-data">
+		{articles module="borrow" function="GetChangeOne" plugins="change" id="$magic.request.buy_id" var="var"}
+		<div class="user_right_border" style="height:30px; overflow:hidden">
+			<div>转让价格:{$magic.request.account}元</div>
+		</div>
+		<div class="user_right_border" style="height:30px; overflow:hidden">
+			<div>手续费:{$var.change_fee}元</div>
+		</div>
+		<div class="user_right_border" style="height:30px; overflow:hidden">
+			<div>购买价格:{$var.total_account}元</div>
+		</div>
+		<div class="user_right_border" style="height:30px; overflow:hidden">
+			<div>交易密码:<input name="paypassword" id="paypassword" type="password"></div>
+		</div>
+		<input name="account" id="account" type="hidden" value="{$var.total_account}">
+		<input name="buy_id" id="buy_id" type="hidden" value="{$magic.request.buy_id}">
+		<div class="user_right_border" style="height:30px; overflow:hidden">
+			<div>确认提交:<input  id="button" type="submit"  value="确认提交" size="30" /></div>
+		</div>
+		{/articles}
+	</form>
+{else}			
+	<form action="/?user&q=code/borrow/change" name="form1" method="post" onsubmit="return check_form()" enctype="multipart/form-data">
+		<div class="user_right_border" style="height:30px; overflow:hidden">
+			<div>最高转让价格:{$magic.request.account}元</div>
+		</div>
+		<div class="user_right_border" style="height:30px; overflow:hidden">
+			<div>转让价格:<input name="change_account" id="change_account" type="text" onkeyup="if(this.value>{$magic.request.account})value={$magic.request.account}"></div>
+		</div>
+		<input name="max_account" id="max_account" type="hidden" value="{$magic.request.account}">
+		<input name="id" id="id" type="hidden" value="{$magic.request.id}">
+		<div class="user_right_border" style="height:30px; overflow:hidden">
+			<div>确认提交:<input  id="button" type="submit"  value="确认提交" size="30" /> </div>
+		</div>
+	</form>
+<script>
+var max_account='{$magic.request.account}';
+{literal}
+function check_form(){
+	var account=$("#change_account").val();
+	if (parseFloat(account)>parseFloat(max_account)){
+		errorMsg = '* 转让金额不能大于待回收本金' + '\n';
+	}
+	if (errorMsg.length > 0){
+		alert(errorMsg); return false;
+	}else{
+		return true;
+	}
+}
+</script>{/literal}
+{/if}
+			

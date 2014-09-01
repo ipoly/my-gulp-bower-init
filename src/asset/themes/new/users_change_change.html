@@ -1,0 +1,95 @@
+<script src="{$tpldir}/js/jquery.js" type="text/javascript"></script>
+<script src="{$tpldir}/js/jquery.form.js" type="text/javascript"></script>
+<link href="{$tpldir}/css/dialog.css" rel="stylesheet" type="text/css" />	
+{if $_U.change_msg!=""}
+ <div class="daeyou_dialog">
+        <div class="title">错误提醒：</div>
+        <div class="content">{$_U.change_msg}</div>
+ </div>
+{literal}
+<script>
+var api = frameElement.api, W = api.opener;
+api.button({
+    id:'valueOk',
+	name:'取消',
+    foucs:true
+});
+</script>
+{/literal}
+
+{else}
+ <form action="" name="form1" method="post"  id="change_form">
+ 
+ 
+ <div class="daeyou_dialog">
+        <div class="title">转让投资借款：</div>
+        <div class="content">{$_U.change_result.borrow_name}</div>
+ </div>
+ 
+ <div class="daeyou_dialog">
+        <div class="title">最高转让价格：</div>
+        <div class="content">￥<span id="max_account">{$_U.change_result.recover_account_wait}</span></div>
+ </div>
+ 
+ 	<div class="daeyou_dialog" >
+			<div class="title">手续费:</div>
+             <div class="content">￥{$_U.change_result.change_fee}</div>
+		</div>
+ <div class="daeyou_dialog">
+        <div class="title">转让价格：</div>
+        <div class="content"><input name="account" id="change_account" type="text" onkeyup="if(this.value>{$magic.request.account})value={$magic.request.account}"><font color="#FF0000">*</font></div>
+ </div>
+ 
+ <div class="daeyou_dialog">
+        <div class="title">支付密码：</div>
+        <div class="content">	{if $_G.user_result.paypassword==""}<a style="color:#0000FF" target="_blank" href="/?user&q=code/users/paypwd">请先设置交易密码</a>{else}<input type="password"  name="paypassword" id="paypassword" />  {/if} <font color="#FF0000">*</font></div>
+ </div>
+ 
+ <input type="hidden" name="ajax_status" value="1"/> 
+ 	</form>
+    
+    {literal}
+<script>
+var api = frameElement.api, W = api.opener;
+api.button({
+    id:'valueOk',
+	name:'确定',
+	callback:check_form,
+    foucs:true
+});
+
+
+function check_form(){
+    errorMsg ="";
+    var r = /^[0-9]+.?[0-9]*$/　　//正整数 
+	var account=$("#change_account").val();
+    if (account==""){
+        errorMsg =  '* 转让价格不能为空' + '\n';
+    }else if (account<=0 || !r.test(account)){
+        errorMsg =  '* 转让价格错误' + '\n';
+    }else if (parseFloat(account)>parseFloat($("#max_account").html())){
+		errorMsg = '* 转让金额不能大于待回收本息' + '\n';
+	}else if ($("#paypassword").val()==""){
+        errorMsg = "支付密码不能为空";
+    }
+	if (errorMsg.length > 0){
+		alert(errorMsg); return false;
+	}else{
+	   $("#change_form").ajaxSubmit({	  
+            success: function (result, status) {
+                if(parseInt(result)==1){
+                    alert("转让成功");
+                    W.location.href='/?user&q=code/borrow/change&p=now';
+                }else{
+                    alert(result);
+                }
+                    //alert(result);
+                return false;
+            }
+        });
+		return false;
+	}
+}
+</script>{/literal}
+
+    {/if}

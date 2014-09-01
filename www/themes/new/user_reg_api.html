@@ -1,0 +1,116 @@
+{include file="header.html" template_dir="themes/blue"}
+
+	 <div class="conbox t20">
+	 <div class="regist_bor" style="padding-top:20px">
+	 <div class="guy_bg">
+	 <div class="myinfo">
+                        {if $_U.api_result.nickname==""}
+                        <img height="48" width="48" src="{$_U.api_result.profile_image_url}">                        
+                        <div style="height:48px" class="info_1"><p style="color:#245F98">{$_U.api_result.screen_name}&nbsp;&nbsp;</p>你好，欢迎来到内江小贷网。</div>
+                        {else}
+                        <img height="48" width="48" src="{$_U.api_result.figureurl_1}">   
+                        <div style="height:48px" class="info_1"><p style="color:#245F98">{$_U.api_result.nickname}&nbsp;&nbsp;</p>你好，欢迎来到内江小贷网。</div>
+                        {/if}
+                    </div>
+					<div class="sw-findpp">
+					<a href="javascript:document.getElementById('api_reg_div').style.display='block';document.getElementById('api_login_div').style.display='none';"><img src="{$tpldir}/images/reg_gogo.gif" /></a>
+					
+	 </div>
+	 </div>
+	 
+	      <div class="regist_bor1">
+		       <div class="regist_left">
+			   <div class="regist_form" style="display:none" id="api_reg_div">
+			   <form action="/?user&q=reg" method="post" name="api_reg_form" id="api_reg_form">
+					     <ul>
+						     <li><h2>邮箱：</h2>
+							 <span>							 
+						     <div><input type="text" class="text_in" onclick="this.className='text_in1'"  onBlur="this.className='text_in';checkEmail(this.value);" id="email" name="email" ><div class="gou" id="email_notice_pic" ></div></div>
+							      <div class="warning" id="email_notice">请输入常用邮箱</div>							 
+							 </span>
+							  <div class="cle"></div></li>
+							 <li><h2>用户名：</h2>
+							 <span>							 
+							     <div><input type="text" class="text_in" onblur="this.className='text_in';checkUsername(this.value);" id="username"  onclick="this.className='text_in1';" name="username" ><div class="gou" id="username_notice_pic" ></div></div>
+							      <div class="warning" id="username_notice">请输入4-20字符，包含英文、数字和中文。用户名是您在内江小贷网的名号</div>							 
+							 </span>
+							 <div class="cle"></div></li>
+							 <li><h2>密码：</h2>
+							 <span>							 
+							     <div><input type="password" class="text_in" onclick="this.className='text_in1'" onBlur="this.className='text_in';checkPassword(this.value);" id="password" name="password" maxlength="20"><div class="gou" id="password_notice_pic" ></div></div>
+							      <div class="warning" id="password_notice">请输入6到20位的密码</div>							 
+							 </span>
+							
+							 <div class="cle"></div></li>
+                             <li><h2>密码确认：</h2>
+							 <span>							 
+							     <div><input type="password" class="text_in" onclick="this.className='text_in1'" onBlur="this.className='text_in';checkPassword(this.value);" id="confirm_password" name="confirm_password" maxlength="20"><div class="gou" id="password_notice_pic" ></div></div>
+							      <div class="warning" id="password_notice">请输入6到20位的密码</div>							 
+							 </span>
+							
+							 <div class="cle"></div></li>
+                             <li><h2>验证码：</h2>
+							 <span>							 
+							     <input name="valicode" type="text" class="in_text" style="width:70px;height: 20px;"/><img src="/?plugins&q=imgcode" id="valicode" alt="点击刷新" onClick="this.src='/?plugins&q=imgcode&t=' + Math.random();" align="absmiddle" style="cursor:pointer" /><em>看不清？<a href="javascript:void(0)" onClick="$('#valicode').attr('src','/?plugins&q=imgcode&t=' + Math.random());">换一张！</a></em>						 
+							 </span>
+							
+							 <div class="cle"></div></li>
+							<!-- <li><h2>性别：</h2>
+							 <span>
+							 <b><input name="sex" type="radio" value="男" checked="checked" /> 男&nbsp;&nbsp;<input name="sex" type="radio" value="女" /> 女</b></span>
+							 <div class="cle"></div></li>-->
+							 <li><h1>&nbsp;</h1>
+							 <span>							 
+						     <b><input id="reg_status" type="checkbox" value="1" checked="checked"  /> 阅读并同意内江小贷网<a href="/blue/index.html">《内江小贷网使用协议》</a></b>						 
+							 </span>
+							 <div class="cle"></div></li>
+							 <li><h1>&nbsp;</h1>
+							 <span>							 
+						     <b><input id="submit" name="submit" type="submit" value="立即注册" class="btn"  /><input type="hidden" name="type" value="ajax" /></b>						 
+							 </span>
+							 <div class="cle"></div></li>
+						 </ul>
+				 </form>
+				 </div>
+					
+					<div class="login_d_left" style=" margin: 20px 0 0 30px;" id="api_login_div">
+               <h1 style="font-size:16px;color:#666666; font-family:微软雅黑">你已经注册了内江小贷网帐号，登录后我们会帮你绑定帐号。</h1> 
+			   <form action="{$_U.query_url}/reg" method="post" id="api_login_form">
+			   <div class="login_t_bor">
+			        <div style="margin-top:20px; font-size:14px; font-family:'宋体'">用户名:<input type="text" class="in_text1" name="username" id="username" style="color:#999999">
+			        </div>
+					<div style="margin-top:20px;font-size:14px; font-family:'宋体'">密&nbsp;&nbsp;码:<input type="password" name="password"  id="password" class="in_text1"  style="color:#999999">
+					</div>
+					<div style="margin-top:20px;">
+					<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr><td style="padding-left:45px"><input name="" type="checkbox" value="" /> 下次自动登录&nbsp;&nbsp;&nbsp;<a href="#">忘记密码？</a></td>
+  </tr>
+  <tr><td style="padding-left:45px; padding-top:20px"><input type="image" name="submit" src="{$tempdir}/images/bind_go.gif" width="108" height="31" border="0"><input type="hidden" name="type" value="ajax" /></td>
+  </tr>
+</table>
+
+					</div>
+			   </div>		
+			   </form>  
+		  </div>
+			   </div>
+			   <div class="regist_right" style=" padding:20px 0 0 170px">
+                        {if $_U.api_result.nickname==""}
+                        <div class="res_go">新浪微博 -> 内江小贷网</div>
+                        {else}
+                        <div class="res_go">腾讯QQ -> 内江小贷网</div>
+                        {/if}
+			 
+			   <div class="login_wb" style="font-size:12px">
+			   内江小贷网通过第三方的安全接口绑定帐号，为保证您的账户安全，同步发送任何信息之前，都会确认得到您的同意。
+			   </div>
+			   </div>
+			   <div class="cle"></div>
+		  </div>
+	 </div>
+	 </div>
+	  {literal}<script>
+ 
+deayou.use("users",function(s){s.api_reg();});</script>{/literal}
+
+{include file="footer.html" template_dir="themes/blue"}

@@ -1,0 +1,30 @@
+{include file="header.html"}
+<div class="pg-one" id="page-one" >
+    	<div class="container_10 fn-clear mt10">{$_G.system.con_webname}  ><a href="/{$_G.site_result.nid}/index.html" class="f16" >{$_G.site_result.name}</a> </div>
+        <div class="container_10 mt10 fn-clear">
+        	<div class="page-one-nav relative">
+            	<ul class="fn-clear">
+         {loop module="admin" function="GetSiteList" var="var" limit="all" pid=1}
+				       <li {if $_G.site_result.nid==$var.nid}class="current"{/if}><a {if $_G.site_result.nid==$var.nid}class="current"{/if} href="/{$var.nid}/index.html" ><span></span>{$var.name}</a></li>
+					   {/loop}
+                </ul>
+            </div>
+            <div class="page-one-main relative">
+            	<div class="p20"><div class="pb20 f24" id="pageTitle">{$_G.site_result.name}</div>
+                 {list module="articles" function="GetList" var="loop" status=1  site_id="this" }
+				 <ul class="news-list pt20">
+							 {foreach from="$loop.list" item="var"}
+							<li><div class="boder-gray relative">
+									<a target="_blank" class="helpTitle block f16" href="/{$_G.site_result.nid}/a{$var.id}.html">{$var.name}</a>
+									<em class="date gray2">{$var.publish}</em>
+									</div></li>
+							 {/foreach}
+															</ul>
+                            <div class="page-list">{$loop.pages|showpage:"3,dy"}</div>
+					  {/list}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{include file="footer.html"}

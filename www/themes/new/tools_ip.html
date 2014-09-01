@@ -1,0 +1,50 @@
+{include file="header.html"}
+
+    <div class="conbox t20">
+     <div>你的位置：<a href="/tools/index.html">工具箱</a> ><a href="/{$_G.site_result.nid}/index.html">{$_G.site_result.name}</a></div>
+</div>
+{literal}
+<?php
+$_ip = empty($_REQUEST['ip'])?$b[0]:$_REQUEST['ip'];
+require_once(ROOT_PATH.'libs/qqwry.class.php');
+$qqwry=new QQWry; 
+$qqwry->QQWry($_ip); 
+$get_ip =$qqwry->Country;
+?> 
+{/literal}
+
+
+
+<div class="conbox">
+
+<div class="tool_bor">
+          <h1>{$_G.site_result.name}</h1>
+<div class="title" style="padding:10px;">
+
+	<div style="color:#407FB6">在下面输入框中输入您要查询的IP地址,点击查询按钮即可查询该IP所在地区。 </div> 
+		<div>
+
+			<form action="" method="post">IP地址：<input type="text" name="ip" size="20" {literal}value="<?echo $_ip;?>"{/literal} />   <input  id="button" type="submit" value="查 询" /></form> <br /><strong>查询结果:{literal}<?php
+
+
+
+echo " $get_ip";
+
+?> 
+{/literal}</strong><br />
+
+		</div>
+
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+{include file="footer.html"}

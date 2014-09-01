@@ -1,0 +1,48 @@
+{include file="header.html"}
+<div class="conbox t20">
+	<div>
+{articles module="borrow" plugins="Change"  function="GetChangeOne" tender_id="$magic.request.tender_id" status='1' var="var"}
+		<div class="con_bor">
+			<div class="pos_bor"><span>债权转让协议书</span></div>
+			<div class="con1">
+				<div class="con">
+	<div class="t20">
+    <div class="user_main_title1">
+	债权转让协议号：{$var.change_nid}<br />转让人：{$var.username}<br />受让人：{if $var.web_status==1}网站{else}{$var.change_username}{/if}<br />签订日期：{$var.buy_time|date_format:"Y-m-d"}<br /></div>
+	</div><br>
+		第一条：<br>	
+		<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tabyel">
+		 <tr class="head">
+				<td  >投标标题</td>
+				<td  >利率</td>
+				<td  >待还期数/总期数</td>
+				<td  >待收本息</td>
+				<td  >转让价格</td>
+				<td  >转让时间</td>
+				<td  >购买者</td>
+			</tr>
+			{list module='borrow' plugins="Change"  function='GetChangeList' tender_id="$magic.request.tender_id"  status='1' var="item"  user_id='$var.user_id' var="loop"}
+			{foreach from="$loop.list" item="item"}
+			<tr>
+				<td  ><a href="/invest/a{$item.borrow_nid}.html">{$item.borrow_name}</a></td>
+				<td  >{$item.borrow_apr}%</td>
+				<td  >{$item.wait_times}期/{$item._borrow_period}期</td>
+				<td  >￥{$item.recover_account_wait}</td>
+				<td  >￥{$item.account}</td>
+				<td  >{$item.buy_time|date_format}</td>
+				<td  >{if $item.buy_username==""}网站{else}<a href="/u/{$item.buy_userid}">{$item.buy_username}</a>{/if}</td>
+
+			</tr>
+			{/foreach}
+					{/list}
+		</table>
+		{/articles}
+        </br>
+        {articles module="borrow" function="GetProtocol" type="change" var="protocol"}{$protocol.contents|html_entity_decode}{/articles}
+	</div>
+	</div>
+	</div>
+	</div>
+
+<div class="cle"></div>
+{include file="footer.html"}

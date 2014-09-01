@@ -1,0 +1,32 @@
+{include file="header.html"}
+<div class="pg-one" id="page-one" >
+    	<div class="container_10 fn-clear mt10">{$_G.system.con_webname} > <a href="/help/index.html" class="f16">°ïÖúÖÐÐÄ</a></div>
+        <div class="container_10 mt10 fn-clear">
+        	<div class="page-one-nav relative">
+            	<ul class="fn-clear">
+				 {loop module="articles" function="GetTypeList" var="var" limit ="all" pid="2"}
+				<li><a href="/{$var.nid}/index.html" {if $magic.request.nid==$var.nid}style="color:red"{/if}>{$var.name}</a></li>
+			{/loop}
+  
+                </ul>
+            </div>
+            <div class="page-one-main relative">
+            	<div class="p20">
+                	<div class="pb20 f24">{$_G.site_result.name}</div>
+                    <div class="report-list">
+                        <div class="report-tab-container">
+						 {list module="articles" function="GetList" var="loop" status=1  site_id="this" }
+                            <ul class="news-list pt20">
+							{foreach from="$loop.list" item="item" }
+
+	<li><div class="boder-gray"><a class="helpTitle block f16" href="/{$_G.site_result.nid}/{$magic.request.nid}/a{$item.id}.html">{$item.name}</a></div></li>
+  {/foreach}
+                            </ul>
+                            <div class="page-list">{$loop.pages|showpage}</div>{/list}
+						</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{include file="footer.html"}

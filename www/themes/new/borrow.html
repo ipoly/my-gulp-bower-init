@@ -1,0 +1,144 @@
+{include file="header.html"}
+<!-- {articles module="users" function="GetEmailActiveOne" user_id="$_G.user_id" var="Evar"}
+{if $Evar.status!=1 && $_G.user_id!=""}<script>alert("你还没有激活邮箱，请先激活！");location.href='/index.php?user&q=reg&type=email';</script>
+{/if}
+{/articles} -->
+{articles module="users" function="GetEmailActiveOne" user_id="$_G.user_id" var="Evar"}
+<input type="hidden" id="email_status" value="{$Evar.status}">
+{/articles}
+
+ <div class="conbox t20">
+       <div class="jk_Step">
+       <h1>借款是如何进行的</h1>
+    </div>
+    <div class="jk_step_push">
+    <ul>
+	  {if $_G.user_id!=0}
+				<li><span>Ⅰ</span><a href="/?user">注册会员</a></li>
+			{else}
+				<li><span>Ⅰ</span><a href="/?user&q=reg">注册会员</a></li>
+		{/if}
+      <li>
+        <span>Ⅱ</span>
+        <a href="/?user&q=code/borrow/loan&p=loan_realname&type=credit" >实名认证</a>
+      </li>
+      <li>
+        <span>Ⅲ</span>
+        <a href="/?user&q=code/borrow/loan&p=info&type=credit">填写资料</a>
+      </li>
+	  <li>
+        <span>Ⅳ</span>
+        <a href="/?user&q=code/borrow/loan_amount&type=credit">申请额度</a>
+      </li>
+      <li>
+        <span>Ⅴ</span>
+		<a href="/?user&q=code/borrow/loan&p=approve">上传材料</a>
+      </li>
+      
+      <li>
+        <span>Ⅵ</span>
+         <a href="/borrow/index.html">发布借款标</a>
+      </li>
+      <li>
+        <span>Ⅶ</span>
+         <a href="/?user&q=code/borrow/loan&p=now">借款成功</a>
+      </li>
+      <li>
+        <span>Ⅷ</span>
+        <a href="/?user&q=code/borrow/loan&p=repay&type=detail">每月还款</a>
+      </li> 
+    </ul>
+</div>
+{literal}
+<script>
+function choose(x){
+	for($i=1;$i<=6;$i++){
+		$("#borrow_"+$i).removeClass();
+		$("#borrow_info_"+$i).hide();
+	}
+	$("#borrow_"+x).addClass("onn");
+	$("#borrow_info_"+x).show();
+}
+</script>
+{/literal}
+{articles module="users" function="GetUsersAdminOne" var="Avar" user_id=$_G.user_id}
+     <div style="padding-top:10px"><img src="{$tempdir}/images/jk_banner.jpg" border="0" /></div>
+</div>
+{/articles}
+<div class="conbox t20"> 
+  <div class="con_bor">
+ <div class="jk_present">
+       <h1>各类借款标介绍</h1>
+    </div>
+  <div class="jk_present_list">
+   <ul>
+	
+   {loop module="borrow" plugins="Type" function="GetTypeList" limit="all" var="type_var" status=1 user_id='$_G.user_id'} 
+    <li>
+      <div class="jk_present_left"><img src="{$tpldir}/images/jk_present{$key+1}.gif" /></div>
+      <div class="jk_present_right">
+        <div class="jk_pr_top">{$type_var.title}<span> {$type_var.description} </span></div>
+        <div class="jk_pr_bottom">
+        <table border="0" cellspacing="5" cellpadding="0" width="100%">
+  <tr>
+    <td width="30%">贷款额度：<span> {$type_var.amount_first}元 - {$type_var.amount_end}</span>元</td>
+    <td width="26%">贷款利率：<span>{$type_var.apr_first}% - {$type_var.apr_end}%</span></td>
+    <td width="24%">贷款期限：{$type_var.period_first} - {$type_var.period_end}{if $type_var.nid=="day"}天{else}个月{/if}</td>
+    <td width="20%" rowspan="2">
+	<a href="/?user&q=code/borrow/loan&p=new&type_nid={$type_var.nid}&group_id={$magic.request.group_id}" id="borrow_type{$type_var.id}"><img src="{$tpldir}/images/jk_button.gif" width="120" height="41" /></a></td>	
+  </tr>
+  <tr>
+    <td>还款方式：{$type_var.styles_name}</td>
+    <td>投标时间：{$type_var.validate_first} - {$type_var.validate_end} 天 </td>
+    <td>审核时间：{$type_var.check_first} - {$type_var.check_end}天</td>
+    </tr>
+</table>
+        </div>
+      </div>
+    </li>
+    {/loop}
+   </ul>
+  </div>
+    </div>
+</div>
+
+<!--<div class="conbox t20">
+  <div class="jk_help"><h1>借款入门帮助</h1></div>
+   <div class="jk_help_back">
+    <ul>
+	{list module="articles" function="GetList" epage="20" type_nid="borrowhelp" var="loop"}
+			  {foreach from="$loop.list" item="item" }  
+      <li><a href="/help/borrowhelp/a{$item.id}.html">{$item.name}</a></li>
+			{/foreach}
+	{/list}
+    </ul>
+   </div>
+</div>
+    
+<div class="conbox t20">
+  <div class="jk_help"><h1>发布借款 注意事项</h1></div>
+   <div class="jk_help_back">
+    <ul>
+      <li> 借款者发布借款标之前，必须扫描上传本人的身份证,手机认证等等.上传一定的材料证明有足够能力还款的证明。有效证明越多,相应的借款额度会适当提高。</li>
+      <li>借贷过程中产生的费用请查看《资费说明》，均有对借款人和投资人双方进行详细的说明。</li>
+      <li>普通用户申请VIP，申请时将冻结VIP会员费，审核成功即可成为VIP，系统将自动扣除VIP会员费。</li>
+      <li>借款者不得将所借到的借款用于任何违法活动(包括但不限于赌博、吸毒、贩毒、卖淫嫖娼等)及一切高风险投资(如证券期货、彩票等)。 </li>
+      <li>反对一切利用平台进行信用卡套现和其他洗钱等不正当交易行为,否则投资者或本网站有权向公安等有关行政机关举报,追究其相关法律责任。</li>
+    </ul>
+   </div>
+</div>-->
+
+
+<script>
+{literal}
+$("#borrow_realname").click(function(){
+   var dia = $.dialog({
+        id: 'borr_realname',title:'姓名认证',content: 'url:/?user&q=code/borrow/loan&p=realname',max: false,
+    min: false,lock:true});
+    
+})
+deayou.use("borrow",function(e){e.borrow_check();});
+{/literal}
+</script>
+
+{include file="footer.html"}

@@ -1,0 +1,151 @@
+
+
+		<!--好友邀请 开始-->
+
+
+		<div class="user_main_title1" > 
+
+
+			温馨提示：请不要发送邀请信给不熟悉的人士,避免给别人带来不必要的困扰。<br />
+
+
+		</div><br />
+
+
+		<div class="user_right_border">
+
+
+			<div class="l">邀请链接：</div>
+
+
+			<div class="c">
+
+				<textarea cols="40" rows="3" id="invite">http://{$magic.server.SERVER_NAME}/index.php?user&q=reginvite&u={$_U.user_inviteid}</textarea> <input type="button" onclick="doCopy('invite')" value="复制" />
+
+
+			</div>
+
+
+		</div><br /><br />
+
+
+		<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tabyel">
+
+
+			  <form action="" method="post">
+
+
+				<tr class="ytit1" >
+
+
+					<td  >邀请的好友</td>
+
+
+					<td  >注册时间 </td>
+
+
+					<td  >获得的金额</td>
+
+
+				</tr>
+
+
+				{list  module="users" plugins="friends" function="GetFriendsInvite" var="loop" user_id="$_G.user_id" }
+
+
+				{foreach from="$loop.list" item="item"}
+
+
+				<tr >
+
+
+					<td>{$item.friends_username}</td>
+
+
+					<td>{$item.friend_reg_time|date_format:"Y-m-d H:i:s"}</td>
+
+					{articles module="users" plugins="vip" function="GetUsersVip" var="Vvar" user_id="$item.friends_userid"}
+					<td>{if $Vvar.status==1}{$_G.system.con_friend_vip_money}{else}0{/if}</td>
+					{/articles}
+					
+				</tr>
+
+
+				{/foreach}
+				<tr >
+
+					<td colspan="3" align="center">{$loop.pages|showpage}</td>
+
+
+				</tr>
+
+				{/list}
+
+
+			</form>	
+
+
+		</table>
+
+
+		{literal}
+
+
+		<script>
+
+
+		
+
+
+		function doCopy(id) { 
+
+
+		  var codeid;
+
+
+		  codeid=id;
+
+
+		 if (document.all){
+
+
+		   var obj;
+
+
+		   obj=document.getElementById(codeid);
+
+
+		   window.clipboardData.setData("text",obj.innerText)
+
+
+		   alert("邀请链接地址复制成功，你可以直接复制发给你的好友");
+
+
+		 }
+
+
+		 else{
+
+
+		   alert("此功能只能在IE上有效\n\n请在文本域中用Ctrl+A选择再复制");
+
+
+		 }
+
+
+		}
+
+
+
+
+
+		</script>
+
+
+		{/literal}
+
+
+		<!--好友请求 结束-->
+
+
+		

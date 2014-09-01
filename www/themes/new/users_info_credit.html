@@ -1,0 +1,34 @@
+
+		<div class="user_main_title1" >这里是您的认证+还款+投资积分记录，
+        {articles module="borrow" function = "GetBorrowCredit" user_id="$_G.user_id" var="Credit_var"}
+        积分总计：{$Credit_var.credit_tongji}分。
+        {/article}
+        </div>
+		<div class="t20">
+		<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tabyel">
+			{list module="credit" function="GetLogList" user_id="$_G.user_id" type="credit"  epage="10" var="loop"}
+			<tr class="ytit1" >
+
+				<td  >名称</td>
+
+				<td  >积分</td>
+				
+				<td  >时间</td>
+
+			</tr>
+			{foreach from="$loop.list" item="item"}
+			<tr {if $key%2==1} class="ynow"{/if} >
+
+				<td>{$item.type_name}</td>
+
+				<td>{$item.credit}</td>
+				
+				<td>{$item.addtime|date_format}</td>
+			</tr>
+			{/foreach}		
+			
+			
+		</table>
+		</div>
+		<div style="padding:10px 0; text-align:center">{$loop.pages|showpage}</div>
+		{/list}

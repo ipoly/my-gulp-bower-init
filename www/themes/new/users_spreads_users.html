@@ -1,0 +1,68 @@
+
+		<!--好友邀请 开始-->
+        {articles module="spreads" function="GetCountUser" spreads_userid='$_G.user_id'}
+    <div>
+         <div  style="margin:10px"><span class="daochu" style="float:right">&nbsp;</span>邀请人数：<strong> {$var.user_num|default:0}</strong> 人，提成总额 <strong>{$var.account|default:0}</strong> 元，投资提成<strong>{$var.tender.account|default:0}</strong> 元，借款还款提成<strong>{$var.borrow.account|default:0}</strong> 元。</div>
+{/articles}
+    <div>
+
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tabyel">
+
+        <tr class="ytit">
+
+          <td colspan="8"><span style="float: right;">
+          用户名：<input name="username" id="username" value="{$magic.request.username|urldecode}" type="text" /> <input type="button" value="搜索" onclick="sousuo('{$_U.query_url}/users');" />
+</span>
+            我的推广</td>
+
+        </tr>
+
+
+				<tr class="ytit1" >
+					<td  >序号</td>
+					<td  >用户名 </td>
+                    <td  >投资总额</td>
+					<td  >还款总额</td>
+					<td  >操作</td>
+				</tr>
+				{list module="spreads" function="GetUsersList" spreads_userid="$_G.user_id" var="loop" month="request" type="yes" username="$magic.request.username" epage=20}
+		{foreach from="$loop.list" item="item"}
+		<tr {if $key%2==1} class="tr2"{/if}>
+			<td class="main_td1" align="center">{$key+1}</td>
+			<td class="main_td1" align="center">{$item.username}</td>
+			<td class="main_td1" align="center">￥{$item.tender.account_all}</td>
+			<td class="main_td1" align="center">￥{$item.borrow.account_all}</td>
+			<td class="main_td1" align="center">
+              <a href="{$_U.query_url}/log&user_id={$item.user_id}">详情</a>
+            
+            </td>
+		</tr>
+		{/foreach}
+			<tr  >
+            <td colspan="20" align="center" >
+            {$loop.pages|showpage}
+            </td>
+            </tr>
+	{/list}
+			</form>	
+
+
+		</table>
+
+</div>
+</div>
+
+{literal}
+<script>
+function sousuo(urla){
+	if (urla!="") url = urla;
+	var _url = "";
+	var username = $("#username").val();
+	if (username!=null){
+		 _url += "&username="+username;
+	}
+	location.href=url+_url;
+}
+</script>
+
+{/literal}

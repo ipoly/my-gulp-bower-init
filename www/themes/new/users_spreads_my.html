@@ -1,0 +1,84 @@
+<div class="prom_ince"><h1>推广奖励说明：</h1>
+1、邀请好友或其他朋友注册成功，即可建立推广关系；<br />
+2、好友或其他朋友投资成功，系统将自动根据投资推广抽成比例给予奖励；<br />
+3、好友或其他朋友借款成功，还款时系统自动根据借款推广抽成比例给予奖励。
+</div>
+
+
+
+		<div class="user_right_border">
+            <div class="us_ri_ince t20"><h1>如何建立推广：</h1>
+			<span style="padding-top:20px; color:#FF0000">1、发送下面的邀请链接给好友或其他朋友（建议不要发送给不熟悉的人士），通过此链接，注册成功即可成为你的</span>
+			 <table border="0" cellspacing="5" cellpadding="0" style="padding-top:10px">
+  <tr>
+    <td>邀请链接：</td>
+    <td><textarea cols="40" rows="3" id="invite">http://{$magic.server.SERVER_NAME}/index.php?user&q=reginvite&u={$_U.user_inviteid}</textarea> </td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;<input type="button" onclick="doCopy('invite')" value="复制" /></td>
+  </tr>
+</table>
+
+			</div>
+			<div class="recommend t40" style="padding:0 0 30px 0"><h1>2、好友注册时在“填写推荐人”时，填写您的用户名，注册成功即可成为您的推广。如下图：</h1><img src="{$tpldir}/images/recommend.jpg" /><br />
+<h1>3、如好友忘记与您建立推广，则可让好友注册成功后，联系客服人员给予建立推广关系。</h1></div>
+
+		</div>
+		
+
+		{literal}
+
+
+		<script>
+
+
+		
+
+
+		function doCopy(id) { 
+
+
+		  var codeid;
+
+
+		  codeid=id;
+
+
+		 if (document.all){
+
+
+		   var obj;
+
+
+		   obj=document.getElementById(codeid);
+
+
+		   window.clipboardData.setData("text",obj.innerText)
+
+
+		   alert("邀请链接地址复制成功，你可以直接复制发给你的好友");
+
+
+		 }
+
+
+		 else{
+
+
+		   alert("此功能只能在IE上有效\n\n请在文本域中用Ctrl+A选择再复制");
+
+
+		 }
+
+
+		}
+
+
+
+
+
+		</script>
+
+
+		{/literal}

@@ -1,0 +1,194 @@
+{include file="header.html"}
+<div class="trans-login-div absolute white" style="width: 320px; height: 270px; z-index: 2; top: 150px; right: 212px; ">
+        <div class="opacity-div absolute wp100" style="height: 270px; background-color: rgb(0, 0, 0); opacity: 0.2; border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; z-index: -1; background-position: initial initial; background-repeat: initial initial; "></div>
+         {if $_G.user_id==""}
+        <div id="unknown-user" class="hide" style="padding: 20px 35px; display: block; ">
+            <p class="f20">{$_G.system.con_webname}年化收益率</p>
+            <p><span class="f36 org">12%</span><span class="f36">-</span><span class="f36 org">15%</span></p>
+            <p>
+                <span class="f18 org">40</span>&nbsp;倍活期存款收益 
+                <span class="f18 org">5</span>&nbsp;倍余额宝收益
+            </p>
+            <p><a href="/index.php?user&q=reg" class="block wp100 h45 txtC f18 mt10 mb10" style="color:#fff; background:#ff5301; letter-spacing:2px;">免费注册</a></p>
+            <p class="txtRight">已有账号? <a href="/index.php?user&q=login" style="color:#fff; text-decoration:underline;">立即登录</a></p>
+        </div>
+           {else}
+        <div id="logged-in-user" class="" style="padding: 20px 35px; display: block; ">
+            <p class="pt15 pb10 f18">欢迎来到{$_G.system.con_webname}</p>
+            <p>您当前登录账户是：<span class="user-name org">{$_G.user_result.username}</span></p>
+            <p class="txtC"><a href="/?user" class="block wp100 h45 f16 mt15" style="color:#fff; background:#ff5301; letter-spacing:1px;">进入我的账户</a></p>
+        </div>
+        {/if}
+    </div>
+    <div class="pg-header-banner">
+    	<div id="full-screen-slider">
+            <ul id="slides">
+              			{loop module="scrollpic" function="GetList" limit="5" status="1"}
+                <li style="background:url('{$var.pic}') no-repeat center top">
+                    <a href="{$var.url}" target="_blank"></a>
+                </li>
+       {/loop} 
+            </ul>
+    	</div>
+    </div>
+    <div class="pg-header-post">
+    	<div class="container_10">
+        	<div class="grid_1 pg-header-post-grid pg-header-post-title"><a href="/publicnotice/index.html" class="blue">官方公告</a></div>
+            <div class="grid_9 pg-header-post-grid pg-header-post-cnt" id="pg-header-post-cnt">
+            <ul class="notice-list" style="margin-top: 0px; ">
+				{loop module="articles" function="GetList" var="var" limit="0,5" type_id="11" status=1}
+			<li class="ti10 relative"><a target="_blank" class="f16" href="/{$var.type_nid}/a{$var.id}.html">{$var.name}</a><a target="_blank" class="btn-4-db ti0 txtC more" href="/{$var.type_nid}/a{$var.id}.html">查看详细</a><span class="c date">{$var.publish|truncate:10}</span></li>
+			  {/loop}
+			</ul>
+            </div>
+        </div>
+    </div>
+    <div id="pg-index" class="pt30">
+    	<div class="container_10" style="height:215px;">
+ 			<ul class="intro">
+            	<li class="grid_03">
+                	<a href="/invest/index.html" class="intro-link" target="_blank">
+                        <span class="intro-fig intro-fig-1"></span>
+                        <span class="intro-title h3 mt10">投资理财</span>
+                        <span class="intro-desc">简单4步注册成为投资人，享受50元起投超低门槛以及12%-15%稳定高额年化收益。更可以自主设置自动投标，让您理财更便捷。</span>
+                  	</a>
+                </li>
+            	<li class="grid_03">
+                	<a href="borrow/index.html" class="intro-link" target="_blank">
+                        <span class="intro-fig intro-fig-2"></span>
+                        <span class="intro-title h3 mt10">借款融资</span>
+                        <span class="intro-desc">提交资料审核成功后成为借款人，通过考察划拨额度、发布借款标融资 。资料、手续齐全最快当天放款。</span>
+                  	</a>
+                </li>
+            	<li class="grid_03">
+                	<a href="/zjaq/index.html" class="intro-link" target="_blank">
+                        <span class="intro-fig intro-fig-3"></span>
+                        <span class="intro-title h3 mt10">安全保障</span>
+                        <span class="intro-desc">严格的风控流程降低风险，加入本息保障计划可享受100%本息担保。更 有风险准备金兜底，第三方担保驻阵。</span>
+                  	</a>
+                </li>
+            </ul>       
+        </div>
+        <div class="container_10 pt30" style="height:330px;">
+        	<div class="grid_10 invest-title f16">最新理财产品<span class="invest-bg iblock"></span></div>
+            <div class="grid_10 pt10">
+            	<table class="invest-list"  cellspacing="0">
+                   <thead>
+					 <tr >
+					   <th class="list-title gray fLeft" style='width:220px;'>项目名称</th>
+					   <th class="list-title gray fLeft" style='width:85px;'>信用等级</th>
+					   <th class="list-title gray fLeft" style='width:110px;text-align:right;padding-right:25px;'>融资金额</th>
+					   <th class="list-title gray fLeft" style='width:115px;'>年利率</th>
+					   <th class="list-title gray fLeft" style='width:95px;'>借款期限</th>
+					   <th class="list-title gray w210 fLeft">投标进度</th>
+					   <th class="list-title gray fLeft" style='width:110px;'>&nbsp;</th>
+					 </tr>
+                   </thead>
+
+                    <tbody id="borrow_list" style="height:204px; display:inline;">
+					
+					
+					{loop module="borrow" function="GetList" var="var" limit="4" status_nid="invest"  order="addtime" }	
+   	<tr class='invest-list-item fn-clear block' style='height:51px;'>
+   	<td class='fLeft list-field f16' style='height:50px;width:220px;'><em class='icon-invest-type f14'>{$var.borrow_type|linkages:'borrow_all_type'}</em>   	<a target='_blank' href='/invest/a{$var.borrow_nid}.html'  class='toea'>{$var.name}</a></td>
+   	<td class='fLeft list-field txtC' style='height:50px;width:85px;'>{articles module="borrow" function = "GetBorrowCredit" user_id="$var.user_id" var="Credit_var"}{$Credit_var.credit_total|credit:"borrow"}{/articles}</td>
+   	<td class='fLeft list-field txtRight' style='width:105px;padding-right:30px;'>{$var.account}<small>元</small></td>
+   	<td class='fLeft list-field txtC' style='width:115px;'>{$var.borrow_apr}<small>%</small></td>
+   	<td class='fLeft list-field txtC' style='width:95px;'>{$var.borrow_period_name}<small></small></td>
+   	   	<td class='w210 fLeft list-field txtLeft pl30'><span class='invest-list-speed-3 invest-list-speed mt20 mr10'><span class='bg' style='width:{$var.borrow_account_scale|round}%'></span><span class='point' style='left:-3.0%; top:-4px;'></span></span> <span class='ml5 w50'>{$var.borrow_account_scale|round}<small>%</small></span></td>
+				<td class='w80 fLeft list-field txtC'><a href='/invest/a{$var.borrow_nid}.html' class='btn-invest {if $$var.end_time<0}display mt15{elseif $var.borrow_account_scale==100.00}display mt15{else}mt10{/if}'>{if $$var.end_time<0}还款中{elseif $var.borrow_account_scale==100.00}已满标{else}投标{/if}</a></td></tr>
+		   
+		   
+		    {/loop} 
+		   
+		
+
+		                 	   </tbody>
+			   </table> 
+                    <div class="invest-list-more txtC mt5"><a href="invest/index.html">点击查看更多理财产品</a></div>
+             
+            </div>
+        </div>
+        <div class="index-data">
+        	<div class="container_10 index-data-bg">
+             <!-- 	<span class="more fRight iblock mt20"><a class="hide" href="#">查看更多</a></span>
+               <span class="fLeft data mt10">累计成交额：<em id="deal_account">63,200</em> 万元， 注册用户达到<em id="reg_num">72,369</em>人，为理财人赚取收益：<em id="earn_money">3,000</em>万元</span>  -->
+                  <table class="leiji">
+                    <tbody><tr>
+                        <th class="chenjiao" width="220">累计成交额<small>(元)</small></th>
+                        <th class="chenjiao" width="260">为理财人赚取收益<small>(元)</small></th>
+                        <th class="chenjiao" width="220">已还款<small>(元)</small></th>
+						<th width="80"></th>
+                    </tr>
+                    <tr>
+					{article module="other" function="Getuser_zong" var="uservar"} 
+                        <td class="tdata" id="deal_account">{$uservar.borrow_all}</td>
+                        <td class="tdata" id="earn_money">{$uservar.user_num}</td>
+                        <td class="tdata" id="deposit">{$uservar.repay}</td>
+						<td width="80"></td>
+						 	{/article}
+                    </tr>
+					<tr>
+					  <td colspan="3" class="yesterday">	
+					  {article module="borrow" function="Getuser_zong" var="uservar"}			 
+                  年化平均收益为<span id="yes_success_account" class="wan">{$uservar.lixi}%</span>　&nbsp;
+				  昨日成交量<span id="yes_success_count" class="wan">{$uservar.borrow_Yesterday_num}</span>　&nbsp;
+				  今日已成交量<span id="yes_tender_count" class="wan">{$uservar.borrow_Today_num}</span>
+				   {/article} 
+					  </td>
+					  <td width="80"></td>
+					</tr>
+                </tbody></table>
+   
+                <!-- <span class="fLeft data mt10">累计成交额：<em id="deal_account">63,200</em> 万元，为理财人赚取收益：<em id="earn_money">3,000</em>万元， 风险准备金总额为<em id="deposit">555</em>万元</span> -->
+            </div>
+        </div>
+        <div class="container_10 pt30" style="height:310px;">
+            <div class="grid_5">
+                <div class=" invest-title f16">行业新闻<span class="invest-bg div2 iblock"></span></div>
+                <div class="">
+                    <ul id="news-list" class="news-list pt20">
+						{loop module="articles" function="GetList" var="var" limit="0,4" type_id="40" status=1}
+                    <li><p><a target="_blank" class="f16" href="/{$var.type_nid}/a{$var.id}.html">{$var.name}</a></p></li>
+           {/loop}
+                    </ul>
+                    <div class="news-list-more txtC"><a href="/news/index.html">点击查看更多行业新闻</a></div>
+                </div>
+            </div>
+        	
+            <div class="grid_5" style="">
+                <div class=" invest-title f16">媒体报道<span class="invest-bg div2 iblock"></span></div>
+                <div class="">
+                    <ul id="media-list" class="news-list pt20">
+  			{loop module="articles" function="GetList" var="var" limit="0,4" type_id="22" status=1}
+                    <li><p><a target="_blank" class="f16" href="/{$var.type_nid}/a{$var.id}.html">{$var.name}</a></p></li>
+           {/loop}
+                    </ul>
+                    <div class="news-list-more txtC"><a href="/media/index.html">点击查看更多媒体报道</a></div>
+                </div>
+            </div>
+
+            
+        </div>    
+    </div>
+    
+	
+	{include file="footer.html"}
+</div>
+{literal}
+<script>
+//新闻滚动
+function AutoScroll(obj){
+        $(obj).find("ul:first").animate({
+                marginTop:"-51px"
+        },500,function(){
+                $(this).css({marginTop:"0px"}).find("li:first").appendTo(this);
+        });
+}
+$(document).ready(function(){
+    setInterval('AutoScroll("#pg-header-post-cnt")',4000); 
+}) 
+</script>
+{/literal}
+</body>
+</html>

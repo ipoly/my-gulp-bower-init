@@ -1,0 +1,261 @@
+{include file="header.html"}
+<div style="height: 300px;"></div>
+<div id="info_check">
+<div class="windows_div_bgg"></div>
+<div class="pop_divg">
+    <div class="close1"><a id="close_win" onclick='$("#info_check").css("display","none");' title="关闭窗口" style="cursor:pointer;"></a></div>
+
+{articles module="rating" function="GetInfoOne" user_id="$_G.user_id" var="info"}
+
+{if $_G.user_info.email_status!=1}
+
+<div id="step1">
+	 <div style="text-align:center"><img src="{$tempdir}/images/step_1.gif" width="635" height="43"></div>
+	 <div class="t20">
+	 <table width="100%" border="0" cellpadding="0" cellspacing="0">
+      <tr>
+        <td width="24%" align="center" valign="top"><img src="{$tempdir}/images/youx_lcon.gif" width="112" height="113" /></td>
+        <td width="76%" align="left" valign="top"><table width="100%" cellspacing="10" cellpadding="0" border="0">
+          <tbody>
+            <tr>
+              <td width="17%" valign="middle" align="right" >输入邮箱：</td>
+              <td width="83%" valign="middle"><input readonly="readonly" style="padding-left: 6px;" name="ajax_email" id="ajax_email" type="text" class="in_text" value="{$_G.user_result.email}" />&nbsp;&nbsp;<input type="button" id="ajax_send_email" name="ajax_send_email" value="发送激活信" style="height: 30px; width:80px;"/></td>
+            </tr>
+            <tr>
+              <td valign="top">&nbsp;</td>
+              <td valign="top">
+              <p id="ajax_email_msg" style="color: red;"></p>
+              <p>登录您的邮箱查收，并点击邮件中的链接，完成激活。激活成功后<br />
+                    请点击下一步，进行身份信息认证。</p></td>
+            </tr>
+            <tr>
+              <td valign="top">&nbsp;</td>
+              <td valign="middle"><a href="?user&q=code/borrow/loan&p=tender&type=realname"><img src="{$tempdir}/images/next_lcon.gif" width="186" height="33" /></a>&nbsp;&nbsp;<a href="{$_U.emailurl}" target="_blank">请点击这里登陆您的邮箱</a></td>
+            </tr>
+          </tbody>
+        </table></td>
+      </tr>
+    </table>
+
+	 </div>
+	 <div class="tc_warning">
+	    <span>请注意以下事项</span><br />
+<span style='font-size:12px;color:#999999;'>1、如果收件箱里没有收到该邮件，请查看垃圾箱，以免被误判为垃圾邮件。</span><br />
+       <span style='font-size:12px;color:#999999;'>2、如果您长时间没有收到我们的激活邮件，请点击这里<a href='#' onclick='sendValidEmail()' style='text-decoration:none; color:#333;'>【重新发送激活邮件】</a></span>
+	 </div>
+</div>
+{elseif $info.realname=="" || $info.card_id==""}
+
+
+
+<div id="step2">
+	 <div style="text-align:center"><img src="{$tempdir}/images/step_2.gif" width="635" height="43"></div>
+	 <div class="t20">
+	 <table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="26%" align="center" valign="top"><img src="{$tempdir}/images/man_icon.gif" width="117" height="139" /></td>
+    <td width="74%" align="left" valign="top"><table width="100%" cellspacing="10" cellpadding="0" border="0">
+  <tbody>
+  <form action="?user&q=code/borrow/loan&p=tender" method="post" id="realname_form">
+  <tr>
+    <td width="16%">真实姓名：</td>
+  <td width="84%"><input name="realname" {if $info.realname!=""} value="{$info.realname|truncate:1}**" readonly="true" {/if} id="realname" type="text" class="in_text4"/></td>
+</tr>
+  <tr>
+    <td width="16%">身份证号：</td>
+   <td width="84%"><input name="card_id" {if $info.card_id!=""} value="{$info.card_id}" readonly="true" {/if} id="card_id" type="text" class="in_text4"/></td>
+</tr>
+  <tr>
+    <td></td>
+    <td>
+    <p id="ajax_realname_msg" style="color: red;"></p>
+    <p>您必须填写您的真实姓名和身份证号码虚假的身份信息</p>
+      <p>是不能通过验证的。</p>
+    </td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><img width="186" id="ajax_send_realname" height="33" src="{$tempdir}/images/next_lcon.gif" style="cursor: pointer;"></td>
+  </tr>
+  </form>
+</tbody></table></td>
+  </tr>
+</table>
+
+	 </div>
+	 <div class="tc_warning">
+	 <span>请注意以下事项</span><br />
+1、我们将通过全国公民身份信息中心（NCIIC）系统对您提交的身份进行审核。<br />
+2、实名认证是您绑定银行卡和使用{$_G.system.con_webname}核心功能的必要条件。<br />
+3、如果您在验证过程中，出现任何问题，请致电 {$_G.system.con_header_num}
+	 </div>
+</div>
+
+
+{elseif $_G.user_info.phone_status!=1}
+<div style="text-align:center"><img src="{$tempdir}/images/step_3.gif" width="635" height="43"></div>
+	 <div class="t20">
+
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+          <tr>
+            <td width="26%" align="center" valign="top"><img src="{$tempdir}/images/phone_icon.gif" width="144" height="147" /></td>
+            <td width="74%" align="left" valign="top"><table width="100%" cellspacing="10" cellpadding="0" border="0">
+          <tbody>
+            <tr>
+            <td width="16%">手机号码：</td>
+            <td height="54" colspan="2"><input type="text" {if $info.phone!=""} value="{$info.phone}" readonly="true"{/if} name="ajax_phone" id="ajax_phone" onkeyup="value=value.replace(/[^0-9Xx]/g,'')"  class="in_text4" style="width: 150px;" /> &nbsp;<input type="button" id="ajax_phone_get" value="获取验证码" /><br><span style="color:red" id="ajax_phone_msg"></span></td>
+        	</tr>
+          <tr>
+            <td width="16%">验证码：</td>
+             <td width="84%"><input  name="ajax_phone_code" id="ajax_phone_code" onkeyup="value=value.replace(/[^0-9Xx]/g,'')" class="in_text4"  style="width:150px"/></td>
+          </tr>
+        
+          <tr>
+            <td valign="top">&nbsp;</td>
+            <td valign="top" colspan="2"><p>您在{$_G.system.con_webname}的充值提现等重要操作，都需要通过手机动态<br>
+        	验证码！
+        请填写您真实的手机号码，完成手机验证</p></td>
+          </tr>
+          <tr>
+            <td valign="top">&nbsp;</td>
+            <td valign="bottom" colspan="2"><img src="{$tempdir}/images/next_lcon1.gif" style="cursor:pointer" width="185" height="32" id="ajax_phone_submit_liucheng" /></td>
+          </tr>
+        </tbody></table></td>
+          </tr>
+        </table>
+
+      </div>
+	 <div class="tc_warning">
+	 <span>请注意以下事项</span><br />
+1、根据省份、城市、地区不同，一般会在5秒-5分钟内收到验证码。<br />
+2、如果您在验证过程中，出现任何问题，请致电 {$_G.system.con_header_num}
+	 </div>
+
+{else}
+	<div style="text-align:center"><img src="{$tpldir}/images/step_4.gif" width="635" height="43"></div>
+	 <div style=" margin:30px auto; text-align:center"><img src="{$tempdir}/images/success2.gif" /></div>
+                <!--这里定义倒计时开始数值-->
+                <div style="padding-left: 125px;">验证成功，将于 <span id="totalSecond">6</span> 秒后跳转到用户中心，如不能正常跳转，请
+                <a href="/?user">点击我</a>！</div>
+
+                {literal}
+                    <!--定义js变量及方法-->
+                    <script language="javascript" type="text/javascript">
+                    var second = document.getElementById('totalSecond').textContent;
+                    
+                    if (navigator.appName.indexOf("Explorer") > -1)
+                    {
+                    second = document.getElementById('totalSecond').innerText; 
+                    } else
+                    {
+                    second = document.getElementById('totalSecond').textContent; 
+                    }
+                    setInterval("redirect()", 1000); 
+                    function redirect()
+                    {
+                        if (second < 0){
+                            location.href = '/?user';
+                        }else{
+                            if (navigator.appName.indexOf("Explorer") > -1){
+                                document.getElementById('totalSecond').innerText = second--; 
+                            }else{
+                                document.getElementById('totalSecond').textContent = second--; 
+                            }
+                        }
+                    }
+                    </script>
+                    {/literal}
+{/if}
+{/articles}	
+
+</div>
+</div>
+{literal}
+<script>
+
+function sendValidEmail(){
+    //AJAX发送激活邮件
+  
+    	var reg1 = /([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)/;
+        var o=$("#ajax_send_email");
+    	var wait=120;
+    	if ($("#ajax_email").val()==""){
+    		$("#ajax_email_msg").html('请输入您常用的邮箱');
+    	}else if (!reg1.exec($("#ajax_email").val())) {
+    		$("#ajax_email_msg").html('邮箱格式不正确');
+    	}else{
+    		var email = $("#ajax_email").val();
+            var style = "ajax";
+    		$.post("/?user&q=code/borrow/loan&p=tender",{ email: email,style:style},
+    		function (result){
+    			if(result=="send_success"){
+    				$("#ajax_email_msg").html('激活邮件已经发送到您的邮箱,请登陆邮箱进行认证');
+                    var timeID=setInterval(function(){o.val("重新发送"+wait);o.attr("disabled", "true");wait=wait-1;if(wait==-1){clearInterval(timeID);o.val("获取验证码");o.removeAttr("disabled")}},1000); 
+    			}else if(result=="send_error"){
+    			     $("#ajax_email_msg").html('发送失败，请跟管理员联系');
+    			}else if(result=="send_wait"){
+    			     $("#ajax_email_msg").html('请2分钟后再次请求');
+    			}else if(result=="email_no"){
+    			     $("#ajax_email_msg").html('你重新填写的邮箱已经存在');
+    			}					
+    		});
+    	}
+    		
+ 
+}
+//AJAX发送激活邮件
+$("#ajax_send_email").click(function(){
+	var reg1 = /([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)/;
+    var o=$("#ajax_send_email");
+	var wait=120;
+	if ($("#ajax_email").val()==""){
+		$("#ajax_email_msg").html('请输入您常用的邮箱');
+	}else if (!reg1.exec($("#ajax_email").val())) {
+		$("#ajax_email_msg").html('邮箱格式不正确');
+	}else{
+		var email = $("#ajax_email").val();
+        var style = "ajax";
+		$.post("/?user&q=code/borrow/loan&p=tender",{ email: email,style:style},
+		function (result){
+			if(result=="send_success"){
+				$("#ajax_email_msg").html('激活邮件已经发送到您的邮箱,请登陆邮箱进行认证');
+                var timeID=setInterval(function(){o.val("重新发送"+wait);o.attr("disabled", "true");wait=wait-1;if(wait==-1){clearInterval(timeID);o.val("获取验证码");o.removeAttr("disabled")}},1000); 
+			}else if(result=="send_error"){
+			     $("#ajax_email_msg").html('发送失败，请跟管理员联系');
+			}else if(result=="send_wait"){
+			     $("#ajax_email_msg").html('请2分钟后再次请求');
+			}else if(result=="email_no"){
+			     $("#ajax_email_msg").html('你重新填写的邮箱已经存在');
+			}					
+		});
+	}
+		
+ })
+ //AJAX进行身份信息认证
+$("#ajax_send_realname").click(function(){
+    var realname = $("#realname").val();
+    var card_id = $("#card_id").val();
+    if(realname==""){
+        $("#ajax_realname_msg").html('真实姓名不能为空！');
+    }else if(card_id==""){
+        $("#ajax_realname_msg").html('身份证号码不能为空！');
+    }else{
+        $.post("/?user&q=code/borrow/loan&p=tender",{ realname: realname,card_id:card_id},
+        function (result){
+    		if(result=="send_success"){
+    			location.href = "?user&q=code/borrow/loan&p=tender&type=phone";
+    		}else if(result=="card_id_error"){
+    		     $("#ajax_realname_msg").html('身份证号码格式不正确！');
+    		}					
+    	});
+    }
+})
+ 
+//关闭窗口，跳转至用户中心
+$("#close_win").click(function(){
+    location.href = "?user";
+});
+</script>
+{/literal}
+{literal}<script>deayou.use("rating",function(e){e.check_phone();});</script>{/literal}
+{include file="footer.html"}

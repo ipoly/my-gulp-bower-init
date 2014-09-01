@@ -1,0 +1,33 @@
+{include file="header.html"}
+<div class="pg-one" id="page-one" >
+    	<div class="container_10 fn-clear mt10">{$_G.system.con_webname}  ><a href="/{$_G.site_result.nid}/index.html" class="f16" >{$_G.site_result.name}</a> </div>
+        <div class="container_10 mt10 fn-clear">
+        	<div class="page-one-nav relative">
+            	<ul class="fn-clear">
+         {loop module="admin" function="GetSiteList" var="var" limit="all" pid=1}
+				       <li {if $_G.site_result.nid==$var.nid}class="current"{/if}><a {if $_G.site_result.nid==$var.nid}class="current"{/if} href="/{$var.nid}/index.html" ><span></span>{$var.name}</a></li>
+					   {/loop}
+                </ul>
+            </div>
+            <div class="page-one-main relative">
+            	<div class="p20"><div class="mt10 f24 relative" id="new-title">
+					{$_G.articles.name}<span id="new-addtime" class="absolute f16" style="right:0px; top:10px;">{$_G.articles.publish}</span>
+					</div>
+             <div class="report-list mt30">
+                        <div class="report-tab-container f16 fn-clear">
+    {$_G.articles.contents}
+
+                        <div class="f14" style="float:right">
+                        {if $_G.articles.formed}文章来源：{$_G.articles.formed}{/if}
+                        {if $_G.articles.author}作者：{$_G.articles.author}{/if}
+                        </div>
+						</div>
+
+                    </div>
+                          
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{include file="footer.html"}

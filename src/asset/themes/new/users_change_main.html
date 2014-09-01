@@ -1,0 +1,18 @@
+ {if $magic.request.p==''}
+    		  {include file="users_change_can.html"}
+			  
+            {elseif $magic.request.p=='now'}
+    		  {include file="users_change_now.html"}
+			  
+			{elseif $magic.request.p=='success'}
+    		  {include file="users_change_success.html"}
+              
+			{elseif $magic.request.p=='buys'}
+    		  {include file="users_change_buys.html"}
+              
+			{elseif $magic.request.p=='wait'}
+    		  {include file="users_change_wait.html"}
+			{elseif $magic.request.p=='cancels'}
+    		  {include file="users_change_cancels.html"}
+              
+			{/if}

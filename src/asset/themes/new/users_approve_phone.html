@@ -1,0 +1,111 @@
+{if $magic.request.type_edit=="edit_phone"}
+    {if $magic.request.phone_code==""}
+    <div class="user_main_title1">
+    <b>第一步：核实原手机信息</b></div>
+    {articles module="approve" function="GetSmsOne" user_id="$_G.user_id" var="pvar"}
+      <table width="100%" border="0" cellspacing="15" cellpadding="0">  
+      <form action="" method="post" onsubmit="return checkform();">
+      <tr>
+        <td style="text-align:right"><span>*</span>原手机号码：
+        </td>
+        <td>{if $pvar.status=="1"}
+           <b>{$pvar._phone}</b>
+           {/if}
+         <input type="hidden" name="ajax_phone" id="ajax_phone" value="{$pvar.phone}" /> <input type="button" id="ajax_phone_get_tixian" value="获取验证码" />
+        </td>
+      </tr>  
+      <tr>
+        <td style="text-align:right"><span>*</span>手机验证码：</td>
+        <td><input type="text" name="ajax_phone_code" id="ajax_phone_code" onkeyup="value=value.replace(/[^0-9Xx]/g,'')" /> </td>
+      </tr>
+      <tr>
+        <td style="text-align:right"><span>*</span>交易密码：</td>
+        <td><input type="password" name="paypwd" id="paypwd" /> </td>
+      </tr>
+      <tr>
+        <td style="text-align:right">&nbsp; </td>
+        <td><input  id="button" type="submit" value="下一步" id="" /> <span style="color:red" id="ajax_phone_msg"></span></td>
+        </tr>
+    	<input type="hidden" name="type_edit"  id="type_edit" value="edit_phone_1">
+        </form>
+    </table>
+    {/articles}
+    {else}   
+    <div class="user_main_title1">
+    <b>第二步：新手机号码验证</b></div>
+    {articles module="approve" function="GetSmsOne" user_id="$_G.user_id" var="pvar"}
+        {if $pvar.phone==$magic.request.phone_code}
+        <table width="100%" border="0" cellspacing="15" cellpadding="0">
+          <tr>
+            <td style="text-align:right"><span>*</span>新手机号码：</td>
+            <td>
+             <input type="text" name="ajax_phone" id="ajax_phone" onkeyup="value=value.replace(/[^0-9Xx]/g,'')" /> <input type="button" id="ajax_phone_get" value="获取验证码" />
+            </td>
+            </tr>  
+          <tr>
+            <td style="text-align:right"><span>*</span>验 证 码 ：</td>
+            <td><input type="text" name="ajax_phone_code" id="ajax_phone_code" onkeyup="value=value.replace(/[^0-9Xx]/g,'')" /> </td>
+            </tr>
+          <tr>
+            <td style="text-align:right">&nbsp; </td>
+            <td><input  id="button" type="submit" value="确认认证" id="ajax_phone_submit" /> <span style="color:red" id="ajax_phone_msg"></span></td>
+            </tr>
+        	<input type="hidden" name="type"  id="type" value="1">
+        </table>
+        {else}
+        <div class="user_main_title1">
+        手机重新验证操作步骤有误，请重新验证[<a href="/?user&q=code/approve/phone&type_edit=edit_phone">返回</a>]</div>
+        {/if}
+    {/articles}
+    {/if}
+{else}
+<!--手机认证 开始-->
+{articles module="approve" function="GetSmsOne" user_id="$_G.user_id" var="pvar"}
+	{if $pvar.status=="1"}
+		<div class="user_main_title1">您的手机已经通过认证，认证的手机号码为：<b>{$pvar._phone}</b>&nbsp;[<a href="/?user&q=code/approve/phone&type_edit=edit_phone">修改</a>]</div>
+        <div class="user_main_title1"><br>*温馨提示：若原手机号已丢失或停用，不能修改时，请联系客服</div>
+	{else}
+		<div class="user_main_title1">
+		<b>您的手机还没通过认证。</b></div>
+          <table width="100%" border="0" cellspacing="15" cellpadding="0">  
+          <tr>
+            <td style="text-align:right"><span>*</span>手机号码：</td>
+            <td>
+             <input type="text" name="ajax_phone" id="ajax_phone" onkeyup="value=value.replace(/[^0-9Xx]/g,'')" /> <input type="button" id="ajax_phone_get" value="获取验证码" />
+            </td>
+            </tr>  
+          <tr>
+            <td style="text-align:right"><span>*</span>验 证 码 ：</td>
+            <td><input type="text" name="ajax_phone_code" id="ajax_phone_code" onkeyup="value=value.replace(/[^0-9Xx]/g,'')" /> </td>
+            </tr>
+          <tr>
+            <td style="text-align:right">&nbsp; </td>
+            <td><input  id="button" type="submit" value="确认认证" id="ajax_phone_submit" /> <span style="color:red" id="ajax_phone_msg"></span></td>
+            </tr>
+        	<input type="hidden" name="type"  id="type" value="1">
+        </table>
+	{/if}
+{/articles}
+{/if}
+<script>{literal}deayou.use("rating",function(e){e.check_phone();});</script>{/literal}
+{literal}
+<script>
+function checkform(){
+	var paypwd = $("#paypwd").val();
+    var ajax_phone_code = $("#ajax_phone_code").val();
+	var msg = '';
+    if(ajax_phone_code==''){
+		msg += "手机验证码不能为空\n";
+	}	
+	if(paypwd==''){
+		msg += "交易密码不能为空\n";		
+	}
+    
+	if(msg!=''){
+		alert(msg);
+		return false;
+	}
+	
+}
+</script>
+{/literal}

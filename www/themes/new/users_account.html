@@ -1,0 +1,80 @@
+{include file="header.html"}
+<div class="pg-account" id="pg-account-index">
+
+    	<div class="container_10 fn-clear mt10">
+{include file="user_menu.html"}
+<div class="grid_08">
+<div>
+                    	<div>
+                     <ul class="account-tab fn-clear">
+                         {if $_U.query_type=="detail" || $_U.query_type=="log"  }
+					 <li class="fLeft account-tab-item {if $_U.query_type=="detail"}current{/if}"><a  class="account-tab-item-link {if $_U.query_type=="detail"}current{/if}" href="{$_U.query_url}/detail" >账户详情</a></li>
+				<li class="fLeft account-tab-item {if $_U.query_type=="log"} current{/if}"><a href="{$_U.query_url}/log" class="account-tab-item-link {if $_U.query_type=="log"} current{/if}">资金记录</a></li>
+                </ul> 
+            {elseif  $_U.query_type=="recharge_new" ||  $_U.query_type=="recharge" || $_U.query_type=="cash_new" ||  $_U.query_type=="cash"}
+            
+            <li class="fLeft account-tab-item {if $_U.query_type=="recharge_new"}current{/if}"><a  class="account-tab-item-link {if $_U.query_type=="recharge_new"}current{/if}" href="{$_U.query_url}/recharge_new" {if $_U.query_type=="recharge_new"} class="onn"{/if}>充 值</a></li>
+            <li class="fLeft account-tab-item {if $_U.query_type=="recharge"}current{/if}"><a  class="account-tab-item-link {if $_U.query_type=="recharge"}current{/if}" href="{$_U.query_url}/recharge" {if $_U.query_type=="recharge"} class="onn"{/if}>充值记录</a></li>
+            <li class="fLeft account-tab-item {if $_U.query_type=="cash_new"}current{/if}"><a  class="account-tab-item-link {if $_U.query_type=="cash_new"}current{/if}" href="{$_U.query_url}/cash_new" {if $_U.query_type=="cash_new"} class="onn"{/if}>提 现</a></li>
+            <li class="fLeft account-tab-item {if $_U.query_type=="cash"}current{/if}"><a  class="account-tab-item-link {if $_U.query_type=="cash"}current{/if}" href="{$_U.query_url}/cash" {if $_U.query_type=="cash"} class="onn"{/if}>提现记录</a></li>
+			
+			{elseif $_U.query_type=="bank_new" ||  $_U.query_type=="bank"}
+			 <li class="fLeft account-tab-item {if $_U.query_type=="bank_new"}current{/if}"><a  class="account-tab-item-link {if $_U.query_type=="bank_new"}current{/if}" href="{$_U.query_url}/bank_new" >银行账号</a></li>
+		
+				<!-- <li><a href="{$_U.query_url}/bank" {if $_U.query_type=="bank"} class="onn"{/if}>银行账户</a></li> -->
+				
+			{elseif $_U.query_type=="tender_count" }
+			 <li class="fLeft account-tab-item {if $_U.query_type=="tender_count"}current{/if}"><a  class="account-tab-item-link {if $_U.query_type=="tender_count"}current{/if}" href="{$_U.query_url}/tender_count" >投资统计</a></li>
+            {/if}
+          </ul>
+        </div>
+<div class="account-tab-content p20 pt10 tenderbox" style="display:block;">
+		
+		{if $_U.query_type=="log"}
+		
+		{include file="users_account_log.html"}
+		
+		{elseif $_U.query_type=="detail"}
+		
+		{include file="users_account_detail.html"}	
+		
+		{elseif $_U.query_type=="recharge"}
+		
+		{include file="users_account_recharge.html"}	
+		
+		{elseif $_U.query_type=="recharge_new"}
+		
+		{include file="users_account_recharge_new.html"}	
+		
+		{elseif $_U.query_type=="cash"}
+		
+		{include file="users_account_cash.html"}		
+		
+		{elseif $_U.query_type=="cash_new"}
+		
+		{include file="users_account_cash_new.html"}
+		
+		{elseif $_U.query_type=="tender_count" }
+		
+		{include file="users_account_tender_count.html"}
+		
+		{elseif $_U.query_type=="bank" }
+		
+		{include file="users_account_bank.html"}
+		
+		{elseif  $_U.query_type=="bank_new"}
+		
+		{include file="users_account_bank_new.html"}
+				
+		{elseif $_U.query_type=="gathering" || $_U.query_type=="gettender" || $_U.query_type=="success" || $_U.query_type=="lenddetail" }
+		
+		{include file="users_account_gettender.html"}
+		
+		{/if}
+        </div>
+      </div>
+    </div>
+    <div class="cle"></div>
+  </div>
+</div>
+{include file="footer.html"}

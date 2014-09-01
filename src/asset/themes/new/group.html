@@ -1,0 +1,113 @@
+{include file="header.html"}
+{if $_G.user_id==""}
+	<script>alert("你还没有登录，请先登录再查看");location.href='/index.php?user';</script>
+{/if}
+<div class="conbox t10">
+<div class="con_left">
+     <div>
+	      <div class="con_bor">
+		       <div class="pos_bor"><span><a href="#">我的圈子</a> > 圈子首页 </span></div>
+		    <div class="con1">
+			
+			
+				{if $_G.user_id!=""}
+			      <div>
+				       <div class="qz_tit">
+					        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><h1 style="color:#ff0000;font-size:12px;">我的圈子</h1></td>
+    <td align="right">+ <a href="/group/my/index.html">更多</a>&nbsp;</td>
+  </tr>
+</table>
+					   </div>
+					   <div class="qz_list">
+					        <ul>
+							{list module="group" function="GetGroupList" var="loop" epage=6 my_userid='$_G.user_id' status=1}
+							{if $loop.total==0}<strong style="font-size:12px;color:#0b71d1">还未加入圈子和创建自己的圈子！</strong>{/if}
+							{foreach from="$loop.list" item="_var"}
+							    <li>
+								<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="35%" align="left" valign="top"><img src="/{$_var.litpic_url}" width="64" height="64" style="border:1px solid #CCCCCC; padding:1px" /></td>
+    <td width="65%" align="left" valign="top"><a href="./a{$_var.id}.html" style="color:#0b71d1;font-size:12px;">{$_var.name}</a><span></span><br />
+      话题：{$_var.articles_count|default:0} 成员数：{$_var.member_count|default:1}</td>
+  </tr>
+</table>
+
+								</li>
+								{/foreach}
+								{/list}
+							</ul>
+							<div class="cle"></div>
+					   </div>
+				  </div>
+				  {/if}
+				  
+					{loop module="group" function="GetGroupLists" var="var" limit=6 status=1 public="1"}
+				  
+				<div class="t10">	
+				       <div class="qz_tit">
+					        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><h1 style="color:#ff0000;font-size:12px;">{$var.name}</h1></td>
+    <td align="right">+ <a href="/group/{$var.nid}/index.html">更多</a>&nbsp;</td>
+  </tr>
+</table>
+					   </div>
+					   <div class="qz_list">
+					        <ul>
+							{foreach from="$var.list" item="item"}
+							    <li>
+								<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="35%" align="left" valign="top"><img src="/{$item.litpic_url}" width="64" height="64" style="border:1px solid #CCCCCC; padding:1px" /></td>
+    <td width="65%" align="left" valign="top"><a href="/group/a{$item.id}.html" style="color:#0b71d1;font-size:12px;">{$item.name}</a><span></span><br />
+      话题：{$item.articles_count} 成员数：{$item.member_count}</td>
+  </tr>
+</table></li>
+								{/foreach}
+								
+							</ul>
+							<div class="cle"></div>
+					   </div>
+					  </div>
+				{/loop}
+				     
+			
+				  
+
+				  
+			</div>
+	   </div>
+	   
+    </div>
+</div>
+<div class="con_right">
+ <div class="r_tit" style="overflow:hidden">创建圈子</div>
+				  <div class="r_cen">
+					  <div style="text-align:center">
+					  您还可以拥有自己的圈子<br /><a href="/group_new/index.html"><img src="{$tpldir}/images/jian.gif" /></a>
+					  </div>
+					  
+			<div class="cle"></div>
+				  </div>
+				<div class="r_bot"></div>
+		        <div class="r_tit t10"  style="overflow:hidden">最新加入成员</div>
+	  <div class="r_cen" >
+	       <div class="cy_list">
+		   <ul>
+				{loop module="group" function="GetGroupMemberNewList" status=1 var="Mvar" group_id=all limit="6" my_userid=$_G.user_id}
+		        <li><a href="/u/{$Mvar.user_id}"><img src="{$Mvar.user_id|avatar}" height=50 width=50 /><br />{$Mvar.username}</a></li>
+				{/loop}
+			</ul>
+			<div class="cle"></div>
+		   </div>
+	  </div>
+				<div class="r_bot"></div>
+    
+    </div>
+</div>
+<div class="cle"></div>
+</div>
+
+{include file="footer.html"}

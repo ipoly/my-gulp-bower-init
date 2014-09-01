@@ -1,0 +1,161 @@
+
+
+{articles module="group" function="GetGroupArticlesOnes" group_id="$_G.article_id" id="$magic.request.id" var="var"}
+
+<div style=" height:auto; overflow:hidden; width:100%">
+	<div style="border-bottom:1px solid #CCCCCC; line-height:30px; height:30px; overflow:hidden"><span style="float:right"><A href="/group/a{$_G.article_id}.html">返回话题列表</A></span><div style="float:left"><strong>{$var.name}</strong>   </div><div style="float:left; margin-left:20px; display:inline; color:#999999">{$var.comment_count|default:0}个回复</div>
+		<!-- Baidu Button BEGIN -->
+		<div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare">
+			<span class="bds_more">分享到：</span>
+			<a class="bds_tsina"></a>
+			<a class="bds_tqq"></a>
+			<a class="bds_renren"></a>
+			<a class="bds_kaixin001"></a>
+			<a class="shareCount"></a>
+		</div>
+		<script type="text/javascript" id="bdshare_js" data="type=tools&amp;mini=1" ></script>
+		<script type="text/javascript" id="bdshell_js"></script>
+		{literal}
+		<script type="text/javascript">
+			var bds_config = {'bdText':'圈圈贷-安全真实的p2p交易平台'};
+			document.getElementById("bdshell_js").src = "https://www.ssp2p.com/themes/qqdai/shell_v2.js?cdnversion=" + new Date().getHours();
+		</script>
+		{/literal}
+		<!-- Baidu Button END -->
+	</div>
+	<div style="margin-top:15px;">
+		<div style=" background:url('{$tpldir}/images/group_litpic.gif') no-repeat; width:60px; height:90px; float:left; text-align:center ">
+		<a href="/u/{$var.user_id}" target="_blank"><img src="{$var.user_id|avatar}" width="50" height="50" style="padding:3px;"/><br />
+		{$var.username}</a>
+		</div>
+		<div style="float:right; text-align:left; width:640px;">
+			{$var.contents}
+		</div>
+		<div style="float:right; text-align:right; width:640px;">
+			{$var.addtime|date_format:"Y-m-d H:i"}
+		</div>
+		{if $_G.user_result.username==$var.username}
+		<div style="float:right; text-align:right; width:640px;">
+			<a href="javascript:commentGroup('editarticle','{$magic.request.id}','{$_G.article_id}')">编辑话题</a> | <a href="javascript:if(confirm('确定要删除此话题')) location.href='/?user&q=code/group/articles&del={$magic.request.id}&group_id={$_G.article_id}'">删除话题</a>
+		</div>
+		{/if}
+	</div>
+</div>
+
+<div style="padding:10px 10px 20px">
+			        <div class="qz_comment">
+					      <ul>
+						  
+						  
+						  {list module="group" function="GetGroupCommentsList" var="loop" group_id="$magic.request.article_id" articles_id='$magic.request.id' epage=10 status=1}
+  {foreach from="$loop.list" item="item"}
+						      <li>
+							  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="12%" align="left" valign="top">
+	<div style=" background:url('{$tpldir}/images/group_litpic.gif') no-repeat; width:60px; height:90px; float:left; text-align:center ">
+		<a href="/u/{$item.user_id}" target="_blank"><img src="{$item.user_id|avatar}" width="50" height="50" style="padding:3px;" align="left" /></a></div></td>
+    <td width="88%" align="left" valign="top">
+	    <div class="qz_co_tit">
+		     <table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="73%" align="left">&nbsp;&nbsp;<a href="#">{$item.username}</a> <span>发表于</span> {$item.addtime|date_format:"Y-m-d H:i"} </td>
+    <td width="27%" align="right">{if $var.member_status!=0}<a href="javascript:commentGroup('reply','{$item.id}','{$item.id}')">回复</a> {/if} {if $var.member_status>1} | <a href="javascript:commentGroup('edit','{$item.id}','')">编辑</a> <a href="javascript:if(confirm('确定要删除此回复')) location.href='/?user&q=code/group/comment&del={$item.id}&group_id={$_G.article_id}&articles_id={$magic.request.id}'">删除</a>{/if}&nbsp;&nbsp;</td>
+  </tr>
+</table>
+
+		</div>
+		<div class="qz_co_word">
+		     {$item.contents}
+		</div>
+		{if $item.sub_result!=""}
+		{foreach from="$item.sub_result" item="_item"}
+		<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="12%" align="left" valign="top"><div style=" background:url('{$tpldir}/images/group_litpic.gif') no-repeat; width:60px; height:90px; float:left; text-align:center ">
+		<a href="/u/{$_item.user_id}" target="_blank"><img src="{$_item.user_id|avatar}" width="50" height="50" style="padding:3px;" align="left" /></a></div></td>
+    <td width="88%" align="left" valign="top">
+	    <div class="qz_co_tit">
+		     <table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="73%" align="left">&nbsp;&nbsp;<a href="#">{$_item.username}</a> <span>发表于</span> {$_item.addtime|date_format:"Y-m-d H:i"}</td>
+    <td width="27%" align="right">{if $var.member_status!=0}<a href="javascript:commentGroup('reply','{$_item.id}','{$item.id}')">回复</a> {/if} {if $var.member_status>1} | <a href="javascript:commentGroup('edit','{$_item.id}','')">编辑</a> <a href="javascript:if(confirm('确定要删除此回复')) location.href='/?user&q=code/group/comment&del={$_item.id}&group_id={$_G.article_id}&articles_id={$magic.request.id}'">删除</a>{/if}&nbsp;&nbsp;</td>
+  </tr>
+</table>
+
+		</div>
+		<div class="qz_co_word">
+		     {$_item.contents}
+		</div>
+	</td>
+  </tr>
+</table>
+{/foreach}
+{/if}
+	</td>
+  </tr>
+</table>
+
+							  </li>
+							{/foreach}
+							
+						  </ul>
+						  
+						  <div style="margin:20px 0; text-align:center ">  {$loop.pages|showpage:"3,dy_article"}</div>
+						  {/list}
+					</div>
+					<div>
+					  <div><span class="back" style="width: 780px; margin: 10px 0 0 15px; height: 25px"><b>我要评论：</b><span id="" class="hidden" style="color:Red;">(字数在1-120之间)</span> </span>
+					  <form action="/?user&q=code/group/comment&group_id={$_G.article_id}&id={$magic.request.id}" method="post">
+  <div style="clear: both;">
+    <textarea name="contents" id="comment_content" rows="5" cols="20" class="textbook" style="width:99%;"></textarea>
+	<div>
+
+                        <fieldset style="border-bottom: #c7e1ef 1px solid; border-left: #c7e1ef 1px solid;
+
+                            border-top: #c7e1ef 1px solid; border-right: #c7e1ef 1px solid;">
+
+
+
+                            <legend>表情</legend>
+
+                         {literal}   
+
+                      <? for($i=1;$i<=38;$i++){?><a href="javascript:insertTextBox(<?echo $i;?>)"><img src="/data/images/face/<? echo $i;?>.gif"  border="0" />&nbsp;</a><? }?>
+
+                        </fieldset>
+
+						<script>
+
+						function insertTextBox(i){
+
+							var con = $("#comment_content").val();
+
+							$("#comment_content").val(con +"[:"+ i+":]");
+
+						}
+
+						</script>
+
+					  {/literal}
+
+                    </div>
+
+    </div>
+					  <div>
+                      </div>
+					  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+					    <tr>
+					      <td width="70%" style="font-weight:bold">&nbsp;</td>
+      <td width="30%"><div style="height: 30px; margin-top: 8px; text-align: right;">
+        <input type="reset" name="" value="取消"  class="bbs_input" />
+        
+        <input  id="button" type="submit" class="bbs_input" style="margin-right: 5px" value="回复" />
+        </div></td>
+    </tr>
+  </table>
+  </form>
+</div></div>
+			   </div>
+
+{/articles}

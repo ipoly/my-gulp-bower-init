@@ -1,0 +1,65 @@
+{include file="header.html"}
+{if $magic.request.id==""}
+<div class="conbox t40">
+	     <div class="regist_bor">
+              <div class="reg_tit">找回密码</div>
+			  <form action="" method="post">
+              
+			  <div style="text-align:center; "><img src="{$tpldir}/images/codepic.jpg" /></div>
+			  <div>
+			  <table width="380" border="0" align="center" cellpadding="0" cellspacing="0" class="reg_tab">
+  <tr>
+    <td class="tex_left"><font class="red">*</font> 邮箱：</td>
+    <td>
+	<input type="text" name="email" style="border:#C2C2C2 solid 1px; background:#fff; height:20px; width:200px"/><input type="hidden" name="pwdtype" value="1" /></td>
+  </tr>
+  <tr>
+    <td class="tex_left"><font class="red">*</font> 用户名：</td>
+    <td>
+	<input type="text" name="username" style="border:#C2C2C2 solid 1px; background:#fff; height:20px; width:200px"/></td>
+  </tr>
+  <tr>
+    <td class="tex_left"><font class="red">*</font> 验证码：</td>
+    <td>
+	<input type="text" name="valicode" style="border:#C2C2C2 solid 1px; background:#fff; height:20px; width:50px"> <img src="/?plugins&q=imgcode" id="valicode" alt="点击刷新" onClick="this.src='/?plugins&q=imgcode&t=' + Math.random();" align="absmiddle" style="cursor:pointer" /></td>
+  </tr>
+  <tr>
+    <td class="tex_left">&nbsp;</td>
+    <td align="left">
+	<input name="Submit" type="image" src="{$tpldir}/images/send.gif" class="btn" />&nbsp;<font class="red">{$_U.getpwd_msg}</font></td>
+  </tr></form>
+</table>
+			  </div>
+	  </div>
+</div>
+{else}
+<div class="conbox t20">
+	<div class="log_bor">
+		<h1>修改密码</h1>
+			<div style="padding:20px">
+				<div class="ser_bor">
+				<form action="" method="post">
+					<table width="100%" border="0" cellspacing="5" cellpadding="0">
+						<tr>
+							<td width="39%" align="right">&nbsp;</td>
+							<td width="61%">{$_U.pwd_msg}</td>
+						</tr>
+						<tr>
+							<td width="39%" align="right">输入密码：</td>
+							<td width="61%"><input type="password" name="password" style="border:#C2C2C2 solid 1px; background:#fff; height:20px; width:200px"/></td>
+						</tr>
+						<tr>
+							<td width="39%" align="right">再次输入密码：</td>
+							<td width="61%"><input type="password" name="password1" style="border:#C2C2C2 solid 1px; background:#fff; height:20px; width:200px"/></td>
+						</tr>
+					</table>
+					<div style="margin:30px auto 0; text-align:center"><input name="Submit" type="submit" class="btn" value="提 交" /></div>
+				</form>
+				</div>
+			</div>
+	</div>
+</div>
+{/if}
+<div class="con_box t20"></div>
+{include file="footer.html"}
+

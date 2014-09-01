@@ -1,0 +1,98 @@
+<div class="main_right">
+		       
+
+<!--{literal}
+<?php
+$account = isset($_REQUEST['show_account'])?$_REQUEST['show_account']:"";
+$lilv = isset($_REQUEST['show_apr'])?$_REQUEST['show_apr']:"";
+$times = isset($_REQUEST['show_time'])?$_REQUEST['show_time']:"";
+$style = isset($_REQUEST['style'])?$_REQUEST['style']:"";
+?>
+{/literal}-->
+			  
+			  <div class="t10">
+			       <div class="main_r_bor">
+				        <div class="m_r_title1"><h1>借出计算器</h1></div>
+						<div>
+<form action="/lixi/index.html" method="post">
+<table width="100%" border="0" cellspacing="10" cellpadding="0">
+  <tr>
+    <td width="41%" align="right">初始投资</td>
+    <td width="59%"><input type="text" name="account" value="{$magic.request.account}" style="width:60px; border:#BFBFBF solid 1px; height:18px;"/>
+      元</td>
+  </tr>
+  <tr>
+    <td align="right">年利率</td>
+    <td><input type="text" name="lilv" value="{$magic.request.lilv}" style="width:60px; border:#BFBFBF solid 1px; height:18px;"/>
+      %</td>
+  </tr>
+  <tr>
+    <td align="right">投资期限</td>
+    <td><input type="text" name="times" value="{$magic.request.times}" style="width:60px; border:#BFBFBF solid 1px; height:18px;"/>
+      月</td>
+  </tr>
+  <tr>
+	<td align="right">还款方式</td>
+	<td><select name="type" style="width:90px"><option value="month" {if $magic.request.type=='month'}selected="selected"{/if}>按月等额本息</option><option value="endmonth"  {if $magic.request.type=='endmonth'}selected="selected"{/if} >按月付息</option><option value="endmonths" {if $magic.request.type=='endmonths'}selected="selected"{/if}> 按月付息到期还本</option><option value="end"  {if $magic.request.type=='end'}selected="selected"{/if} >到期还本还息</option><option value="season" {if $magic.request.type=='season'}selected="selected"{/if}>按季还款</option></select></td>
+   </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><input  id="button" type="submit" name="Submit" value="查询" /></td>
+  </tr>
+</table>
+</form>
+{literal}
+<?php
+					require_once(ROOT_PATH."modules/borrow/borrow.calculates.php");
+					$data['account'] = $account;
+					$data['apr'] = $lilv;
+					$data['period'] = $times;
+					$data['style'] = $style;
+					$data['time'] = time();
+					$list = borrowCalculateClass::GetType($data);
+					$data['type'] = "all";
+					$result = borrowCalculateClass::GetType($data);
+					if ($result!="" && is_array($list)){
+				?>
+			<div style="text-align:center"><b>到期价值</b> <font style="color:#FF0000"><span id="show"><? echo $result['account_total'];?></span>元</font></div>
+			<? }?>
+			{/literal}
+				</div>
+				   </div>
+				   <div class="bbot">
+				        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td align="left"><img src="{$tpldir}/images/botleft.gif" width="11" height="12" /></td>
+    <td align="right"><img src="{$tpldir}/images/botright.gif" width="11" height="12" /></td>
+  </tr>
+</table>
+
+				   </div>
+			  </div>
+			  <div class="t10">
+			       <div class="main_r_bor">
+				        <div class="m_r_title"><h1>最新投标</h1><span>><a href="/invest/index.html">更多</a></span></div>
+						<div class="tb_new">
+						     <ul>
+		{list module="borrow" var="loop" plugins="tender" function ="GetTenderList" epage="6"  }
+				{foreach from="$loop.list" item="item"}
+									<li>
+								     <span>{$item.addtime|date_format:"Y/m/d H:i"}前：<a href="/u/{$item.user_id}">{$item.username|truncate:3}**</a></span>
+									 <p>对<a href="/invest/a{$item.borrow_nid}.html" title="{$item.borrow_name}">{$item.borrow_name|truncate:10}</a>投资了<font class="red">￥{$item.account}</font></p>
+							     </li>
+										
+									{/loop}{/list}
+							  </ul>
+						</div>
+				   </div>
+				   <div class="bbot">
+				        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td align="left"><img src="{$tpldir}/images/botleft.gif" width="11" height="12" /></td>
+    <td align="right"><img src="{$tpldir}/images/botright.gif" width="11" height="12" /></td>
+  </tr>
+</table>
+
+				   </div>
+			  </div>
+		  </div>

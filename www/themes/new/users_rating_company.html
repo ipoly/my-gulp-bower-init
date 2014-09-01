@@ -1,0 +1,52 @@
+
+<div class="item_group" style="width: auto">私营业主</div>
+<form action="/?user&q=code/rating/company" method="post" name="formx" onsubmit="return formcheck();">
+{articles module="rating" function="GetCompanyOne" user_id="$_G.user_id" var="var"}
+<div class="user_info_box clearfix" style="width: auto">
+	<div class="user_info_item">
+		<span class="user_info_item_left">企业名称：</span> <span>
+		<input value="{$var.type}" class="input180 " name="type" id="type">
+		</span>
+	</div>
+	<div class="user_info_item">
+		<span class="user_info_item_left">成立日期：</span> <span>
+		<input value="{$var.time}" class="input180 " name="time" id="time">
+		</span>
+	</div>
+	<div class="user_info_item">
+		<span class="user_info_item_left">经营地址：</span> <span> 
+		<input value="{$var.address}" class="input180 " name="address" id="address">
+		</span>
+	</div>
+	<div class="user_info_item">
+		<span class="user_info_item_left">租金：</span> <span>
+		<input value="{$var.rent_money}" class="input180 " name="rent_money" id="rent_money">元
+		</span>
+	</div>
+	<div class="user_info_item">
+		<span class="user_info_item_left">租期：</span> <span> 
+		<input value="{$var.rent_time}" class="input180 " name="rent_time" id="rent_time">月
+		</span>
+	</div>
+	<div class="user_info_item">
+		<span class="user_info_item_left">税务编号：</span> <span> 
+		<input value="{$var.tax_num_guo}" class="input180 " name="tax_num_guo" id="tax_num_guo">
+		</span>
+	</div>
+	<div class="user_info_item">
+		<span class="user_info_item_left">工商登记号：</span> <span> 
+		<input value="{$var.tax_num_di}" class="input180 " name="tax_num_di" id="tax_num_di">
+		</span>
+	</div>
+	<div class="user_info_item">
+		<span class="user_info_item_left">全年盈利/亏损额：</span> <span> 
+		<input value="{$var.license_num}" class="input180 " name="license_num" id="license_num">元（年度）
+		</span>
+	</div>
+	{/articles}
+    <div style="padding:10px 0; margin-left:170px">
+				  <input  id="button" type="submit" name="submit" id="submit" value="提交" />
+			    
+    </div>
+	</div>
+         </form>      

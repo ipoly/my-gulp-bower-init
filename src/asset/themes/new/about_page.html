@@ -1,0 +1,17 @@
+{include file="header.html"}
+<div class="pg-one" id="page-one" >
+    	<div class="container_10 fn-clear mt10">{$_G.system.con_webname}  > <a href="/aboutus/index.html" class="f16">{$_G.site_result.name}</a></div>
+        <div class="container_10 mt10 fn-clear">
+        	<div class="page-one-nav relative">
+            	<ul class="fn-clear">
+         {loop module="admin" function="GetSiteList" var="var" limit="all" pid=155}
+				       <li {if $_G.site_result.nid==$var.nid}class="current"{/if}><a {if $_G.site_result.nid==$var.nid}class="current"{/if} href="/{$var.nid}/index.html" ><span></span>{$var.name}</a></li>
+					   {/loop}
+                </ul>
+            </div>
+            <div class="page-one-main relative">
+            	<div class="p20">	 {$_G.page_result.contents}
+            </div>  </div>
+        </div>
+    </div>
+{include file="footer.html"}

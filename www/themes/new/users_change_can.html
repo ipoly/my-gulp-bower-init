@@ -1,0 +1,51 @@
+<div>
+投资时间：<input type="text" name="dotime1" id="dotime1" value="{$magic.request.dotime1}" size="15" onclick="change_picktime()"/> 到 <input type="text"  name="dotime2" value="{$magic.request.dotime2}" id="dotime2" size="15" onclick="change_picktime()"/>  借款标题：<input type="text" name="keywords" id="keywords" size="15" value="{$magic.request.keywords|urldecode}" /> 
+<input value="搜索" type="submit" onclick="sousuo('{$_U.query_url}/change')" />
+</div>
+<div class="t20">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tabyel">
+<tr class="ytit">
+<td colspan="10">可以转让的债权</td>
+</tr>
+<form action="" method="post">
+<tr class="ytit1" >
+<td  >借款者</td>
+<td  >借款标</td>
+<td  >利率</td>
+<td  >未还期数/总期数</td>
+<td  >待收本金/待收利息</td>
+<td  > 投资时间</td>
+<td  >到期时间</td>
+<td  >操作</td>
+</tr>
+{list module="borrow" plugins="change" var="loop" function ="GetCanList"  keywords="request" dotime1="request" dotime2="request" user_id="$_G.user_id"}
+{foreach from="$loop.list" item="item"}
+<tr {if $key%2==1} class="ynow"{/if}>
+<td  ><a href="/u/{$item.borrow_userid}" target="_blank">{$item.borrow_username}</a></td>
+<td  ><a href="/invest/a{$item.borrow_nid}.html" target="_blank">{$item.borrow_name|truncate:8}</a></td>
+<td  >{$item.borrow_apr}%</td>
+<td  >{$item.wait_times|default:0}期/{$item._borrow_period}期</td>
+<td  >￥{$item.recover_account_capital_wait}/￥{$item.recover_account_interest_wait}</td>
+<td  >{$item.addtime|date_format:"Y-m-d"}</td>
+<td  >{$item.repay_last_time|date_format:"Y-m-d"}</td>
+<td  ><a href="javascript:void(0);" class="change_borrow" data-id='{$item.id}' >债权转让</a></td>
+</tr>
+{/foreach}
+</form>	
+</table>
+</div>
+<div style="padding:10px 0; text-align:center">{$loop.pages|showpage}</div>
+{/list}
+{literal}
+<script>
+$(".change_borrow").live("click",function(){
+    var _id = $(this).attr("data-id");
+var dia = $.dialog({
+				id: 'change_borrow',title:'进行债权转让',content: 'url:/?user&q=code/borrow/change&p=change&id='+_id,max: false,
+				min: false,lock:true});
+    
+})
+</script>
+
+{/literal}
+		<!--借出明细 结束-->

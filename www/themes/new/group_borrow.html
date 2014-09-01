@@ -1,0 +1,43 @@
+  <table width="100%" border="0" cellspacing="0" cellpadding="0" class="jk_list">
+
+{articles module="group" function="GetGroupMemberOne" user_id="$_G.user_id" group_id="$_G.article_id" status=1 var="_group"}  
+              {if $_group.id!=""}
+  <tr>
+	<td width="20%" align="center">&nbsp;</td>
+	<td width="20%" align="center">&nbsp;</td>
+	<td width="20%" align="center">&nbsp;</td>
+	<td width="20%" align="center">&nbsp;</td>
+	<td width="20%"><input type="button" onclick="location.href='/borrow/index.html?group_id={$_G.article_id}'" style="cursor:pointer" value="发起圈内借款" class="btn1" /></td>
+  </tr>
+{/if}
+{/articles}
+  <tr class="jk_list_tit">
+    <td width="12%" align="center">图片</td>
+    <td width="30%" align="left">标题  / 借款人 </td>
+    <td width="26%" align="center"><a >金额</a> / <a >期限</a> / <a >利率</a></td>
+    <td width="13%" align="center"><a >信用/还款</a></td>
+    <td width="19%" align="center"><a>进度</a> / <a h>剩余时间</a></td>
+  </tr>
+{list module="borrow" function="GetList" var="loop" epage="6" status=1  group_id="$_G.article_id"}
+	{foreach from="$loop.list" item="var" }
+		<tr>
+			<td align="center" valign="top"><img src="{$var.user_id|avatar}" width="65" height="65" class="userhead"/></td>
+			<td align="left" valign="top"><div><a href="/invest/a{$var.borrow_nid}.html"><b>{$var.name}</b></a></div>
+			<div><a href="/u/{$var.user_id}">{$var.username}</a></div></td>
+			<td align="center" valign="top"><div><b>￥{$var.account}</b></div><div>{$var.borrow_period}个月，{$var.borrow_apr}%</div></td>
+			                <td align="center" valign="top">
+				<div>{$var.credit|credit:"borrow"}</div>
+				<div style="margin:5px 0 0 0">{$var.style_title}</div>
+				</td>
+			<td valign="top">
+			<div class="press_bor">
+  <div class="press_bor1"><span class="loading"><em style="width:{$var.borrow_account_scale}%"></em></span></div>
+		 <div class="h5">{$var.borrow_account_scale}%已完成</div>
+		 {if $var.borrow_status_nid!="loan"}<div style="color: red; " ><strong>{$var.borrow_status_nid|linkages:borrow_status}</strong></div>{else}<div>{$var.borrow_end_time|surplus}</div>{/if}
+			</div>
+			</td>
+		</tr>
+	{/foreach}
+{/list}
+  </table>
+  

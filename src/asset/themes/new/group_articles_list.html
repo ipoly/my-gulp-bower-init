@@ -1,0 +1,40 @@
+{literal}
+<style>
+/* CSS Document */
+body{ margin:0px; }
+div,td,a{ font-size:12px; line-height:22px; color:#333333; text-decoration:none;}
+a:hover{ text-decoration:underline;}
+img{ border:none}
+h1,h2,ul,form,p{ margin:0px; padding:0px}
+ul{ list-style-type:none}
+dl,dd,dt{ margin:0; padding:0}
+.conbox1{ width:960px; margin:0 auto; }
+.conbox{ width:960px; margin:0 auto; overflow:hidden }
+
+.qz_cy{ margin-top:10px;}
+.qz_cy td{ border-bottom:#D1D1D1 dotted 1px; padding:5px; vertical-align:top}
+</style>
+{/literal}
+ <div class="qz_cy" >
+			  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="54%"><b>话题</b></td>
+    <td width="16%"><b>作者</b></td>
+    <td width="14%"><b>回复</b></td>
+    <td width="16%"><b>最后回复</b></td>
+  </tr>
+  {list module="group" function="GetGroupArticlesList" var="loop" group_id="$magic.request.group_id" epage=2}
+  {foreach from="$loop.list" item="item"}
+  <tr>
+    <td><a href="/group/a{$item.group_id}.html?id={$item.id}" target="_parent">{$item.name}</a></td>
+    <td><a href="/u/{$item.user_id}" target="_parent">{$item.username}</a></td>
+    <td>{$item.comment_count|default:0}</td>
+    <td>{$item.comment_time|date_format:"Y-m-d"|default:-}</td>
+  </tr>
+  {/foreach}
+  <tr><td colspan="4" align="center">
+  {$loop.pages|showpage}</td></tr>
+  </table>
+  {/list}
+  </div>
+  

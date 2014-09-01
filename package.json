@@ -26,7 +26,7 @@
     "path": "^0.4.9"
   },
   "scripts": {
-    "start": "rm -rf ./app && ./node_modules/.bin/gulp --require coffee-script/register",
+    "start": "rm -rf ./www && ./node_modules/.bin/gulp --require coffee-script/register",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "ipoly mail@zeng.li",

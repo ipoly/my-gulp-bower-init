@@ -1,0 +1,186 @@
+{include file="header.html"}
+<link rel="stylesheet" href="{$tpldir}/static/css/invest.css">
+{literal}
+<style type="text/css">
+  .fiterlist .btn{
+    background: #82ca3b; padding: 5px 30px 5px 30px; border: none;color: #FFF; border-radius: 5px;
+  }
+  .productlist .list-title{height: auto;}
+  .productlist li{border-bottom:2px dashed #ebebeb;}
+  .productlist li .ico{float: left; padding-right: 5px;}
+  .productlist li .ico img{width: 60px;height: 60px;}
+  .productlist li p{font-size: 12px;padding: 0px; margin:0px; line-height: 20px; text-align: left;}
+  .productlist li p.title{font-size: 14px; color: #333;}
+  .productlist li{padding-top: 10px; padding-bottom: 10px;}
+</style>
+{/literal}
+<link rel="stylesheet" href="{$tpldir}/css/style.css">
+<div class="pg-invest" id="page-invest-list" >
+      <div class="container_10 fn-clear mt10">我的账户 > <a href="#">融资产品列表</a></div>
+        <div class="container_10 fn-clear mt10">
+          <div class="box p20 fn-clear">
+              <div class="main_r_bor">
+
+            <div>
+           <table width="100%" cellspacing="0" cellpadding="0" border="0" class="sea_tab">
+  <tbody>
+
+    <tr>
+    <td bgcolor="#FFFFFF">
+      <table width="100%" class="fiterlist" cellspacing="0" cellpadding="0" border="0">
+        <tbody><tr>
+          <form action="{$_A.query_url_all}?&borrow_type=&idneed={$magic.request.idneed}&repay_type={$magic.request.repay_type}&vouch_type={$magic.request.vouch_type}&mechanismtype={$magic.request.mechanismtype}" method="get">
+          <td align="right" class="sea_tableft">贷款金额：</td>
+          <td class="sea_tabright">
+          <input type="text" name="amount" class="input"><span class="unit">万元</span>
+
+          &nbsp;&nbsp;&nbsp;&nbsp;放款周期：
+          <select name="timeselect">
+            <option value="">不限</option>
+            <option value="3-7">3――7个工作日</option>
+            <option value="7-15">7――15个工作日</option>
+            <option value="15-100">15个工作日以上</option>
+          </select>
+          </td>
+         <td>
+            <input type="submit" class="btn" value="搜索" />
+         </td>
+         </form>
+        </tr>
+      </tbody>
+    </table>
+    </td>
+    </tr>
+    <tr>
+    <td bgcolor="#FFFFFF">
+      <table width="100%" cellspacing="0" cellpadding="0" border="0">
+        <tbody><tr>
+          <td align="right" class="sea_tableft">贷款类型：  </td>
+          <td class="sea_tabright">
+          
+          <a href="{$_A.query_url_all}?keywords={$magic.request.keywords}&timeselect={$magic.request.timeselect}&borrow_type=&idneed={$magic.request.idneed}&repay_type={$magic.request.repay_type}&vouch_type={$magic.request.vouch_type}&mechanismtype={$magic.request.mechanismtype}" {if $magic.request.borrow_type==""}style="font-weight:bold; color:#2976a4"{/if}>不限</a>
+          {loop module="speeds" function="GetTypeMenu" var="item" limit="all" }
+                <a {if $magic.request.borrow_type==$item.id}style="font-weight:bold; color:#2976a4"{/if} href="{$_A.query_url_all}?keywords={$magic.request.keywords}&timeselect={$magic.request.timeselect}&borrow_type={$item.id}&idneed={$magic.request.idneed}&repay_type={$magic.request.repay_type}&vouch_type={$magic.request.vouch_type}&mechanismtype={$magic.request.mechanismtype}">{$item.name}</a>   
+          {/loop}
+          </td>
+         <td></td>
+        </tr>
+      </tbody>
+    </table>
+    </td>
+    </tr>
+  <tr>
+    <td bgcolor="#FFFFFF"><table width="100%" cellspacing="0" cellpadding="0" border="0">
+      <tbody><tr>
+        <td align="right" class="sea_tableft">职业身份：</td>
+        <td class="sea_tabright">
+     
+        <a href="{$_A.query_url_all}?keywords={$magic.request.keywords}&timeselect={$magic.request.timeselect}&borrow_type={$magic.request.borrow_type}&idneed=&repay_type={$magic.request.repay_type}&vouch_type={$magic.request.vouch_type}&mechanismtype={$magic.request.mechanismtype}" {if $magic.request.idneed==""}style="font-weight:bold; color:#2976a4"{/if}>不限</a>
+
+        {loop module="speeds" function="idneed" var="item" limit="all" }
+          <a {if $magic.request.idneed==$key}style="font-weight:bold; color:#2976a4"{/if} href="{$_A.query_url_all}?keywords={$magic.request.keywords}&timeselect={$magic.request.timeselect}&borrow_type={$magic.request.borrow_type}&idneed={$key}&repay_type={$magic.request.repay_type}&vouch_type={$magic.request.vouch_type}&mechanismtype={$magic.request.mechanismtype}">{$item}</a>   
+        {/loop}
+     </td>
+      </tr>
+    </tbody></table></td>
+    </tr>
+  <tr>
+    <td bgcolor="#FFFFFF"><table width="100%" cellspacing="0" cellpadding="0" border="0">
+      <tbody><tr>
+        <td align="right" class="sea_tableft"> 还款方式：</td>
+        <td class="sea_tabright">
+        <a href="{$_A.query_url_all}?keywords={$magic.request.keywords}&timeselect={$magic.request.timeselect}&borrow_type={$magic.request.borrow_type}&idneed={$magic.request.idneed}&repay_type=&vouch_type={$magic.request.vouch_type}&mechanismtype={$magic.request.mechanismtype}" {if $magic.request.repay_type==""}style="font-weight:bold; color:#2976a4"{/if}>不限</a>
+        {loop module="speeds" function="repaytype" var="item" limit="all" }
+          <a {if urldecode($magic.request.repay_type)==$item.name}style="font-weight:bold; color:#2976a4"{/if} href="{$_A.query_url_all}?keywords={$magic.request.keywords}&timeselect={$magic.request.timeselect}&borrow_type={$magic.request.borrow_type}&idneed={$magic.request.idneed}&repay_type={$item.name}&vouch_type={$magic.request.vouch_type}&mechanismtype={$magic.request.mechanismtype}">{$item.name}</a>   
+        {/loop}
+        </td>
+    <td></td>
+      </tr>
+    </tbody></table></td>
+    </tr>
+  <tr>
+    <td bgcolor="#FFFFFF"><table width="100%" cellspacing="0" cellpadding="0" border="0">
+      <tbody><tr>
+        <td align="right" class="sea_tableft"> 担保方式：</td>
+        <td class="sea_tabright">
+        <a href="{$_A.query_url_all}?keywords={$magic.request.keywords}&timeselect={$magic.request.timeselect}&borrow_type={$magic.request.borrow_type}&idneed={$magic.request.idneed}&repay_type={$magic.request.repay_type}&vouch_type=&mechanismtype={$magic.request.mechanismtype}" {if $magic.request.vouch_type==""}style="font-weight:bold; color:#2976a4"{/if}>不限</a>
+        {loop module="speeds" function="vouchType" var="item" limit="all" }
+          <a {if $magic.request.vouch_type != '' && $magic.request.vouch_type==$key}style="font-weight:bold; color:#2976a4"{/if} href="{$_A.query_url_all}?keywords={$magic.request.keywords}&timeselect={$magic.request.timeselect}&borrow_type={$magic.request.borrow_type}&idneed={$magic.request.idneed}&repay_type={$magic.request.repay_type}&vouch_type={$key}&mechanismtype={$magic.request.mechanismtype}">{$item}</a>   
+        {/loop}
+        </td>
+    <td></td>
+      </tr>
+    </tbody></table></td>
+    </tr>
+
+  <tr>
+    <td bgcolor="#FFFFFF"><table width="100%" cellspacing="0" cellpadding="0" border="0">
+      <tbody><tr>
+        <td align="right" class="sea_tableft"> 机构类型：</td>
+        <td class="sea_tabright">
+        <a href="{$_A.query_url_all}?keywords={$magic.request.keywords}&timeselect={$magic.request.timeselect}&borrow_type={$magic.request.borrow_type}&idneed={$magic.request.idneed}&repay_type={$magic.request.repay_type}&vouch_type={$magic.request.vouch_type}&mechanismtype=" {if $magic.request.mechanismtype==""}style="font-weight:bold; color:#2976a4"{/if}>不限</a>
+        {loop module="speeds" function="speedstype" var="item" limit="all" }
+          <a {if $magic.request.mechanismtype==$key}style="font-weight:bold; color:#2976a4"{/if} href="{$_A.query_url_all}?keywords={$magic.request.keywords}&timeselect={$magic.request.timeselect}&borrow_type={$magic.request.borrow_type}&idneed={$magic.request.idneed}&repay_type={$magic.request.repay_type}&vouch_type={$magic.request.vouch_type}&mechanismtype={$key}">{$item}</a>   
+        {/loop}
+        </td>
+    <td></td>
+      </tr>
+    </tbody></table></td>
+    </tr>
+ 
+</tbody></table>
+
+      </div>
+                
+            </div>
+        
+        </div>
+        <div class="container_10 fn-clear mt20">
+          <div class="box p20">
+              <p><em class="f24">融资产品列表</em>
+                    <!-- <a class="icon-lightgreen-link ml10" href="/tools/index.html">理财计算器</a>
+                    <a class="icon-lightblue-link ml10" href="/?user&q=code/borrow/auto">自动投标</a>  <a class="icon-lightblue-link ml10" href="/transfer/index.html">债权转让</a>     -->           </p>
+                <ul class="invest-list fn-clear pt10 productlist" >
+                  
+                  <li class="fn-clear">
+                        <span class="list-title gray fLeft" style="width:300px;">机构/产品</span>
+                        <span class="list-title gray fLeft" style="width:150px;">费用说明</span>
+                        <span class="list-title gray fLeft pr20" style="width:350px;">点评</span>
+                        <span class="list-title gray fLeft pr30" style="width:100px;text-align:right;"></span>
+                    </li>
+                 <!--  <div id='borrow_list'>
+                                         Ajax
+                 </div> -->
+
+          {list module="speeds" function="GetList" var="loop" keywords="$magic.request.keywords" timeselect="$magic.request.timeselect" borrow_type="$magic.request.borrow_type" idneed="$magic.request.idneed" repay_type="$magic.request.repay_type" vouch_type="$magic.request.vouch_type" mechanismtype="$magic.request.mechanismtype" epage="10" order="$magic.request.order"  query_type="$_G.site_result.nid"}
+{foreach from="$loop.list" item="var" }
+         <li class="fn-clear lists">
+         <span class="list-title gray fLeft" style="width:300px;border-right:1px solid #f6f6f6;">
+            <span class="ico">
+              <a href="/financingproduct/{$var.id}.html"><img src="{$var.fileurl}" /></a>
+            </span>
+            <p class="title"><a href="/financingproduct/{$var.id}.html">{$var.name}</a></p>
+            <p>信用贷</p>
+            <p>five star</p>
+         </span>
+          <span class="list-title gray fLeft" style="width:150px; padding-left:10px;border-right:1px solid #f6f6f6;">
+            <p>贷款额度：{$var.min_limit/10000}~{$var.max_limit/10000} 万元</p>
+            <p>年化成本：{$var.borrow_apr}%</p>
+            <p>放款周期：{$var.min_time}~{$var.max_time}个工作日</p>
+          </span>
+          <span class="list-title gray fLeft pr20" style="width:350px;text-align:left; padding-left:10px;border-right:1px solid #f6f6f6;">
+          <p>{$var.title}</p>
+          </span>
+          <span class="list-title gray fLeft pr30" style="width:70px;vertical-align:middle;padding-left:10px;"><a href='/financingproduct/{$var.id}.html' class='btn-invest'>查看</a></span>
+
+         </li>
+          {/foreach}   
+        <div id="page-list" class="page-list mt20 fn-clear">{$loop.pages|showpage:"2,dy"}</div>
+        {/list}
+         </ul>
+                
+          </div>
+        </div>
+    </div>
+
+{include file="footer.html"}

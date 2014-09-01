@@ -1,0 +1,43 @@
+<div class="us_r_bor1" style="height:300px">
+                    <div style=" color:#666666">把急速贷帐号和其它社交网站（如新浪微博、腾讯、等）绑定，轻松同步发布动态，与更多好友分享好东东。 腾讯网通过第三方的安<br />
+                   			       全接口绑定帐号，为保证您的帐户安全，同步发送任何信息之前，都会确认得到您的同意。 </div>
+					 <div class="bindsite">
+					 <div class="bdsth">
+					  <div class="prt1">是否绑定</div>
+					  <div class="prt2">同步说明</div>
+					 </div>
+					 <div class="dd"><div class="prt1"><div class="openbind_sina">新浪微博</div><div class="bds_bind">	
+                        {if $_G.user_result.tsina==1}
+                        <b>已绑定</b>&nbsp;<a href="/?user&q=api/cancel/sina">取消</a>	
+                        {else}
+                        <a href="/?user&q=api/sina/login">绑定帐号</a>
+                        {/if}		
+					</div></div>
+					  <div class="prt2" style="padding-top:10px">
+                      {if $_G.user_result.tsina==1}
+                         <span>您已经绑定新浪微博帐号，在收集或发布时可选择同步到您的新浪微博</span>						
+						{else}
+                         <span class="gray">您还未绑定新浪微博，请点击“绑定账号”进行绑定</span>
+                        {/if}
+                        </div><div class="cle"></div>
+					 </div>
+					 <div class="dd" style="padding-top:20px"><div class="prt1">
+					   <div class="openbind_qq">QQ</div>
+					   <div class="bds_bind">	
+				        	{if $_G.user_result.tqq==1}
+                        	<b>已绑定</b>&nbsp;<a href="/?user&q=api/cancel/qq">取消</a>	
+                           {else}
+                           	<a href="/?user&q=api/qq/reg">绑定帐号</a>
+                           {/if}	
+					</div></div>
+					  <div class="prt2" style="padding-top:10px">
+                      {if $_G.user_result.tqq==1}
+                         <span>您已经绑定qq帐号，在收集或发布时可选择同步到您的qq微博</span>						
+						{else}
+                         <span class="gray">您还未绑定QQ微博，请点击“绑定账号”进行绑定</span>
+                        {/if}
+                      </div><div class="cle"></div>
+					 </div>
+					 
+					 </div>
+</div>

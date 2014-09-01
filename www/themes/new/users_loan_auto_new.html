@@ -1,0 +1,176 @@
+{articles module="users" function="GetEmailActiveOne" user_id="$_G.user_id" var="Evar"}
+{if $Evar.status!=1 && $_G.user_id!=""}<script>alert("您还没有激活邮箱，请先激活！");location.href='/index.php?user&q=reg&type=email';</script>
+{/if}
+{/articles}
+{articles module="approve" function="GetRealnameOne" user_id="$_G.user_id" var="Avar"}
+{if $Avar.status!=1 && $_G.user_id!=""}
+{literal}
+<script>
+var dia = $.dialog({
+id: 'borr_realname',title:'姓名认证',content: 'url:/?user&q=code/borrow/loan&p=realname&borrow_nid='+borrow_nid,max: false,
+min: false,lock:true});
+</script>
+{/literal}
+{/if}
+{/articles}
+{literal}
+<script>
+function check(){
+	var tender_account = $("#tender_account").val();
+	if (tender_account%50!=0 || tender_account==0){
+		alert("借出金额请为50的倍数");
+		return false;
+	}
+		return true;
+}
+</script>
+{/literal}
+<form  method="post" name="form1"  action="/index.php?user&q=code/borrow/auto_add" onsubmit="return check()" >
+<div class="user_main_title1">自动借出时，只有满足下面您选择的条件时系统才会为您进行自动借出。</div>
+<div class="user_right_border">
+	<div class="l">状态：</div>
+	<div class="c">
+		<input id="status" type="checkbox" name="status" value="1" {if $_U.auto_result.status==1} checked="checked" {/if}/>是否启用（如果不选中则当前规则不会生效）
+	</div>
+</div>
+{articles module="account" function="GetOne" var="var" user_id="$_G.user_id"}
+<div class="user_right_border">
+	<div class="l">账户余额：</div>
+	<div class="c">
+		￥{$var.balance|default:0.00}
+	</div>
+</div>
+{/articles}
+<div class="user_right_border">
+	<div class="l">借出金额：</div>
+	<div class="c">
+		<input onkeyup="value=value.replace(/[^0-9]/g,'')" name="tender_account" type="text" maxlength="5" id="tender_account"  style="width:80px;" value="{$_U.auto_result.tender_account}" /> 元（为50的倍数）
+	</div>
+</div>
+<div class="user_right_border">
+	<div class="l">信用等级：</div>
+	<div class="c">
+
+    <select name="borrow_credit_first">
+    {foreach from="$_G.credit.rank" item="_var" key="key"}
+    {if $_var.point2>0}
+    <option value="{$_var.id}"{if $_var.id==$_U.auto_result.borrow_credit_first} selected=""{/if} >{$_var.name}</option>
+    {/if}
+    {/foreach}
+    </select>
+    ~ <select name="borrow_credit_last">
+    {foreach from="$_G.credit.rank" item="_var" key="key"}
+    {if $_var.point2>0}
+    <option value="{$_var.id}"{if $_var.id==$_U.auto_result.borrow_credit_last} selected=""{/if} >{$_var.name}</option>
+    {/if}
+    {/foreach}
+    </select>
+	</div>
+</div>
+
+{literal}
+<script>
+function check(){
+	var borrow_credit_first = parseint($("#borrow_credit_first").val());
+	var borrow_credit_last = parseint($("#borrow_credit_last").val());
+	if (borrow_credit_first < borrow_credit_last){
+		alert("信用等级输入有错");
+		return false;
+	}
+		return true;
+}
+</script>
+{/literal}
+
+<div class="user_right_border">
+	<div class="l">借款期限：</div>
+	<div class="c">
+		<select name="timelimit_month_first" id="timelimit_month_first"> 
+		{for start=1  end=18 var="i"}
+			<option value="{$i}" {if $_U.auto_result.timelimit_month_first==$i} selected="selected"{/if}>{$i}个月</option> 
+		{/for}
+		</select>
+		~
+		<select name="timelimit_month_last" id="timelimit_month_last"> 
+		{for start=1  end=24 var="i"}
+			<option value="{$i}" {if $_U.auto_result.timelimit_month_last==$i} selected="selected"{/if}>{$i}个月</option>
+		{/for}
+		</select> 
+	</div>
+</div>
+
+{literal}
+<script>
+function check(){
+	var timelimit_month_first = parseint($("#timelimit_month_first").val());
+	var timelimit_month_last = parseint($("#timelimit_month_last").val());
+	if (timelimit_month_first > timelimit_month_last){
+		alert("借款期限输入有错");
+		return false;
+	}
+		return true;
+}
+</script>
+{/literal}
+<div class="user_right_border">
+	<div class="l">是否奖励：</div>
+	<div class="c">
+		<input type="radio" name="award_status" value="0"  {if $_U.auto_result.award_status==0} checked=""{/if}/> 全部
+		<input type="radio" name="award_status" value="1"  {if $_U.auto_result.award_status==1} checked=""{/if}/> 奖励
+		<!-- <input type="radio" name="award_status" value="2"  {if $_U.auto_result.award_status==2} checked=""{/if}/> 不奖励  -->
+	</div>
+</div>
+<div class="user_right_border">
+	<div class="l">标种选择：</div>
+	<div class="c">
+
+   {loop module="borrow" function="GetTypeList" limit="all" auto=1 status=1 plugins="type" var="type_var"}
+           
+			<input type="checkbox" name="borrow_types[]" checked="true" class="input_border" value="{$type_var.nid}" {$type_var.nid|checked:"$_U.auto_result.borrow_types"} /><a title="{$type_var.title}"> {$type_var.name}</a>
+           
+            {/loop}
+  
+	</div>
+</div>
+<div class="user_right_border">
+	<div class="l">利率选项：</div>
+	<div class="c">
+		<select name="apr_first" > 
+		{for start=1  end=24 var="i"}		
+			<option value="{$i}" {if $_U.auto_result.apr_first==$i} selected="selected"{/if}>{$i}%</option> 
+		{/for}
+		</select> 
+		~
+		<select name="apr_last" > 
+		{for start=10  end=24 var="i"}
+			<option value="{$i}" {if $_U.auto_result.apr_last==$i} selected="selected"{/if}>{$i}%</option> 
+		{/for}
+		</select> 
+	</div>
+</div>
+{literal}
+<script>
+function check(){
+	var timelimit_month_first = parseint($("#timelimit_month_first").val());
+	var timelimit_month_last = parseint($("#timelimit_month_last").val());
+	if (timelimit_month_first > timelimit_month_last){
+		alert("借款期限输入有错");
+		return false;
+	}
+		return true;
+}
+</script>
+{/literal}
+<div class="user_right_border">
+	<div class="l">账户保留金额：</div>
+	<div class="c">
+		<input onkeyup="value=value.replace(/[^0-9]/g,'')" type="text" name="min_account" value="{$_U.auto_result.min_account}" style="width:100px;" /> 
+	</div>
+</div>
+<div class="user_right_border">
+	<div class="l">&nbsp;<input type="hidden" name="id" value="{$magic.request.id}" /></div>
+	<div class="c">
+		<input  id="button" type="submit" name="submit" value="保存" style="width:100px;" /> 
+	</div>
+</div>
+</form>

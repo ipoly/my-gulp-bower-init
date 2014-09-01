@@ -1,0 +1,43 @@
+
+
+		<!--好友 开始-->
+		<div class="user_main_title1" >这里是您的好友。</div>
+		<div class="t20">
+		<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tabyel">
+
+				{list module="users" plugins="friends" function="GetFriendsList" user_id="$_G.user_id"  epage="15" var="loop"}
+				<tr class="ytit1" >
+
+
+					<td  >好友名</td>
+
+
+					<td  >添加时间</td>
+
+
+					<!--<td  >操作</td>-->
+
+
+				</tr>
+				
+			
+				{foreach from="$loop.list" item="item"}
+				<tr {if $key%2==1} class="ynow"{/if} >
+
+
+					<td>{$item.friends_username}</td>
+
+
+					<td>{$item.addtime|date_format:"Y-m-d H:i:s"}</td>
+
+
+					<!--<td><a href="#" onclick="javascript:if(confirm('你确定要删除此好友吗？')) location.href='/?user&q=code/users/delfriend&friends_userid={$item.friends_userid}'">删除</a></td>-->
+				</tr>
+				{/foreach}
+				<tr>
+					<td colspan="4" align="center">{$loop.pages|showpage}</td>
+				</tr>
+				{/list}
+
+		</table>
+		</div>

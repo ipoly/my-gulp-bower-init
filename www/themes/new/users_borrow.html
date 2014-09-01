@@ -1,0 +1,333 @@
+{include file="header.html"}
+<div class="pg-account" id="pg-account-index">
+
+    	<div class="container_10 fn-clear mt10">
+{include file="user_menu.html"}
+<div class="grid_08">
+<div>
+                    	<div>
+                     <ul class="account-tab fn-clear">
+				{if $_U.query_type=="loan" && $magic.request.p=="repay"  && $magic.request.type!="detail" }
+				<li class="fLeft account-tab-item {if $magic.request.type==""}current{/if}"><a  class="account-tab-item-link {if $magic.request.type==""}current{/if}" href="{$_U.query_url}/loan&p=repay" >还款中的借款</a></li>
+				<li class="fLeft account-tab-item {if $magic.request.type=="tender"}current{/if}"><a  class="account-tab-item-link {if $magic.request.type=="tender"}current{/if}" href="{$_U.query_url}/loan&p=repay&type=tender"" >借款明细账</a></li>
+			<li class="fLeft account-tab-item {if $magic.request.type=="yes"}current{/if}"><a  class="account-tab-item-link {if $magic.request.type=="yes"}current{/if}" href="{$_U.query_url}/loan&p=repay&type=yes" >已还清的借款</a></li>
+			<li class="fLeft account-tab-item {if $magic.request.type=="late"}current{/if}"><a  class="account-tab-item-link {if $magic.request.type=="late"}current{/if}" href="{$_U.query_url}/loan&p=repay&type=late" >逾期的借款</a></li>
+			
+				</ul>
+                  {elseif $_U.query_type=="loan" && $magic.request.p=="repay"  && $magic.request.type=="detail" }	
+				<li class="fLeft account-tab-item current"><a  class="account-tab-item-link current" href="javascript:void(0);" >还款明细账</a></li>
+				  
+               	{elseif $_U.query_type=="loan" && $magic.request.p=="views" }
+				<ul>
+					<!-- <li><a href="{$_U.query_url}/loan&p=views&borrow_nid={$maigc.request.borrow_nid}" class="onn">还款明细</a></li> -->
+					<li><a href="javascript:void(0);" class="onn">还款明细</a></li>
+				</ul>
+				{elseif $_U.query_type=="amount" ||  $magic.request.p=="amount_log"}	
+					<li class="fLeft account-tab-item {if $magic.request.p==""}current{/if}"><a  class="account-tab-item-link {if $magic.request.p==""}current{/if}" href="{$_U.query_url}/amount" >额度申请</a></li>
+					<li class="fLeft account-tab-item {if $magic.request.p=="log"}current{/if}"><a  class="account-tab-item-link {if $magic.request.p=="log"}current{/if}" href="{$_U.query_url}/amount&p=log" >额度记录</a></li>
+					
+	
+                {elseif $_U.query_type=="tender" &&   $magic.request.p!="wait"}	
+				<li class="fLeft account-tab-item {if $magic.request.p=="now"}current{/if}"><a  class="account-tab-item-link {if $magic.request.p=="now"}current{/if}" href="{$_U.query_url}/tender&p=now" >投标中</a></li>
+				<li class="fLeft account-tab-item {if $magic.request.p=="recover"}current{/if}"><a  class="account-tab-item-link {if $magic.request.p=="recover"}current{/if}" href="{$_U.query_url}/tender&p=recover" >回收中</a></li>
+		<li class="fLeft account-tab-item {if $magic.request.p=="yes"}current{/if}"><a  class="account-tab-item-link {if $magic.request.p=="yes"}current{/if}" href="{$_U.query_url}/tender&p=yes" >已收款</a></li>
+				<li class="fLeft account-tab-item {if $magic.request.p=="detail"}current{/if}"><a  class="account-tab-item-link {if $magic.request.p=="detail"}current{/if}" href="{$_U.query_url}/tender&p=detail" >借出明细账</a></li>	
+					<li class="fLeft account-tab-item {if $magic.request.p=="over"}current{/if}"><a  class="account-tab-item-link {if $magic.request.p=="over"}current{/if}" href="{$_U.query_url}/tender&p=over" >回收完</a></li>	
+		<li class="fLeft account-tab-item {if $magic.request.p=="late"}current{/if}"><a  class="account-tab-item-link {if $magic.request.p=="late"}current{/if}" href="{$_U.query_url}/tender&p=late" >逾期借款</a></li>  
+                 {elseif $_U.query_type=="tender" &&   $magic.request.p=="wait"}	
+				<li class="fLeft account-tab-item {if $magic.request.p=="wait"}current{/if}"><a  class="account-tab-item-link {if $magic.request.p=="wait"}current{/if}" href="{$_U.query_url}/tender&p=wait" >未收款明细账</a></li>    
+                
+				{elseif  $_U.query_type=="change" }
+			{include file="users_change_menu.html"}
+                
+
+                {elseif $_U.query_type=="borrow" ||  $magic.request.p=="count" }	
+				<li class="fLeft account-tab-item current"><a  class="account-tab-item-link current" href="{$_U.query_url}/loan&p=count" >借款统计</a></li>    
+					
+				{elseif $_U.query_type=="borrow" ||  $magic.request.p=="now" }	
+				<li class="fLeft account-tab-item current"><a  class="account-tab-item-link current" href="{$_U.query_url}/loan&p=now" >发布的借款</a></li>    				
+				{elseif $_U.query_type=="borrow" ||  $magic.request.p=="nowing" }	
+				<li class="fLeft account-tab-item current"><a  class="account-tab-item-link current" href="{$_U.query_url}/loan&p=nowing" >正在招标的借款</a></li>  				
+				</ul>
+                
+				{elseif  $_U.query_type=="success" || $_U.query_type=="gathering" || $_U.query_type=="gettender" || $_U.query_type=="lenddetail" || $_U.query_type=="successyes" || $_U.query_type=="before"}
+				<ul>
+					<li><a href="{$_U.query_url}/gettender" {if $_U.query_type=="gettender"} class="onn"{/if}>投标中的借款</a></li>
+					<li><a href="{$_U.query_url}/success&type=wait" {if $magic.request.type=="wait"  &&  $_U.query_type=="success"} class="onn"{/if}>回收中的借款</a></li>
+					<li><a href="{$_U.query_url}/gathering&type=wait" {if $_U.query_type=="gathering" && $magic.request.type=="wait"} class="onn"{/if}>未收款明细账</a></li>
+					<li><a href="{$_U.query_url}/gathering&type=yes" {if $_U.query_type=="gathering" && $magic.request.type=="yes"} class="onn"{/if}>已收款明细账</a></li>
+					<!--<li><a href="{$_U.query_url}/before" {if $_U.query_type=="before"} class="onn"{/if}>转让前收款明细</a></li>-->
+					<li><a href="{$_U.query_url}/lenddetail" {if $_U.query_type=="lenddetail"} class="onn"{/if}>借出明细账</a></li>
+					<li><a href="{$_U.query_url}/success&type=yes" {if $magic.request.type=="yes" &&  $_U.query_type=="success"} class="onn"{/if}>回收完的借款</a></li>
+				</ul>
+				
+				{elseif  $_U.query_type=="auto" || $_U.query_type=="auto_list" || $_U.query_type=="auto_new" }
+				<li class="fLeft account-tab-item {if $_U.query_type=="auto"}current{/if}"><a  class="account-tab-item-link {if $_U.query_type=="auto"}current{/if}" href="{$_U.query_url}/auto" >自动投标</a></li>
+				<li class="fLeft account-tab-item {if $_U.query_type=="auto_new"}current{/if}"><a  class="account-tab-item-link {if $_U.query_type=="auto_new"}current{/if}" href="{$_U.query_url}/auto_new" >添加自动投标</a></li>
+				<li class="fLeft account-tab-item {if $_U.query_type=="auto_list"}current{/if}"><a  class="account-tab-item-link {if $_U.query_type=="auto_list"}current{/if}" href="{$_U.query_url}/auto_list" >自动投标记录</a></li>
+				
+				</ul>
+				
+
+
+				{elseif $_U.query_type=="care" || $_U.query_type=="yonghu"}
+				<ul>
+					<li><a href="{$_U.query_url}/care" {if $_U.query_type=="care"} class="onn"{/if}>我关注的借款</a></li>
+					<li><a href="{$_U.query_url}/yonghu" {if $_U.query_type=="yonghu"} class="onn"{/if}>我关注的用户</a></li>
+					
+					<!--<li><a href="{$_U.query_url}/borrow_reply" {if $_U.query_type=="borrow_reply"} class="onn"{/if}>贷款者回复</a></li>-->
+				</ul>
+
+             
+				{else}
+				<ul>
+					<li><a href="{$_U.query_url}/loan&p=nowing" {if $_U.query_type=="nowing"} class="onn"{/if}>正在招标的借款</a></li>
+				</ul>
+				{/if}
+			</div>
+<div class="account-tab-content p20 pt10 tenderbox" style="display:block;">
+		{if $_U.query_type=="amount"}
+		{include file="users_borrow_amount.html"}
+        
+        
+		{elseif $_U.query_type=="loan"}
+            {if $magic.request.p=='repay'}
+    		  {include file="users_loan_repay.html"}
+			  
+            {elseif $magic.request.p=='now'}
+    		  {include file="users_loan_now.html"}
+			  
+			{elseif $magic.request.p=='nowing'}
+    		  {include file="users_loan_nowing.html"}
+			  
+			{elseif $magic.request.p=='count'}
+    		  {include file="users_loan_count.html"}
+              
+              
+			{elseif $magic.request.p=='views'}
+    		  {include file="users_loan_views.html"}
+              
+              
+			{elseif $magic.request.p=='view'}
+    		  {include file="users_loan_view.html"}
+			{/if}
+            
+            
+            
+		 {elseif $_U.query_type=="tender"}
+            {if $magic.request.p=='success'}
+    		  {include file="users_tender_success.html"}
+			  
+            {elseif $magic.request.p=='now'}
+    		  {include file="users_tender_now.html"}
+              
+			  
+			{elseif $magic.request.p=='recover'}
+    		  {include file="users_tender_recover.html"}
+              
+			{elseif $magic.request.p=='wait'}
+    		  {include file="users_tender_wait.html"}
+              
+			{elseif $magic.request.p=='yes'}
+    		  {include file="users_tender_yes.html"}
+              
+			{elseif $magic.request.p=='detail'}
+    		  {include file="users_tender_detail.html"}
+              
+			{elseif $magic.request.p=='over'}
+    		  {include file="users_tender_over.html"}
+			
+			{elseif $magic.request.p=='late'}
+    		  {include file="users_tender_late.html"}
+			
+			{/if}
+            
+        
+            
+		 {elseif $_U.query_type=="change"}
+           
+            {include file="users_change_main.html"}
+            
+                
+            
+            
+                   
+		{elseif $_U.query_type=="limitapp"}
+		{include file="user_borrow_amount.html"}
+		
+		{elseif $_U.query_type=="repaymentplan"}
+		{include file="user_borrow_repaymentplan.html"}
+		
+		{elseif $_U.query_type=="care"}
+		{include file="user_borrow_care.html"}
+		
+		{elseif $_U.query_type=="yonghu"}
+		{include file="user_borrow_care_yonghu.html"}
+		
+		{elseif $_U.query_type=="amount" ||  $_U.query_type=="amount_log"}
+		{include file="users_borrow_amount.html"}
+
+
+		{elseif $_U.query_type=="repayment_view"}
+		{include file="user_borrow_repayment_view.html"}
+
+		{elseif $_U.query_type=="repays"}
+		{include file="user_borrow_repays.html"}
+	
+
+
+		<!--自动投标 开始-->
+
+
+		{elseif $_U.query_type=="auto" || $_U.query_type=="auto_list"}		
+
+		 {include file="users_loan_auto.html"}
+
+		{elseif $_U.query_type=="auto_new"}
+		
+		{include file="users_loan_auto_new.html"}
+
+		{/if}
+
+		<script>
+
+
+var url = "{$_U.query_url}/{$_U.query_type}";
+
+
+{literal}
+
+
+function sousuo(urla){
+
+
+	if (urla!="") url = urla;
+
+
+	var _url = "";
+
+
+	var dotime1 = $("#dotime1").val();
+
+
+	var keywords = $("#keywords").val();
+
+
+	var username = $("#username").val();
+
+
+	var status = $("#status").val();
+
+
+	var reply_status = $("#reply_status").val();
+
+
+	var tender_username = $("#tender_username").val();
+
+
+	var dotime2 = $("#dotime2").val();
+
+
+	var yestime1 = $("#yestime1").val();
+	var yestime2 = $("#yestime2").val();
+	if (username!=null){
+
+
+		 _url += "&username="+username;
+
+
+	}
+
+
+	if (tender_username!=null){
+
+
+		 _url += "&tender_username="+tender_username;
+
+
+	}
+
+
+	if (status!=null){
+
+
+		 _url += "&status="+status;
+
+
+	}
+
+
+	if (reply_status!=null){
+
+
+		 _url += "&reply_status="+reply_status;
+
+
+	}
+
+
+	if (keywords!=null){
+
+
+		 _url += "&keywords="+keywords;
+
+
+	}
+
+
+	if (dotime1!=null){
+
+
+		 _url += "&dotime1="+dotime1;
+
+
+	}
+
+
+	if (dotime2!=null){
+
+
+		 _url += "&dotime2="+dotime2;
+
+
+	}
+
+	if (yestime1!=null){
+
+
+		 _url += "&yestime1="+yestime1;
+
+
+	}
+
+
+	if (yestime2!=null){
+
+
+		 _url += "&yestime2="+yestime2;
+
+
+	}
+
+	location.href=url+_url;
+
+
+}
+
+
+
+
+
+</script>
+
+
+{/literal}
+
+
+</div>
+
+</div>
+</div>
+</div>
+<div style="clear:both;"></div>
+{include file="footer.html"}

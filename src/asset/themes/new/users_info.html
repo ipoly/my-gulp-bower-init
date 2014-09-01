@@ -1,0 +1,117 @@
+{include file="header.html"}
+<div class="pg-account" id="pg-account-index">
+
+    	<div class="container_10 fn-clear mt10">
+{include file="user_menu.html"}
+<div class="grid_08">
+<div>
+                    	<div>
+                     <ul class="account-tab fn-clear">
+			{if $_U.query_type=="reginvite"  || $_U.query_type=="request" || $_U.query_type=="myfriend" || $_U.query_type=="black"  }
+
+			
+				<li class="fLeft account-tab-item {if $_U.query_type=="reginvite"}current{/if}"><a  class="account-tab-item-link {if $_U.query_type=="reginvite"}current{/if}" href="{$_U.query_url}/reginvite" {if $_U.query_type=="reginvite"} class="onn"{/if}>邀请好友</a></li>
+				<!--<li class="fLeft account-tab-item {if $_U.query_type=="reginvite"}current{/if}"><a  class="account-tab-item-link {if $_U.query_type=="reginvite"}current{/if}" href="{$_U.query_url}/request" {if $_U.query_type=="request"} class="onn"{/if}>好友请求</a></li>-->
+				<li class="fLeft account-tab-item {if $_U.query_type=="myfriend"}current{/if}"><a  class="account-tab-item-link {if $_U.query_type=="myfriend"}current{/if}" href="{$_U.query_url}/myfriend" {if $_U.query_type=="myfriend"} class="onn"{/if}>我的好友</a></li>
+				<!--<li class="fLeft account-tab-item {if $_U.query_type=="reginvite"}current{/if}"><a  class="account-tab-item-link {if $_U.query_type=="reginvite"}current{/if}" href="{$_U.query_url}/black" {if $_U.query_type=="black"} class="onn"{/if}>黑名单</a></li>-->
+              	
+			
+			{elseif $_U.query_type=="vip"  || $_U.query_type=="vip_log"}
+
+			
+				<li class="fLeft account-tab-item {if $_U.query_type=="vip"}current{/if}"><a  class="account-tab-item-link {if $_U.query_type=="vip"}current{/if}" href="{$_U.query_url}/vip" {if $_U.query_type=="vip"} class="onn"{/if}>升级会员</a></li>
+				<li class="fLeft account-tab-item {if $_U.query_type=="vip_log"}current{/if}"><a  class="account-tab-item-link {if $_U.query_type=="vip_log"}current{/if}" href="{$_U.query_url}/vip_log" {if $_U.query_type=="vip_log"} class="onn"{/if}>会员记录</a></li>
+			
+			
+			{elseif $_U.query_type=="credit" || $_U.query_type=="material"}
+
+			
+				<li class="fLeft account-tab-item {if $_U.query_type=="credit"}current{/if}"><a  class="account-tab-item-link {if $_U.query_type=="credit"}current{/if}" href="{$_U.query_url}/credit" {if $_U.query_type=="credit"} class="onn"{/if}>积分记录</a></li>
+				<li class="fLeft account-tab-item {if $_U.query_type=="material"}current{/if}"><a  class="account-tab-item-link {if $_U.query_type=="material"}current{/if}" href="{$_U.query_url}/material" {if $_U.query_type=="material"} class="onn"{/if}>材料积分记录</a></li>
+			
+			
+			{elseif $_U.query_type=="avatar" ||  $_U.query_type=="userpwd" || $_U.query_type=="remind" || $_U.query_type=="paypwd" || $_U.query_type=="loginlog" || $_U.query_type=="getpaypwd" }
+			
+				<li class="fLeft account-tab-item {if $_U.query_type=="avatar"}current{/if}"><a  class="account-tab-item-link {if $_U.query_type=="avatar"}current{/if}" href="{$_U.query_url}/avatar" {if $_U.query_type=="avatar"} class="onn"{/if} >上传头像</a></li>
+				<li class="fLeft account-tab-item {if $_U.query_type=="userpwd"}current{/if}"><a  class="account-tab-item-link {if $_U.query_type=="userpwd"}current{/if}" href="{$_U.query_url}/userpwd" {if $_U.query_type=="userpwd"} class="onn"{/if}>登录密码</a></li>
+				<li class="fLeft account-tab-item {if $_U.query_type=="paypwd" ||  $_U.query_type=="getpaypwd"}current{/if}"><a  class="account-tab-item-link {if $_U.query_type=="paypwd" ||  $_U.query_type=="getpaypwd"}current{/if}" href="{$_U.query_url}/paypwd" {if $_U.query_type=="paypwd" ||  $_U.query_type=="getpaypwd"} class="onn"{/if}>支付密码</a></li>
+				<!-- <li class="fLeft account-tab-item {if $_U.query_type=="reginvite"}current{/if}"><a  class="account-tab-item-link {if $_U.query_type=="reginvite"}current{/if}" href="{$_U.query_url}/remind" {if $_U.query_type=="remind"} class="onn"{/if}>消息提示</a></li> -->
+				<li class="fLeft account-tab-item {if $_U.query_type=="loginlog"}current{/if}"><a  class="account-tab-item-link {if $_U.query_type=="loginlog"}current{/if}" href="{$_U.query_url}/loginlog" {if $_U.query_type=="loginlog"} class="onn"{/if}>IP登录查询</a></li>
+                <li class="fLeft account-tab-item {if $_U.query_type=="remind"}current{/if}"><a  class="account-tab-item-link {if $_U.query_type=="remind"}current{/if}" href="{$_U.query_url}/remind" {if $_U.query_type=="remind"} class="onn"{/if}>消息提醒设置</a></li>
+			
+			{elseif $_U.query_type=="sync"}
+			
+				<li class="fLeft account-tab-item {if $_U.query_type=="sync"}current{/if}"><a  class="account-tab-item-link {if $_U.query_type=="sync"}current{/if}" href="{$_U.query_url}/sync" {if $_U.query_type=="sync"} class="onn"{/if}>帐号同步</a></li>
+			
+			
+			{/if}
+
+			</ul>
+
+
+		</div>
+<div class="account-tab-content p20 pt10 tenderbox" style="display:block;">
+		{if $_U.query_type=="avatar"}
+		{include file="users_info_avatar.html"}
+		
+		{elseif $_U.query_type=="spreads" }
+		{include file="users_spreads.html"}
+		{elseif $_U.query_type=="spreads_log" }
+		{include file="users_spreads_log.html"}
+		{elseif $_U.query_type=="spreads_ruhe" }
+		{include file="users_spreads_ruhe.html"}
+		
+		{elseif $_U.query_type=="vip" || $_U.query_type=="vip_log"}
+		{include file="users_info_vip.html"}
+		
+		{elseif $_U.query_type=="privacy"}
+		{include file="users_info_privacy.html"}
+		
+		
+		{elseif $_U.query_type=="credit"}
+		{include file="users_info_credit.html"}
+		
+		{elseif $_U.query_type=="material"}
+		{include file="users_info_material.html"}
+		
+		{elseif $_U.query_type=="reginvite"}
+		{include file="users_info_reginvite.html"}
+		{elseif $_U.query_type=="myfriend"}
+		{include file="users_info_myfriend.html"}
+
+		{elseif $_U.query_type=="userpwd"}
+		{include file="users_info_userpwd.html"}
+		{elseif $_U.query_type=="paypwd"}
+		{include file="users_info_paypwd.html"}
+		
+		{elseif $_U.query_type=="getpaypwd"}
+		{include file="users_info_getpaypwd.html"}
+		
+		{elseif $_U.query_type=="loginlog"}
+		{include file="users_info_loginlog.html"}
+
+
+		{elseif $_U.query_type=="protection"}
+		{include file="users_info_protection.html"}
+		{elseif $_U.query_type=="remind"}
+		{include file="users_remind.html"}
+        {elseif $_U.query_type=="sync"}
+		{include file="users_sync.html"}
+        {elseif $_U.query_type=="remind"}
+		{include file="users_remind.html"}
+		{/if}
+
+
+</div>
+
+
+</div>
+</div>
+</div>
+</div>
+
+
+<!--用户中心的主栏目 结束-->
+<div style="clear:both;"></div>
+
+{include file="footer.html"}

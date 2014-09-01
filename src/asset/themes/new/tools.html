@@ -1,0 +1,74 @@
+{include file="header.html"}
+    <div class="conbox t20">
+     <div>你的位置：<a href="/">{$_G.site_result.name}</a> > <a href="/{$_G.site_result.nid}/index.html">{$_G.site_result.name}</a></div>
+</div>
+
+{literal}
+<div class="conbox">
+     <div class="tool_bor">
+	      <h1>利息计算</h1>
+		  <div style="padding:20px 30px;">
+		  <div style="color:#407FB6">
+		    1、“按月等额本息”采用银行房贷等通用的“等额本息还款法”,即借款者每月以相等的金额偿还贷款本息。<br>
+			2、“按月付息，到期还本”采用每月支付利息，到期全额还本的计算方式。<br>
+			注意：本工具计算结果与实际可能会有以分为单位的误差。<br>
+		  </div>
+		  <div>
+		    <form action="/lixi/index.html" method="post"> 借款金额：<input type="text" name="account" size="10"  value="<? echo isset($_REQUEST['account'])?$_REQUEST['account']:""; ?>" value="<? echo $_REQUEST['account'];?>" /> 年利率：<input type="text" name="lilv"  size="10"  value="<? echo isset($_REQUEST['lilv'])?$_REQUEST['lilv']:""; ?>"/>%  借款期限：<input type="text" name="times"  size="10"  value="<? echo isset($_REQUEST['times'])?$_REQUEST['times']:""; ?>" />个月 还款方式：<select name="type"><option value="month" {if $magic.request.type=='month'}selected="selected"{/if}>按月等额本息</option><option value="endmonth"  {if $magic.request.type=='endmonth'}selected="selected"{/if} >按月付息</option><option value="endmonths" {if $magic.request.type=='endmonths'}selected="selected"{/if}>按月付息到期还本</option><option value="season" {if $magic.request.type=='season'}selected="selected"{/if}>按季还款</option><option value="end"  {if $magic.request.type=='end'}selected="selected"{/if} >到期还本还息</option><option value="season" {if $magic.request.type=='season'}selected="selected"{/if}>按季还款</option></select>  <input  id="button" type="submit" value="开始计算" /></form>
+      </div>
+		  </div>
+	 </div>
+	 
+	 <div class="tool_bor">
+	      <h1>手机查询</h1>
+		  <div style="padding:20px 30px">
+		  <div style="color:#407FB6">在下面输入框中输入您要查询的手机号码,点击查询按钮即可查询该手机号所在地区。</div>
+		  <div>  <form action="/phone/index.html" method="post" onsubmit="return chk()">	手机号码：<input type="text" name="phone"  id="phone" size="20" value="<? echo $_REQUEST['phone'];?>" />   <input  id="button" type="submit" value="查 询" /></form>
+      </div>
+<script>
+
+function chk()
+
+{
+
+var tel = document.all("phone").value;
+
+
+
+if(/^13\d{9}$/g.test(tel)|| (/^18\d{9}$/g.test(tel)) || (/^15\d{9}$/g.test(tel)))
+
+        {;
+
+		      return true;
+
+         }
+
+else
+
+        {
+
+           alert("手机号错误");
+
+		   return false;
+
+         }
+
+}
+
+</script>
+		  </div>
+	 </div>
+     
+     <div class="tool_bor">
+	      <h1>IP查询</h1>
+		  <div style="padding:20px 30px">
+		  <div style="color:#407FB6">在下面输入框中输入您要查询的IP地址,点击查询按钮即可查询该IP所在地区。 </div>
+		  <div><form action="/ip/index.html" method="post">IP地址：<input type="text" name="ip" size="20" {literal}value="<?echo $_ip;?>"{/literal} />   <input  id="button" type="submit" value="查 询" /></form>
+      </div>
+		  </div>
+	 </div>
+</div>
+
+{/literal}
+
+{include file="footer.html"}

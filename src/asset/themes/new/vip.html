@@ -1,0 +1,167 @@
+{include file="header.html"}
+<script>{literal}
+if(user_id==''){
+alert("您还没登录，请先登录！");location.href="/index.php?user&q=login"
+}{/literal}
+</script>
+    <div class="conbox t20">
+		       <div class="main_box1">
+			     <div class="title_bor">
+			       <h1>申请VIP</h1></div>	
+				   {articles module="users" plugins="vip" function="GetUsersVip" var="Vvar" user_id="$_G.user_id"}
+		         <div class="us_r_bor2" style="padding:30px 40px">
+				 <form action="/?user&q=code/users/applyvip" method="post" onsubmit="return checkvip();">
+		           <table width="100%" border="0" cellspacing="0" cellpadding="0" class="reg_tab">
+  <tr>
+    <td width="17%" align="right" valign="top">VIP会员服务说明：</td>
+    <td width="83%"> <font style="font-size:14px; color:#FF0000">{$_G.system.con_webname}VIP会员可以享受到本息无忧计，既发生逾期借款时，由平台100%垫付当月本金及利息(普通会员只垫付本金)。</font></td>
+  </tr>
+  <tr>
+    <td align="right">状态：</td>
+    <td>
+	{if $Vvar.status==-1}审核中
+	{elseif $Vvar.status==2}审核失败。【原因：{$Vvar.verify_remark}】
+	{elseif $Vvar.status==1} <strong style="color:blue">VIP会员</strong>{else}未申请 
+    {/if}
+    </td>
+  </tr>
+{if $Vvar.status==1}
+   <tr>
+    <td align="right">升级类型：</td>
+    <td>VIP会员</td>
+  </tr>
+  {if $Vvar.money>0}
+   <tr>
+    <td align="right">会员费：</td>
+    <td><font style="font-size:14px; color:#FF0000">{$Vvar.money}元/年</font></td>
+  </tr>
+  {else}
+   <tr>
+    <td align="right">会员费：</td>
+    <td>免费</td>
+  </tr>
+  {/if}
+  <tr>
+    <td align="right">客服：</td>
+    {articles module="users" function="GetUsersVip" user_id=$_G.user_id var="item"}
+    <td>{$item.adminname}</td>
+    {/articles}
+  </tr>
+   <tr>
+    <td align="right">有效时间：</td>
+    <td>{$Vvar.first_date|date_format:"Y-m-d"} 到 {$Vvar.end_date|date_format:"Y-m-d"}</td>
+  </tr>
+{elseif $Vvar.status==-1}
+    
+  {if $Vvar.money>0}
+   <tr>
+    <td align="right">会员费：</td>
+    <td><font style="font-size:14px; color:#FF0000">{$Vvar.money}元/年</font></td>
+  </tr>
+  {else}
+   <tr>
+    <td align="right">会员费：</td>
+    <td>免费</td>
+  </tr>
+  {/if}
+  <tr>
+    <td align="right">客服：</td>
+    {articles module="users" function="GetUsersVip" user_id=$_G.user_id var="item"}
+    <td>{$item.adminname}</td>
+    {/articles}
+  </tr>
+   <tr>
+    <td align="right">申请时间：</td>
+    <td>{$Vvar.addtime|date_format}</td>
+  </tr>
+  
+  
+{else}
+  {if $_G.system.con_vip_fee>0}
+  <tr>
+    <td align="right">升级类型：</td>
+    <td>VIP会员<input type="hidden" name="vip_type" value="1" onclick="change(1);"/></td>
+  </tr>
+  <tr>
+    <td align="right">会员费：</td>
+    <td><font style="font-size:14px; color:#FF0000">{$_G.system.con_vip_fee}元/年</font></td>
+  </tr>
+  <tr>
+    <td align="right">客服：</td>
+    <td>
+    <div class="c">
+			<select name="kefu_userid" id="kefu_userid">
+				<option value="">请选择</option>
+				{loop module="users" function="GetUsersAdminList" var="item" limit="all" type_id=8}
+				<option value="{$item.user_id}" {if $item.user_id==$_A.vip_result.kefu_userid} selected="selected"{/if}>{$item.adminname}</option>
+				{/loop}
+				</select>
+		</div>
+    </td>
+  </tr>
+   <tr>
+    <td align="right">当前可用余额：</td>
+    <td>{$_G.user_result.balance|default:0} 元 <a href="/?user&q=code/account/recharge_new"  style="color:#145CC9">我要充值</a></td>
+  </tr>
+  {else}
+  <tr>
+    <td align="right">会员费：</td>
+    <td>免费</td>
+  </tr>
+  <tr>
+    <td align="right">客服：</td>
+    <td>
+    <div class="c">
+			<select name="kefu_userid" id="kefu_userid">
+				<option value="">请选择</option>
+				{loop module="users" function="GetUsersAdminList" var="item" limit="all" type_id=8}
+				<option value="{$item.user_id}" {if $item.user_id==$_A.vip_result.kefu_userid} selected="selected"{/if}>{$item.adminname}</option>
+				{/loop}
+				</select>
+		</div>
+    </td>
+  </tr>
+  {/if}
+   <tr>
+    <td align="right">请输入交易密码：</td>
+    <td>{if $_G.user_result.paypassword==""}<a style="color:#0000FF" target="_blank" href="/?user&q=code/users/paypwd">请先设置交易密码</a>{else}<input type="password" style="width:150px; border:#BFBFBF solid 1px; height:18px;" name="paypassword" id="paypassword">  {/if}</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>
+      <input  id="button" type="submit" name="submit" id="submit" value="立即申请" />
+  </td>
+  </tr>
+  {/if}
+  
+ 
+  
+</table> </form>
+		         </div>
+		  </div>
+		  
+		  
+		  <div class="cle"></div>
+	</div>
+
+<script>
+var vip_fee= {$_G.system.con_vip_fee|default:0};
+var use_money = {$_G.user_result.balance|default:0};
+vip = parseInt(vip_fee);
+use_money = parseInt(use_money);
+{literal}
+function checkvip(){
+	if (use_money<vip_fee && vip_fee>0){
+		alert("您的余额不足"+vip_fee+"元，无法申请VIP会员。请充值后申请！");
+		location.href="/?user&q=code/account/recharge_new";
+		return false;
+	}
+	if ($("#paypassword").val()==""){
+		alert("请填写您的交易密码。");
+		return false;
+	}
+	return true;
+}
+</script>
+{/literal}
+{include file="footer.html"}

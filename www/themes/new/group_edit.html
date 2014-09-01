@@ -1,0 +1,35 @@
+  {articles module="group" function="GetGroupOne" id='$_G.article_id' var="var"}
+  <form action="/?user&q=code/group/edit" method="post" enctype="multipart/form-data"> 
+   <table width="100%" border="0" cellspacing="0" cellpadding="0" class="qz_edit">
+  <tr>
+    <td width="21%" align="right"><span>*</span> 圈子名称：</td>
+    <td width="79%"><input type="text" name="name" value="{$var.name}" />
+      请输入2-18个字符</td>
+  </tr>
+  <tr>
+    <td align="right"><span>*</span> 圈子类型：</td>
+    <td><select name="type_id">
+			{loop module="group" function="GetGroupTypeList" limit="all" var="_var"}
+			<option value="{$_var.id}" {if $var.type_id==$_var.id} selected="selected"{/if}>{$_var.name}</option>
+			{/loop}
+			</select> </td>
+  </tr>
+  <tr>
+    <td align="right"><span>*</span> 浏览权限：</td>
+    <td>{input value='1|公开群组,2|秘密群组,3|封闭群组' name="public" checked="$var.public"}</td>
+  </tr>
+  <tr>
+    <td align="right"><span>*</span> 上传头像：</td>
+    <td><input type="file" name="pic" /><input type="hidden" name="litpic" value="{$var.litpic}"/>{if $var.litpic_url!=""}<a href="/{$var.litpic_url}" target="_blank"><img src="/{$var.litpic_url}" width="50" height="50" /></a>{/if}</td>
+  </tr>
+  <tr>
+    <td align="right"><span>*</span> 群组简介：</td>
+    <td><textarea name="remark" rows="5" cols="30">{$var.remark}</textarea></td>
+  </tr>
+  <tr>
+    <td align="right">&nbsp;</td>
+    <td><input name="Submit" type="submit" class="btn" value="提 交" /><input type="hidden" name="id" value="{$var.id}" /><input type="hidden" name="user_id" value="{$var.user_id}" /></td>
+  </tr>
+</table>
+</form>
+{/articles}

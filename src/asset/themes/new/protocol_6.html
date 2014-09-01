@@ -1,0 +1,365 @@
+{include file="header.html"}
+
+{articles module="borrow" plugins="roam"  function="GetRoamOne" borrow_nid='request' var="var"}
+<div class="conbox t20">
+	<div>
+		<div class="tool_bor">
+	      <h1>协议书</h1>
+			<div class="con1">
+				<div class="con">
+	<div class="t10">
+    <div><h4 style=" font-size:20px;text-align:center; padding-bottom:10px">流转标协议书</h4></div>
+    <div style="border:#CCC solid 1px; padding:5px 20px">
+    甲方(流转人)： {if $var.user_id==$_G.user_id}{$var.realname}{else}{$var.realname|truncate:1}**{/if}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br/>
+    乙方(第三人)：
+    {if $magic.request.usertype=='tender'}
+    {articles module="borrow" plugins="Tender" function="GetTenderOne"  tender_nid='request' var="vat"}  
+    {if $vat.user_id==$_G.user_id}
+     {$vat.realname}
+    {else}
+    {$vat.realname|truncate:1}**
+    {/if}
+    {/articles}
+    {else}
+    {loop module="borrow" plugins="Tender" function="GetTenderList" limit="all"  var="vat"  borrow_nid="request" type="roam"}  
+    {$vat.realname|truncate:1}** {if $key!=$vat.unum} ,{/if}
+    {/loop}
+    {/if}<br />
+    丙方(保证人)：{$var.voucher}<br />
+   
+   
+    
+	<p>
+		<span style="font-size:12px;"><strong> </strong></span>
+	</p>
+	<p class="p0">
+		1.借款条款
+	</p>
+	<p class="p0">
+		（1）{$var.borrowtime}，甲方和{$var.borrowuser} 签订借款协议，甲方出借给{$var.borrowuser} 人民币{$var.borrowaccount}元。该债务年化利率{$var.interestrate}，贷款期限{$var.borrowperiod}，还款方式为{$var.borrowrepaytype}。
+	</p>
+	<p class="p0">
+		（2）现甲方将以上债权中的部分计人民币￥
+    {if $magic.request.usertype=='tender'}
+    {articles module="borrow" plugins="Tender" function="GetTenderOne"  tender_nid='request'  var="vat"  borrow_nid="request" }  
+    {$vat.account|default:0.00} 
+    {/articles}
+    {else}
+    {loop module="borrow" plugins="Tender" function="GetTenderList" limit="all"  var="vat"  borrow_nid="request" }  
+    {$vat.account|default:0.00}{if $key!=$vat.unum} ,{/if}
+    {/loop}
+    {/if}
+   <!-- {articles module="borrow" function="GetView" borrow_nid='request' var="vaa"}
+   {$vaa.account|default:0.00} 
+    {/articles}-->
+ 
+        （“出让债权”）转让给乙方
+        {if $magic.request.usertype!='tender'}
+ {loop module="borrow" plugins="Tender" function="GetTenderList" limit="all"  var="vat"  borrow_nid="request" type="roam"}  
+   
+    {if $vat.user_id!=$_G.user_id&&$vat.unum>0&&$key==$vat.unum}
+    （金额与乙方的排名先后一一对应）
+    {/if}
+ {/loop}
+    {/if}
+        ，并承诺并保证其转让的债权系合法、有效的债权。乙方表示同意受让上述部分债权。
+	</p>
+	<p class="p0">
+		（3）在本协签订之日，甲方应按照附件一的格式给{$var.borrowuser}发出债权转让通知书，并确认债务人收到本债权转让通知书。
+	</p>
+	<p class="p0">
+		（4）上述转让自本协议签订之日起立即生效。借款利息拆分将按天计算进行结算，本协议签订之前的利息归甲方所有，本协议签订之后的利息将归乙方所有。
+	</p>
+	<p class="p0">
+		2.回购条款
+	</p>
+	<p class="p0">
+		　　自本协议签订31天后，甲方承诺将无条件从乙方回购出让债权。在回购前，出让债权的利息归乙方所有。在回购后，出让债权的利息归甲方所有，甲方将继续享有出让债权的一切权利。
+	</p>
+	<p class="p0">
+		　　丙方为甲方向乙方回购债权做不可撤销的连带责任保证，如甲方逾期未回购债权，则丙方无条件从乙方处回购债权。
+	</p>
+	<p class="p0">
+		3.陈述与承诺
+	</p>
+	<p class="p0">
+		　　甲方明确声明本协议项下的债权无任何第三人主张权利，且权利不受限制，即不存在被法院保全、查封或强制执行的情况或已设担保。在签订本协议之前，甲方没有与第三方签订过本协议项下债权让与合同，也并未约定相应的违约责任。
+	</p>
+	<p class="p0">
+		4.违约责任
+	</p>
+	<p class="p0">
+		　　各方同意，如果一方违反其在本协议中所作的承诺或任何其他义务，致使其他方遭受或发生损害、损失、索赔、处罚、诉讼仲裁、费用、义务和/或责任，违约方须向另一方作出全面赔偿。
+	</p>
+	<p class="p0">
+		5.其他规定
+	</p>
+	<p class="p0">
+		（1）在本协议履行过程中发生的纠纷，各方应友好协商解决;协商不成的，任何一方均有权向北京仲裁委员会申请仲裁。
+	</p>
+	<p class="p0">
+		（2）本协议自协议由系统生成时生效，本协议打印件可一式多份，具有同等法律效力。
+	</p>
+	<p>
+		<br />
+	</p>
+    </div>
+    <div>
+   甲方(流转人)： {if $var.user_id==$_G.user_id}{$var.realname}{else}{$var.realname|truncate:1}**{/if}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br/>
+    乙方(第三人)：
+   {if $magic.request.usertype=='tender'}
+    {articles module="borrow" plugins="Tender" function="GetTenderOne"  tender_nid='request' var="vat"}  
+    {if $vat.user_id==$_G.user_id}
+     {$vat.realname}
+    {else}
+    {$vat.realname|truncate:1}**
+    {/if}
+    {/articles}
+    {else}
+    {loop module="borrow" plugins="Tender" function="GetTenderList" limit="all"  var="vat"  borrow_nid="request" type="roam"}  
+    {$vat.realname|truncate:1}** {if $key!=$vat.unum} ,{/if}
+    {/loop}
+    {/if}<br />
+    丙方(保证人)：{$var.voucher}<br />
+　　签订日期：
+ {if $magic.request.usertype=='tender'}
+    {articles module="borrow" plugins="Tender" function="GetTenderOne"  tender_nid='request' var="vat"}  
+    {$var.borrow_success_time|date_format:Y-m-d"}
+   
+    {/articles}
+    {else}
+    {loop module="borrow" plugins="Tender" function="GetTenderList" limit="all"  var="vat"  borrow_nid="request" type="roam"}  
+    {$var.borrow_success_time|date_format:Y-m-d"} {if $key!=$vat.unum} ,{/if} {if $vat.user_id!=$_G.user_id&&$vat.unum>0&&$key==$vat.unum}
+    （签订日期与乙方认购的时间先后一致）
+    {/if}
+    {/loop}
+    {/if}
+    </div>
+    
+    <p align="center" style="text-align:center;">
+	<strong><span style="font-size:16px;"><span id="__dyeditor_bookmark_start_13__"></span>
+
+    <div><h4 style=" font-size:20px;text-align:center; padding-bottom:10px">附件一：借款协议</h4></div>
+</span></strong> 
+</p>
+<p>
+	<br />
+</p>
+<div>
+	<p>
+		<span style="font-size:12px;"><strong> </strong></span> 
+	</p>
+	<p class="p0">
+		<p class="p0">
+			借出人：{$var.realname|truncate:1}** 
+		</p>
+		<p class="p0">
+			借入人：{$var.borrowuser}
+		</p>
+		<p class="p0">
+			特别提示：
+		</p>
+		<p class="p0">
+			借出人、借入人、保证人请认真阅读本协议项下的全部条款。借出人、借入人、保证人，一旦签订本协议，即认为借入人、保证人已理解并同意本协议的所有条款。
+		</p>
+		<p class="p0">
+			1.借贷条款
+		</p>
+		<p class="p0">
+			（1）贷款金额：人民币￥{$var.borrowaccount}。
+		</p>
+		<p class="p0">
+			（2）年化利率：{$var.interestrate}。
+		</p>
+		<p class="p0">
+			（3）贷款期限：{$var.borrowperiod}。
+		</p>
+		<p class="p0">
+			（4）还款方式：{$var.borrowrepaytype}。
+		</p>
+		<p class="p0">
+			2.借入人权利/义务
+		</p>
+		<p class="p0">
+			（1）借入人有权按照约定获得借款。
+		</p>
+		<p class="p0">
+			（2）借入人应按期偿还贷款本息。
+		</p>
+		<p class="p0">
+			3.借出人权利/义务
+		</p>
+		<p class="p0">
+			（1）借出人有权按照约定获得借入人归还借款的本金和利息。
+		</p>
+		<p class="p0">
+			（2）借出人有权向有关个人征信系统提供贷款信息，借入人严重违约影响借出人债权实现时，借出人有权通过向社会公告的形式追究其违约责任。
+		</p>
+		<p class="p0">
+			（3）借出人可以在任何时候，将本协议项下的债权转让给第三方，或在任何时候从第三方处回购本协议项下债权。该等转让或回购行为不需要获得借入人同意，转让或回购行为在书面通知借入人时立刻生效。
+		</p>
+		<p class="p0">
+			（4）借出人应按约定借出本金给借入人。
+		</p>
+		<p class="p0">
+			4.保证人权利/义务
+		</p>
+		<p class="p0">
+			（1）借出人和借入人应按照约定向保证人或保证人指定的机构支付居间和保证费用。
+		</p>
+		<p class="p0">
+			（2）借出人和借入人双方任何一方需变更借贷条款，均须书面通知对方，经双方协商一致，达成书面意见，同时征得担保人书面同意后方可变更协议。如借出人和借入人未经保证人同意变更协议的，自协议变更之日起，保证人解除保证义务。
+		</p>
+		<p class="p0">
+			（3）保证人为本协议项下贷款的本金或本金以及利息按照附件一中的约定提供不可撤销的保证。如借入人逾期未还款，保证人将按照本协议约定向借出人偿付贷款的本金或本金以及利息。借出人同意在收到保证人偿付本金时签订债权转让书，将逾期贷款的债权转让给保证人，并配合保证人继续追讨逾期贷款。
+		</p>
+		<p class="p0">
+			5.其他条款
+		</p>
+		<p class="p0">
+			（1）借入人不依本协议约定偿还本协议项下债务，借出人或保证人享有追索权。借出人或保证人因行使上述追索权而支出的合理费用，均由借入人承担。
+		</p>
+		<p class="p0">
+			（2）本协议一部分无效，不影响其他部分的法律效力。
+		</p>
+		<p class="p0">
+			（3）本协议履行过程中发生纠纷，协议各方应协商解决，协商不成的，各方同意接协议签订地所在地人民法院的管辖。
+		</p>
+		<p class="p0">
+			（4）本协议一式三份，各方均有一份。协议自借入人、借出人、保证人签字或盖章之后生效。
+		</p>
+		<p class="p0">
+			借出人： {if $var.user_id==$_G.user_id}{$var.realname}{else}{$var.realname|truncate:1}**{/if}
+		</p>
+		<p class="p0">
+			借入人：{$var.borrowuser}
+		</p>
+		<p class="p0">
+			协议签订地：{$var.signarea}
+		</p>
+		<p class="p0">
+			协议签署日期：{$var.borrowtime}
+		</p>
+	</p>
+</div>
+<p>
+	<span id="__dyeditor_bookmark_end_14__"></span>
+</p>
+
+
+<p align="center" style="text-align:center;">
+	<strong><span style="font-size:16px;"><span id="__dyeditor_bookmark_start_13__"></span> </span></strong>
+</p>
+<p class="p0">
+	<strong>
+
+		
+          <div><h4 style=" font-size:20px;text-align:center; padding-bottom:10px">附件二：债权转让通知书</h4></div>
+
+	<div style="text-align:center;">
+		<strong></strong>
+	</div>
+</strong>
+</p>
+<p>
+	<br />
+</p>
+<p>
+	<br />
+</p>
+<div>
+	<p>
+		<span style="font-size:12px;"><strong> </strong></span> 
+	</p>
+	<p class="p0">
+		<br />
+	</p>
+	<p class="p0">
+		<div class="Section0">
+			<p class="p0">
+				{$var.borrowuser}：
+			</p>
+			<p class="p0">
+				　　根据我方与贵方在{$var.borrowuser}签订的《借款协议》，我方于{$var.borrowtime}向贵方出借了人民币￥{$var.borrowaccount}
+                
+                借款，目前还在借款过程中。我方决定将上述债权中部分合计人民币￥ 
+                {if $magic.request.usertype=='tender'}
+    {articles module="borrow" plugins="Tender" function="GetTenderOne"  tender_nid='request'  var="vat"  borrow_nid="request" }  
+    {$vat.account|default:0.00} 
+    {/articles}
+    {else}
+    {loop module="borrow" plugins="Tender" function="GetTenderList" limit="all" var="vat"  borrow_nid="request" }  
+    {$vat.account|default:0.00} {if $key!=$vat.unum} ,{/if}
+    {/loop}
+    {/if}              
+                的债权转让给第三方自然人
+               {if $magic.request.usertype=='tender'}
+    {articles module="borrow" plugins="Tender" function="GetTenderOne"  tender_nid='request' var="vat"}  
+    {if $vat.user_id==$_G.user_id}
+     {$vat.realname}
+    {else}
+    {$vat.realname|truncate:1}**
+    {/if}
+    {/articles}
+    {else}
+    {loop module="borrow" plugins="Tender" function="GetTenderList" limit="all"  var="vat"  borrow_nid="request" type="roam"}  
+    {$vat.realname|truncate:1}** {if $key!=$vat.unum} ,{/if}
+    {/loop}
+    {/if}
+                ，上述转让立即生效。借款利息拆分将按天计算进行结算，今天之前的利息归我方所有，今天之后的利息将归新债权人
+                 {if $magic.request.usertype=='tender'}
+    {articles module="borrow" plugins="Tender" function="GetTenderOne"  tender_nid='request' var="vat"}  
+    {if $vat.user_id==$_G.user_id}
+     {$vat.realname}
+    {else}
+    {$vat.realname|truncate:1}**
+    {/if}
+    {/articles}
+    {else}
+    {loop module="borrow" plugins="Tender" function="GetTenderList" limit="all"  var="vat"  borrow_nid="request" type="roam"}  
+    {$vat.realname|truncate:1}** 
+    {/loop}
+    {/if}
+                所有。
+			</p>
+			<p class="p0">
+				特此告知！
+			</p>
+			<p class="p0">
+				　　 {if $var.user_id==$_G.user_id}{$var.realname}{else}{$var.realname|truncate:1}**{/if}
+			</p>
+			<p class="p0">
+				　　{if $magic.request.usertype=='tender'}
+    {articles module="borrow" plugins="Tender" function="GetTenderOne"  tender_nid='request' var="vat"}  
+    {$var.borrow_success_time|date_format:Y-m-d"}
+   
+    {/articles}
+    {else}
+    {loop module="borrow" plugins="Tender" function="GetTenderList" limit="all"  var="vat"  borrow_nid="request" type="roam"}  
+    {$var.borrow_success_time|date_format:Y-m-d"} {if $key!=$vat.unum} ,{/if} {if $vat.user_id!=$_G.user_id&&$vat.unum>0&&$key==$vat.unum}
+    （签订日期与乙方认购的时间先后一致）
+    {/if}
+    {/loop}
+    {/if}
+			</p>
+		</div>
+	</p>
+	<p class="p0">
+		<br />
+	</p>
+	<p>
+		<br />
+	</p>
+</div>
+<p>
+	<span id="__dyeditor_bookmark_end_14__"></span> 
+</p>
+{/articles}
+ </div>
+ </div>
+ </div>
+    </div>
+    </div>
+    </div>
+    </div>
+{include file="footer.html"}

@@ -1,0 +1,215 @@
+{include file="header.html"}	
+<div class="pg-account" id="pg-account-index">
+    	<div class="container_10 fn-clear mt10">
+        		{include file="user_menu.html"}	
+                <div class="grid_08">
+                	<!--头部基本信息-->
+					{articles module="account"  function="GetOne" var="Avar" user_id="$_G.user_id"}
+                	<div class="userinfobox">
+					    <ul class="top-money">
+					          <li ><span id="hello_time">您好，</span></li>
+					          <li class="wangcai"><span class="f20 mr10" id='uname'>{$_G.user_result.username}</span><a class="f12 blue" target="_blank" href="account-vip.html"><span id="vip_msg" style="display:none;">成为VIP，尊享更多特权和保障</span></a></li>
+							  <li  ><span class="usemoney">账户余额：</span></li>
+							  <li  ><span class="f24 org" id='useMoney'>{$Avar.total|default:0.00}元</span></li>
+					    </ul><!--top-money-->                       
+						<div class="div_clb"></div>
+                        <div class="user-avatar-container">
+                        <img src="{$_G.user_id|avatar}" width="108" height="108" style="border:#d4d1d1 solid 1px; padding:1px" />
+                        </div>
+                        <div class="user-info-container">
+                        	<div class="user-info-safe">
+                            	<!--<p>安全等级：<a href="account-safe.html"><img src="{$tpldir}/static/img/icon/safe.jpg" /></a></p>-->
+						   <ul class="investGradeUl">
+			<li class="investGradeL01 lipad0000"><p class="invP">投资等级：{articles module="borrow" function = "GetBorrowCredit" user_id="$_G.user_id" var="Credit_var"}{$Credit_var.credit_total|credit:"borrow"}  <a href="/?user&q=code/users/credit"><font style="font-size:12px;">积分记录</font></a>{/articles}</p></li>
+						         <li class="investGradeL02 lipad1010"><a class="recharge txtC f16" href="/?user&q=code/account/recharge_new">充值</a><a class="cash txtC f16 ml20" href="/?user&q=code/account/cash_new">提现</a></li>
+						         <li class="lipad1010">	{articles module="users" function="GetUsersVip" user_id="$_G.user_id" var="Vvar"}
+		{if $Vvar.status==1}
+		<a href="/vip/index.html" title="已认证"><img border="0" src="{$tpldir}/images/vip1.gif"/></a>
+	    {else}<a href="/vip/index.html" title="未认证"><img border="0"  src="{$tpldir}/images/vip0.gif"/></a>
+	    {/if}
+	    {if $_G.user_info.realname_status=="1"}
+	    <a href="/?user&q=code/approve/realname" title="已认证" ><img border="0" src="{$tpldir}/images/realname.gif"/></a>
+	    {else}<a href="/?user&q=code/approve/realname" title="未认证"><img border="0" src="{$tpldir}/images/realname0.gif"/></a>
+	    {/if}
+	    {if $_G.user_info.email_status=="1"}
+	    <a href="/?user&q=code/approve/email" title="已认证"><img border="0" src="{$tpldir}/images/email.gif"/></a>
+	    {else}<a href="/?user&q=code/approve/email" title="未认证"><img border="0" src="{$tpldir}/images/email0.gif"/></a>	  
+	    {/if}	  
+		{articles module="approve" function="GetSmsOne" user_id="$_G.user_id" var="pvar"}
+	    {if $pvar.status=="1"}
+	    <a href="/?user&q=code/approve/phone" title="已认证" ><img border="0" src="{$tpldir}/images/phone1.gif"/></a>
+	    {else}<a href="/?user&q=code/approve/phone" title="未认证"><img border="0" src="{$tpldir}/images/phone0.gif"/></a>
+	    {/if}	  
+		{/articles}
+	    {if $_G.user_info.video_status=="1"}
+	    <a href="/?user&q=code/approve/video" title="已认证" ><img border="0" src="{$tpldir}/images/video1.gif"/></a>
+	    {else}<a href="/?user&q=code/approve/video" title="未认证" ><img border="0" src="{$tpldir}/images/video0.gif"/></a>
+	   {/if}
+								</li>
+						   </ul>		  
+                                
+                            </div>
+                            <div class="user-info-cash">
+
+                                <p class="e7 mb10 uicp"><span class="money mr10 w120"><span>冻结金额</span><br /><span id='smallNoUseMoney'>{$Avar.frost|default:0.00}元</span></span> <span class="money w120"><span>可用金额</span><br /><span id='smallUseMoney'>{$Avar.balance|default:0.00}元</span></span></p>
+                                <p class="e9 uicp"><span class="money mr10 w120"><span>最近待收金额</span><br /><span id="lately_collection">{$recover_var.recover_wait_now_account|default:0.00}元</span></span> <span class="money w120"><span>最近待还金额</span><br /><span id="lately_repayment">{$repay_var.repay_wait_now_account|default:0.00}元</span></span></p>                                
+                            </div>	
+                        </div><!-- user-info-container fn-clear pt20 --> 
+                    </div><!-- userinfobox --> 
+                    <!--数据列表-->
+                    <div class="account_info">
+                    	<ul class="fn-clear account-index">
+                        	<li class="account-index-tab active"><a class="cc">借款负债表</a></li>
+                            <li class="account-index-tab"><a class="cc">投资损益表</a></li>
+                        </ul>
+                        <div class="account-index-tab-txt">
+						{articles module="borrow" plugins="count" function="GetUsersCount" user_id="$_G.user_id" var="item"}
+{articles module="borrow" plugins="count" function="GetUsersRecoverCount" var="recover_var" user_id="$_G.user_id"}
+                        	<ul class="fn-clear mt20 w340 ml10 mr20 fLeft ml20" style="border:1px solid #1bb8e2;">
+                            	<li class="account-title-blue h40 f18">
+                                	<span class="fLeft pl20 w140 relative">
+                                    	资产总额
+                                    	<em id="tips_1" class="iconfont tips"></em>
+                                        <div class="tips-shadow"  style="left:140px; top:0px;z-index:999">
+                                            <div class="tips-content w360 txtLeft">资产总额=可用资金+冻结资金+待收总额</div>
+                                        </div>
+                                    
+                                    </span>
+                                    <span class="fLeft pl20 w140 txtRight" id="total-money">{$Avar.total|default:0.00}元</span>
+                                </li>
+                            	<li class="h40 f14">
+                                	<span class="fLeft pl20 w140">可用资金</span>
+                                    <span class="fLeft pl20 w140 txtRight" id="use-money">{$Avar.balance|default:0.00}元</span>
+                                </li>
+                            	<li class="h40 f14">
+                                	<span class="fLeft pl20 w140">冻结资金</span>
+                                    <span class="fLeft pl20 w140 txtRight" id="nouse-money">{$Avar.frost|default:0.00}元</span>
+                                </li>
+                         
+                            </ul>
+							{/articles}{/articles}
+                        	<ul class="fn-clear mt20 w340 ml10 fLeft" style="border:1px solid #ffa200;">
+							{articles module="borrow" plugins="count" function="GetUsersRepayCount" var="repay_var" user_id="$_G.user_id"}
+                            	<li class="account-title-org h40 f18">
+                                	<span class="fLeft pl20 w140 relative">
+                                    	负债总额
+                                        <em id="tips_1" class="iconfont tips org"></em>
+                                        <div class="tips-shadow"  style="left:140px; top:0px;z-index:999">
+                                            <div class="tips-content w360 txtLeft">负债总额=待还总额</div>
+                                        </div> 
+                                    </span>
+                                    <span class="fLeft pl20 w140 txtRight" id="repayment-debt">{$repay_var.repay_wait_account|default:0}元</span>
+                                </li>
+                         
+                            	<li class="h40 f14">
+                                	<span class="fLeft pl20 w140 ti30">待还本息</span>
+                                    <span class="fLeft pl20 w140 txtRight" id="wait-repayment-capital">{$repay_var.repay_wait_account|default:0}元</span>
+                                </li>
+                            	<li class="h40 f14">
+                                    <span class="fLeft pl20 w140 ti30">待还利息</span>
+                                    <span class="fLeft pl20 w140 txtRight" id="wait-repayment-interest">{$repay_var.repay_yes_account|default:0}元</span>
+                                </li>
+                             
+                            </ul>
+                        	<ul class="fn-clear pt30 fLeft ml20" style="width:714px;">
+                            	<li class="h40 f18" style="background:#d8fabf;">
+                                	<span class="fLeft pl20 w160 relative">
+                                    	净资产
+                                        <em id="tips_1" class="iconfont tips"></em>
+                                        <div class="tips-shadow"  style="left:110px; top:0px;z-index:999">
+                                            <div class="tips-content w360 txtLeft">净资产=资产总额-负债总额</div>
+                                        </div> 
+                                    </span>
+                                    <span class="fRight pr20 w140 txtRight" id="jin-money">{$Avar.balance|default:0.00}元</span>
+                                </li>
+                            </ul>
+                        </div>
+						{/articles}
+                        <div class="account-index-tab-txt hide">
+                        	<ul class="fn-clear mt20 w340 mr20 fLeft ml20"  style="border:1px solid #1bb8e2;">
+							
+                            	<li class="account-title-blue h40 f18">
+                                	<span class="fLeft pl20 w140 relative">
+                                        待收总额
+                                        <em id="tips_1" class="iconfont tips"></em>
+                                        <div class="tips-shadow"  style="left:140px; top:0px;z-index:999">
+                                            <div class="tips-content w360 txtLeft">收入总额=已实现收入+未实现收入</div>
+                                        </div>
+                                    </span>
+                                    <span class="fLeft pl20 w140 txtRight" id="total_in_money">{ $recover_var.recover_wait_account|default:0.00}元</span>
+                                </li>
+								<li class="h40 f14">
+                                	<span class="fLeft pl20 w140 ti30">待回收本金</span>
+                                    <span class="fLeft pl20 w140 txtRight" id="act_collection_interest">{ $recover_var.recover_wait_capital|default:0.00}元</span>
+                                </li>
+                          <li class="h40 f14">
+                                	<span class="fLeft pl20 w140 ti30">待回收利息</span>
+                                    <span class="fLeft pl20 w140 txtRight" id="act_collection_interest">{ $recover_var.recover_wait_interest|default:0.00}元</span>
+                                </li>
+                            	<li class="h40 f14">
+                                	<span class="fLeft pl20 w140 ti30">已赚利息</span>
+                                    <span class="fLeft pl20 w140 txtRight" id="act_collection_interest">{ $recover_var.recover_yes_interest|default:0.00}元</span>
+                                </li>
+                            	
+
+                            	<li class="h40 f14">
+                                	<span class="fLeft pl20 w140 ti30">已赚奖励</span>
+                                    <span class="fLeft pl20 w140 txtRight" id="award_add">{ $recover_var.tender_award_fee|default:0.00}元</span>
+                                </li>
+                            	<li class="h40 f14">
+                                	<span class="fLeft pl20 w140 ti30">罚息收入</span>
+                                    <span class="fLeft pl20 w140 txtRight" id="late_collection">{ $recover_var.recover_fee_account|default:0.00}元</span>
+                                </li>
+                           
+                            </ul>
+                        	<ul class="fn-clear mt20 w340 ml10 fLeft" style="border:1px solid #ffa200;">
+							{articles module="borrow" plugins="count" function="GetUsersRecoverCount" var="recover_var" user_id="$_G.user_id"}
+                            	<li class="account-title-org h40 f18">
+                                	<span class="fLeft pl20 w140 relative">
+                                        支出总额
+                                        <em id="tips_1" class="iconfont tips org"></em>
+                                        <div class="tips-shadow"  style="left:140px; top:0px;z-index:999">
+                                            <div class="tips-content w360 txtLeft">总投资额</div>
+                                        </div>
+                                    </span>
+                                    <span class="fLeft pl20 w140 txtRight" id="total_out_money">{ $recover_var.tender_success_account|default:0.00}元</span>
+                                </li>
+                            
+                            	<li class="h40 f14">
+                                	<span class="fLeft pl20 w140 ti30">待回收本金</span>
+                                    <span class="fLeft pl20 w140 txtRight" id="act_repayment_interest">{ $recover_var.recover_wait_capital|default:0.00}元</span>
+                                </li>
+					
+								
+								<li class="h40 f14">
+                                	<span class="fLeft pl20 w140 ti30">待回收利息</span>
+                                    <span class="fLeft pl20 w140 txtRight" id="act_collection_interest_fee">{ $recover_var.recover_wait_interest|default:0.00}元</span>
+                                </li>
+								
+								
+                            </ul>
+                            
+                            
+                        </div>
+                    </div>
+                    <!--微信定投-->
+                    
+                    
+                </div>
+       
+            </div>
+        </div>
+		<script>{literal}
+		$(document).ready(function(){
+
+    $(".account-index-tab").click(function(){
+        index = $(".account-index-tab").index($(this)); 
+        $(".account-index-tab-txt").hide().eq(index).show();
+        $(".account-index-tab").removeClass("active");
+        $(this).addClass("active");
+    });
+}){/literal}
+</script>
+{include file="footer.html"}
+
+

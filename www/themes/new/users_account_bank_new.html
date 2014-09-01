@@ -1,0 +1,153 @@
+<div class="us_r_bor1" >
+{if $_G.user_info.realname_status!=1}
+	<div class="user_main_title1">{$_G.system.con_webname}禁止信用卡套现、虚假交易等行为,一经发现将予以处罚,包括但不限于：限制收款、冻结账户、永久停止服务,并有可能影响相关信用记录。
+	</div>
+	<div style="text-align:center; padding-top:50px; padding-bottom:50px;">
+	你还没有进行实名认证，不能绑定银行卡号等相关信息。<br />
+	开始进行 <a href="/?user&q=code/approve/realname"><strong style="color:#FF0000; font-size:18px">实名认证</strong></a>
+	</div>
+{else}
+<div class="user_main_title1">{$_G.system.con_webname}禁止信用卡套现、虚假交易等行为,一经发现将予以处罚,包括但不限于：限制收款、冻结账户、永久停止服务,并有可能影响相关信用记录。
+</div>
+		<div class="user_right_border">
+			<div class="l">真实姓名：</div>
+			<div class="c">
+				{if $_G.user_info.realname!=''}
+				{$_G.user_info.realname|truncate:1}**
+				{/if}
+			</div>
+		</div>
+		{if $_U.account_bank_result.account!=''}
+		<div class="user_right_border">
+			<div class="l">银行账号：</div>
+			<div class="c">
+				{$_U.account_bank_result.account}
+			</div>
+		</div>
+        {/if}
+        <form action="" method="post" {if $_U.account_bank_result.account!=''} onsubmit="return checkform();"{/if}>
+        {if $_U.account_bank_result.account!=''}
+		<div class="user_right_border">
+			<div class="l">当前的银行账号：</div>
+			<div class="c">
+				<input type="text" name="oldaccount" id="oldaccount" value="" />
+               <font style="color:#FF0000">*</font> &nbsp;&nbsp;&nbsp;(为了您的资金安全，请输入您当前的银行账号)
+			</div>
+            
+		</div>
+		{/if}
+    	<div class="user_right_border">
+		<div class="l">{if $magic.request.id!=''}新{/if}新的银行账号：</div>
+		<div class="c">
+			<input type="text" name="account" id="account" value="" />
+           <font style="color:#FF0000">*</font> &nbsp;&nbsp;&nbsp;(信用卡帐号无法提现，请不要误填) 
+ 
+		</div>
+       
+		</div>
+        {if $_U.account_bank_result.account!=''}
+		<div class="user_right_border">
+			<div class="l">确认新的银行账号：</div>
+			<div class="c">
+				<input type="text" name="account1" id="account1" value="" />
+               <font style="color:#FF0000">*</font> &nbsp;&nbsp;&nbsp;(请再次确认您变更的银行账号) 
+			</div>
+             
+		</div>		
+		{/if}
+        
+   
+	
+	<div class="user_right_border">
+		<div class="l">请选择银行名称：</div>
+		<div class="c">
+		{linkages nid="account_bank" name="bank" type="value" value="$_U.account_bank_result.bank"}<font style="color:#FF0000">*</font>
+			
+		</div>
+	</div>
+	
+	<div class="user_right_border">
+		<div class="l">开户银行所在地区：</div>
+		<div class="c">
+			{areas type="p,c" value="$_U.account_bank_result.city"}<font style="color:#FF0000">*</font>
+		</div>
+	</div>
+		<div class="user_right_border">
+			<div class="l">开户行支行名称：</div>
+			<div class="c">
+				<input type="text" name="branch" value="{$_U.account_bank_result.branch}" />
+                <font style="color:#FF0000">*</font>&nbsp;&nbsp;&nbsp; (如不能确定，请拨打开户行的客服热线咨询)
+			</div>
+            
+		</div>
+		
+	{if $_U.account_bank_result.account!=''}
+		<div class="user_right_border">
+			<div class="l">交易密码：</div>
+			<div class="c">
+				<input type="password" name="paypwd" id="paypwd" value="" />
+			</div>
+		</div>	
+				
+		{/if}
+		{if $_U.account_bank_result.account!=''}        
+        <div class="user_right_border">
+			<div class="l"><font color="#FF0000">*</font>手机验证码：</div>
+			<div class="c">
+                {articles module="approve" function="GetSmsOne" status=1 user_id="$_G.user_result.user_id" var="tel"}
+                <input type="hidden" name="ajax_phone" id="ajax_phone" value="{$tel.phone}">
+                {/articles}
+				<input type="text" name="ajax_phone_code" id="ajax_phone_code" onkeyup="value=value.replace(/[^0-9Xx]/g,'')" size="10"/> <input type="button" id="ajax_phone_get_tixian" value="获取验证码" />&nbsp;<span style="color:red" id="ajax_phone_msg"></span>
+			</div>
+		</div>
+        {/if}
+		<div class="user_right_border">
+			<div class="l"></div>
+			<div class="c">
+				{if $_U.account_bank_result.account!=""}<input type="hidden" name="id" value="{$_U.account_bank_result.id}" />{/if}
+				<input type="hidden" name="user_id" value="{$_G.user_id}" />
+				<input  id="button" type="submit" name="ajax_phone_submit_tixian"  value="确认提交" size="30" id="ajax_phone_submit_tixian" /> 
+			</div>
+		</div>
+		</form>
+		<div class="cle"></div>
+		<div class="user_right_foot">* 温馨提示：禁止信用卡套现</div>
+		{/if}
+</div>
+{literal}
+<script>
+function checkform(){
+	var paypwd = $("#paypwd").val();
+	var oldaccount = $("#oldaccount").val();
+	var account = $("#account").val();
+	var account1 = $("#account1").val();
+    var ajax_phone_code = $("#ajax_phone_code").val();
+	var msg = '';	
+	if(paypwd==''){
+		msg += "交易密码不能为空\n";		
+	}
+	if(oldaccount==''){
+		msg += "原银行账号不能为空\n";		
+	}
+	if(account==''){
+		msg += "新银行账号不能为空\n";
+	}
+    if(ajax_phone_code==''){
+		msg += "手机验证码不能为空\n";
+	}
+	if(account1==''){
+		msg += "确认账号不能为空\n";
+	}else if(account1!=account){
+		msg += "两次账号不一样 \n";
+	}
+	if(msg!=''){
+		alert(msg);
+		return false;
+	}
+	
+}
+</script>
+{/literal}
+{literal}
+<script>deayou.use("rating",function(e){e.check_phone();});</script>
+{/literal}

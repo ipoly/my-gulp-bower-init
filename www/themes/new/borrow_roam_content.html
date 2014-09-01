@@ -1,0 +1,654 @@
+{articles module="borrow" plugins="roam"  function="GetRoamOne" borrow_nid='$var.borrow_nid' var="roam_var"}
+   <!--内容开始-->
+    <div class="pg-invest" id="page-invest-page" >
+       
+    	<div class="container_10 fn-clear mt10"><a href="/invest/index.html">项目理财列表</a> > <a href="#">查看详细</a></div>
+        <div class="container_10 fn-clear mt10">
+        	<div class="invest-intro box p20 fn-clear fLeft">
+                <div class="invest-intro-title fn-clear">
+                 
+                      <h4 class="f20 fLeft mt10" id='bname'>{$var.name} 借贷编号：{$var.borrow_nid}
+				<img src="{$tpldir}/dyp2p/borrow_type_{$var.borrow_type}.gif" align="absmiddle" title="{$var.borrow_type|linkages:'borrow_all_type'}" />
+          {if $var.award_status!=0}<span class="jl_icon">{if $var.award_status==1}{$var.award_account}元{else}{$var.award_scale}%{/if}</span>{/if}</h4>
+
+                      <span class="fRight mt5" id='username'>借款用户：{$var.username}{articles module="borrow" function = "GetBorrowCredit" user_id="$var.user_id" var="Credit_var"}{$Credit_var.credit_total|credit:"borrow"}{/articles}</span>
+                </div>
+                <ul class="fn-clear mt15">
+                	<li class="fn-clear pb10">
+                    	<span class="fLeft w300">借款金额</span>
+                        <span class="fLeft w160">年利率</span>
+                        <span class="fLeft w160">借款期限</span>
+                    </li>
+									<li class="fn-clear pb10 boder-gray">
+									  	<span class="fLeft w300" ><em class="f30 bold" id='account'>{$var.account}</em> 元</span>
+									    <span class="fLeft w160" ><em class="f30 bold" id='apr'>{$var.borrow_apr}</em> %</span>
+									    <span class="fLeft w160" id='time_limit'><em class="f30 bold">{$var.borrow_period_name}</em> </span>
+									</li>
+                	<li class="fn-clear pb20 pt20 boder-gray">
+										<span class="fLeft w300" id='left_time'>最小流转：{$roam_var.account_min}元</span>
+									  <span class="fLeft w300" id='score'>
+									  	投标进度：
+									  	<span class="invest-list-speed-1 invest-list-speed">
+									      	<span class="bg" style="width:{$var.borrow_account_scale}%"></span>
+									      	<span class="point" style="left:0%; top:-4px;"></span>
+									    </span> 
+									    {$var.borrow_account_scale}%
+									  </span>
+				  </li>
+                	<li class="fn-clear pb20 pt20 boder-gray">
+									  	<span class="fLeft w300" id='repay_type'>还款方式：{$var.style_title}</span>
+									    <span class="fLeft w300" id='add_time'>发布时间：{$var.verify_time|date_format:"Y-m-d"}</span>
+				  </li>
+                	<li class="fn-clear pb10 pt20 boder-gray">
+                        <span class="fLeft w300" id="vouch-img"><img width="145" style="margin-top:-5px; display:none;" title="100%本金利息保障" alt="100%本金利息保障" height="29" src="static/img/bg/bg-vouch.png" /></span>
+                     借款用途：{$var.borrow_use|linkages:"borrow_use"|default:"$var.borrow_use"} 
+
+ <span class="fLeft w300" id='add_time'>  借款状态：投标{$var.tender_times|default:0}次成功，{if $var.borrow_account_scale!=100}借款进行中..{else}已满标
+
+{/if}</span></li>
+                </ul>
+            </div>
+            <div class="invest-qucik-tender box p10 fn-clear fRight">
+           	  <div class="fn-clear boder-gray pb10 pt10"	>
+            		<h5 class="fLeft f24">我要投标</h5>
+                  <a id="agreement" class="blue fRight pt10" target="_blank" href="/protocol/index.html"><span class="mr10">借款协议<span id="fb">（范本）</span></span></a>                </div>
+                <div class="fn-clear pt15 pb10 boder-gray">
+				{articles module="account"  function="GetOne" var="Avar" user_id="$_G.user_id"}
+                	<p class="f12">账户余额</p>
+                  <p style="margin-top:-5px;"><em class="f30 bold" id='use_money'>{$Avar.total|default:0.00}</em>元<a class="fRight icon-gree-link f16 mr20" style="padding:3px 15px;" href="/?user&q=code/account/recharge_new" target="_blank">充值</a></p>
+				  
+				  {/articles}
+                </div>
+                <div class="fn-clear pt10 pb20">
+                	<p>满标还差：<em class="gray f30" id='left_account'>{$var.borrow_account_wait|default:0}</em>元</p>
+                 
+          
+                  <div style="background-color: #FDFAE9; height: 115px; width:240px; margin: auto;margin-top:15px;border: solid 1px #F9DDD1;">
+
+          {if $roam_var.recover_yes==$roam_var.portion_total}
+    <table width="100%" height="72" border="0" cellpadding="0" cellspacing="0" >
+    
+                  <tr align="center">
+                
+                    <td align="center"> <img src="/themes/blue/images/roam_yes.gif" /></td>
+                  </tr>
+    </table>
+     
+    {elseif $roam_var.portion_yes==$roam_var.portion_total}
+    <table width="100%" height="72" border="0" cellpadding="0" cellspacing="0" >
+    
+                  <tr align="center">
+                
+                    <td align="center"> <img src="/themes/blue/images/roam_no.gif" /></td>
+                  </tr>
+    </table>
+      
+    {else}
+     <table width="100%" height="72" border="0" cellpadding="0" cellspacing="0" align="center">
+
+                  <tr>
+                
+                    <td><table width="60%" border="0" align="center" cellpadding="0" cellspacing="0" >
+                  <tr>
+                    <td width="35%" align="left"><input type="button" class="bttn_detail_2 " value="" 
+
+onmouseover="this.style.cursor='hand'" onclick="roam_change('{$roam_var.borrow_nid}','remove',{$roam_var.portion_wait})" 
+
+id="remove_{$roam_var.borrow_nid}"></td>
+                    <td width="30%" align="center" style=" width:60px"> <input type="text" class="result_btn_detail_3" value="1
+
+份" id="result_{$roam_var.borrow_nid}">
+                </td>
+                    <td width="35%" align="right"><input type="button" class="bttn_detail_3 " value="" 
+
+onmouseover="this.style.cursor='hand'" onclick="roam_change('{$roam_var.borrow_nid}','add',{$roam_var.portion_wait})" id="add_
+
+{$roam_var.borrow_nid}"></td>
+                  </tr>
+                </table>
+                </td>
+                
+                
+                  </tr>
+                  <tr>
+                
+                    <td align="center"><div style="width:150px;"><span class="dv_detail_8" style="width:150px;">
+                
+                                      <input type="button" value="" onclick="roam_buy({$roam_var.borrow_nid},
+
+{$roam_var.account_min},{$roam_var.user_id})" class="btn_detail_1" />
+                                    </span></div></td>
+                
+                    </tr>
+                  <tr>
+                
+                    <td align="center">（按+-调整认购份额）</td>
+                
+                    </tr>
+                	
+                
+
+                </table>
+                {/if} 
+            	{literal}
+                <script>
+                function roam_change(borrow_nid,type,wait){
+                    var val = $("#result_"+borrow_nid).val();
+                    _val = parseInt(val.replace("份", ""));
+                    if (type=="add"){
+                        if (wait==0 ){
+                            _val = 0;
+                        }else if (_val>=wait ){
+                            _val=wait-1;
+                        }
+                        
+                        $("#result_"+borrow_nid).val((_val+1)+"份")
+                    }else if (type=="remove"){
+                        if (_val<2){
+                            _val=2;
+                        }
+                        $("#result_"+borrow_nid).val((_val-1)+"份")
+                    }
+                }
+                
+                function roam_buy(borrow_nid,account,_user_id){
+                     if (user_id==""){
+                        alert("你还没登陆，请先登陆");
+                		location.href="/?user&q=login";
+                     } else if (user_id==_user_id){
+                        alert("不能投自己的标");
+                     }else{
+                     var val = $("#result_"+borrow_nid).val();
+                    _val = parseInt(val.replace("份", ""));
+                   
+                        var dia = $.dialog({
+                            id: 'borr_realname',
+                            title:'我要购买',
+                            content: 'url:/?user&q=code/borrow/loan&p=view_roam&account='+account+'&num='+_val+'&borrow_nid='+borrow_nid+"&web=1",
+                            max: false,
+                            min: false
+                        });
+                    }
+                }
+                
+                </script>
+                {/literal}
+                </div>
+                </div>
+            </div>
+        </div>
+		
+{if $roam_var.upfiles_pic!=""}
+<div class="conbox t10">
+
+<div class="jk_v_tit1"><h1>借款方相关资料</h1></div>
+
+<div class="us_r_bor3">
+<script src="{$tpldir}/js/infinite.js"></script>
+<script type="text/javascript" src="/plugins/fancybox/fancybox/jquery.fancybox-1.3.4.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="/plugins/fancybox/fancybox/jquery.fancybox-1.3.4.css" media="screen" />
+		  {literal}
+		  <script type="text/javascript">
+	$(document).ready(function () {
+ // THIS IS NEW CODE FOR THE AUTOMATIC INFINITE CAROUSEL
+    var autoscrolling = true;
+    $('.infiniteCarousel').infiniteCarousel().mouseover(function () {
+        autoscrolling = false;
+    }).mouseout(function () {
+        autoscrolling = true;
+    });
+    
+            $("a[rel=roam_content]").fancybox({
+		'transitionIn'		: 'none',
+		'transitionOut'		: 'none',
+		'titlePosition' 	: 'over',
+		'titleFormat'       : function(title, currentArray, currentIndex, currentOpts) {
+		    <!-- return '<span id="fancybox-title-over">图片：' +  (currentIndex + 1) + ' / ' + currentArray.length + ' ' + title + '</span>'; -->
+		}
+	});
+    setInterval(function () {
+        if (autoscrolling) {
+            $('.infiniteCarousel').trigger('next');
+        }
+    }, 6000);
+	});
+	</script>
+	{/literal}
+		  <div class="infiniteCarousel">
+      <div class="wrapper">
+        <ul>
+		{foreach from=$roam_var.upfiles_pic item="_item"}
+		  <li><a href="{$_item.fileurl}" rel="roam_content" title="{$_item.contents}"><img  src="{$_item.fileurl|litpic:100,75}"></a><span>{$_item.contents}</span></li>
+		{/foreach}
+        </ul>
+		<div class="cle"></div>
+      </div>
+    </div>
+    </div> 
+
+</div>
+
+{/if}
+
+
+<div class="conbox t10">
+
+     <div class="jk_v_tit1"><h1>借款方商业概述</h1>
+
+     </div>
+
+     <div class="us_r_bor3">
+
+       <div class="con">
+		{$roam_var.borrow_contents}
+	   </div>
+
+     </div>
+
+</div>
+
+
+
+<div class="conbox t10">
+
+     <div class="jk_v_tit1"><h1>借款方资产情况</h1>
+
+     </div>
+
+     <div class="us_r_bor3">
+
+       <div class="con">
+		{$roam_var.borrow_account}
+
+	   </div>
+
+     </div>
+
+</div>
+
+<div class="conbox t10">
+
+     <div class="jk_v_tit1"><h1>借款方资金用途</h1>
+
+     </div>
+
+     <div class="us_r_bor3">
+
+       <div class="con">
+		{$roam_var.borrow_account_use}
+</div>
+
+     </div>
+
+</div>
+
+
+<div class="conbox t10">
+
+     <div class="jk_v_tit1"><h1>风险控制措施</h1>
+
+     </div>
+
+     <div class="us_r_bor3">
+
+       <div class="con">
+		{$roam_var.risk}
+</div>
+
+     </div>
+
+</div>
+
+
+<div class="conbox t10">
+
+     <div class="jk_v_tit1">
+
+       <h1>{$_G.system.con_webname}审核记录</h1>
+
+     </div>
+
+     <div class="us_r_bor3">
+
+	      <div class="con">
+
+		  <div>
+
+		    <div style="background: none repeat scroll 0% 0% rgb(242, 242, 242); width: 865px; border: 1px solid rgb(212, 212, 212); padding: 10px 0pt 10px 40px; margin: 0pt auto;">
+
+                   {$_G.system.con_webname}将以客观、公正的原则，最大程度地核实借入者信息的真实性。但{$_G.system.con_webname}不保证审核信息100%真实。如果借入者长期逾期，借入者提供的信息将被公布
+
+            </div>
+
+            </div>
+
+			<div style="margin:10px 0 0">
+
+                <table border="0" cellpadding="0" cellspacing="1" bgcolor="#CCCCCC" style="width: 600px;">
+
+                    <tbody>
+
+                        <tr style="height: 30px;">
+
+                            <td width="45%" style="background: #F6F6F6;">
+
+                                <div align="center">
+
+                                    审核项目
+
+                                </div>
+
+                            </td>
+
+                            <td width="15%" style="background: #F6F6F6;">
+
+                                <div align="center">
+
+                                    状态
+
+                                </div>
+
+                            </td>
+
+                            <td width="10%" style="background: #F6F6F6;">
+
+                                <div align="center">
+
+                                    通过时间
+
+                                    
+
+                                </div>
+
+                            </td>
+
+                        </tr>
+						{articles module="approve" function="GetSmsOne" var="Svar" user_id="$var.user_id"}
+                                        {if $Svar.status==1}
+						<tr style="height: 30px;">
+                                <td bgcolor="#FFFFFF">
+                                    <div align="left" style="padding: 0 5px;">
+                                     手机认证  
+                                    </div>
+                              </td>
+                                <td bgcolor="#FFFFFF">
+                                    <div align="center" style="padding: 0 5px;">
+                                        {if $Svar.status==1}
+										<img alt="通过" src="{$tpldir}/images/answer_success.jpg">
+										 {else}
+										<img alt="未通过" src="{$tpldir}/images/answer_success.jpg">
+										{/if}
+                                    </div>
+                              </td>
+                                <td bgcolor="#FFFFFF">
+                                    <div align="center" style="padding: 0 5px;">
+                                      {$Svar.addtime|date_format:Y-m-d"}
+                                    </div>
+                              </td>
+                            </tr>
+										{/if}
+		{/articles}
+		
+		{list module="attestations" function="GetAttestationsList" var="loop" user_id="$var.user_id"  status="1"}
+		{foreach from="$loop.list" item="bvar"}
+                        
+                            <tr style="height: 30px;">
+                                <td bgcolor="#FFFFFF">
+                                    <div align="left" style="padding: 0 5px;">
+                                        {$bvar.type_name}
+                                    </div>
+                              </td>
+                                <td bgcolor="#FFFFFF">
+                                    <div align="center" style="padding: 0 5px;">
+                                        {if $bvar.status==1}
+										<img alt="通过" src="{$tempdir}/images/answer_success.jpg">
+										{else}
+										<img alt="未通过" src="{$tempdir}/images/ca.gif">
+										{/if}
+                                    </div>
+                              </td>
+                                <td bgcolor="#FFFFFF">
+                                    <div align="center" style="padding: 0 5px;">
+                                       {$bvar.addtime|date_format:Y-m-d"}
+                                    </div>
+                              </td>
+                                <!-- <td bgcolor="#FFFFFF">
+                                    <div align="center" style="padding: 0 5px;">
+                                       {$bvar.verify_time|date_format:Y-m-d"}
+                                    </div>
+                              </td> -->
+                            </tr>
+		{/foreach}
+		{/list}	
+
+                    </tbody>
+
+              </table>
+
+            </div>
+
+		  </div>
+
+	 </div>
+
+</div>
+
+
+
+<div class="conbox t10">
+
+ <div class="jk_v_tit1"><h1>流转历史记录</h1></div>
+
+  <div class="us_r_bor3">
+
+    <div class="con">
+
+      <table border="0" cellpadding="0" cellspacing="1" bgcolor="#CCCCCC" width="100%">
+
+       <tbody>
+
+        <tr style="height: 30px;">
+
+           <td width="20%" style="background: #F6F6F6;"align="center"><strong>项目</strong></td>
+
+           <td width="20%" style="background: #F6F6F6;"align="center"><strong>最近一个月</strong></td>
+
+           <td width="20%" style="background: #F6F6F6;"align="center"><strong>最近半年</strong></td>
+
+           <td width="20%" style="background: #F6F6F6;"align="center"><strong>最近一年</strong></td>
+
+           <td width="20%" style="background: #F6F6F6;"align="center"><strong>历史合计</strong></td></tr>
+
+                        	
+{articles module="borrow" plugins="roam" function="GetUserRoamCount" user_id='$roam_var.user_id' var="cvar" }
+        <tr style="height: 30px;">
+	      <td align="center"  bgcolor="#FFFFFF">成功流转：</td>
+	      <td align="center" bgcolor="#FFFFFF">￥{$cvar.month.success_account}</td>
+	      <td align="center" bgcolor="#FFFFFF">￥{$cvar.half.success_account}</td>
+	      <td align="center" bgcolor="#FFFFFF">￥{$cvar.year.success_account}</td>
+	      <td align="center" bgcolor="#FFFFFF">￥{$cvar.all.success_account}</td>
+        </tr>
+                        	
+        <tr style="height: 30px;">
+	      <td align="center"  bgcolor="#FFFFFF">成功回购：</td>
+	      <td align="center" bgcolor="#FFFFFF">￥{$cvar.month.recover_account}</td>
+	      <td align="center" bgcolor="#FFFFFF">￥{$cvar.half.recover_account}</td>
+	      <td align="center" bgcolor="#FFFFFF">￥{$cvar.year.recover_account}</td>
+	      <td align="center" bgcolor="#FFFFFF">￥{$cvar.all.recover_account}</td>
+        </tr>
+        
+        <tr style="height: 30px;">
+	      <td align="center"  bgcolor="#FFFFFF">逾期违约：</td>
+	      <td align="center" bgcolor="#FFFFFF">￥{$cvar.month.late_account}</td>
+	      <td align="center" bgcolor="#FFFFFF">￥{$cvar.half.late_account}</td>
+	      <td align="center" bgcolor="#FFFFFF">￥{$cvar.year.late_account}</td>
+	      <td align="center" bgcolor="#FFFFFF">￥{$cvar.all.late_account}</td>
+        </tr>
+                        	
+        <tr style="height: 30px;">
+	      <td align="center"  bgcolor="#FFFFFF">累计利息成本：</td>
+	      <td align="center" bgcolor="#FFFFFF">￥{$cvar.month.success_interest}</td>
+	      <td align="center" bgcolor="#FFFFFF">￥{$cvar.half.success_interest}</td>
+	      <td align="center" bgcolor="#FFFFFF">￥{$cvar.year.success_interest}</td>
+	      <td align="center" bgcolor="#FFFFFF">￥{$cvar.all.success_interest}</td>
+        </tr>
+        
+        <tr style="height: 30px;">
+          <td align="center"  bgcolor="#FFFFFF">逾期还款率：</td>
+	      <td align="center" bgcolor="#FFFFFF">{$cvar.month.late_apr}%</td>
+	      <td align="center" bgcolor="#FFFFFF">{$cvar.half.late_apr}%</td>
+	      <td align="center" bgcolor="#FFFFFF">{$cvar.year.late_apr}%</td>
+	      <td align="center" bgcolor="#FFFFFF">{$cvar.all.late_apr}%</td>
+        </tr>
+
+       </tbody>
+
+      </table>
+
+    </div>
+
+   </div>
+
+  </div>
+
+ </div>
+
+
+
+
+{include file="comments.html"}
+
+<div class="conbox t10">
+
+     <div class="jk_v_tit1"><h1>投标记录</h1>
+
+     </div>
+
+  <div class="us_r_bor3">
+
+       <div class="con">
+
+	     <div style="margin:10px">
+
+                <div style="display: block;height: 50px">
+
+                    <div style="float: left;width: 230px;">
+
+                        目前投标总额：<span class="f_red">￥{$var.borrow_account_yes}</span>
+
+                    </div>
+
+                    <div style="float: left;width: 230px">
+
+                        剩余投标金额：<span class="f_red">￥{$var.borrow_account_wait}</span>
+
+                    </div>
+
+                  <!--   <div style="float: left;width: 230px">
+
+                        剩余投标时间：
+
+                        <span class="f_red">
+						{if $var.status==0}审核中{else}<span id="endtime">{$var.borrow_end_time|surplus}</span>{/if}
+
+                        </span>
+
+                    </div> -->
+
+                   <!--  <div style="float: right;width: 141px;">
+
+
+	                              		<img width="151" height="35" onclick="javascript:window.location.href='../lend/bidPageAction.action?loanId=27769'" style="cursor: pointer" alt="" src="{$tpldir}/images/gogo.gif">                    </div> -->
+
+                </div>
+
+                <table border="0" cellpadding="0" cellspacing="1" bgcolor="#CCCCCC" width="100%">
+                    <tbody>
+                        <tr style="height: 30px;">
+                            <td width="20%" style="background: #F6F6F6;">
+                                <div align="center">
+                                    投标人
+                                </div>
+                            </td>
+                            <td width="20%" style="background: #F6F6F6;">
+                                <div align="center">
+                                    投标金额
+                                </div>
+                            </td>
+                            <td width="20%" style="background: #F6F6F6;">
+                                <div align="center">
+                                    投标时间
+                                </div>
+                            </td>
+                        </tr>
+                           
+          {loop module="borrow" plugins="Tender" function="GetTenderList" limit="all" var="vat" borrow_nid="$_G.article_id" }              	
+                        	
+                        		 <tr style="height: 30px;">
+	                                <td bgcolor="#FFFFFF">
+	                                    <div align="center" style="padding: 0 5px;">
+	                                       <!--  <a href="/u/{$vat.user_id}" target="_blank"></a> -->{$vat.username|truncate:3}**
+	                                    </div>
+                                   </td>
+	                                <td bgcolor="#FFFFFF">
+	                                    <div align="right" style="padding: 0 130px 0px 0px;color:red">
+	                                        ￥{$vat.account}
+	                                    </div>
+                                   </td>
+	                                <td bgcolor="#FFFFFF">
+	                                    <div align="center" style="padding: 0 5px;">
+	                                        {$vat.addtime|date_format:"Y-m-d H:i:s"}
+	                                    </div>
+                                   </td>
+                            </tr>
+						{/loop}	
+                  </tbody>
+           </table>
+
+         </div>
+
+		 </div>
+		 <div style="height: 75px; width: 300px; margin: auto;margin-top:15px;">
+
+<table width="100%" height="72" border="0" cellpadding="0" cellspacing="0">
+
+  <tr>
+    <td width="49%">{if $roam_var.recover_yes==$roam_var.portion_total}
+    <table width="100%" height="72" border="0" cellpadding="0" cellspacing="0" >
+    
+                  <tr align="center">
+                
+                    <td align="center"> <img src="{$tpldir}/images/roam_yes.gif" /></td>
+                  </tr>
+    </table>
+     
+    {elseif $roam_var.portion_yes==$roam_var.portion_total}
+    <table width="100%" height="72" border="0" cellpadding="0" cellspacing="0" >
+    
+                  <tr align="center">
+                
+                    <td align="center"> <img src="{$tpldir}/images/roam_no.gif" /></td>
+                  </tr>
+    </table>
+      
+    {else}
+    <div style="width:150px;"><span class="dv_detail_8" style="width:150px;">
+
+                      <input type="button" value="" onclick="roam_buy({$roam_var.borrow_nid},{$roam_var.account_min},{$roam_var.user_id})" class="btn_detail_1" />
+                    </span></div>
+                {/if}
+					</td>
+  </tr>
+</table>
+  </div>
+
+     </div>
+
+</div>
+	</div><!-- wMain02-->
+	</div><!-- wMain-->
+</div><!--wrapperMain-->
+<!--尾部开始-->
+ <div class="div_clb"></div>{/articles}
+

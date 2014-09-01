@@ -1,0 +1,42 @@
+{include file="header.html"}
+<div class="conbox t20">
+	{include file="user_menu.html"}
+	<div class="user_right">
+	   <div>
+		   <div class="m_change">
+		
+			<ul>
+
+				<li><a href="{$_U.query_url}/list" {if $_U.query_type=="list"} class="onn"{/if}>我要推广</a></li>
+
+				<li><a href="{$_U.query_url}/users" {if $_U.query_type=="users"} class="onn"{/if}>我的推广</a></li>
+				
+				<li><a href="{$_U.query_url}/log" {if $_U.query_type=="log"} class="onn"{/if}>推广记录</a></li>
+
+
+			</ul>
+			
+		</div>
+		
+		<div class="us_r_bor1">
+			{if $_U.query_type=="list"}
+			
+			{include file="users_spreads_my.html"}
+			
+			{elseif $_U.query_type=="users"}
+			
+				{include file="users_spreads_users.html"}
+			
+			{elseif $_U.query_type=="log"}
+			
+				{include file="users_spreads_log.html"}
+				
+			{/if}
+			
+			</div>
+            </div>
+            
+            </div>
+<div style="clear:both;"></div>
+
+{include file="footer.html"}

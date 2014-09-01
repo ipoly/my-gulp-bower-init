@@ -1,0 +1,26 @@
+
+ {if $var_group.member_status>0} <div style="text-align:right"><input type="button" onclick="change_group_menu('7');" style="cursor:pointer" name="Submit" value="发起圈内话题" class="btn1" /></div>{/if}
+		<div class="qz_cy" >
+			  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="55%"  style="border:none"><b>话题</b></td>
+    <td width="20%"  style="border:none"><b>作者</b></td>
+    <td width="10%"  style="border:none"><b>回复</b></td>
+    <td width="15%"  style="border:none"><b>最后回复</b></td>
+  </tr>
+  {list module="group" function="GetGroupArticlesList" var="loop" group_id="$magic.request.article_id" status=1 }
+  {foreach from="$loop.list" item="item"}
+  <tr>
+    <td><a href="/group/a{$item.group_id}.html?id={$item.id}" target="_parent">{$item.name}</a></td>
+    <td><a href="/u/{$item.user_id}" target="_parent">{$item.username}</a></td>
+    <td>{$item.comment_count|default:0}</td>
+    <td style="color:#BBBBBB">{$item.comment_time|date_format:"Y-m-d"|default:-}</td>
+  </tr>
+  {/foreach}
+  <tr><td colspan="4" align="center" style="border:none; padding-top:20px">
+  {$loop.pages|showpage:"3,dy_article"}</td></tr>
+ 
+  </table>
+  {/list}
+  </div>
+  

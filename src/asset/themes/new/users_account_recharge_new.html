@@ -1,0 +1,544 @@
+
+    <div class="us_r_bor1">
+    
+<div class="user_main_title1">
+		1、所有投标保证金将由第三方平台托管。</br>
+		2、线上、线下充值手续费全免，充值金额由第三方平台收取。</br>
+		3、请注意您的银行卡充值限制，以免造成不便。</br>
+		4、如果充值金额没有及时到账，请与客服联系。（线下充值客户请务必通知客服）</br>
+		5、{$_G.system.con_webname}禁止信用卡套现、虚假交易等行为，一经发现将予以处罚，包括但不限于:限制收款、冻结账户，永久停止服务等。
+		</div>
+		<form action="" method="post" name="form1"  id="myform0" onsubmit = "return check();" target="_blank">	
+		<div class="t20">
+		<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tabyel">
+			<tr class="ytit">
+				<td>充值方式</td>
+			</tr>
+			<tr>
+				<td style="padding:10px;">
+				
+		<div class="user_right_border">
+			<div class="l">充值方式：</div>
+			<div class="c">
+			<input type="radio" name="type"  id="type"  class="input_border" checked="checked" onclick="change_type(1)" value="1"  tabindex="1" /> 网上充值
+            <input type="radio" name="type"  id="type" class="input_border"  value="0"  onclick="change_type(2)" tabindex="1" /> 线下充值 
+			</div>
+		</div>
+		<div id="type_net">
+			<div class="user_right_border">
+				<div class="l">充值类型：</div>
+				<div class="c" style="width:500px;">
+					{foreach from=$_U.account_payment_list item="var"}
+                
+					{if $var.nid!="offline"}
+					
+					<input type="radio" name="payment1"  class="input_border" {if $var.nid=="gopay"&&$var.paymeny_list_acount!=1||$var.paymeny_list_acount==1}  checked="checked"  {/if} value="{$var.nid}"  onclick="change_type1('{$var.nid}')" id="payment" alt="{$var.nid}"   tabindex="3"/> {$var.name} <input type="hidden" name="payname{$var.id}" value="{$var.name}" />
+                    <input type="hidden" id="paymentnid{$var.id}" value="{$var.nid}" />({$var.description}) <br />
+                    
+					{/if}
+                    
+					{/foreach}
+                    
+				    <div id="B2C_Banks" style="width:520px;"  class="b2c_back">
+                <ul>	
+                
+                  <li>
+                   <div class="b2c_left"><input type="radio" name="bankCode"  class="input_border"  value="ICBC" id="bankCode" checked="checked" /></div>
+                   <div class="b2c_right"><img src="/data/images/payment/img_bankicbc.gif" border="0" /></div>
+                  </li>
+                  	              
+                  <li>
+                   <div class="b2c_left"><input type="radio" name="bankCode"  class="input_border"  value="ABC" id="bankCode" /></div> 
+                   <div class="b2c_right"><img src="/data/images/payment/img_bankabc.gif" border="0"   /></div>  
+                  </li> 	                    
+                             
+                  <li>
+                   <div class="b2c_left"><input type="radio" name="bankCode"  class="input_border"  value="BOC" id="bankCode"  /></div>  
+                   <div class="b2c_right"><img src="/data/images/payment/img_bankboc.gif" border="0" /></div>
+                  </li>
+                
+                  <li>
+                  <div class="b2c_left"><input type="radio" name="bankCode"  class="input_border"  value="CCB" id="bankCode" /> </div>
+                  <div class="b2c_right"><img src="/data/images/payment/img_bankccb.gif" border="0"/></div>
+                  </li>
+                
+                  <li>
+                  <div class="b2c_left"><input type="radio" name="bankCode"  class="input_border"  value="CMB" id="bankCode"  /></div>
+                  <div class="b2c_right"><img src="/data/images/payment/img_bankcmb.gif" border="0" /></div>
+                  </li>			
+                
+                  <li>
+                  <div class="b2c_left"><input type="radio" name="bankCode"  class="input_border"  value="BOCOM" id="bankCode"  /> </div>
+                  <div class="b2c_right"><img src="/data/images/payment/img_bankbocom.gif" border="0" /></div>
+                  </li>
+                
+                  <li>
+                  <div class="b2c_left"><input type="radio" name="bankCode"  class="input_border"  value="GDB" id="bankCode"  />
+                  </div><div class="b2c_right"><img src="/data/images/payment/img_bankgdb.gif" border="0" /></div>
+                  </li>
+                
+                  <li>
+                  <div class="b2c_left"><input type="radio" name="bankCode"  class="input_border"  value="CMBC" id="bankCode"  /></div>
+                   <div class="b2c_right"><img src="/data/images/payment/img_bankcmbc.gif" border="0" /></div>
+                   </li>
+                
+                  <li>
+                  <div class="b2c_left"><input type="radio" name="bankCode"  class="input_border"  value="HXBC" id="bankCode"  /> </div>
+                  <div class="b2c_right"><img src="/data/images/payment/img_bankhxbc.gif" border="0" /></div>
+                  </li>
+                
+                  <li>
+                  <div class="b2c_left"><input type="radio" name="bankCode"  class="input_border"  value="CIB" id="bankCode"  /> </div>
+                  <div class="b2c_right"><img src="/data/images/payment/img_bankcib.gif" border="0" /></div>
+                  </li>
+                
+                  <li>
+                  <div class="b2c_left"><input type="radio" name="bankCode"  class="input_border"  value="SPDB" id="bankCode"  /> </div>
+                  <div class="b2c_right"><img src="/data/images/payment/img_bankspdb.gif" border="0" /></div>
+                  </li>
+                
+                  <li>
+                   <div class="b2c_left"><input type="radio" name="bankCode"  class="input_border"  value="CEB" id="bankCode"  /></div>
+                   <div class="b2c_right"><img src="/data/images/payment/img_bankceb.gif" border="0" /></div>
+                   </li>
+                
+                  <li>
+                  <div class="b2c_left"><input type="radio" name="bankCode"  class="input_border"  value="SDB" id="bankCode"  /></div>
+                  <div class="b2c_right"><img src="/data/images/payment/img_bankspb.gif" border="0" /></div>
+                  </li>
+                
+                	<li>
+                	<div class="b2c_left"><input type="radio" name="bankCode"  class="input_border"  value="PSBC" id="bankCode"  /></div>
+                	 <div class="b2c_right"><img src="/data/images/payment/img_bankpsbc.gif" border="0" /></div>
+                	 </li>
+                	 
+                     <li>
+                	 <div class="b2c_left"><input type="radio" name="bankCode"  class="input_border"  value="CITIC" id="bankCode"  /></div>
+                	  <div class="b2c_right"><img src="/data/images/payment/img_bankcitic.gif" border="0" /></div>
+                	  </li>
+                
+                	 <li>
+                	 <div class="b2c_left"><input type="radio" name="bankCode"  class="input_border"  value="BOBJ" id="bankCode"  />
+                	 </div> <div class="b2c_right"><img src="/data/images/payment/img_bankbobj.gif" border="0" /></div>
+                	</li>
+                
+                	<li>
+                	<div class="b2c_left"><input type="radio" name="bankCode"  class="input_border"  value="TCCB" id="bankCode"  /> </div>
+                	<div class="b2c_right"><img src="/data/images/payment/img_banktccb.gif" border="0" /></div>
+                	</li>
+                
+                	<li>
+                	<div class="b2c_left"><input type="radio" name="bankCode"  class="input_border"  value="BOS" id="bankCode"  /> </div>
+                	<div class="b2c_right"><img src="/data/images/payment/img_bankbos.gif" border="0" /></div>
+                	</li>
+                
+                	<li>
+                	<div class="b2c_left"><input type="radio" name="bankCode"  class="input_border"  value="SRCB" id="bankCode"  /></div> 
+                	<div class="b2c_right"><img src="/data/images/payment/img_banksrcb.gif" border="0" /></div>
+                	</li>
+                
+                	<li>
+                	<div class="b2c_left"><input type="radio" name="bankCode"  class="input_border"  value="PAB" id="bankCode"  /> </div>
+                	<div class="b2c_right"><img src="/data/images/payment/img_bankpab.gif" border="0" /></div>
+                	</li>
+					<div class="cle"></div>
+					</ul>
+				</div>
+				
+				
+                	<div id="ips_Banks" style="width:520px;" class="b2c_back1">
+                      <ul>
+                    	<li>
+                    	<div class="b2c_left1"><input type="radio" name="bankCode_ips" checked="checked"  class="input_border"  value="00004" id="bankCode_ips" width="125px" height="32px" checked="checked" /></div>
+                    	<div class="b2c_right1"><img src="/data/images/ips/ICBC.jpg" border="0"  width="125px" height="32px"/></div>
+                    	</li>
+                         <li>
+                    	<div class="b2c_left1"><input type="radio" name="bankCode_ips"  class="input_border"  value="00017" id="bankCode_ips" width="125px" height="32px" /></div> 
+                    	<div class="b2c_right1"><img src="/data/images/ips/ABC.jpg" border="0"  width="125px" height="32px"  /></div>
+                    	</li>
+                    
+                    	<li>
+                    	<div class="b2c_left1"><input type="radio" name="bankCode_ips"  class="input_border"  value="00083" id="bankCode_ips" width="125px" height="32px"  /></div>
+                    	 <div class="b2c_right1"><img src="/data/images/ips/BOC.jpg" border="0"  width="125px" height="32px"/><div>
+                    	 </li>
+                    
+                       <li>
+                    	<div class="b2c_left1"><input type="radio" name="bankCode_ips"  class="input_border"  value="00015" id="bankCode_ips" width="125px" height="32px" /> </div>
+                    	<div class="b2c_right1"><img src="/data/images/ips/CCB.jpg" border="0"/></div>
+                       </li>
+                    
+                    <li>
+                    	<div class="b2c_left1"><input type="radio" name="bankCode_ips"  class="input_border"  value="00021" id="bankCode_ips" width="125px" height="32px"  /> </div>
+                    	<div class="b2c_right1"><img src="/data/images/ips/CMB.jpg" border="0"  width="125px" height="32px"/>		</div>		
+                       </li>
+                       
+                    <li>
+                    	<div class="b2c_left1"><input type="radio" name="bankCode_ips"  class="input_border"  value="00005" id="bankCode_ips" width="125px" height="32px"  /></div>
+                    	<div class="b2c_right1"> <img src="/data/images/ips/COMM.jpg" border="0"  width="125px" height="32px"/></div>
+                    </li>
+                    
+                    <li>
+                    	<div class="b2c_left1"><input type="radio" name="bankCode_ips"  class="input_border"  value="00052" id="bankCode_ips" width="125px" height="32px" /> </div>
+                    	<div class="b2c_right1"><img src="/data/images/ips/CGB.jpg" border="0"  width="125px" height="32px"/></div>
+                    </li>
+                    
+                    <li>
+                    	<div class="b2c_left1"><input type="radio" name="bankCode_ips"  class="input_border"  value="00013" id="bankCode_ips" width="125px" height="32px"  /> </div>
+                    	<div class="b2c_right1"><img src="/data/images/ips/CMBC.jpg" border="0"  width="125px" height="32px"/></div>
+                    
+                    </li>
+                    <li>
+                    	<div class="b2c_left1"><input type="radio" name="bankCode_ips"  class="input_border"  value="00041" id="bankCode_ips" width="125px" height="32px"  /> </div>
+                    	<div class="b2c_right1"><img src="/data/images/ips/HXB.jpg" border="0"  width="125px" height="32px"/></div>
+                    </li>
+                    
+                    <li>
+                    	<div class="b2c_left1"><input type="radio" name="bankCode_ips"  class="input_border"  value="00016" id="bankCode_ips" width="125px" height="32px"  /> </div>
+                    	<div class="b2c_right1"><img src="/data/images/ips/CIB.jpg" border="0"  width="125px" height="32px"/></div>
+                    </li>
+                    
+                    <li>
+                    	<div class="b2c_left1"><input type="radio" name="bankCode_ips"  class="input_border"  value="00032" id="bankCode_ips" width="125px" height="32px"  /></div>
+                    	<div class="b2c_right1"><img src="/data/images/ips/SPDB.jpg" border="0"  width="125px" height="32px"/></div>
+                    </li>
+                    
+                    <li>
+                    	<div class="b2c_left1"><input type="radio" name="bankCode_ips"  class="input_border"  value="00054" id="bankCode_ips" width="125px" height="32px"  /></div>
+                    	<div class="b2c_right1"><img src="/data/images/ips/ECITIC.jpg" border="0"  width="125px" height="32px"/></div>
+                    </li>
+                    
+                    <li>
+                    	<div class="b2c_left1"><input type="radio" name="bankCode_ips"  class="input_border"  value="00051" id="bankCode_ips" width="125px" height="32px"  /> </div>
+                    	<div class="b2c_right1"><img src="/data/images/ips/PSBC.jpg" border="0"  width="125px" height="32px"/></div>
+                    </li>
+                    
+                    <li>
+                    	<div class="b2c_left1"><input type="radio" name="bankCode_ips"  class="input_border"  value="00057" id="bankCode_ips" width="125px" height="32px"  /> </div>
+                    	<div class="b2c_right1"><img src="/data/images/ips/CEB.jpg" border="0"  width="125px" height="32px"/></div>
+                    </li>
+                    
+                    <li>
+                    	<div class="b2c_left1"><input type="radio" name="bankCode_ips"  class="input_border"  value="00056" id="bankCode_ips" width="125px" height="32px"  /></div>
+                    	<div class="b2c_right1"> <img src="/data/images/ips/BEIJING.jpg" border="0"  width="125px" height="32px"/></div>
+                    </li>
+                    
+                    <li>
+                    	<div class="b2c_left1"><input type="radio" name="bankCode_ips"  class="input_border"  value="00050" id="bankCode_ips" width="125px" height="32px"  /></div>
+                    	<div class="b2c_right1"> <img src="/data/images/ips/CBHB.jpg" border="0"  width="125px" height="32px"/></div>
+                    </li>
+                    
+                    <li>
+                    	<div class="b2c_left1"><input type="radio" name="bankCode_ips"  class="input_border"  value="00095" id="bankCode_ips" width="125px" height="32px"  /> </div>
+                    	<div class="b2c_right1"><img src="/data/images/ips/HKBEA.jpg" border="0"  width="125px" height="32px"/></div>
+                    </li>
+                    
+                    <li>
+                    	<div class="b2c_left1"><input type="radio" name="bankCode_ips"  class="input_border"  value="00052" id="bankCode_ips" width="125px" height="32px"  /> </div>
+                    	<div class="b2c_right1"><img src="/data/images/ips/HZ.jpg" border="0"  width="125px" height="32px"/></div>
+                    </li>
+                    
+                    <li>
+                    	<div class="b2c_left1"><input type="radio" name="bankCode_ips"  class="input_border"  value="00013" id="bankCode_ips" width="125px" height="32px"  /></div>
+                    	<div class="b2c_right1"> <img src="/data/images/ips/NJCB.jpg" border="0"  width="125px" height="32px"/></div>
+                    </li>
+                    
+                    <li>
+                    	<div class="b2c_left1"><input type="radio" name="bankCode_ips"  class="input_border"  value="00021" id="bankCode_ips" width="125px" height="32px"  /> </div>
+                    	<div class="b2c_right1"><img src="/data/images/ips/ZJCZ.jpg" border="0"  width="125px" height="32px"/></div>
+                    </li>
+                    
+                    <li>
+                    	<div class="b2c_left1"><input type="radio" name="bankCode_ips"  class="input_border"  value="00094" id="bankCode_ips" width="125px" height="32px"  /> </div>
+                    	<div class="b2c_right1"><img src="/data/images/ips/CZ.jpg" border="0"  width="125px" height="32px"/><br/></div>
+                    </li>
+                    
+                    <li>
+                    	<div class="b2c_left1"><input type="radio" name="bankCode_ips"  class="input_border"  value="00056" id="bankCode_ips" width="125px" height="32px"  /> </div>
+                    	<div class="b2c_right1"><img src="/data/images/ips/BJRCB.jpg" border="0"  width="125px" height="32px"/></div>
+                    </li>
+                    
+                    
+                    <li>
+                    	<div class="b2c_left1"><input type="radio" name="bankCode_ips"  class="input_border"  value="00084" id="bankCode_ips" width="125px" height="32px"  /> </div>
+                    	<div class="b2c_right1"><img src="/data/images/ips/SDB.jpg" border="0"  width="125px" height="32px"/></div>
+                    </li>
+                    <li>
+                    	<div class="b2c_left1"><input type="radio" name="bankCode_ips"  class="input_border"  value="00087" id="bankCode_ips" width="125px" height="32px"  /> </div>
+                    	<div class="b2c_right1"><img src="/data/images/ips/PINGAN.jpg" border="0"  width="125px" height="32px"/></div>
+                    
+                    </li>
+                    	</ul>
+                    	<div class="cle"></div>
+
+
+				    </div>
+                    {foreach from=$_U.account_payment_list item="cvar"}
+                    {if $cvar.nid!="offline"}
+                    {if $cvar.paymeny_list_acount!=1}
+                         {literal}
+                         <script>
+                         document.getElementById('B2C_Banks').style.display="block";
+                          document.getElementById('ips_Banks').style.display="none";
+                         </script>
+                         {/literal}
+                     {elseif $cvar.paymeny_list_acount==1&&$cvar.paymeny_list_acount_name=="ips"}
+                        {literal}
+                         <script>
+                         document.getElementById('B2C_Banks').style.display="none";
+                          document.getElementById('ips_Banks').style.display="block";
+                         </script>
+                         {/literal}
+                     {elseif $cvar.paymeny_list_acount==1&&$cvar.paymeny_list_acount_name=="gopay"}
+                         {literal}
+                         <script>
+                         document.getElementById('B2C_Banks').style.display="block";
+                         document.getElementById('ips_Banks').style.display="none";
+                         </script>
+                         {/literal}
+                     {/if}
+                     {/if}
+                     {/foreach}
+			</div>
+		</div>
+		</div>
+		
+		<div id="type_now" class="dishide" style="display:none">
+			<div class="user_right_border">
+				<div class="l">充值银行：</div>
+				<div class="c">
+					<table width="100%">
+						{foreach from=$_U.account_payment_list item="var" key=_key}
+						{if $var.nid=="offline"}
+						<tr>
+							<td width="10%" align="center"><input type="radio" name="payment2"  class="input_border" value="{$var.id}" {if $_key==1} checked="checked"{/if}  tabindex="3"/></td>
+							<td width="30%" align="center"><img src="{$var.litpic}" width="120px" height="35px"></td>
+							<td width="60%" align="center">{$var.description}</td>
+						</tr>
+						{/if}
+						{/foreach}
+					</table>
+				</div>
+			</div>
+			<div class="user_right_border">
+				<div class="l">交易编号：</div>
+				<div class="c">
+					<input type="text" name="remark"  class="input_border" value="" size="30"  tabindex="4" onkeyup="value=value.replace(/[^0-9.]/g,'')"/> <br/>填写网上交易流水号或ATM机汇款交易号或其他号码，只供查询用
+				</div>
+			</div>
+            
+			<div class="user_right_border">
+				<div class="l">线下充值备注：</div>
+				<div class="c">
+					<input type="text" name="beizhu"  class="input_border" value="" size="60"  tabindex="5"/><br/>
+                    请注明您的用户名，转账银行卡和转账流水号，以及转账时间
+				</div>
+			</div>
+		</div>
+		</td></tr></table>
+		</div>
+		<div class="t20">
+		<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tabyel">
+			<tr class="ytit">
+				<td>充值金额</td>
+			</tr>
+			<tr>
+				<td style="padding:10px;">
+					<div class="user_right_border">
+						<div class="l">充值金额：</div>
+						<div class="c">
+							<input type="text" name="money" id="rc_money" onkeyup="commit(this)" class="input_border" value="" size="10" onkeyup="value=value.replace(/[^0-9.]/g,'')" maxlength="9"  tabindex="2"/> 元
+						</div>
+					</div>
+					<div class="user_right_border">
+						<div class="l">充值手续费：</div>
+						<div class="c">
+						
+							<font color="#FF0000" id="real_money">0</font> 元
+						</div>
+					</div>
+					<div class="user_right_border">
+						<div class="l">实际到账金额：</div>
+						<div class="c">						
+							<font color="#FF0000" id="r_money">0</font> 元
+						</div>
+					</div>
+					{articles module="account" function="GetOne" var="var" user_id="$_G.user_id"}
+					<div class="user_right_border">
+						<div class="l">目前账户可用余额：</div>
+						<div class="c">						
+							<font color="#FF0000" id="use_money">{$var.balance|default:0.00}</font> 元
+						</div>
+					</div>
+					<div class="user_right_border">
+						<div class="l">充值后账户可用余额：</div>
+						<div class="c">						
+							<font color="#FF0000" id="total_money">{$var.balance|default:0.00}</font> 元
+						</div>
+					</div>
+					{/article}
+					<div class="user_right_border">
+						<div class="l">验证码：</div>
+						<div class="c">
+							<input name="valicode" onkeyup="yanzheng()"  type="text" id="n_valicode" class="n_valicode" size="11" maxlength="4"  tabindex="5"/>&nbsp;<img src="/?plugins&q=imgcode" alt="点击刷新" onClick="this.src='/?plugins&q=imgcode&t=' + Math.random();" align="absmiddle" style="cursor:pointer" />
+						</div>
+					</div>
+					<div class="user_right_border">
+						<div class="l"></div>
+						<div class="c">
+					    <input  id="button" type="submit"   name="name"  value="充值" size="30" tabindex="6"/> 
+				
+                
+
+<div id="info_check" style="display:none">
+<div class="windows_div_bgg"></div>
+
+<div class="pop_divg" style="height:200px">
+    <div class="close1"><a id="close_win" onclick='$("#info_check").css("display","none");' title="关闭窗口" style="cursor:pointer;"></a></div>
+    <div class="pop_box">
+      <div class="pop_box_title"><h1>充值遇到问题？</h1></div>
+<div class="pop_box_nr t10">
+  <span class="t20"><img src="{$tpldir}/images/email_verify_bg.gif" border="0" align="absmiddle"> 充值完成前请不要关闭此窗口。完成充值后请根据你的情况下点击下面的按钮:</span>
+   <p>请在新开网上充值页面完成付款后再选择</p>
+   </div>
+ <div class="cz_push t20">
+<a href="?user&q=code/account/recharge" >已完成充值</a>
+<a href="/help/index.html">充值遇到问题</a>
+</div>
+<div class="cle"></div>
+<div class="cz_return">
+<a href="/index.php?user&q=code/account/recharge_new" >返回重新选择充值方式</a></div>
+
+</div>
+</div>
+</div>
+{literal}
+<script>
+var yz=false;
+function yanzheng(){
+            var valicode=$('#n_valicode').val();
+            var url='/?user&q=code/account/recharge_new&action=checkvalicode&value='+valicode+'';           
+            $.ajax({
+        	type:"get",
+        	url:url,
+        	data:'',
+        	success:function(result){
+        		if (result=="0"){        		    
+                    yz=true;                    
+        		}
+        	},
+        	cache:false
+            });
+}
+//关闭窗口
+$("#close_win").click(function(){
+    //location.href = "?user";
+});
+</script>
+{/literal}
+
+
+                    	</div>
+					</div>
+				</td>
+			</tr>
+		</table>
+		
+		</div></form>		
+		<script>
+       var vip_status = {$_G.user_result.vip_status|default:0};
+		var recharge_fee={$_G.system.con_recharge_fee|default:0};	
+		{articles module="account" function="GetOne" var="Avar" user_id="$_G.user_id"}
+		var use = "{$Avar.balance}";
+		{/articles}
+		{literal}        
+       
+        if(use==''){use=0;}
+		function commit(obj) {
+			   if (parseFloat(obj.value) > 0 ){			     
+			     obj.value=obj.value.replace(/^(\-)*(\d+)\.(\d\d).*$/,'$1$2.$3');
+                 if (  $('input[name="type"]:checked').val()==1){
+    			     var realMoney=parseFloat(obj.value);
+                     $.ajax({
+                       type: "get",
+                       url: "/?user&q=code/account/get_fee&type=recharge_success",
+                       data: "vip_status="+vip_status+"&account="+obj.value,
+                       success: function(account){
+                        $("#real_money").text(account);
+        					$("#r_money").text(Math.round((realMoney-parseFloat(account))*100)/100);
+                        var _p = Math.round(parseFloat(parseFloat(use)+realMoney-account)*100)/100;
+        				$("#total_money").text(_p.toFixed(2));
+                       }
+                    });
+    			}else{
+			
+    			     $("#real_money").text('0');
+    			     $("#r_money").text(obj.value);
+					 
+                     var _p = Math.round(parseFloat(parseFloat(use)+parseFloat(obj.value))*100)/100;
+					
+        			$("#total_money").text(_p.toFixed(2));
+    			}
+			}else{
+				var realMoney=parseFloat(obj.value);
+				$("#real_money").text('0');
+				$("#r_money").text('0');
+				$("#total_money").text(use.toFixed(2));
+			}
+		}
+		function change_type(type){
+			if (type==2){
+				$("#type_now").show();
+				$("#type_net").hide();
+			}else{
+				$("#type_now").hide();
+				$("#type_net").show();
+			}
+            $("#rc_money").val("");
+            $("#real_money").html("0");
+            $("#r_money").html("0");
+		}
+		
+		function change_type1(type){
+			if (type=='gopay'){
+				$("#B2C_Banks").show();
+				$("#ips_Banks").hide();
+                
+			}
+            else if(type=='abcpay'||type=='mobilepay'||type=='tftpay'||type=='baopay'){
+                $("#B2C_Banks").hide();
+				$("#ips_Banks").hide();
+            }else{
+				$("#B2C_Banks").hide();
+				$("#ips_Banks").show();
+			}
+            
+		}
+       
+		
+		function check(){
+			if ($("#rc_money").val()<=0){
+				alert("充值金额不能小于等于0");
+				return false;
+			}else if($("#n_valicode").val()==""){
+                alert("验证码不能为空");
+                return false;
+            }else if(yz==false){
+                alert("验证码填写不正确");
+                return false;
+            }else{
+                $("#info_check").css('display','block');
+                return true;
+            }
+           
+			
+		}
+		</script>
+		{/literal}
+		
+		<div class="user_right_foot">
+		* 温馨提示：网上银行充值过程中请耐心等待,充值成功后，请不要关闭浏览器,充值成功后返回{$_G.system.con_webname},充值金额才能打入您的帐号。如有问题,请与我们联系
+		</div>
+		
+		<!--账号充值 结束-->
+		</div>
+        

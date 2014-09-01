@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<head>
+  <title>点金贷</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <link rel="shortcut icon" href="/themes/new/static/themes/ipoly/img/icon/favicon.ico">
+  <link rel="stylesheet" href="/themes/new/static/css/global.css">
+  <link rel="stylesheet" href="/themes/new/static/css/index.css">
+  <link rel="stylesheet" href="/themes/new/static/css/one.css">
+  <link rel="stylesheet" href="/themes/new/static/css/account.css">
+  <link href="/themes/new/css/style.css" rel="stylesheet" type="text/css">
+  <link href="/themes/new/css/user.css" rel="stylesheet" type="text/css">
+  <link href="/themes/new/css/public.css" rel="stylesheet" type="text/css">
+  <link href="/themes/new/css/other.css" rel="stylesheet" type="text/css">
+  <link href="/themes/new/css/tipswindown.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/themes/ipoly/lib/font-awesome/css/font-awesome.css">
+  <link rel="stylesheet" href="/themes/ipoly/css/app.css">
+</head>
+<body ng-app="dianJinDai">
+  <!-- header block begin-->
+  <div class="pg-header">
+    <div class="pg-header-top">
+      <div class="container_10 pt5">
+        <div class="grid_7"><img src="/themes/new/static/img/icon/phone.png">全国服务热线：400-800-800</div>
+        <div class="grid_3 txtRight"><a href="?user">我的账户</a><a id="msg-notice" href="account-msg.html" class="hide"><em style="top: 3px;" class="msg-icon title relative"></em><span>
+              | [
+              span#msg-count 0
+              | ]</span></a>|<a href="/">首页</a>|<a href="/help/index.html">帮助</a>|<a href="/bbs/" target="_blank">论坛</a></div>
+      </div>
+    </div>
+    <div class="pg-header-main">
+      <div class="container_10">
+        <div class="grid_3 pg-header-grid"><a href="/"><img src="/themes/new/static/img/icon/logo.png"></a></div>
+        <div class="grid_5 pg-header-grid">
+          <ul class="main-nav">
+            <li class="main-nav-item"><a href="/invest/index.html" class="main-nav-item-link">我要理财</a></li>
+            <li class="main-nav-item"><a href="/financing/index.html" class="main-nav-item-link">我要融资</a></li>
+            <li class="main-nav-item"><a href="/tzzbz/index.html" class="main-nav-item-link">新手帮助</a></li>
+            <li class="main-nav-item"><a href="/aboutus/index.html" class="main-nav-item-link">关于我们</a>
+              <ul class="main-nav-son">
+                <li><a href="/aboutus/index.html">关于我们</a></li>
+                <li><a href="/aboutzz/index.html">证照资质</a></li>
+                <li><a href="/aboutgwtd/index.html">顾问团队</a></li>
+                <li><a href="/abouthz/index.html">合作伙伴</a></li>
+                <li><a href="/lxwm/index.html">联系我们</a></li>
+                <li><a href="/aboutzp/index.html">招聘信息</a></li><span class="triangle_bg"></span><span class="triangle"></span>
+              </ul>
+              <div class="icon icon-down"></div>
+            </li>
+          </ul>
+        </div>
+        <div class="grid_2 pg-header-grid">
+          <ul id="top-reg" class="main-nav main-nav-login nav-right">
+            <li><a style="color: #0279cd;" href="/index.php?user&amp;q=reg" class="main-nav-login-item f16">注册</a></li>
+            <li><a href="/index.php?user&amp;q=login" class="main-nav-login-item f16">登录</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="width: 320px; height: 270px; z-index: 2; top: 150px; right: 212px;" class="trans-login-div absolute white">
+    <div style="height: 270px; background-color: rgb(0, 0, 0); opacity: 0.2; border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; z-index: -1; background-position: initial initial; background-repeat: initial initial;" class="opacity-div absolute wp100"></div>
+    <div id="unknown-user" style="padding: 20px 35px; display: block;">
+      <p class="f20">点金贷年化收益率</p>
+      <p><span class="f36 org">12%</span><span class="f36">-</span><span class="f36 org">15%</span></p>
+      <p><span class="f18 org">40</span>倍活期存款收益<span class="f18 org">5</span>倍余额宝收益</p>
+      <p><a href="/index.php?user&amp;q=reg" style="color: #fff; background: #ff5301; letter-spacing: 2px;" class="block wp100 h45 txtC f18 mt10 mb10">免费注册</a></p>
+      <p class="txtRight">已有账号?<a href="/index.php?user&amp;q=login" style="color: #fff; text-decoration: underline;">立即登录</a></p>
+    </div>
+  </div>
+  <div class="pg-header-banner">
+    <div id="full-screen-slider">
+      <ul id="slides">
+        <li style="background: url('http://dianjindai.com/data/upfiles/images/2014-03/22/1_scrollpic_new_1395458117859.jpg') no-repeat center top;"><a href="" target="_blank"></a></li>
+        <li style="background: url('http://dianjindai.com/data/upfiles/images/2014-03/22/1_scrollpic_new_1395458108801.jpg') no-repeat center top;"><a href="" target="_blank"></a></li>
+        <li style="background: url('http://dianjindai.com/data/upfiles/images/2014-03/22/1_scrollpic_new_1395458097364.jpg') no-repeat center top;"><a href="" target="_blank"></a></li>
+        <li style="background: url('http://dianjindai.com/data/upfiles/images/2014-03/22/1_scrollpic_new_1395458089330.jpg') no-repeat center top;"><a href="" target="_blank"></a></li>
+        <li style="background: url('http://dianjindai.com/data/upfiles/images/2014-03/22/1_scrollpic_new_1395458082133.jpg') no-repeat center top;"><a href="" target="_blank"></a></li>
+      </ul>
+    </div>
+  </div>
+  <!-- header block end-->
+  <!--content block begin-->
+  <div class="container">
+    <ol class="breadcrumb">
+      <li><a href=""> 首页</a></li>
+      <li><a href="">我要借款</a></li>
+      <li class="active">借款产品</li>
+    </ol>
+    <div class="text-center show-grid"><img src="/themes/ipoly/img/page186_a.gif"></div>
+    <div class="content-block show-grid">
+      <div class="row">
+        <div class="col-md-7"><img src="/themes/ipoly/img/page186_b.gif" style="width:100%;"></div>
+        <div class="col-md-5">
+          <div class="product-detail-form-container">
+            <form name="loan" novalidate action="#" method="post" class="form-horizontal">
+              <div class="form-group">
+                <label class="col-md-3 control-label">希望贷款金额</label>
+                <div class="col-md-4">
+                  <div class="input-group">
+                    <input type="number" required name="amount" ng-model="amount" placeholder="3~30" min="3" max="30" class="form-control"><span class="input-group-addon">万元</span>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-md-3 control-label">计划贷款期限</label>
+                <div class="col-md-4">
+                  <div class="input-group">
+                    <input type="number" required name="limit" ng-model="limit" placeholder="3~30" min="1" class="form-control"><span class="input-group-addon">个月</span>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-md-3 control-label">什么时候要</label>
+                <div class="col-md-9">
+                  <select required name="need" ng-model="need" class="form-control">
+                    <option>请选择</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-md-3 control-label">融资意向</label>
+                <div class="col-md-9">
+                  <div class="radio">
+                    <label>
+                      <input type="radio" name="favor" ng-model="favor">费用最低
+                    </label>
+                    <label>
+                      <input type="radio" name="favor" ng-model="favor">速度最快
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-md-3 control-label">职业身份</label>
+                <div class="col-md-9">
+                  <select required name="class" ng-model="class" class="form-control">
+                    <option>请选择</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-md-3 control-label">资产情况</label>
+                <div class="col-md-9">
+                  <select required name="asset" ng-model="asset" class="form-control">
+                    <option>请选择</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-md-3 control-label">您的称呼</label>
+                <div class="col-md-9">
+                  <input type="text" required name="name" ng-model="name" placeholder="请输入称呼" class="form-control">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-md-3 control-label">手机号码</label>
+                <div class="col-md-9">
+                  <input type="text" required name="mobile" ng-model="mobile" placeholder="请输入11位手机号" ng-pattern="/^\d{11}$/" class="form-control">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-md-3 control-label">动态码</label>
+                <div class="col-md-4">
+                  <input type="text" required name="vcode" ng-model="vcode" placeholder="请输入验证码" class="form-control">
+                </div>
+                <div class="col-md-5"><img src="/themes/ipoly/img/get_img.jpg" alt="点击刷新验证码" style="height:34px;"></div>
+              </div>
+              <div class="form-group">
+                <div class="col-md-9 col-md-offset-3">
+                  <button ng-disabled="loan.$invalid" class="btn btn-warning btn-lg btn-block">立即申请</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="content-block show-grid padding-large">
+      <div class="row vr">
+        <div class="col-md-4">
+          <h3 class="header">
+            <div class="label label-primary">申请资格</div>
+          </h3>
+          <ul class="text-muted line-height-large">
+            <li>年龄23周岁-60周岁的中国大陆公民（港、澳、台除外）</li>
+            <li>企业或商户经营时间满1年及以上</li>
+            <li>企业或商户月均流水须3万以上</li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h3 class="header">
+            <div class="label label-primary">额度期限</div>
+          </h3>
+          <ul class="text-muted line-height-large">
+            <li>借款额度：3万-30万元</li>
+            <li>借款期限：12、18、24个月</li>
+            <li>还款方式：等额本息，每月还款</li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h3 class="header">
+            <div class="label label-primary">所需材料</div>
+          </h3>
+          <ul class="text-muted line-height-large">
+            <li>申请人二代身份证</li>
+            <li>申请人1个月内信用报告</li>
+            <li>企业/商户经营场所证明材料</li>
+            <li>现居住地证明材料</li>
+            <li>近6个月对公或对私银行流水或POS交易流水</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="row show-grid">
+      <div class="col-md-7">
+        <div class="content-block padding-large">
+          <h3 class="header">费用说明</h3>
+          <hr>
+          <h4>每月还款费用</h4>
+          <ul class="list-inline show-grid">
+            <li>本金及利息：13.2% 支付给投资人</li>
+            <li>平台管理费：0.3% 由你我贷平台收取</li>
+          </ul>
+          <h4>放款时一次性费用</h4>
+          <div class="row">
+            <div class="col-md-6">
+              <dl>
+                <dt>风险管理费</dt>
+                <dd class="line-height-large">
+                  <p class="text-muted">
+                    根据平台审核认定的客户等级收取对应比例<br>
+                    由你我贷平台收取
+                  </p>
+                </dd>
+                <dt>委托查询费</dt>
+                <dd class="line-height-large">
+                  <p class="text-muted">200元 由你我贷平台收取</p>
+                </dd>
+                <dt>借款服务费</dt>
+                <dd class="line-height-large">
+                  <p class="text-muted">
+                    （包括征信服务费和贷后管理费）<br>
+                    由提供实地征信及贷后管理服务的你我贷平台合作伙伴根据不同的客户等级和借款期限收取
+                  </p>
+                </dd>
+              </dl>
+            </div>
+            <div class="col-md-6">
+              <table class="table table-bordered table-condensed">
+                <thead>
+                  <tr class="active">
+                    <th>客户等级</th>
+                    <th>风险管理费收取比例</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>AA</td>
+                    <td>0.0%</td>
+                  </tr>
+                  <tr>
+                    <td>A</td>
+                    <td>1.0%</td>
+                  </tr>
+                  <tr>
+                    <td>B</td>
+                    <td>1.5%</td>
+                  </tr>
+                  <tr>
+                    <td>C</td>
+                    <td>2.0%</td>
+                  </tr>
+                  <tr>
+                    <td>D</td>
+                    <td>3.0%</td>
+                  </tr>
+                  <tr>
+                    <td>E</td>
+                    <td>4.0%</td>
+                  </tr>
+                  <tr>
+                    <td>F</td>
+                    <td>5.0%</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-5">
+        <div class="content-block padding-large">
+          <h3 class="header"><i class="fa fa-th-large text-primary"></i>&nbsp;借款计算器</h3>
+          <hr>
+          <form class="form-horizontal">
+            <div class="form-group">
+              <label class="col-md-3 control-label">借款金额</label>
+              <div class="col-md-9">
+                <div class="input-group">
+                  <input type="number" required name="amount" placeholder="3万-30万" class="form-control"><span class="input-group-addon">元</span>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-3 control-label">借款期限</label>
+              <div class="col-md-9">
+                <div class="input-group">
+                  <input type="number" name="limit" placeholder="请输入借款期限" class="form-control"><span class="input-group-addon">月</span>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-3 control-label">借款利率</label>
+              <div class="col-md-9">
+                <div class="input-group">
+                  <input type="rate" required name="amount" placeholder="贷款利率范围1%-26.24%之间" class="form-control"><span class="input-group-addon">%</span>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-3 control-label">还款方式</label>
+              <div class="col-md-9">
+                <select required name="type" class="form-control">
+                  <option>等额本息还款</option>
+                  <option>等本等息还款</option>
+                  <option>按月付息到期还本</option>
+                  <option>一次付息到期还本</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-md-9 col-md-offset-3">
+                <button class="btn btn-primary btn-lg btn-block mb10">开始计算</button>
+                <div class="font-size-small text-muted">*利率范围：不超过中国人民银行基准利率的4倍</div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--content block end-->
+  <!-- footer block begin-->
+  <div class="pg-footer">
+    <div style="height: auto;" class="pg-footer-main">
+      <div class="container pt30">
+        <div class="row">
+          <div class="col-md-6">
+            <ul class="pg-footer-link">
+              <li><a href="/aboutus/index.html">关于我们</a></li>
+              <li><a href="/tzzbz/index.html">新手指引</a></li>
+              <li><a href="/media/index.html">媒体报道</a></li>
+              <li><a href="/aboutzp/index.html">诚聘英才</a></li>
+              <li><a href="/lxwm/index.html">联系我们</a></li>
+              <li><a href="/bbs/">论坛专区</a></li>
+            </ul>
+            <dl class="pg-footer-focus">
+              <dt class="f16">关注我们：</dt>
+              <dd><a target="_blank" title="新浪微博" href="http://www.weibo.com/" class="pg-footer-icon weibo">新浪微博</a></dd>
+              <dd><a title="官方微信" href="/lxwm/index.html" class="pg-footer-icon weixin">官方微信</a></dd>
+              <dd><a title="收藏本站" href="javascript:;" onclick="addBookmark()" style="background-color:transparent;" class="pg-footer-icon mark">收藏本站</a></dd>
+            </dl>
+          </div>
+          <div class="col-md-6 txtRight pg-footer-info">
+            <div class="f16">服务热线</div>
+            <div class="f20">400-800-800</div>
+            <div class="f12">9:30-18:30</div>
+            <div class="pt10"><a href="http://www.baidu.com/" title="在线客服" target="_blank" style="margin-right: -15px;" class="pg-footer-icon online">在线客服</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pg-footer-other">
+      <div class="container">
+        <div align="left" class="h30">友情链接：<a href="http://www.baidu.com/" target="_blank" title="">网络系统</a><a href="http://www.baidu.com/" target="_blank" title="">人人货币</a></div>
+        <div class="row">
+          <div class="col-md-8">点金贷  Copyright Reserved 2011-2014  |<a href="http://www.miitbeian.gov.cn/state/outPortal/loginPortal.action" target="_blank">10001122211</a>|</div>
+          <div class="col-md-4 pt20"><a style="width: 33px; margin-right: 0px;" title="网络社会征信网" href="http://pinggu.zx110.org/review_url_http://dianjindai.com" target="_blank" class="pg-footer-icon zhengxin fRight">网络社会征信网</a><a style="width: 34px;" title="工信部备案信息" href="http://www.miibeian.gov.cn/" target="_blank" class="pg-footer-icon gongxin fRight">工信部备案信息</a>
+            <!--
+            <a style="width:44px;" title="瑞星安全认证" href="#" class="pg-footer-icon rueixin fRight">瑞星安全认证</a>
+            
+            -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- footer block end-->
+  <div id="side-tool-bar" class="content-block">
+    <ul class="nav nav-pills nav-stacked text-center">
+      <li><a href="">申请借款</a></li>
+      <li><a href="">意见反馈</a></li>
+      <li><a href=""><i class="fa fa-comments-o fa-4x"></i>
+          <div>在线客服</div></a></li>
+      <li><a go-top><i class="fa fa-angle-up fa-4x"></i></a></li>
+    </ul>
+  </div>
+  <!--content block end-->
+  <script src="/themes/ipoly/lib/jquery/dist/jquery.js"></script>
+  <script src="/themes/new/js/tipswindown.js"></script>
+  <script src="/themes/new/js/deayou.js"></script>
+  <script src="/themes/new/js/base.js"></script>
+  <script src="/themes/new/js/lhgdialog.js"></script>
+  <script src="/plugins/timepicker/WdatePicker.js"></script>
+  <script src="/themes/new/js/showtime.js"></script>
+  <script src="/themes/new/static/js/jquery.global.js"></script>
+  <script src="/themes/new/static/js/jquery.jslides.js"></script>
+  <script src="/themes/ipoly/lib/angular/angular.js"></script>
+  <script src="/themes/ipoly/lib/angular-animate/angular-animate.js"></script>
+  <script src="/themes/ipoly/lib/underscore/underscore.js"></script>
+</body>

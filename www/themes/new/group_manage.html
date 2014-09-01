@@ -1,0 +1,101 @@
+<div style="border-bottom:#dedede solid 1px; padding-bottom:8px"><a href="javascript:change_sq('all');">所有成员</a> | <a href="javascript:change_sq('sq');">申请加入的成员</a> | <a href="javascript:change_sq('no');">拒绝成员</a> </div>  
+		<script>
+		{literal}
+		var user_id=$("#user_id").attr("value");
+		function change_sq(id){
+			if (id=="sq"){
+				$("#cy_sq").show();
+				$("#cy_all").hide();
+				$("#cy_no").hide();
+			}else if (id=="all"){
+				$("#cy_sq").hide();
+				$("#cy_all").show();
+				$("#cy_no").hide();
+			}else{
+				$("#cy_sq").hide();
+				$("#cy_all").hide();
+				$("#cy_no").show();
+			}
+		
+		}
+		$(function () {  
+            $("#selectAll").click(function () {
+                $("input[name='user_id[]']").attr("checked", true);  
+            });
+        });
+		</script>
+		{/literal}  
+ <div class="qz_cy" id="cy_sq" style=" display:none">
+ <table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <form action="/?user&q=code/group/join&type=yes&group_id={$magic.request.article_id}" method="post">
+  <tr>
+    <td width="20%" bgcolor="#FFF7E8"><input type="button" value="全选" id="selectAll" /></td>
+    <td width="20%" bgcolor="#FFF7E8"><b>名字</b></td>
+    <td width="20%" bgcolor="#FFF7E8"><b>身份</b></td>
+    <td width="20%" bgcolor="#FFF7E8"><b>申请理由</b></td>
+    <td width="20%" bgcolor="#FFF7E8"><b>操作</b></td>
+  </tr>
+  {loop module="group" function="GetGroupMemberList" limit="all" group_id="$_G.article_id" var="var_m" status=0}
+  <tr>
+	<td width="20%" bgcolor="#FFF7E8"><input type="checkbox" value="{$var_m.user_id}" name="user_id[]" /></td>
+    <td valign="top"><img src="{$var_m.user_id|avatar}" width="50" height="50" align="top" style="border:#dedede solid 1px"/> <a href="/u/{$var_m.user_id}">{$var_m.username}</a></td>
+    <td>{$var_m.user_typename}</td>
+    <td>{$var_m.remark}</td>
+    <td><a href="javascript:void(0)" onclick="joinGroup('yes','{$var_m.user_id}')">批准加入</a> <a  href="javascript:void(0)" onclick="joinGroup('no','{$var_m.user_id}')">拒绝</a></td>
+  </tr>
+ {/loop}
+  <tr>
+    <td width="20%" bgcolor="#FFF7E8"><input  id="button" type="submit" value="批量通过"/></td>
+    <td width="20%" bgcolor="#FFF7E8">&nbsp;<input type="hidden" name="remark" value="批量通过"/></td>
+    <td width="20%" bgcolor="#FFF7E8">&nbsp;</td>
+    <td width="20%" bgcolor="#FFF7E8">&nbsp;</td>
+    <td width="20%" bgcolor="#FFF7E8">&nbsp;</td>
+  </tr>
+  </form>
+</table>
+
+				   </div>
+				   
+
+	  
+ <div class="qz_cy" id="cy_no" style=" display:none">
+				  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td  bgcolor="#FFF7E8"><b>名字</b></td>
+    <td bgcolor="#FFF7E8"><b>身份</b></td>
+    <td bgcolor="#FFF7E8"><b>申请理由</b></td>
+    <td  bgcolor="#FFF7E8"><b>审核备注</b></td>
+    <td  bgcolor="#FFF7E8"><b>操作</b></td>
+  </tr>
+  {loop module="group" function="GetGroupMemberList" limit="all" group_id="$_G.article_id" var="var_m" status=2}
+  <tr>
+    <td valign="top"><img src="{$var_m.user_id|avatar}" width="50" height="50" align="top" style="border:#dedede solid 1px"/> <a href="/u/{$var_m.user_id}">{$var_m.username}</a></td>
+    <td>{$var_m.user_typename}</td>
+    <td>{$var_m.remark}</td>
+    <td>{$var_m.veiry_remark}</td>
+    <td>{if $var_group.users_status==1 || $var_group.users_status==2}<a href="javascript:void(0)" onclick="joinGroup('yes','{$var_m.user_id}')">批准加入</a> {else}-{/if} </td>
+  </tr>
+ {/loop}
+</table>
+
+				   </div>
+				   
+				   <div class="qz_cy" id="cy_all" >
+				   
+				        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="26%" bgcolor="#FFF7E8"><b>名字</b></td>
+    <td width="31%" bgcolor="#FFF7E8"><b>身份</b></td>
+    <td width="43%" bgcolor="#FFF7E8"><b>操作</b></td>
+  </tr>
+  
+  {loop module="group" function="GetGroupMemberList" limit="all" group_id="$_G.article_id" var="var_m" status=1}
+  <tr>
+    <td valign="top"><img src="{$var_m.user_id|avatar}" width="50" height="50" align="top" style="border:#dedede solid 1px"/> <a href="/u/{$var_m.user_id}">{$var_m.username}</a></td>
+    <td>{if $var_m.admin_status==1}管理员{elseif $var_m.admin_status==2}圈主{else}普通用户{/if}</td>
+    <td>{if $var_m.admin_status==1 || $var_m.admin_status==2}-{else} {if $var_m.admin_status!=1}<a href="javascript:void(0)" onclick="joinGroup('admin_yes','{$var_m.user_id}')">提升为圈子管理员</a>{else}<a href="javascript:void(0)" onclick="joinGroup('admin_no','{$var_m.user_id}')">撤销圈子管理员</a> {/if} <a href="javascript:void(0)" onclick="joinGroup('out','{$var_m.user_id}')">踢出圈子</a>{/if}</td>
+  </tr>
+ {/loop}
+</table>
+
+   </div>

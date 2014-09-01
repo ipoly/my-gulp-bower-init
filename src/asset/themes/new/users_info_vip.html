@@ -1,0 +1,78 @@
+{if $_U.query_type=="vip"}
+
+{articles module="users" plugins="vip" function="GetUsersVip" user_id="$_G.user_id" var="_vip"}
+
+		<div class="user_main_title1">为什么要成为VIP会员：<strong>佣金更低</strong>，<strong>提现更快</strong>，<strong>保本又保利</strong>，<strong>逾期当天赔付</strong>。</div>
+		<div class="user_main_title"></div>
+		<div style=" overflow:hidden;margin-top:20px;">
+			<div style="line-height:30px;">您目前的状态是：{if $_vip.status==1}<strong style="color:#FF0000">VIP</strong>会员, 会员服务时间：{$_vip.first_date|date_format:"Y-m-d"} 到 {$_vip.end_date|date_format:"Y-m-d"}{else}普通会员{/if}</div>
+			<div style="border:1px solid #FF9933; padding-left:10px; background-color: #FEF1E9;line-height:30px;">请点击下列套餐，购买您所需要的会员服务。</div>
+			<div>{articles module="account" function="GetAccountUsers" user_id="$_G.user_id"}
+			<ul class="user_right_pic">
+				<li><a href="javascript:;" class="user_info_vip" data-account='balance:{$var.balance|default:0},vip:1,account:25 '><img src="{$tpldir}/images/vip1.jpg" /></a></li>
+				<li><a href="javascript:;" class="user_info_vip" data-account='balance:{$var.balance|default:0},vip:2,account:100' ><img src="{$tpldir}/images/vip2.jpg" /></a></li>
+				<li><a href="javascript:;" class="user_info_vip" data-account='balance:{$var.balance|default:0},vip:3,account:150' ><img src="{$tpldir}/images/vip3.jpg" /></a></li>
+				{/articles}
+			</ul>
+			</div>
+		</div>
+		
+		<div class="user_right_foot">
+	{/articles}
+		* 温馨提示：如您在投标时会员状态为特权会员，则在您投的这个标存续期间，您在这个标上都享受特权会员待遇，包括佣金优惠，逾期保利，优先赔付等。即使您的特权会员已经到期，您依旧可以享受如上的特权会员待遇。当然，如您在投标时的状态为普通会员，您无法享受特权会员的待遇
+
+		</div>
+{literal}<script>deayou.use("users",function(e){e.info_vip();});</script>{/literal}
+{elseif $_U.query_type=="vip_new"}
+{articles module="users" plugins="vip" function="GetUsersVip" var="Vvar" user_id="$_G.user_id"}
+ <form action="/?user&q=code/users/vip_new" method="post"  id="user_info_vip_form" >
+	  <table width="100%" border="0" cellpadding="0" cellspacing="0" height="130">
+	  <tr>
+		<td align="right" valign="middle">申请的类型：</td><td>{if $magic.request.vip==1}月付25元{elseif $magic.request.vip==2}半年付100元{elseif $magic.request.vip==3}年付150元{/if}<input type="hidden" name="vip_type" value="{$magic.request.vip}" /> </span></td>
+	  </tr>
+	  <tr>
+		{articles module="account" function="GetOne" var="var" user_id="$_G.user_id"}
+		<td align="right" valign="middle">我的可用余额：</td><td><b style="color:#FF0000">￥{$var.balance|default:"0"}</b>   <a href="/?user&q=code/account/recharge_new" style="color:#0000FF" target="_blank">我要充值</a></td>
+		{/articles}
+	  </tr>
+	  <tr>
+		<td align="right" valign="middle">验证码：</td><td><input type="hidden" name="borrow_nid"  id="borrow_nid" value="{$magic.request.borrow_nid}" /><input type="text" name="valicode"  tabindex="3" style="width:70px; border:#BFBFBF solid 1px; height:18px;"/> <img src="/?plugins&q=imgcode" id="valicode" alt="点击刷新" onClick="this.src='/?plugins&q=imgcode&t=' + Math.random();" style="cursor:pointer;height:18px;" align="absmiddle"/></td>
+	  </tr>
+	  <tr>
+		<td align="center" colspan="2" valign="middle"><input type="hidden" name="type" value="ajax" /><input  id="button" type="submit" name="submit"  value="立即升级" class=""/> </td>
+	  </tr>
+	</table>
+
+</form>
+{literal}<script>deayou.use("users",function(e){e.info_vip_new();});</script>{/literal}
+{/articles}
+{else}
+
+{articles module="users" plugins="vip" function="GetUsersVip" user_id="$_G.user_id" var="_vip"}
+
+		<div class="user_main_title1">为什么要成为VIP会员：<strong>佣金更低</strong>，<strong>提现更快</strong>，<strong>保本又保利</strong>，<strong>逾期当天赔付</strong>。</div>
+		<div class="user_main_title"></div>
+		<div style="width:700px; overflow:hidden;margin-top:20px;">
+			<div style="line-height:30px;">您目前的状态是：{if $_vip.status==1}<strong style="color:#FF0000">VIP</strong>会员, 会员服务时间：{$_vip.first_date|date_format:"Y-m-d"} 到 {$_vip.end_date|date_format:"Y-m-d"}{else}普通会员{/if}</div>
+	<div class="t20">
+		<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tabyel">
+			<tr class="ytit1">
+				<td>开始时间</td>
+				<td>结束时间</td>
+				<td>缴费金额</td>
+				<td>申请时间</td>
+			</tr>
+			{loop module="users" plugins="vip" function="GetUsersVipLogList" limit="all" var="var" user_id="$_G.user_id"}
+			<tr>
+				<td>{$var.first_time|date_format:"Y-m-d"}</td>
+				<td>{$var.end_time|date_format:"Y-m-d"}</td>
+				<td>￥{$var.money}</td>
+				<td>{$var.addtime|date_format}</td>
+			</td>
+			{/loop}
+			</tr>
+		</table>
+	</div>
+	</div>
+{/if}		
+		

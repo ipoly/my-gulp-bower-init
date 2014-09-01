@@ -1,0 +1,171 @@
+
+<div class="item_group" style="width: auto">我的基本信息</div>
+<form action="/?user&q=code/rating/basic" method="post" name="formx" onsubmit="return formcheck();">
+<div class="user_info_box clearfix" style="width: auto">
+	
+	<div class="user_info_item">
+		<span class="user_info_item_left">
+			用户名：
+		</span> 
+		<span> 
+			{$_G.user_result.username}
+		</span>
+	</div>
+	{articles module="rating" function="GetInfoOne" user_id="$_G.user_id" var="var"}
+	
+	{articles module="approve" function="GetRealnameOne" user_id="$_G.user_id" var="rel"}
+	{if $_G.user_info.realname_status==1} 
+		<div class="user_info_item">
+		<span class="user_info_item_left"><!-- <span class="f_red b">*</span> -->真实姓名：</span> 
+		<span> 
+		{if $rel.realname!=''}{$rel.realname|truncate:1}**{elseif $var.realname!=''}{$var.realname|truncate:1}**{/if}
+		</span>
+		</div>	
+		<div class="user_info_item">
+		<span class="user_info_item_left"><!-- <span class="f_red b">*</span> -->身份证号：</span> 
+		<span> 
+		{if $rel.card_id!=''}{$rel._card_id}{elseif $var.card_id!=''}{$var._card_id}{/if}
+		</span>
+		</div>	
+	{else}
+        <div class="user_info_item">
+		<span class="user_info_item_left"><!-- <span class="f_red b">*</span> -->真实姓名：</span> 
+		<span> 
+		<input id="realname" name="realname" class="input180"  {if $var.realname!=''} readonly="tue" value="{$var.realname|truncate:1}**" {elseif $rel.realname!=''} readonly="true" value="{$rel.realname|truncate:1}**" {/if}" >
+		</span>
+		</div>	
+		<div class="user_info_item">
+		<span class="user_info_item_left"><!-- <span class="f_red b">*</span> -->身份证号：</span> 
+		<span> 
+	       <input id="card_id" name="card_id" class="input180" {if $var.card_id!=''} value="{$var._card_id}" readonly="true" {elseif $rel.card_id!=''} value="{$rel._card_id}" readonly="true"{/if}" >
+        </span>
+		</div>	
+    {/if}
+	
+	{articles module="approve" function="GetSmsOne" user_id="$_G.user_id" var="pvar"}
+	<div class="user_info_item">	
+		<span class="user_info_item_left">手机号码：</span> 
+		<span>
+		{if $pvar.status=="1"}{$pvar.phone|truncate:5}**<input id="phone" type="hidden" name="phone" value="{$pvar.phone}" class="input180 ">{else}<input type="text" name="phone" id="phone" class="input180 " value="{$var.phone}" />{/if}
+		</span>
+	</div>
+	{/articles}
+	<div class="user_info_item">
+		<span class="user_info_item_left">性 别：</span>
+		<span> 
+        {if $_G.user_info.realname_status==1}
+            {articles module="approve" function="GetRealnameOne" user_id="$_G.user_id" var="realvar"}
+                {if $realvar.sex==1}男{else}女{/if}
+            {/articles}
+        {else}
+    		{if $var.sex==''}
+    		{linkages nid="rating_sex" name="sex" type="value" value="$rel.sex"  style="width:120px; border:#BFBFBF solid 1px; height:18px;"}
+    		{else}
+    		{linkages nid="rating_sex" name="sex" type="value" value="$var.sex"  style="width:120px; border:#BFBFBF solid 1px; height:18px;"}
+    		{/if}
+		{/if}
+        </span>
+	</div>
+	{/articles}
+	<div class="user_info_item">
+		<span class="user_info_item_left">出生日期：</span>
+		<span>
+        {if $_G.user_info.realname_status==1}
+           <script>
+           var card_id="{$rel.card_id}";
+           document.write(card_id.substring(6,10)+"年"+card_id.substring(10,12)+"月"+card_id.substring(12,14)+"日");
+           </script>
+        {else}
+            {protime name="birthday" value="$var.birthday" type="y,m,d" }
+        {/if}
+		</span>
+	</div>
+	<div class="user_info_item">
+		<span class="user_info_item_left">籍 贯：</span> <span>
+		{areas type="p,c" value="$var.jiguan_city" name="jiguan_"}
+		</span>
+	</div>
+	<div class="user_info_item">
+		<span class="user_info_item_left">婚姻状况：</span> <span>{linkages nid="rating_marry" name="marry" value="$var.marry" type="value"  style="width:120px; border:#BFBFBF solid 1px; "}
+		</span>
+	</div>
+	<div class="user_info_item">
+		<span class="user_info_item_left">子 女：</span> <span>{linkages nid="rating_children" name="children" value="$var.children" type="value"  style="width:120px; border:#BFBFBF solid 1px; "}
+		</span>
+	</div>
+	<div class="user_info_item">
+		<span class="user_info_item_left">学 历：</span> <span> {linkages nid="rating_education" name="edu" value="$var.edu" type="value" style="width:120px; border:#BFBFBF solid 1px;"}
+		</span>
+	</div>
+	<div class="user_info_item">
+		<span class="user_info_item_left">月收入：</span> <span> {linkages nid="rating_income" name="income" value="$var.income" type="value" style="width:120px; border:#BFBFBF solid 1px;"}
+		</span>
+	</div>
+	<div class="user_info_item">
+		<span class="user_info_item_left">社 保：</span> <span> <select name='shebao' id="shebao"  style='width:120px;' >
+			<option value='1' {if $var.shebao==1 } selected="selected"{/if} >有</option>
+			<option value='2' {if $var.shebao==2 || $var.is_car=='' } selected="selected"{/if}>无</option>
+			</select>
+		</span>
+	</div>
+	<!-- <div class="user_info_item">
+		<span class="user_info_item_left">社保电脑号：</span> <span> <input value="{$var.shebaonid}" class="input180 " name="shebaonid" id="shebaonid">
+		</span>
+	</div> -->
+	<div class="user_info_item">
+		<span class="user_info_item_left">住房条件：</span> <span>{linkages nid="rating_house" name="house" value="$var.house" type="value"  style="width:150px; border:#BFBFBF solid 1px; height:18px;"}
+		</span>
+	</div>
+	<div class="user_info_item">
+		<span class="user_info_item_left">是否购车：</span> <span><select name='is_car' id="is_car"  style='width:120px;' >
+			<option value='1' {if $var.is_car==1 } selected="selected"{/if} >有</option>
+			<option value='2' {if $var.is_car==2 || $var.is_car=='' } selected="selected"{/if}>无</option>
+			</select>
+		</span>
+	</div>
+<!-- 	<div class="user_info_item">
+		<span class="user_info_item_left">逾期记录：</span> <span> 
+		<select name='yuqu' id="yuqu"  style='width:120px;' >
+			<option value='1' {if $var.yuqu==1 } selected="selected"{/if} >有</option>
+			<option value='2' {if $var.yuqu==2 || $var.yuqu=='' } selected="selected"{/if}>无</option>
+			</select>
+		</span>
+	</div>  -->
+	<div style="padding:10px 0; margin-left:170px"><input  id="button" type="submit" name="submit" id="submit" value="提交" /></div>
+</div>{/articles}  
+    
+				 
+			  
+    
+	</div>
+          </form>       
+
+	{literal}
+			<script>
+			function formck(){
+				 var frm = document.forms['formx'];
+				 var realname = frm.elements['realname'].value;
+				 var card_id = frm.elements['card_id'].value;			
+				 var errorMsg = '';
+				  if (realname.length == 0 ) {
+					errorMsg += '* 真实姓名不能为空' + '\n';
+				  }
+				  if (card_id.length == 0 ) {
+					errorMsg += '* 身份证不能为空' + '\n';
+				  }
+				 
+				  if (errorMsg.length > 0){
+					alert(errorMsg); return false;
+				  } else{  
+					return true;
+				  }
+			}
+			function showcar(x){
+				if(x==1){
+					$(".car_show").show();
+				}else{
+					$(".car_show").hide();
+				}
+			}
+			</script>
+	{/literal}

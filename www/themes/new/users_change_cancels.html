@@ -1,0 +1,67 @@
+<div>
+<strong style="color:#ff0000">温馨提示：</strong><br>1、债权转让只能撤销3次，超过3次将冻结此债权。<br>2、转让给网站失败也算撤销一次。 <br>
+
+</div>
+<div class="t20">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tabyel">
+<tr class="ytit">
+				<td colspan="11">已撤销的债权</td>
+			</tr>
+<tr class="ytit1" >
+<td  >投标标题</td>
+<td  >利率</td>
+<td  >待收期数/总期数</td>
+<td  >待收本金</td>
+<td  >待收利息</td>
+<td  >撤销次数</td>
+<td  >撤销时间</td>
+<td  >操作</td>
+</tr>
+
+{list module='borrow' plugins="change" function='GetChangeList'  late_status=1 status='5' var="item"  user_id='$_G.user_id' var="loop"}
+{foreach from="$loop.list" item="item"}
+<tr>
+<td  ><a href="/invest/a{$item.borrow_nid}.html" target="_blank">{$item.borrow_name}</a></td>
+<td  >{$item.borrow_apr}%</td>
+<td  >{$item.wait_times|default:0}期/{$item._borrow_period}期</td>
+<td  >￥{$item.recover_account_capital_wait}</td>
+<td  >￥{$item.recover_account_interest_wait}</td>
+<td  >{$item.cancel_times}</td>
+<td  >{$item.cancel_time|date_format}</td>
+<td  >
+{if $item.cancel_times<3}
+<a href="javascript:;"  class="change_borrow" data-id="{$item.tender_id}">债权转让</a>
+
+<a href="javascript:;"  class="change_web"  data-id="{$item.tender_id}">转让给网站</a>
+{else}
+-
+{/if}
+
+</td>
+</tr>
+{/foreach}
+</table>
+<div style="padding:10px 0; text-align:center">{$loop.pages|showpage}</div>
+{/list}
+</div>
+
+{literal}
+<script>
+$(".change_borrow").live("click",function(){
+    var _id = $(this).attr("data-id");
+var dia = $.dialog({
+				id: 'change_borrow',title:'进行债权转让',content: 'url:/?user&q=code/borrow/change&p=change&id='+_id,max: false,
+				min: false,lock:true});
+    
+})
+
+$(".change_web").live("click",function(){
+    var _id = $(this).attr("data-id");
+var dia = $.dialog({
+				id: 'change_web',title:'转让给网站',content: 'url:/?user&q=code/borrow/change&p=web&id='+_id,max: false,
+				min: false,lock:true});
+    
+})
+</script>
+
+{/literal}

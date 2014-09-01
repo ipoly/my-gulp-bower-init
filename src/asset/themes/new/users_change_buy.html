@@ -1,0 +1,88 @@
+<script src="{$tpldir}/js/jquery.js" type="text/javascript"></script>
+<script src="{$tpldir}/js/jquery.form.js" type="text/javascript"></script>
+<link href="{$tpldir}/css/dialog.css" rel="stylesheet" type="text/css" />	
+{if $_U.change_msg!=""}
+ <div class="daeyou_dialog">
+        <div class="title">错误提醒：</div>
+        <div class="content">{$_U.change_msg}</div>
+ </div>
+{literal}
+<script>
+var api = frameElement.api, W = api.opener;
+api.button({
+    id:'valueOk',
+	name:'取消',
+    foucs:true
+});
+</script>
+{/literal}
+
+{else}
+  {if $_G.user_result.paypassword==""}
+  <div class="daeyou_dialog">
+        <div style="text-align: center;">您还未设置交易密码。</div>
+ </div>
+  <div class="daeyou_dialog">
+        <div style="text-align: center;"><a style="color:#0000FF" target="_blank" href="/?user&q=code/users/paypwd">请先设置交易密码</a></div>
+ </div>
+  {else}
+ <form action="" name="form1" method="post"  id="change_form">
+ 
+		<div class="daeyou_dialog" >
+			<div class="title">债权总值:</div>
+             <div class="content">￥{$_U.change_result.recover_account_wait}</div>
+		</div>
+		<div class="daeyou_dialog" >
+			<div class="title">手续费:</div>
+             <div class="content">￥{$_U.change_result.change_fee}</div>
+		</div>
+		<div class="daeyou_dialog" >
+			<div class="title">购买价格:</div>
+            <div class="content">￥{$_U.change_result.change_account}</div>
+		</div>
+		<div class="daeyou_dialog" >
+			<div class="title">可用金额:</div>
+            <div class="content">￥{$_U.change_result.balance}[<a href="/?user&q=code/account/recharge_new" target="_blank">充值</a>]</div>
+		</div>
+ <div class="daeyou_dialog">
+        <div class="title">支付密码：</div>
+        <div class="content">	{if $_G.user_result.paypassword==""}<a style="color:#0000FF" target="_blank" href="/?user&q=code/users/paypwd">请先设置交易密码</a>{else}<input type="password"  name="paypassword" id="paypassword" />  {/if} <font color="#FF0000">*</font></div>
+ </div>
+ 	</form>
+    
+    {literal}
+<script>
+var api = frameElement.api, W = api.opener;
+api.button({
+    id:'valueOk',
+	name:'确定',
+	callback:check_form,
+    foucs:true
+});
+
+
+function check_form(){
+    errorMsg ="";
+    if ($("#paypassword").val()==""){
+        errorMsg = "支付密码不能为空";
+    }
+	if (errorMsg.length > 0){
+		alert(errorMsg); return false;
+	}else{
+	   $("#change_form").ajaxSubmit({	  
+            success: function (result, status) {
+                if(parseInt(result)==1){
+                    alert("购买成功");
+                    W.location.href='/?user&q=code/borrow/change&p=buys';
+                }else{
+                    alert(result);
+                }
+                return false;
+            }
+        });
+		return false;
+	}
+}
+</script>{/literal}
+{/if}
+    {/if}

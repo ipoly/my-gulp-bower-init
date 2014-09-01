@@ -1,0 +1,78 @@
+
+
+		<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tabyel">
+
+
+			  <form action="" method="post">
+
+ <tr class="ytit">
+
+          <td colspan="8"><span style="float: right;">
+          用户名：<input name="username" id="username" value="{$magic.request.username|urldecode}" type="text" /> 提交时间：<input type="text" name="dotime1" id="dotime1" value="{$magic.request.dotime1}" size="15" onclick="change_picktime()"/> 到 <input type="text"  name="dotime2" value="{$magic.request.dotime2}" id="dotime2" size="15" onclick="change_picktime()"/>  
+
+
+<input type="button" value="搜索" onclick="sousuo('{$_U.query_url}/log');" />
+</span>
+            推广记录</td>
+
+        </tr>
+        </form>
+				<tr class="ytit1" >
+	<td  >id</td>
+	<td  >用户名</td>
+					<td  >资金类型 </td>
+                    <td  >提成比例</td>
+					<td  >推广比例</td>
+					<td  >推广总额</td>
+					<td  >提交时间</td>
+					<td  >备注</td>
+				</tr>
+	{list module="spreads" function="GetSpreadsLogList" var="loop" user_id='$magic.request.user_id' username='$magic.request.username' dotime1='$magic.request.dotime1' dotime2='$magic.request.dotime2' spreads_userid='$_G.user_id' }
+
+
+				{foreach from="$loop.list" item="item"}
+		<tr {if $key%2==1} class="tr2"{/if}>
+			<td class="main_td1" align="center" style="width: 50px;" >{$item.id}</td>
+			<td class="main_td1" align="center">{$item.username}</td>
+			<td class="main_td1" align="center">{$item.spreads_typename}</td>
+			<td class="main_td1" align="center">{if $item.account_type=="account"}本息{elseif $item.account_type=="capital"}本金{else}利息{/if}</td>	
+            <td class="main_td1" align="center">{$item.scales}%</td>
+			<td class="main_td1" align="center">￥{$item.account}</td>
+            <td class="main_td1" align="center">{$item.addtime|date_format}</td>
+			<td class="main_td1" align="center">{$item.remark}</td>
+		</tr>
+		{/foreach}
+		<tr >
+		<td width="" class="main_td" colspan="14"  align="center">{$loop.pages|showpage}</td>
+	</tr>
+	{/list}
+
+
+			</form>	
+
+
+		</table>
+
+{literal}
+<script>
+function sousuo(urla){
+	if (urla!="") url = urla;
+	var _url = "";
+	var username = $("#username").val();
+	if (username!=null){
+		 _url += "&username="+username;
+	}
+
+var dotime1 = $("#dotime1").val();
+	if (dotime1!=null){
+		 _url += "&dotime1="+dotime1;
+	}
+var dotime2 = $("#dotime2").val();
+	if (dotime2!=null){
+		 _url += "&dotime2="+dotime2;
+	}
+    	location.href=url+_url;
+}
+</script>
+
+{/literal}

@@ -1,0 +1,80 @@
+
+<div class="conbox t20">
+	<div class="jk_v_tit1"><h1>留言板</h1></div>
+	<div class="us_r_bor3">
+		<div style="margin:10px">
+        	<span class="back" style="width: 780px; margin: 10px 0 0 15px; height: 25px">
+				咨询或评论：<span class="hidden" style="color:Red;">(字数在1-120之间)</span>
+			</span>
+			<div style="clear: both;">
+				<textarea name="contents" id="contents" rows="5" cols="20" class="textbook" style="width:920px;"></textarea>
+			</div>
+			<div style="float: right; width:100%">
+            <div style="float: right;">
+					{if $_G.user_id!=""}
+						<input name="valicode" id="valicode" type="text"  style="width:50px;"/>
+      <img src="/?plugins&q=imgcode" id="valicode" alt="点击刷新" onClick="this.src='/?plugins&q=imgcode&t=' + Math.random();" align="absmiddle" style="cursor:pointer" /><input  id="button" type="submit" value="提 交" onclick="return sentcomment()" style="margin-right: 5px" />
+					{/if}</div>
+			</div>	
+            
+            
+			<div>
+				<table cellspacing="0" border="0" style="border-width:0px;border-style:None;width:930px;border-collapse:collapse;">
+					{loop module="comments" function="GetList" limit="8" var="vat" code="borrow" article_id="$var.id" }
+					<tr class="comment_tr">
+						<td width="10%" height="60px" align="center"><img src="{$vat.user_id|avatar}" width="50" height="50" /></td>
+						<td width="10%" height="60px" align="center"><a href="/u/{$vat.user_id}" target=_blank>{$vat.username}</a></td>
+						<td width="60%" height="60px" align="left" style="word-break:break-all;">{$vat.contents}</td>
+						<td width="20%" height="60px" align="center">{$vat.addtime|date_format:"Y-m-d H:i:s"}</td>
+					</tr>
+					{/loop}
+				</table>
+			</div>
+		
+		</div>
+	</div>
+</div>
+<script>
+var article = '{$var.id}';
+var borrow_user = '{$var.user_id}';
+var borrow_nid = '{$var.borrow_nid}';
+{literal}
+function sentcomment(){
+	var con=$("#contents").val();
+	var valicode=$("#valicode").val();
+	if (con==""){
+		alert("留言内容不能为空！");
+		return false;
+	}
+    var con_len=$("#contents").val().length;
+    if(con_len>120){
+        alert("留言内容不能超过120个字符！");
+        return false;
+    }
+
+    if (valicode==""){
+		alert("验证码不能为空");
+		return false;
+	}
+	$.post("/?user&q=code/comments/new",{contents:con,code:"borrow",article_id:article,borrow_user:borrow_user,borrow_nid:borrow_nid,valicode:valicode},function(result){
+		if (result==1){
+        alert("评论成功");
+        }else{
+             alert("验证码错误");
+        }
+		history.go(0);
+	});
+}
+
+function delcom(num){
+	$.post("/?user&q=code/comments/del",{id:num},function(result){
+		if (result==true){
+			alert("删除成功");
+			history.go(0);
+		}else{
+			alert("删除失败");
+		}
+	});
+}
+{/literal}
+</script>
