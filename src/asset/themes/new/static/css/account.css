@@ -2,8 +2,6 @@
 position: relative;
 height: 100%;
 _height: 100%;
-background: #FAFAFA;
-padding-bottom: 40px;
 }
 .div_clb{
 clear:both;
@@ -81,7 +79,7 @@ clear:both;
 	box-shadow: 0 0 2px 1px #efefef;
 	position:relative;
 }
-.userinfobox{ 
+.userinfobox{
 float:left;
 padding:0px 20px 0px 20px;
 width:758px;
@@ -111,7 +109,7 @@ float:left;
 width:355px;
 white-space:nowrap;
 overflow:hidden;
-text-overflow:ellipsis; 
+text-overflow:ellipsis;
 -o-text-overflow:ellipsis;
 }
 .usemoney{
@@ -154,7 +152,7 @@ width:310px;
 	color:#fff;
 	background:url(../img/btn/btn-blue-green.png) -74px 0 no-repeat;
 }
-#pg-account-index .user-info-cash .money{ 
+#pg-account-index .user-info-cash .money{
 	display:inline-block;
 	padding:10px;
 }
@@ -426,7 +424,7 @@ float:left;
 	height:15px;
 	width:40px;
 	overflow:hidden;
-	display:inline-block; 
+	display:inline-block;
     text-align:left;
 	background-image:url(../img/icon/invest-lv.png);
 	position:relative;
@@ -456,7 +454,7 @@ float:left;
 }
 #invest-lv .invest-lv.Guatou{
 	background-position:0px -105px;
-	outline:none; 
+	outline:none;
 	hide-focus:expression(this.hideFocus=true);
 }
 #invest-lv .invest-lv.Fuhao{
@@ -503,28 +501,28 @@ width:770px;
 }
 .invest-list-speed-1{
 	border:1px solid #d88e19;
-} 
+}
 .invest-list-speed-1 .bg{
 	background:url(../img/bg/speed_1.jpg) repeat-x;
-} 
+}
 .invest-list-speed-1 .point{
 	background-position:0px -32px;
 }
 .invest-list-speed-2{
 	border:1px solid #d83d00;
-} 
+}
 .invest-list-speed-2 .bg{
 	background:url(../img/bg/speed_2.jpg) repeat-x;
-} 
+}
 .invest-list-speed-2 .point{
 	background-position:0px 0px;
 }
 .invest-list-speed-3{
 	border:1px solid #7ca707;
-} 
+}
 .invest-list-speed-3 .bg{
 	background:url(../img/bg/speed_3.jpg) repeat-x;
-} 
+}
 .invest-list-speed-3 .point{
 	background-position:0px -16px;
 }
@@ -537,23 +535,23 @@ float:left;
 display:block;
 float:left;
 width:758px;
-border:none; 
+border:none;
 margin:0px;
 }
 .acctab tr{
 padding: 10px 0px;
 margin:0px;
-border:none; 
+border:none;
 float:left;
 }
-.acctab tr th{ 
+.acctab tr th{
 height:40px;
 line-height:40px;
 vertical-align:middle;
 background-color:#EDEDED;
 margin:0px;
 padding:0px;
-border:none; 
+border:none;
 float:left;
 }
 .detailDiv{
@@ -566,7 +564,7 @@ border:none;
 display:block;
 float:left;
 width:758px;
-border:none; 
+border:none;
 margin:0px;
 border-collapse:collapse;
 padding-bottom:20px;
@@ -575,7 +573,7 @@ padding-bottom:20px;
 display:block;
 float:left;
 width:758px;
-border:none; 
+border:none;
 margin:0px;
 border-collapse:collapse;
 padding-bottom:20px;
@@ -654,7 +652,7 @@ margin:0px 0px 6px 0px;
 padding: 10px 0px;
 border-bottom:1px dashed #DBDBDB;
 }
-.investGradeL02{ 
+.investGradeL02{
 margin-top:0px;
 *+margin-top:6px;
 }

@@ -36,7 +36,7 @@ DIST = {
     assets: "www"
 }
 
-APP_ROOT = 'app/themes/new'
+APP_ROOT = 'www'
 
 MULTI_SCRIPT_REGEX = /[\s\t]*<script src=(['"])\/(.+\*.+)\1><\/script>/igm
 
@@ -56,6 +56,8 @@ errorHandler = (task)->
 gulp.task "assets", ->
     gulp.src SRC.assets
     .pipe plumber {errorHandler: errorHandler('ASSETS')}
+    .pipe changed DIST.assets
+    .pipe cache 'assets'
     .pipe gulp.dest DIST.assets
 
 gulp.task "images", ['assets'], ->
@@ -104,6 +106,7 @@ gulp.task "watch", ['build'], ->
     gulp.watch SRC.jade, ['jade']
     gulp.watch SRC.coffee, ['coffee']
     gulp.watch SRC.less, ['less']
+    gulp.watch SRC.assets, ['assets']
 
     livereload.listen()
     gulp.watch APP_ROOT + '/**'

@@ -1,43 +1,41 @@
-extends _layout
 
-block content
-  .container
-    include _breadcrumb
+.container
+  include breadcrumb
 
-    -var n = 0
-    while n++ < 20
-      table.table.table-bordered.content-block.product-list-table
-        thead: tr.active
-          td(colspan='6')
-            a(href='') 贸易通NO.41期
-            span.font-size-small.text-muted &nbsp;起息日（T+1）
-            .text-right.text-muted.pull-right 全网首创贸易项下融资产品
-        tbody: tr.text-center
-          td: a(href='')
-            img.img-thumbnail(src="/themes/ipoly/img/myt88.jpg", alt="")
-            | 贸易通
-          td
-            .text-warning.percentage.font-size-large 13.2
-            .text-muted 借款年利率
-          td
-            .text-warning.font-size-large 24个月
-            .text-muted 期限
-          td
-            .text-warning.font-size-large 3000000元
-            .text-muted 投资金额
-          td
-            .progress.progress-small.progress-inline(progress='76.2', type='warning')
-            span.percentage 76.2
-            .text-muted 进度
-          td: a.btn.btn-warning.btn-fat 立即投资
+  -var n = 0
+  while n++ < 20
+    table.table.table-bordered.content-block.product-list-table
+      thead: tr.active
+        td(colspan='6')
+          a(href='') 贸易通NO.41期
+          span.font-size-small.text-muted &nbsp;起息日（T+1）
+          .text-right.text-muted.pull-right 全网首创贸易项下融资产品
+      tbody: tr.text-center
+        td: a(href='')
+          img.img-thumbnail(src="/themes/ipoly/img/myt88.jpg", alt="")
+          | 贸易通
+        td
+          .text-warning.percentage.font-size-large 13.2
+          .text-muted 借款年利率
+        td
+          .text-warning.font-size-large 24个月
+          .text-muted 期限
+        td
+          .text-warning.font-size-large 3000000元
+          .text-muted 投资金额
+        td
+          .progress.progress-small.progress-inline(progress='76.2', type='warning')
+          span.percentage 76.2
+          .text-muted 进度
+        td: a.btn.btn-warning.btn-fat 立即投资
 
-    .text-center
-      ul.pagination
-        li.diabled: a(href=''): i.fa.fa-angle-left
-        li.active: a(href='') 1
-        li: a(href='') 2
-        li: a(href='') 3
-        li: a(href='') 4
-        li: a(href='') 5
-        li: a(href='') 6
-        li: a(href=''): i.fa.fa-angle-right
+  .text-center
+    ul.pagination
+      li.diabled: a(href=''): i.fa.fa-angle-left
+      li.active: a(href='') 1
+      li: a(href='') 2
+      li: a(href='') 3
+      li: a(href='') 4
+      li: a(href='') 5
+      li: a(href='') 6
+      li: a(href=''): i.fa.fa-angle-right

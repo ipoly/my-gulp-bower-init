@@ -1,169 +1,167 @@
-extends _layout
 
-block content
-  .container
-    include _breadcrumb
+.container
+  include breadcrumb
 
-    .text-center.show-grid
-      img(src='/themes/ipoly/img/page186_a.gif')
+  .text-center.show-grid
+    img(src='/themes/ipoly/img/page186_a.gif')
 
-    .content-block.show-grid
-      .row
-        .col-md-7
-          img(src='/themes/ipoly/img/page186_b.gif', style='width:100%;')
-        .col-md-5: .product-detail-form-container
-          form.form-horizontal(name='loan', novalidate, action='#', method='post')
-            .form-group
-              label.col-md-3.control-label 希望贷款金额
-              .col-md-4
-                .input-group
-                  input.form-control(type='number', required, name='amount', ng-model='amount', placeholder='3~30', min='3', max='30')
-                  span.input-group-addon 万元
-            .form-group
-              label.col-md-3.control-label 计划贷款期限
-              .col-md-4
-                .input-group
-                  input.form-control(type='number', required, name='limit', ng-model='limit', placeholder='3~30', min='1')
-                  span.input-group-addon 个月
-            .form-group
-              label.col-md-3.control-label 什么时候要
-              .col-md-9: select.form-control(required, name='need', ng-model='need'): option 请选择
-            .form-group
-              label.col-md-3.control-label 融资意向
-              .col-md-9: .radio
-                label
-                  input(type='radio', name='favor', ng-model='favor')
-                  | 费用最低
-                label
-                  input(type='radio', name='favor', ng-model='favor')
-                  | 速度最快
-            .form-group
-              label.col-md-3.control-label 职业身份
-              .col-md-9: select.form-control(required, name='class', ng-model='class'): option 请选择
-            .form-group
-              label.col-md-3.control-label 资产情况
-              .col-md-9: select.form-control(required, name='asset', ng-model='asset'): option 请选择
-            .form-group
-              label.col-md-3.control-label 您的称呼
-              .col-md-9: input.form-control(type='text', required, name='name', ng-model='name', placeholder='请输入称呼')
-            .form-group
-              label.col-md-3.control-label 手机号码
-              .col-md-9: input.form-control(type='text', required, name='mobile', ng-model='mobile', placeholder='请输入11位手机号', ng-pattern='/^\\d{11}$/')
-            .form-group
-              label.col-md-3.control-label 动态码
-              .col-md-4: input.form-control(type='text', required, name='vcode', ng-model='vcode', placeholder='请输入验证码')
-              .col-md-5: img(src='/themes/ipoly/img/get_img.jpg', alt='点击刷新验证码', style='height:34px;')
-            .form-group
-              .col-md-9.col-md-offset-3
-                button.btn.btn-warning.btn-lg.btn-block(ng-disabled='loan.$invalid') 立即申请
-
-
-    .content-block.show-grid.padding-large
-      .row.vr
-        .col-md-4
-          h3.header: .label.label-primary 申请资格
-          ul.text-muted.line-height-large
-            li 年龄23周岁-60周岁的中国大陆公民（港、澳、台除外）
-            li 企业或商户经营时间满1年及以上
-            li 企业或商户月均流水须3万以上
-        .col-md-4
-          h3.header: .label.label-primary 额度期限
-          ul.text-muted.line-height-large
-            li 借款额度：3万-30万元
-            li 借款期限：12、18、24个月
-            li 还款方式：等额本息，每月还款
-        .col-md-4
-          h3.header: .label.label-primary 所需材料
-          ul.text-muted.line-height-large
-            li 申请人二代身份证
-            li 申请人1个月内信用报告
-            li 企业/商户经营场所证明材料
-            li 现居住地证明材料
-            li 近6个月对公或对私银行流水或POS交易流水
-
-    .row.show-grid
+  .content-block.show-grid
+    .row
       .col-md-7
-        .content-block.padding-large
-          h3.header 费用说明
-          hr
-          h4 每月还款费用
-          ul.list-inline.show-grid
-            li 本金及利息：13.2% 支付给投资人
-            li 平台管理费：0.3% 由你我贷平台收取
+        img(src='/themes/ipoly/img/page186_b.gif', style='width:100%;')
+      .col-md-5: .product-detail-form-container
+        form.form-horizontal(name='loan', novalidate, action='#', method='post')
+          .form-group
+            label.col-md-3.control-label 希望贷款金额
+            .col-md-4
+              .input-group
+                input.form-control(type='number', required, name='amount', ng-model='amount', placeholder='3~30', min='3', max='30')
+                span.input-group-addon 万元
+          .form-group
+            label.col-md-3.control-label 计划贷款期限
+            .col-md-4
+              .input-group
+                input.form-control(type='number', required, name='limit', ng-model='limit', placeholder='3~30', min='1')
+                span.input-group-addon 个月
+          .form-group
+            label.col-md-3.control-label 什么时候要
+            .col-md-9: select.form-control(required, name='need', ng-model='need'): option 请选择
+          .form-group
+            label.col-md-3.control-label 融资意向
+            .col-md-9: .radio
+              label
+                input(type='radio', name='favor', ng-model='favor')
+                | 费用最低
+              label
+                input(type='radio', name='favor', ng-model='favor')
+                | 速度最快
+          .form-group
+            label.col-md-3.control-label 职业身份
+            .col-md-9: select.form-control(required, name='class', ng-model='class'): option 请选择
+          .form-group
+            label.col-md-3.control-label 资产情况
+            .col-md-9: select.form-control(required, name='asset', ng-model='asset'): option 请选择
+          .form-group
+            label.col-md-3.control-label 您的称呼
+            .col-md-9: input.form-control(type='text', required, name='name', ng-model='name', placeholder='请输入称呼')
+          .form-group
+            label.col-md-3.control-label 手机号码
+            .col-md-9: input.form-control(type='text', required, name='mobile', ng-model='mobile', placeholder='请输入11位手机号', ng-pattern='/^\\d{11}$/')
+          .form-group
+            label.col-md-3.control-label 动态码
+            .col-md-4: input.form-control(type='text', required, name='vcode', ng-model='vcode', placeholder='请输入验证码')
+            .col-md-5: img(src='/themes/ipoly/img/get_img.jpg', alt='点击刷新验证码', style='height:34px;')
+          .form-group
+            .col-md-9.col-md-offset-3
+              button.btn.btn-warning.btn-lg.btn-block(ng-disabled='loan.$invalid') 立即申请
 
-          h4 放款时一次性费用
-          .row
-            .col-md-6
-              dl
-                dt 风险管理费
-                dd.line-height-large: p.text-muted 根据平台审核认定的客户等级收取对应比例<br>
-                  |由你我贷平台收取
-                dt 委托查询费
-                dd.line-height-large: p.text-muted 200元 由你我贷平台收取
-                dt 借款服务费
-                dd.line-height-large: p.text-muted （包括征信服务费和贷后管理费）<br>
-                  | 由提供实地征信及贷后管理服务的你我贷平台合作伙伴根据不同的客户等级和借款期限收取
-            .col-md-6
-              table.table.table-bordered.table-condensed
-                thead: tr.active
-                  th 客户等级
-                  th 风险管理费收取比例
-                tbody
-                  tr
-                    td AA
-                    td 0.0%
-                  tr
-                    td A
-                    td 1.0%
-                  tr
-                    td B
-                    td 1.5%
-                  tr
-                    td C
-                    td 2.0%
-                  tr
-                    td D
-                    td 3.0%
-                  tr
-                    td E
-                    td 4.0%
-                  tr
-                    td F
-                    td 5.0%
 
-      .col-md-5
-        .content-block.padding-large
-          h3.header
-            i.fa.fa-th-large.text-primary
-            | &nbsp;借款计算器
-          hr
-          form.form-horizontal
-            .form-group
-              label.col-md-3.control-label 借款金额
-              .col-md-9
-                .input-group
-                  input.form-control(type='number', required, name='amount', placeholder='3万-30万')
-                  span.input-group-addon 元
-            .form-group
-              label.col-md-3.control-label 借款期限
-              .col-md-9
-                .input-group
-                  input.form-control(type='number', name='limit', placeholder='请输入借款期限')
-                  span.input-group-addon 月
-            .form-group
-              label.col-md-3.control-label 借款利率
-              .col-md-9
-                .input-group
-                  input.form-control(type='rate', required, name='amount', placeholder='贷款利率范围1%-26.24%之间')
-                  span.input-group-addon %
-            .form-group
-              label.col-md-3.control-label 还款方式
-              .col-md-9: select.form-control(required, name='type')
-                option 等额本息还款
-                option 等本等息还款
-                option 按月付息到期还本
-                option 一次付息到期还本
-            .form-group
-              .col-md-9.col-md-offset-3
-                button.btn.btn-primary.btn-lg.btn-block.mb10 开始计算
-                .font-size-small.text-muted *利率范围：不超过中国人民银行基准利率的4倍
+  .content-block.show-grid.padding-large
+    .row.vr
+      .col-md-4
+        h3.header: .label.label-primary 申请资格
+        ul.text-muted.line-height-large
+          li 年龄23周岁-60周岁的中国大陆公民（港、澳、台除外）
+          li 企业或商户经营时间满1年及以上
+          li 企业或商户月均流水须3万以上
+      .col-md-4
+        h3.header: .label.label-primary 额度期限
+        ul.text-muted.line-height-large
+          li 借款额度：3万-30万元
+          li 借款期限：12、18、24个月
+          li 还款方式：等额本息，每月还款
+      .col-md-4
+        h3.header: .label.label-primary 所需材料
+        ul.text-muted.line-height-large
+          li 申请人二代身份证
+          li 申请人1个月内信用报告
+          li 企业/商户经营场所证明材料
+          li 现居住地证明材料
+          li 近6个月对公或对私银行流水或POS交易流水
+
+  .row.show-grid
+    .col-md-7
+      .content-block.padding-large
+        h3.header 费用说明
+        hr
+        h4 每月还款费用
+        ul.list-inline.show-grid
+          li 本金及利息：13.2% 支付给投资人
+          li 平台管理费：0.3% 由你我贷平台收取
+
+        h4 放款时一次性费用
+        .row
+          .col-md-6
+            dl
+              dt 风险管理费
+              dd.line-height-large: p.text-muted 根据平台审核认定的客户等级收取对应比例<br>
+                |由你我贷平台收取
+              dt 委托查询费
+              dd.line-height-large: p.text-muted 200元 由你我贷平台收取
+              dt 借款服务费
+              dd.line-height-large: p.text-muted （包括征信服务费和贷后管理费）<br>
+                | 由提供实地征信及贷后管理服务的你我贷平台合作伙伴根据不同的客户等级和借款期限收取
+          .col-md-6
+            table.table.table-bordered.table-condensed
+              thead: tr.active
+                th 客户等级
+                th 风险管理费收取比例
+              tbody
+                tr
+                  td AA
+                  td 0.0%
+                tr
+                  td A
+                  td 1.0%
+                tr
+                  td B
+                  td 1.5%
+                tr
+                  td C
+                  td 2.0%
+                tr
+                  td D
+                  td 3.0%
+                tr
+                  td E
+                  td 4.0%
+                tr
+                  td F
+                  td 5.0%
+
+    .col-md-5
+      .content-block.padding-large
+        h3.header
+          i.fa.fa-th-large.text-primary
+          | &nbsp;借款计算器
+        hr
+        form.form-horizontal
+          .form-group
+            label.col-md-3.control-label 借款金额
+            .col-md-9
+              .input-group
+                input.form-control(type='number', required, name='amount', placeholder='3万-30万')
+                span.input-group-addon 元
+          .form-group
+            label.col-md-3.control-label 借款期限
+            .col-md-9
+              .input-group
+                input.form-control(type='number', name='limit', placeholder='请输入借款期限')
+                span.input-group-addon 月
+          .form-group
+            label.col-md-3.control-label 借款利率
+            .col-md-9
+              .input-group
+                input.form-control(type='rate', required, name='amount', placeholder='贷款利率范围1%-26.24%之间')
+                span.input-group-addon %
+          .form-group
+            label.col-md-3.control-label 还款方式
+            .col-md-9: select.form-control(required, name='type')
+              option 等额本息还款
+              option 等本等息还款
+              option 按月付息到期还本
+              option 一次付息到期还本
+          .form-group
+            .col-md-9.col-md-offset-3
+              button.btn.btn-primary.btn-lg.btn-block.mb10 开始计算
+              .font-size-small.text-muted *利率范围：不超过中国人民银行基准利率的4倍

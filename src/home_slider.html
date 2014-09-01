@@ -1,0 +1,32 @@
+<div class="trans-login-div absolute white" style="width: 320px; height: 270px; z-index: 2; top: 150px; right: 212px;">
+    <div class="opacity-div absolute wp100" style="height: 270px; background-color: rgb(0, 0, 0); opacity: 0.2; border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; z-index: -1; background-position: initial initial; background-repeat: initial initial; "></div>
+     {if $_G.user_id==""}
+    <div id="unknown-user" style="padding: 20px 35px;">
+        <p class="f20">{$_G.system.con_webname}年化收益率</p>
+        <p><span class="f36 org">12%</span><span class="f36">-</span><span class="f36 org">15%</span></p>
+        <p>
+            <span class="f18 org">40</span>&nbsp;倍活期存款收益
+            <span class="f18 org">5</span>&nbsp;倍余额宝收益
+        </p>
+        <p><a href="/index.php?user&q=reg" class="block wp100 h45 txtC f18 mt10 mb10" style="color:#fff; background:#ff5301; letter-spacing:2px;">免费注册</a></p>
+        <p class="txtRight">已有账号? <a href="/index.php?user&q=login" style="color:#fff; text-decoration:underline;">立即登录</a></p>
+    </div>
+       {else}
+    <div id="logged-in-user" class="" style="padding: 20px 35px; display: block; ">
+        <p class="pt15 pb10 f18">欢迎来到{$_G.system.con_webname}</p>
+        <p>您当前登录账户是：<span class="user-name org">{$_G.user_result.username}</span></p>
+        <p class="txtC"><a href="/?user" class="block wp100 h45 f16 mt15" style="color:#fff; background:#ff5301; letter-spacing:1px;">进入我的账户</a></p>
+    </div>
+    {/if}
+</div>
+<div class="pg-header-banner" class='show-grid'>
+  <div id="full-screen-slider">
+        <ul id="slides">
+            {loop module="scrollpic" function="GetList" limit="5" status="1"}
+            <li style="background:url('{$var.pic}') no-repeat center top">
+                <a href="{$var.url}" target="_blank"></a>
+            </li>
+           {/loop}
+        </ul>
+  </div>
+</div>

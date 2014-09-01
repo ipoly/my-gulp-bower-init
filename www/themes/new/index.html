@@ -1,424 +1,303 @@
-<!DOCTYPE html>
-<head>
-  <title>点金贷</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <link rel="shortcut icon" href="/themes/new/static/themes/ipoly/img/icon/favicon.ico">
-  <link rel="stylesheet" href="/themes/new/static/css/global.css">
-  <link rel="stylesheet" href="/themes/new/static/css/index.css">
-  <link rel="stylesheet" href="/themes/new/static/css/one.css">
-  <link rel="stylesheet" href="/themes/new/static/css/account.css">
-  <link href="/themes/new/css/style.css" rel="stylesheet" type="text/css">
-  <link href="/themes/new/css/user.css" rel="stylesheet" type="text/css">
-  <link href="/themes/new/css/public.css" rel="stylesheet" type="text/css">
-  <link href="/themes/new/css/other.css" rel="stylesheet" type="text/css">
-  <link href="/themes/new/css/tipswindown.css" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" href="/themes/ipoly/lib/font-awesome/css/font-awesome.css">
-  <link rel="stylesheet" href="/themes/ipoly/css/app.css">
-</head>
-<body ng-app="dianJinDai">
-  <!-- header block begin-->
-  <div class="pg-header">
-    <div class="pg-header-top">
-      <div class="container_10 pt5">
-        <div class="grid_7"><img src="/themes/new/static/img/icon/phone.png">全国服务热线：400-800-800</div>
-        <div class="grid_3 txtRight"><a href="?user">我的账户</a><a id="msg-notice" href="account-msg.html" class="hide"><em style="top: 3px;" class="msg-icon title relative"></em><span>
-              | [
-              span#msg-count 0
-              | ]</span></a>|<a href="/">首页</a>|<a href="/help/index.html">帮助</a>|<a href="/bbs/" target="_blank">论坛</a></div>
-      </div>
+{include file="header.html"}<div class="trans-login-div absolute white" style="width: 320px; height: 270px; z-index: 2; top: 150px; right: 212px;">
+    <div class="opacity-div absolute wp100" style="height: 270px; background-color: rgb(0, 0, 0); opacity: 0.2; border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; z-index: -1; background-position: initial initial; background-repeat: initial initial; "></div>
+     {if $_G.user_id==""}
+    <div id="unknown-user" style="padding: 20px 35px;">
+        <p class="f20">{$_G.system.con_webname}年化收益率</p>
+        <p><span class="f36 org">12%</span><span class="f36">-</span><span class="f36 org">15%</span></p>
+        <p>
+            <span class="f18 org">40</span>&nbsp;倍活期存款收益
+            <span class="f18 org">5</span>&nbsp;倍余额宝收益
+        </p>
+        <p><a href="/index.php?user&q=reg" class="block wp100 h45 txtC f18 mt10 mb10" style="color:#fff; background:#ff5301; letter-spacing:2px;">免费注册</a></p>
+        <p class="txtRight">已有账号? <a href="/index.php?user&q=login" style="color:#fff; text-decoration:underline;">立即登录</a></p>
     </div>
-    <div class="pg-header-main">
-      <div class="container_10">
-        <div class="grid_3 pg-header-grid"><a href="/"><img src="/themes/new/static/img/icon/logo.png"></a></div>
-        <div class="grid_5 pg-header-grid">
-          <ul class="main-nav">
-            <li class="main-nav-item"><a href="/invest/index.html" class="main-nav-item-link">我要理财</a></li>
-            <li class="main-nav-item"><a href="/financing/index.html" class="main-nav-item-link">我要融资</a></li>
-            <li class="main-nav-item"><a href="/tzzbz/index.html" class="main-nav-item-link">新手帮助</a></li>
-            <li class="main-nav-item"><a href="/aboutus/index.html" class="main-nav-item-link">关于我们</a>
-              <ul class="main-nav-son">
-                <li><a href="/aboutus/index.html">关于我们</a></li>
-                <li><a href="/aboutzz/index.html">证照资质</a></li>
-                <li><a href="/aboutgwtd/index.html">顾问团队</a></li>
-                <li><a href="/abouthz/index.html">合作伙伴</a></li>
-                <li><a href="/lxwm/index.html">联系我们</a></li>
-                <li><a href="/aboutzp/index.html">招聘信息</a></li><span class="triangle_bg"></span><span class="triangle"></span>
-              </ul>
-              <div class="icon icon-down"></div>
+       {else}
+    <div id="logged-in-user" class="" style="padding: 20px 35px; display: block; ">
+        <p class="pt15 pb10 f18">欢迎来到{$_G.system.con_webname}</p>
+        <p>您当前登录账户是：<span class="user-name org">{$_G.user_result.username}</span></p>
+        <p class="txtC"><a href="/?user" class="block wp100 h45 f16 mt15" style="color:#fff; background:#ff5301; letter-spacing:1px;">进入我的账户</a></p>
+    </div>
+    {/if}
+</div>
+<div class="pg-header-banner show-grid">
+  <div id="full-screen-slider">
+        <ul id="slides">
+            {loop module="scrollpic" function="GetList" limit="5" status="1"}
+            <li style="background:url('{$var.pic}') no-repeat center top">
+                <a href="{$var.url}" target="_blank"></a>
             </li>
-          </ul>
-        </div>
-        <div class="grid_2 pg-header-grid">
-          <ul id="top-reg" class="main-nav main-nav-login nav-right">
-            <li><a style="color: #0279cd;" href="/index.php?user&amp;q=reg" class="main-nav-login-item f16">注册</a></li>
-            <li><a href="/index.php?user&amp;q=login" class="main-nav-login-item f16">登录</a></li>
-          </ul>
-        </div>
+           {/loop}
+        </ul>
+  </div>
+</div>
+<div class="container">
+  <div class="row features show-grid">
+    <div class="col-md-3">
+      <div click-jump="" class="content-block"><img src="/themes/new/gulp/img/3-1.gif"/><a href="" class="feature-head">高收益灵活投资</a>
+        <ul class="list-primary">
+          <li>50元起投</li>
+          <li>预期12%-14%年化收益率</li>
+          <li>投资90天后即可债权转让</li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div click-jump="" class="content-block"><img src="/themes/new/gulp/img/3-2.gif"/><a href="" class="feature-head">全方位安全保障</a>
+        <ul class="list-primary">
+          <li>5道安全防线</li>
+          <li>100%本金保障计划</li>
+          <li>专业的第三方资金托管</li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div click-jump="" class="content-block"><img src="/themes/new/gulp/img/3-3.gif"/><a href="" class="feature-head">一站式借款服务</a>
+        <ul class="list-primary">
+          <li>无抵押信用贷款</li>
+          <li>24小时放款</li>
+          <li>提前还款可减免服务费</li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div click-jump="" class="content-block"><img src="/themes/new/gulp/img/3-3.gif"/><a href="" class="feature-head">一站式借款服务</a>
+        <ul class="list-primary">
+          <li>无抵押信用贷款</li>
+          <li>24小时放款</li>
+          <li>提前还款可减免服务费</li>
+        </ul>
       </div>
     </div>
   </div>
-  <div style="width: 320px; height: 270px; z-index: 2; top: 150px; right: 212px;" class="trans-login-div absolute white">
-    <div style="height: 270px; background-color: rgb(0, 0, 0); opacity: 0.2; border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; z-index: -1; background-position: initial initial; background-repeat: initial initial;" class="opacity-div absolute wp100"></div>
-    <div id="unknown-user" style="padding: 20px 35px; display: block;">
-      <p class="f20">点金贷年化收益率</p>
-      <p><span class="f36 org">12%</span><span class="f36">-</span><span class="f36 org">15%</span></p>
-      <p><span class="f18 org">40</span>倍活期存款收益<span class="f18 org">5</span>倍余额宝收益</p>
-      <p><a href="/index.php?user&amp;q=reg" style="color: #fff; background: #ff5301; letter-spacing: 2px;" class="block wp100 h45 txtC f18 mt10 mb10">免费注册</a></p>
-      <p class="txtRight">已有账号?<a href="/index.php?user&amp;q=login" style="color: #fff; text-decoration: underline;">立即登录</a></p>
-    </div>
-  </div>
-  <div class="pg-header-banner">
-    <div id="full-screen-slider">
-      <ul id="slides">
-        <li style="background: url('http://dianjindai.com/data/upfiles/images/2014-03/22/1_scrollpic_new_1395458117859.jpg') no-repeat center top;"><a href="" target="_blank"></a></li>
-        <li style="background: url('http://dianjindai.com/data/upfiles/images/2014-03/22/1_scrollpic_new_1395458108801.jpg') no-repeat center top;"><a href="" target="_blank"></a></li>
-        <li style="background: url('http://dianjindai.com/data/upfiles/images/2014-03/22/1_scrollpic_new_1395458097364.jpg') no-repeat center top;"><a href="" target="_blank"></a></li>
-        <li style="background: url('http://dianjindai.com/data/upfiles/images/2014-03/22/1_scrollpic_new_1395458089330.jpg') no-repeat center top;"><a href="" target="_blank"></a></li>
-        <li style="background: url('http://dianjindai.com/data/upfiles/images/2014-03/22/1_scrollpic_new_1395458082133.jpg') no-repeat center top;"><a href="" target="_blank"></a></li>
-      </ul>
-    </div>
-  </div>
-  <!-- header block end-->
-  <!--content block begin-->
-  <div class="container">
-    <div class="row features show-grid">
-      <div class="col-md-3">
-        <div click-jump="" class="content-block"><img src="/themes/ipoly/img/3-1.gif"><a href="" class="feature-head">高收益灵活投资</a>
-          <ul class="list-primary">
-            <li>50元起投</li>
-            <li>预期12%-14%年化收益率</li>
-            <li>投资90天后即可债权转让</li>
-          </ul>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div click-jump="" class="content-block"><img src="/themes/ipoly/img/3-2.gif"><a href="" class="feature-head">全方位安全保障</a>
-          <ul class="list-primary">
-            <li>5道安全防线</li>
-            <li>100%本金保障计划</li>
-            <li>专业的第三方资金托管</li>
-          </ul>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div click-jump="" class="content-block"><img src="/themes/ipoly/img/3-3.gif"><a href="" class="feature-head">一站式借款服务</a>
-          <ul class="list-primary">
-            <li>无抵押信用贷款</li>
-            <li>24小时放款</li>
-            <li>提前还款可减免服务费</li>
-          </ul>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div click-jump="" class="content-block"><img src="/themes/ipoly/img/3-3.gif"><a href="" class="feature-head">一站式借款服务</a>
-          <ul class="list-primary">
-            <li>无抵押信用贷款</li>
-            <li>24小时放款</li>
-            <li>提前还款可减免服务费</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="row show-grid">
-      <div class="col-md-9">
-        <div style="height:264px;" class="content-block padding-large">
-          <h3 class="header">
-            <div class="strong">家财有道<small> T2014026 期</small></div><a href="" class="more detail"></a>
-          </h3>
-          <hr>
-          <div class="row">
-            <div class="col-md-6"><img src="/themes/ipoly/img/index-j.jpg"></div>
-            <div class="col-md-6">
-              <div style="width:302px;" class="pull-right">
-                <div ng-if="countDown" class="text-center">
-                  <p>募集金额：2,037,000元</p><a class="btn btn-warning btn-lg btn-block"><i class="fa fa-clock-o"></i>&nbsp;立即抢购</a>
-                </div>
-                <div ng-if="!countDown">
-                  <p>计划金额：2,037,000元</p>
-                  <p>距发售开始还有：</p>
-                  <div style="height:55px" class="mb10">
-                    <div dead-line="2014-8-27 14:30" call-back="$parent.countDown=true" class="count-down-to"></div>
-                  </div>
-                  <p class="text-right">省时省心，自动抢购 &nbsp;<a href="" class="btn btn-primary">立即预约</a></p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="content-block padding-large">
-          <h4 class="header">最新公告<a href="" class="more"></a></h4>
-          <ul class="list-primary">
-            <li><a href="" class="text-overflow">关于你我贷客户端的公告</a></li>
-            <li><a href="" class="text-overflow">关于网站借款频道升级公告</a></li>
-          </ul>
-          <hr>
-          <h4 class="header">媒体报道<a href="" class="more"></a></h4>
-          <ul class="list-primary">
-            <li><a href="" class="text-overflow">关于你我贷客户端的公告</a></li>
-            <li><a href="" class="text-overflow">关于网站借款频道升级公告</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="row show-grid">
-      <div class="col-md-9">
-        <div class="content-block padding-large">
-          <h3 class="header">债权列表<a class="more"></a></h3>
-          <table class="table table-striped table-fat">
-            <thead>
-              <tr>
-                <th>项目名称</th>
-                <th>借款年利率</th>
-                <th>期限</th>
-                <th>投资金额</th>
-                <th>进度</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><span class="invest-icon invest-1">诚信借款</span></td>
-                <td class="text-warning percentage">13.2</td>
-                <td>24个月</td>
-                <td>8673元</td>
-                <td>
-                  <div progress="96.5" type="warning" class="progress progress-mini progress-inline"></div><span class="percentage">96.5</span>
-                </td>
-                <td><a class="btn btn-warning btn-fat">投 标</a></td>
-              </tr>
-              <tr>
-                <td><span class="invest-icon invest-2">济宁商户贷诚信借款</span></td>
-                <td class="text-warning percentage">7.2</td>
-                <td>36个月</td>
-                <td>9585元</td>
-                <td>
-                  <div progress="41.05" type="warning" class="progress progress-mini progress-inline"></div><span class="percentage">41.05</span>
-                </td>
-                <td><a class="btn btn-warning btn-fat">投 标</a></td>
-              </tr>
-              <tr>
-                <td><span class="invest-icon invest-3">净值周转提前还款</span></td>
-                <td class="text-warning percentage">3.5</td>
-                <td>90天</td>
-                <td>3628元</td>
-                <td>
-                  <div progress="20.5" type="warning" class="progress progress-mini progress-inline"></div><span class="percentage">20.5</span>
-                </td>
-                <td><a class="btn btn-warning btn-fat">投 标</a></td>
-              </tr>
-              <tr>
-                <td><span class="invest-icon invest-4">商户贷诚信借款</span></td>
-                <td class="text-warning percentage">1.2</td>
-                <td>12个月</td>
-                <td>1603元</td>
-                <td>
-                  <div progress="86.25" type="warning" class="progress progress-mini progress-inline"></div><span class="percentage">86.25</span>
-                </td>
-                <td><a class="btn btn-warning btn-fat">投 标</a></td>
-              </tr>
-              <tr>
-                <td><span class="invest-icon invest-5">借款用于买房</span></td>
-                <td class="text-warning percentage">1.2</td>
-                <td>12个月</td>
-                <td>4604元</td>
-                <td>
-                  <div progress="86.25" type="warning" class="progress progress-mini progress-inline"></div><span class="percentage">86.25</span>
-                </td>
-                <td><a class="btn btn-warning btn-fat">投 标</a></td>
-              </tr>
-              <tr>
-                <td><span class="invest-icon invest-6">临时周转请多多支持谢...</span></td>
-                <td class="text-warning percentage">3.2</td>
-                <td>30天</td>
-                <td>1610元</td>
-                <td>
-                  <div progress="66.5" type="warning" class="progress progress-mini progress-inline"></div><span class="percentage">66.5</span>
-                </td>
-                <td><a class="btn btn-warning btn-fat">投 标</a></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="content-block padding-large show-grid">
-          <h4 class="header">关于我们<a href="" class="more"></a></h4>
-          <p>你我贷成立于2011年6月，旨在为有融资及投资需求的小微企业和个人建立起高效、透明、安全、便捷的互联网金融服务。</p>
-          <ul class="list-primary">
-            <li class="text-overflow"><a href="" class="text-muted">上海现代服务业联合会副会长单位</a></li>
-            <li class="text-overflow"><a href="" class="text-muted">中国小额信贷机构联席会理事单位</a></li>
-            <li class="text-overflow"><a href="" class="text-muted">上海中小企业融资服务优秀合作伙伴</a></li>
-          </ul>
-        </div>
-        <div class="content-block padding-large">
-          <h4 class="header">论坛精华<a href="" class="more"></a></h4>
-          <ul class="list-primary">
-            <li>关于你我贷客户端的公告</li>
-            <li>关于网站借款频道升级公告</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="row show-grid">
-      <div class="col-md-9">
-        <div class="content-block padding-large">
-          <h3 class="header">投资公开课<a href="" class="more"></a></h3>
-          <div class="row vr show-grid">
-            <div class="col-md-4">
-              <div class="padding-base pull-left"><img src="/themes/ipoly/img/class1.png"></div>
-              <div class="padding-base pull-left">
-                <p>第五课</p>
-                <p>轻松投资</p>
-                <p>稳赚收益</p><a href="" class="btn btn-primary">进入课堂</a>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="padding-base pull-left"><img src="/themes/ipoly/img/class2.png"></div>
-              <div class="padding-base pull-left">
-                <p>第四课</p>
-                <p>什么是债权转让？</p>
-                <p>提高资金流动性</p><a href="" class="btn btn-primary">进入课堂</a>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="padding-base pull-left"><img src="/themes/ipoly/img/class3.png"></div>
-              <div class="padding-base pull-left">
-                <p>第三课</p>
-                <p>预约设置</p>
-                <p>账户充值</p><a href="" class="btn btn-primary">进入课堂</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div id="tools" class="content-block padding-large"><a href=""><i class="fa fa-rocket fa-2x"></i><span class="font-size-large">智能抢标</span></a><a href=""><i class="fa fa-th-large fa-2x"></i><span class="font-size-large">投资计算器</span></a><a href=""><span class="fa-stack fa-lg"><i class="fa fa-user fa-stack-1x"></i><i class="fa fa-ban fa-stack-2x text-danger"></i></span><span class="font-size-large">逾期黑名单</span></a></div>
-      </div>
-    </div>
-    <div class="row show-grid">
-      <div class="col-md-9">
-        <div class="content-block padding-large">
-          <h3 class="header">板块新闻</h3>
-          <div class="row show-grid">
-            <div class="col-md-6">
-              <ul class="list-primary">
-                <li><a href="">薪金贷和小微企业类借款额度为3万</a>
-                  <div class="text-muted pull-right">2014-8-28</div>
-                </li>
-                <li><a href="">薪金贷和小微企业类借款额度为3万</a>
-                  <div class="text-muted pull-right">2014-8-28</div>
-                </li>
-                <li><a href="">薪金贷和小微企业类借款额度为3万</a>
-                  <div class="text-muted pull-right">2014-8-28</div>
-                </li>
-                <li><a href="">薪金贷和小微企业类借款额度为3万</a>
-                  <div class="text-muted pull-right">2014-8-28</div>
-                </li>
-                <li><a href="">薪金贷和小微企业类借款额度为3万</a>
-                  <div class="text-muted pull-right">2014-8-28</div>
-                </li>
-                <li><a href="">薪金贷和小微企业类借款额度为3万</a>
-                  <div class="text-muted pull-right">2014-8-28</div>
-                </li>
-              </ul>
-            </div>
-            <div class="col-md-6">
-              <ul class="list-primary">
-                <li><a href="">薪金贷和小微企业类借款额度为3万</a>
-                  <div class="text-muted pull-right">2014-8-28</div>
-                </li>
-                <li><a href="">薪金贷和小微企业类借款额度为3万</a>
-                  <div class="text-muted pull-right">2014-8-28</div>
-                </li>
-                <li><a href="">薪金贷和小微企业类借款额度为3万</a>
-                  <div class="text-muted pull-right">2014-8-28</div>
-                </li>
-                <li><a href="">薪金贷和小微企业类借款额度为3万</a>
-                  <div class="text-muted pull-right">2014-8-28</div>
-                </li>
-                <li><a href="">薪金贷和小微企业类借款额度为3万</a>
-                  <div class="text-muted pull-right">2014-8-28</div>
-                </li>
-                <li><a href="">薪金贷和小微企业类借款额度为3万</a>
-                  <div class="text-muted pull-right">2014-8-28</div>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!--content block end-->
-  <!-- footer block begin-->
-  <div class="pg-footer">
-    <div style="height: auto;" class="pg-footer-main">
-      <div class="container pt30">
+  <div class="row show-grid">
+    <div class="col-md-9">
+      <div style="height:264px;" class="content-block padding-large">
+        <h3 class="header">
+          <div class="strong">家财有道<small> T2014026 期</small></div><a href="" class="more detail"></a>
+        </h3>
+        <hr/>
         <div class="row">
+          <div class="col-md-6"><img src="/themes/new/gulp/img/index-j.jpg"/></div>
           <div class="col-md-6">
-            <ul class="pg-footer-link">
-              <li><a href="/aboutus/index.html">关于我们</a></li>
-              <li><a href="/tzzbz/index.html">新手指引</a></li>
-              <li><a href="/media/index.html">媒体报道</a></li>
-              <li><a href="/aboutzp/index.html">诚聘英才</a></li>
-              <li><a href="/lxwm/index.html">联系我们</a></li>
-              <li><a href="/bbs/">论坛专区</a></li>
+            <div style="width:302px;" class="pull-right">
+              <div ng-if="countDown" class="text-center">
+                <p>募集金额：2,037,000元</p><a class="btn btn-warning btn-lg btn-block"><i class="fa fa-clock-o"></i>&nbsp;立即抢购</a>
+              </div>
+              <div ng-if="!countDown">
+                <p>计划金额：2,037,000元</p>
+                <p>距发售开始还有：</p>
+                <div style="height:55px" class="mb10">
+                  <div dead-line="2014-8-27 14:30" call-back="$parent.countDown=true" class="count-down-to"></div>
+                </div>
+                <p class="text-right">省时省心，自动抢购 &nbsp;<a href="" class="btn btn-primary">立即预约</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="content-block padding-large">
+        <h4 class="header">最新公告<a href="" class="more"></a></h4>
+        <ul class="list-primary">
+          <li><a href="" class="text-overflow">关于你我贷客户端的公告</a></li>
+          <li><a href="" class="text-overflow">关于网站借款频道升级公告</a></li>
+        </ul>
+        <hr/>
+        <h4 class="header">媒体报道<a href="" class="more"></a></h4>
+        <ul class="list-primary">
+          <li><a href="" class="text-overflow">关于你我贷客户端的公告</a></li>
+          <li><a href="" class="text-overflow">关于网站借款频道升级公告</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="row show-grid">
+    <div class="col-md-9">
+      <div class="content-block padding-large">
+        <h3 class="header">债权列表<a class="more"></a></h3>
+        <table class="table table-striped table-fat">
+          <thead>
+            <tr>
+              <th>项目名称</th>
+              <th>借款年利率</th>
+              <th>期限</th>
+              <th>投资金额</th>
+              <th>进度</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="invest-icon invest-1">诚信借款</span></td>
+              <td class="text-warning percentage">13.2</td>
+              <td>24个月</td>
+              <td>8673元</td>
+              <td>
+                <div progress="96.5" type="warning" class="progress progress-mini progress-inline"></div><span class="percentage">96.5</span>
+              </td>
+              <td><a class="btn btn-warning btn-fat">投 标</a></td>
+            </tr>
+            <tr>
+              <td><span class="invest-icon invest-2">济宁商户贷诚信借款</span></td>
+              <td class="text-warning percentage">7.2</td>
+              <td>36个月</td>
+              <td>9585元</td>
+              <td>
+                <div progress="41.05" type="warning" class="progress progress-mini progress-inline"></div><span class="percentage">41.05</span>
+              </td>
+              <td><a class="btn btn-warning btn-fat">投 标</a></td>
+            </tr>
+            <tr>
+              <td><span class="invest-icon invest-3">净值周转提前还款</span></td>
+              <td class="text-warning percentage">3.5</td>
+              <td>90天</td>
+              <td>3628元</td>
+              <td>
+                <div progress="20.5" type="warning" class="progress progress-mini progress-inline"></div><span class="percentage">20.5</span>
+              </td>
+              <td><a class="btn btn-warning btn-fat">投 标</a></td>
+            </tr>
+            <tr>
+              <td><span class="invest-icon invest-4">商户贷诚信借款</span></td>
+              <td class="text-warning percentage">1.2</td>
+              <td>12个月</td>
+              <td>1603元</td>
+              <td>
+                <div progress="86.25" type="warning" class="progress progress-mini progress-inline"></div><span class="percentage">86.25</span>
+              </td>
+              <td><a class="btn btn-warning btn-fat">投 标</a></td>
+            </tr>
+            <tr>
+              <td><span class="invest-icon invest-5">借款用于买房</span></td>
+              <td class="text-warning percentage">1.2</td>
+              <td>12个月</td>
+              <td>4604元</td>
+              <td>
+                <div progress="86.25" type="warning" class="progress progress-mini progress-inline"></div><span class="percentage">86.25</span>
+              </td>
+              <td><a class="btn btn-warning btn-fat">投 标</a></td>
+            </tr>
+            <tr>
+              <td><span class="invest-icon invest-6">临时周转请多多支持谢...</span></td>
+              <td class="text-warning percentage">3.2</td>
+              <td>30天</td>
+              <td>1610元</td>
+              <td>
+                <div progress="66.5" type="warning" class="progress progress-mini progress-inline"></div><span class="percentage">66.5</span>
+              </td>
+              <td><a class="btn btn-warning btn-fat">投 标</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="content-block padding-large show-grid">
+        <h4 class="header">关于我们<a href="" class="more"></a></h4>
+        <p>你我贷成立于2011年6月，旨在为有融资及投资需求的小微企业和个人建立起高效、透明、安全、便捷的互联网金融服务。</p>
+        <ul class="list-primary">
+          <li class="text-overflow"><a href="" class="text-muted">上海现代服务业联合会副会长单位</a></li>
+          <li class="text-overflow"><a href="" class="text-muted">中国小额信贷机构联席会理事单位</a></li>
+          <li class="text-overflow"><a href="" class="text-muted">上海中小企业融资服务优秀合作伙伴</a></li>
+        </ul>
+      </div>
+      <div class="content-block padding-large">
+        <h4 class="header">论坛精华<a href="" class="more"></a></h4>
+        <ul class="list-primary">
+          <li>关于你我贷客户端的公告</li>
+          <li>关于网站借款频道升级公告</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="row show-grid">
+    <div class="col-md-9">
+      <div class="content-block padding-large">
+        <h3 class="header">投资公开课<a href="" class="more"></a></h3>
+        <div class="row vr show-grid">
+          <div class="col-md-4">
+            <div class="padding-base pull-left"><img src="/themes/new/gulp/img/class1.png"/></div>
+            <div class="padding-base pull-left">
+              <p>第五课</p>
+              <p>轻松投资</p>
+              <p>稳赚收益</p><a href="" class="btn btn-primary">进入课堂</a>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="padding-base pull-left"><img src="/themes/new/gulp/img/class2.png"/></div>
+            <div class="padding-base pull-left">
+              <p>第四课</p>
+              <p>什么是债权转让？</p>
+              <p>提高资金流动性</p><a href="" class="btn btn-primary">进入课堂</a>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="padding-base pull-left"><img src="/themes/new/gulp/img/class3.png"/></div>
+            <div class="padding-base pull-left">
+              <p>第三课</p>
+              <p>预约设置</p>
+              <p>账户充值</p><a href="" class="btn btn-primary">进入课堂</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div id="tools" class="content-block padding-large"><a href=""><i class="fa fa-rocket fa-2x"></i><span class="font-size-large">智能抢标</span></a><a href=""><i class="fa fa-th-large fa-2x"></i><span class="font-size-large">投资计算器</span></a><a href=""><span class="fa-stack fa-lg"><i class="fa fa-user fa-stack-1x"></i><i class="fa fa-ban fa-stack-2x text-danger"></i></span><span class="font-size-large">逾期黑名单</span></a></div>
+    </div>
+  </div>
+  <div class="row show-grid">
+    <div class="col-md-9">
+      <div class="content-block padding-large">
+        <h3 class="header">板块新闻</h3>
+        <div class="row show-grid">
+          <div class="col-md-6">
+            <ul class="list-primary">
+              <li><a href="">薪金贷和小微企业类借款额度为3万</a>
+                <div class="text-muted pull-right">2014-8-28</div>
+              </li>
+              <li><a href="">薪金贷和小微企业类借款额度为3万</a>
+                <div class="text-muted pull-right">2014-8-28</div>
+              </li>
+              <li><a href="">薪金贷和小微企业类借款额度为3万</a>
+                <div class="text-muted pull-right">2014-8-28</div>
+              </li>
+              <li><a href="">薪金贷和小微企业类借款额度为3万</a>
+                <div class="text-muted pull-right">2014-8-28</div>
+              </li>
+              <li><a href="">薪金贷和小微企业类借款额度为3万</a>
+                <div class="text-muted pull-right">2014-8-28</div>
+              </li>
+              <li><a href="">薪金贷和小微企业类借款额度为3万</a>
+                <div class="text-muted pull-right">2014-8-28</div>
+              </li>
             </ul>
-            <dl class="pg-footer-focus">
-              <dt class="f16">关注我们：</dt>
-              <dd><a target="_blank" title="新浪微博" href="http://www.weibo.com/" class="pg-footer-icon weibo">新浪微博</a></dd>
-              <dd><a title="官方微信" href="/lxwm/index.html" class="pg-footer-icon weixin">官方微信</a></dd>
-              <dd><a title="收藏本站" href="javascript:;" onclick="addBookmark()" style="background-color:transparent;" class="pg-footer-icon mark">收藏本站</a></dd>
-            </dl>
           </div>
-          <div class="col-md-6 txtRight pg-footer-info">
-            <div class="f16">服务热线</div>
-            <div class="f20">400-800-800</div>
-            <div class="f12">9:30-18:30</div>
-            <div class="pt10"><a href="http://www.baidu.com/" title="在线客服" target="_blank" style="margin-right: -15px;" class="pg-footer-icon online">在线客服</a></div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="pg-footer-other">
-      <div class="container">
-        <div align="left" class="h30">友情链接：<a href="http://www.baidu.com/" target="_blank" title="">网络系统</a><a href="http://www.baidu.com/" target="_blank" title="">人人货币</a></div>
-        <div class="row">
-          <div class="col-md-8">点金贷  Copyright Reserved 2011-2014  |<a href="http://www.miitbeian.gov.cn/state/outPortal/loginPortal.action" target="_blank">10001122211</a>|</div>
-          <div class="col-md-4 pt20"><a style="width: 33px; margin-right: 0px;" title="网络社会征信网" href="http://pinggu.zx110.org/review_url_http://dianjindai.com" target="_blank" class="pg-footer-icon zhengxin fRight">网络社会征信网</a><a style="width: 34px;" title="工信部备案信息" href="http://www.miibeian.gov.cn/" target="_blank" class="pg-footer-icon gongxin fRight">工信部备案信息</a>
-            <!--
-            <a style="width:44px;" title="瑞星安全认证" href="#" class="pg-footer-icon rueixin fRight">瑞星安全认证</a>
-            
-            -->
+          <div class="col-md-6">
+            <ul class="list-primary">
+              <li><a href="">薪金贷和小微企业类借款额度为3万</a>
+                <div class="text-muted pull-right">2014-8-28</div>
+              </li>
+              <li><a href="">薪金贷和小微企业类借款额度为3万</a>
+                <div class="text-muted pull-right">2014-8-28</div>
+              </li>
+              <li><a href="">薪金贷和小微企业类借款额度为3万</a>
+                <div class="text-muted pull-right">2014-8-28</div>
+              </li>
+              <li><a href="">薪金贷和小微企业类借款额度为3万</a>
+                <div class="text-muted pull-right">2014-8-28</div>
+              </li>
+              <li><a href="">薪金贷和小微企业类借款额度为3万</a>
+                <div class="text-muted pull-right">2014-8-28</div>
+              </li>
+              <li><a href="">薪金贷和小微企业类借款额度为3万</a>
+                <div class="text-muted pull-right">2014-8-28</div>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <!-- footer block end-->
-  <div id="side-tool-bar" class="content-block">
-    <ul class="nav nav-pills nav-stacked text-center">
-      <li><a href="">申请借款</a></li>
-      <li><a href="">意见反馈</a></li>
-      <li><a href=""><i class="fa fa-comments-o fa-4x"></i>
-          <div>在线客服</div></a></li>
-      <li><a go-top><i class="fa fa-angle-up fa-4x"></i></a></li>
-    </ul>
-  </div>
-  <!--content block end-->
-  <script src="/themes/ipoly/lib/jquery/dist/jquery.js"></script>
-  <script src="/themes/new/js/tipswindown.js"></script>
-  <script src="/themes/new/js/deayou.js"></script>
-  <script src="/themes/new/js/base.js"></script>
-  <script src="/themes/new/js/lhgdialog.js"></script>
-  <script src="/plugins/timepicker/WdatePicker.js"></script>
-  <script src="/themes/new/js/showtime.js"></script>
-  <script src="/themes/new/static/js/jquery.global.js"></script>
-  <script src="/themes/new/static/js/jquery.jslides.js"></script>
-  <script src="/themes/ipoly/lib/angular/angular.js"></script>
-  <script src="/themes/ipoly/lib/angular-animate/angular-animate.js"></script>
-  <script src="/themes/ipoly/lib/underscore/underscore.js"></script>
-</body>
+</div>{include file="footer.html"}

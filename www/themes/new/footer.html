@@ -1,58 +1,74 @@
-   </div><div class="pg-footer">
-    	<div class="pg-footer-main">
-        	<div class="container_10 pt30">
-            	<div class="grid_6">
-                    <ul class="pg-footer-link">
-                        <li><a href="/aboutus/index.html">¹ØÓÚÎÒÃÇ</a></li>
-                        <li><a href="/tzzbz/index.html">ĞÂÊÖÖ¸Òı</a></li>
-                        <li><a href="/media/index.html">Ã½Ìå±¨µÀ</a></li>
-                        <li><a href="/aboutzp/index.html">³ÏÆ¸Ó¢²Å</a></li>
-                        <li><a href="/lxwm/index.html">ÁªÏµÎÒÃÇ</a></li>
-                        <li><a href="/bbs/">ÂÛÌ³×¨Çø</a></li>
-                    </ul>                   	<dl class="pg-footer-focus">
-                    	<dt class="f16">¹Ø×¢ÎÒÃÇ£º</dt>
-                        <dd><a class="pg-footer-icon weibo" target="_blank" title="ĞÂÀËÎ¢²©" href="{$_G.system.con_weibo}">ĞÂÀËÎ¢²©</a></dd>
-                        <dd><a class="pg-footer-icon weixin" title="¹Ù·½Î¢ĞÅ" href="/lxwm/index.html">¹Ù·½Î¢ĞÅ</a></dd>
-                        <dd><a class="pg-footer-icon mark" title="ÊÕ²Ø±¾Õ¾" href="javascript:;" onClick="addBookmark()">ÊÕ²Ø±¾Õ¾</a></dd>
-                    </dl>
-                </div>
-                <div class="grid_4 txtRight pg-footer-info">
-                	<p class="f16">·şÎñÈÈÏß</p>
-                    <p class="f20">{$_G.system.con_header_num}</p>
-                    <p class="f12">9:30-18:30</p>
-                    <p class="pt10"><a href="{$_G.system.con_kflink}" title="ÔÚÏß¿Í·ş" target="_blank" class="pg-footer-icon online" style="margin-right:-15px;">ÔÚÏß¿Í·ş</a>                    </p>
-                </div>
-            
-            </div>
-        </div>
-		<div class="pg-footer-other">
-        <div class="container_10">
-            <p align="left" class="h30">
-                &nbsp;&nbsp;ÓÑÇéÁ´½Ó£º
-{loop module="links" function="GetList" limit="8" var="cvar" linktype='1'}
-{if $cvar.status==1}&nbsp;<a href="{$cvar.url}" target="_blank" title="{$cvar.summary}">{$cvar.webname}</a>&nbsp;&nbsp;{/if}
- {/loop} 
-            </p>
-            <div class="grid_8">{$_G.system.con_webname}  Copyright Reserved 2011-2014  |  <a href="http://www.miitbeian.gov.cn/state/outPortal/loginPortal.action" target="_blank">{$_G.system.con_beian}</a>  |
-                    
-				
-                </div>
-                <div class="grid_2 pt20">
-                    <a style="width:33px; margin-right:0px;" title="ÍøÂçÉç»áÕ÷ĞÅÍø" href="http://pinggu.zx110.org/review_url_{$_G.web_domain}" target="_blank" class="pg-footer-icon zhengxin fRight">ÍøÂçÉç»áÕ÷ĞÅÍø</a>
-                    <a style="width:34px;" title="¹¤ĞÅ²¿±¸°¸ĞÅÏ¢" href="http://www.miibeian.gov.cn/" target="_blank" class="pg-footer-icon gongxin fRight">¹¤ĞÅ²¿±¸°¸ĞÅÏ¢</a>
-                	<!--<a style="width:44px;" title="ÈğĞÇ°²È«ÈÏÖ¤" href="#" class="pg-footer-icon rueixin fRight">ÈğĞÇ°²È«ÈÏÖ¤</a>-->
-                </div>
-        </div>
-    </div>
- 
- <div class="server-center">
-    <div class="server-panel cc bold " style="top:0px; right:0px;">
-        <em class="server-icon"></em>
-        ÔÚ<br>Ïß<br>¿Í<br>·ş<br>
-    </div>
-    <div class="server-main box p20 hide">
 
+<!-- footer block begin-->
+<div class="pg-footer">
+  <div style="height: auto;" class="pg-footer-main">
+    <div class="container pt30">
+      <div class="row">
+        <div class="col-md-6">
+          <ul class="pg-footer-link">
+            <li><a href="/aboutus/index.html">å…³äºæˆ‘ä»¬</a></li>
+            <li><a href="/tzzbz/index.html">æ–°æ‰‹æŒ‡å¼•</a></li>
+            <li><a href="/media/index.html">åª’ä½“æŠ¥é“</a></li>
+            <li><a href="/aboutzp/index.html">è¯šè˜è‹±æ‰</a></li>
+            <li><a href="/lxwm/index.html">è”ç³»æˆ‘ä»¬</a></li>
+            <li><a href="/bbs/">è®ºå›ä¸“åŒº</a></li>
+          </ul>
+          <dl class="pg-footer-focus">
+            <dt class="f16">å…³æ³¨æˆ‘ä»¬ï¼š</dt>
+            <dd><a target="_blank" title="æ–°æµªå¾®åš" href="http://www.weibo.com/" class="pg-footer-icon weibo">æ–°æµªå¾®åš</a></dd>
+            <dd><a title="å®˜æ–¹å¾®ä¿¡" href="/lxwm/index.html" class="pg-footer-icon weixin">å®˜æ–¹å¾®ä¿¡</a></dd>
+            <dd><a title="æ”¶è—æœ¬ç«™" href="javascript:;" onclick="addBookmark()" style="background-color:transparent;" class="pg-footer-icon mark">æ”¶è—æœ¬ç«™</a></dd>
+          </dl>
+        </div>
+        <div class="col-md-6 txtRight pg-footer-info">
+          <div class="f16">æœåŠ¡çƒ­çº¿</div>
+          <div class="f20">400-800-800</div>
+          <div class="f12">9:30-18:30</div>
+          <div class="pt10"><a href="http://www.baidu.com/" title="åœ¨çº¿å®¢æœ" target="_blank" style="margin-right: -15px;" class="pg-footer-icon online">åœ¨çº¿å®¢æœ</a></div>
+        </div>
+      </div>
     </div>
+  </div>
+  <div class="pg-footer-other">
+    <div class="container">
+      <div align="left" class="h30">å‹æƒ…é“¾æ¥ï¼š<a href="http://www.baidu.com/" target="_blank" title="">ç½‘ç»œç³»ç»Ÿ</a><a href="http://www.baidu.com/" target="_blank" title="">äººäººè´§å¸</a></div>
+      <div class="row">
+        <div class="col-md-8">ç‚¹é‡‘è´·  Copyright Reserved 2011-2014  |<a href="http://www.miitbeian.gov.cn/state/outPortal/loginPortal.action" target="_blank">10001122211</a>|</div>
+        <div class="col-md-4 pt20"><a style="width: 33px; margin-right: 0px;" title="ç½‘ç»œç¤¾ä¼šå¾ä¿¡ç½‘" href="http://pinggu.zx110.org/review_url_http://dianjindai.com" target="_blank" class="pg-footer-icon zhengxin fRight">ç½‘ç»œç¤¾ä¼šå¾ä¿¡ç½‘</a><a style="width: 34px;" title="å·¥ä¿¡éƒ¨å¤‡æ¡ˆä¿¡æ¯" href="http://www.miibeian.gov.cn/" target="_blank" class="pg-footer-icon gongxin fRight">å·¥ä¿¡éƒ¨å¤‡æ¡ˆä¿¡æ¯</a>
+          <!--
+          <a style="width:44px;" title="ç‘æ˜Ÿå®‰å…¨è®¤è¯" href="#" class="pg-footer-icon rueixin fRight">ç‘æ˜Ÿå®‰å…¨è®¤è¯</a>
+          
+          -->
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-    <script type='text/javascript' src='{$tpldir}/static/js/jquery.global.js'></script>
-    <script type='text/javascript' src='{$tpldir}/static/js/jquery.jslides.js'></script>
+<div id="side-tool-bar" class="content-block">
+  <ul class="nav nav-pills nav-stacked text-center">
+    <li><a href="">ç”³è¯·å€Ÿæ¬¾</a></li>
+    <li><a href="">æ„è§åé¦ˆ</a></li>
+    <li><a href=""><i class="fa fa-comments-o fa-4x"></i>
+        <div>åœ¨çº¿å®¢æœ</div></a></li>
+    <li><a go-top="go-top"><i class="fa fa-angle-up fa-4x"></i></a></li>
+  </ul>
+</div>
+<script src="/themes/new/js/tipswindown.js"></script>
+<script src="/themes/new/js/deayou.js"></script>
+<script src="/themes/new/js/base.js"></script>
+<script src="/themes/new/js/lhgdialog.js"></script>
+<script src="/plugins/timepicker/WdatePicker.js"></script>
+<script src="/themes/new/js/showtime.js"></script>
+<script src="/themes/new/static/js/jquery.global.js"></script>
+<script src="/themes/new/static/js/jquery.jslides.js"></script>
+<script src="/themes/new/lib/angular/angular.js"></script>
+<script src="/themes/new/lib/angular-animate/angular-animate.js"></script>
+<script src="/themes/new/lib/underscore/underscore.js"></script>
+<script src="/themes/new/gulp/js/app.js"></script>
+<script src="/themes/new/gulp/js/directive/click-jump.js"></script>
+<script src="/themes/new/gulp/js/directive/count-down-to.js"></script>
+<script src="/themes/new/gulp/js/directive/go-top.js"></script>
+<script src="/themes/new/gulp/js/directive/progress-bar.js"></script>
+<script src="/themes/new/gulp/js/directive/validation.js"></script>
+<!-- footer block end--></body>
+</html>
