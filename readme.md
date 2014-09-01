@@ -4,5 +4,5 @@
 
     mkdir new_project && cd $_
     git clone https://github.com/ipoly/my-gulp-bower-init ./
-    chmod 755 ./setup.sh 
+    chmod 755 ./setup.sh
 

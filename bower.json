@@ -17,6 +17,7 @@
     "angular": "1.2.x",
     "bootstrap": "3.2.x",
     "font-awesome": "4.1.0",
-    "underscore": "1.6.0"
+    "underscore": "1.6.0",
+    "angular-animate": "1.2.x"
   }
 }

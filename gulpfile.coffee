@@ -20,18 +20,20 @@ less = require "gulp-less"
 imagemin = require "gulp-imagemin"
 
 SRC = {
-    bower: ['bower_components']
+    bower: 'bower_components'
     coffee: ["src/coffee/**/*.coffee"]
     jade: ["src/**/*.jade"]
     less: ["src/less/**/*.less"]
-    images: ["src/img/**/*"]
+    images: ["src/img/**"]
+    assets: ["src/asset/**"]
 }
 DIST = {
     bower: "app/lib",
-    scripts: "app/scripts",
+    scripts: "app/js",
     htmls: "app",
-    styles: "app/styles"
+    styles: "app/css"
     images: "app/img"
+    assets: "app"
 }
 
 APP_ROOT = 'app'
@@ -51,6 +53,12 @@ errorHandler = (task)->
     message: "#{task} Error: <%= error.message %>"
     title: "ヽ(*。>Д<)o゜ "
 
+gulp.task "assets", ->
+    gulp.src SRC.assets
+    .pipe plumber {errorHandler: errorHandler('ASSETS')}
+    .pipe changed DIST.assets
+    .pipe cache 'asset'
+    .pipe gulp.dest DIST.assets
 
 gulp.task "images", ->
     gulp.src SRC.images
@@ -60,7 +68,7 @@ gulp.task "images", ->
     .pipe gulp.dest DIST.images
 
 gulp.task "bower", ->
-    gulp.src bowerFiles(), base: './bower_components'
+    gulp.src bowerFiles(), base: SRC.bower
     .pipe plumber {errorHandler: errorHandler('BOWER')}
     .pipe changed DIST.bower
     .pipe cache 'bower'
@@ -70,7 +78,6 @@ gulp.task "jade", ['coffee'], ->
     gulp.src SRC.jade
     .pipe plumber {errorHandler: errorHandler('JADE')}
     .pipe changed DIST.htmls
-    .pipe cache 'jade'
     .pipe jade pretty: true
     .pipe REPLACE_MULTI_SCRIPT_FUNC()
     .pipe gulp.dest DIST.htmls
@@ -99,6 +106,7 @@ gulp.task "watch", ['build'], ->
     gulp.watch SRC.jade, ['jade']
     gulp.watch SRC.coffee, ['coffee']
     gulp.watch SRC.less, ['less']
+    gulp.watch SRC.assets, ['assets']
 
     livereload.listen()
     gulp.watch APP_ROOT + '/**'
@@ -109,5 +117,5 @@ gulp.task "webserver", (next)->
   .use connect.static APP_ROOT
   .listen process.env.PORT || 9000, next
 
-gulp.task "build", ['bower', 'jade', 'coffee', 'less', 'images']
+gulp.task "build", ['bower', 'assets', 'jade', 'coffee', 'less', 'images']
 gulp.task "default", ['build', 'webserver', 'watch']
