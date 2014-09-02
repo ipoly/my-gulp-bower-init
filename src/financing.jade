@@ -1,49 +1,31 @@
-
+| {include file="header.html"}
 .container
   include breadcrumb
 
   ul.nav.nav-pills.show-grid
-    li.active: a(href='') 个人贷款
-    li: a(href='') 企业贷款
-    li: a(href='') 特色借款
+    | {loop module="speeds" function="GetTopicTypeMenu" var="item" limit="all" }
+    | {if $_G.site_result.rnid==$item.nid}
+    li.active: a {$item.type_name}
+    | {else}
+    li: a(href='/financing/{$item.nid}.html') {$item.type_name}
+    | {/if}
+    | {/loop}
 
   .row.products
+    | {loop module="speeds" function="GetTopicList" var="item" limit="all" cid="1" item=key rnid = $_G.site_result.rnid }
     .col-md-6.show-grid
       .content-block
-        img(src='/themes/ipoly/img/product1.gif')
+        img(src='{$item.fileurl}')
         .padding-large
-          h3 小微贷&nbsp;
+          h3 {$item.name}&nbsp;
             small 适用私营企业主和个体工商户
-            a.more.detail.btn.btn-customize(href='')
-          small 为小微企业提供的专属借款，帮助解决企业资金周转困难
-    .col-md-6.show-grid
-      .content-block
-        img(src='/themes/ipoly/img/product2.gif')
-        .padding-large
-          h3 薪金贷&nbsp;
-            small 适用工薪阶层
-            a.more.detail.btn.btn-customize(href='')
-          small 向有固定工作且收入稳定、信用记录良好的工薪族提供的专属借款
-    .col-md-6.show-grid
-      .content-block
-        img(src='/themes/ipoly/img/product3.gif')
-        .padding-large
-          h3 车易贷&nbsp;
-            small 适用有车一族
-            a.more.detail.btn.btn-customize(href='')
-          small 向名下拥有车辆的车主提供的专属借款
-    .col-md-6.show-grid
-      .content-block
-        img(src='/themes/ipoly/img/product4.gif')
-        .padding-large
-          h3 净值贷&nbsp;
-            small 适用点金贷平台投资人
-            a.more.detail.btn.btn-customize(href='')
-          small 向点金贷线上出借用户提供的专属借款
+            a.more.detail.btn.btn-customize(href='/financinglists/{$item.id}.html')
+          small {$item.contents}
+    | {/loop}
 
   .content-block.show-grid.padding-large
     h3.header 借款流程
-    img.center-block.show-grid(src='/themes/ipoly/img/product5.gif')
+    img.center-block.show-grid(src='/themes/new/gulp/img/product5.gif')
 
   #qa.content-block.show-grid.padding-large
     .row.padding-large
@@ -67,4 +49,6 @@
         div
           h4 借款需要支付哪些费用？
           p.text-muted 借款人借款成功后需要支付给投资人的利息费用，以及支付给你我贷平台和你我贷平台合作伙伴的服务费用。
-    img(src="/themes/ipoly/img/qa.gif")
+    img(src="/themes/new/gulp/img/qa.gif")
+
+| {include file="footer.html"}

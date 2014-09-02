@@ -1,4 +1,4 @@
-
+{include file="header.html"}
 <div class="container">
   <ol class="breadcrumb">
     <li><a href=""> 首页</a></li>
@@ -6,34 +6,35 @@
     <li class="active">借款产品</li>
   </ol>
   <ul class="nav nav-pills show-grid">
-    <li class="active"><a href="">个人贷款</a></li>
-    <li><a href="">企业贷款</a></li>
-    <li><a href="">特色借款</a></li>
+    {loop module="speeds" function="GetTopicTypeMenu" var="item" limit="all" }
+    {if $_G.site_result.rnid==$item.nid}
+    <li class="active"><a>{$item.type_name}</a></li>{else}
+    <li><a href="/financing/{$item.nid}.html">{$item.type_name}</a></li>{/if}
   </ul>
   <div class="row products">
     <div class="col-md-6 show-grid">
-      <div class="content-block"><img src="/themes/ipoly/img/product1.gif"/>
+      <div class="content-block"><img src="/themes/gulp/img/product1.gif"/>
         <div class="padding-large">
           <h3>小微贷&nbsp;<small>适用私营企业主和个体工商户</small><a href="" class="more detail btn btn-customize"></a></h3><small>为小微企业提供的专属借款，帮助解决企业资金周转困难</small>
         </div>
       </div>
     </div>
     <div class="col-md-6 show-grid">
-      <div class="content-block"><img src="/themes/ipoly/img/product2.gif"/>
+      <div class="content-block"><img src="/themes/gulp/img/product2.gif"/>
         <div class="padding-large">
           <h3>薪金贷&nbsp;<small>适用工薪阶层</small><a href="" class="more detail btn btn-customize"></a></h3><small>向有固定工作且收入稳定、信用记录良好的工薪族提供的专属借款</small>
         </div>
       </div>
     </div>
     <div class="col-md-6 show-grid">
-      <div class="content-block"><img src="/themes/ipoly/img/product3.gif"/>
+      <div class="content-block"><img src="/themes/gulp/img/product3.gif"/>
         <div class="padding-large">
           <h3>车易贷&nbsp;<small>适用有车一族</small><a href="" class="more detail btn btn-customize"></a></h3><small>向名下拥有车辆的车主提供的专属借款</small>
         </div>
       </div>
     </div>
     <div class="col-md-6 show-grid">
-      <div class="content-block"><img src="/themes/ipoly/img/product4.gif"/>
+      <div class="content-block"><img src="/themes/gulp/img/product4.gif"/>
         <div class="padding-large">
           <h3>净值贷&nbsp;<small>适用点金贷平台投资人</small><a href="" class="more detail btn btn-customize"></a></h3><small>向点金贷线上出借用户提供的专属借款</small>
         </div>
@@ -41,7 +42,7 @@
     </div>
   </div>
   <div class="content-block show-grid padding-large">
-    <h3 class="header">借款流程</h3><img src="/themes/ipoly/img/product5.gif" class="center-block show-grid"/>
+    <h3 class="header">借款流程</h3><img src="/themes/gulp/img/product5.gif" class="center-block show-grid"/>
   </div>
   <div id="qa" class="content-block show-grid padding-large">
     <div class="row padding-large">
@@ -69,6 +70,6 @@
           <p class="text-muted">借款人借款成功后需要支付给投资人的利息费用，以及支付给你我贷平台和你我贷平台合作伙伴的服务费用。</p>
         </div>
       </div>
-    </div><img src="/themes/ipoly/img/qa.gif"/>
+    </div><img src="/themes/gulp/img/qa.gif"/>
   </div>
-</div>
+</div>{include file="footer.html"}

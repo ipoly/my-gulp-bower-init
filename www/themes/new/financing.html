@@ -1,391 +1,55 @@
 {include file="header.html"}
-{literal}
-<style type="text/css">
-.pg-container-content{padding-bottom:40px}
-
-.clearfix:before, .clearfix:after, .container_12:before, .container_12:after {
-    content: ".";
-    display: block;
-    font-size: 0;
-    height: 0;
-    line-height: 0;
-    overflow: hidden;
-    visibility: hidden;
-    width: 0;
-}
-.clearfix:after, .container_12:after {
-    clear: both;
-}
-.clearfix:before, .clearfix:after, .container_12:before, .container_12:after {
-    content: ".";
-    display: block;
-    font-size: 0;
-    height: 0;
-    line-height: 0;
-    overflow: hidden;
-    visibility: hidden;
-    width: 0;
-}
-.mt10 {
-    margin-top: 10px;
-}
-.clearfix, .container_12 {
-}
-.container_12 {
-    margin-left: auto;
-    margin-right: auto;
-    width: 960px;
-}
-
-.pg-guide-item dl dt {
-    font-size: 24px;
-    margin-bottom: 10px;
-}
-body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td, hr, button, article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
-    margin: 0;
-    padding: 0;
-}
-.pg-guide-item {
-    line-height: 30px;
-}
-.pg-guide-content {
-    color: #636363;
-}
-.pg-guide-item dl {
-    margin-bottom: 10px;
-}
-.pr40 {
-    padding-right: 40px;
-}
-.p20 {
-    padding: 20px;
-}
-.container_12 .grid_6 {
-    width: 450px;
-}
-
-.container_12 .grid_6 img {
-    width: 450px;
-}
-.omega {
-    margin-right: 0;
-}
-.grid_1, .grid_2, .grid_3, .grid_4, .grid_5, .grid_6, .grid_7, .grid_8, .grid_9, .grid_10, .grid_11, .grid_12 {
-    display: inline;
-    float: left;
-    margin-left: 10px;
-    margin-right: 10px;
-}
-.grid_6 .link{padding-top:20px;}
-.grid_6 .link p{height: 30px;line-height: 30px; padding-top: 10px; font-size: 12px;}
-.grid_6 .link p a{color: #067bce}
-.grid_6 .btn{background: #82CA3B; padding: 10px 80px 10px 80px; color: #FFF; border-radius: 5px;}
-.fn-clear:after {
-    clear: both;
-    content: " ";
-    display: block;
-    font-size: 0;
-    height: 0;
-    visibility: hidden;
-}
-
-.pg-guide-content {
-  color:#636363
-}
-.pg-guide-title h3 {
-  margin-bottom:20px
-}
-.pg-guide-title ul {
-  border-bottom:4px solid #c5c5c5
-}
-.pg-guide-title ul li {
-  float:left;
-  position:relative;
-  top:4px;
-  padding:0 20px 10px;
-  background:0 0;
-  color:#09d;
-  font-size:18px
-}
-.pg-guide-title ul li.active,.pg-guide-title ul li.active:hover {
-  border-bottom:4px solid #09d
-}
-.pg-guide-title ul li.active a,.pg-guide-title ul li.active a:hover {
-  color:#09d
-}
-.pg-guide-item {
-  background:#fff;
-  padding:20px 0;
-  line-height:30px
-}
-.pg-guide-item.dark {
-  background:#f4f6f9
-}
-.pg-guide-item h4 {
-  height:70px;
-  left:-16px;
-  position:relative;
-  z-index:2;
-  background:url(/themes/new/images/guide-titlebg.png) no-repeat scroll left 0;
-  color:#fff
-}
-.pg-guide-item h4 span {
-  display:inline-block;
-  min-width:145px;
-  padding:0 44px 0 16px;
-  line-height:50px
-}
-.pg-guide-item .h4bg-0 span {
-  background:#1bb8e2
-}
-.pg-guide-item .h4bg-1 {
-  background-position:left -97px
-}
-.pg-guide-item .h4bg-1 span {
-  background:#aabc64
-}
-.pg-guide-item .h4bg-2 {
-  background-position:left -186px
-}
-.pg-guide-item .h4bg-2 span {
-  background:#ffc400
-}
-.pg-guide-item .h4bg-3 {
-  background-position:left -281px
-}
-.pg-guide-item .h4bg-3 span {
-  background:#4ca499
-}
-.pg-guide-item .h4bg-4 {
-  background-position:left -369px
-}
-.pg-guide-item .h4bg-4 span {
-  background:#fb5a00
-}
-.pg-guide-item dl {
-  margin-bottom:10px
-}
-.pg-guide-item dl dt {
-  margin-bottom:10px;
-  font-size:24px
-}
-.pg-guide-sercurity .pg-guide-item dl dt {
-  font-size:22px
-}
-.pg-guide-item dl dd {
-  margin-bottom:20px;
-  color:gray;
-  line-height:24px
-}
-.pg-guide-item dl dd p {
-  line-height:24px
-}
-.pg-guide-item dl.mb30 {
-  margin-bottom:30px
-}
-.pg-guide-item dl.mb20 {
-  margin-bottom:20px
-}
-.guide-first-word {
-  float:left;
-  margin-right:6px;
-  *margin-top:-6px;
-  height:60px;
-  line-height:60px;
-  font-size:48px;
-  font-weight:700
-}
-.guide-item-link {
-  margin:22px 0 0
-}
-.pg-guide-item .performance {
-  position:relative
-}
-.pg-guide-item .performance-item {
-  position:absolute;
-  left:170px;
-  color:#00a8e8
-}
-.pg-guide-item .performance-item.borrow {
-  left:135px
-}
-.pg-guide-item .performance-item-trade {
-  top:90px
-}
-.pg-guide-item .performance-item-interest {
-  top:240px
-}
-.pg-guide-item .performance-item-count {
-  top:270px
-}
-.pg-guide-item .img-container {
-  position:relative;
-  height:350px
-}
-.pg-guide-item .img-container img {
-  position:absolute
-}
-.pg-guide-item .img-container .icon-plan {
-  top:10px;
-  left:160px
-}
-.pg-guide-item .img-container .icon-loan {
-  top:125px;
-  left:290px
-}
-.pg-guide-item .img-container .icon-transfer {
-  top:175px;
-  left:120px
-}
-.pg-guide-item .img-container .icon-work {
-  top:30px;
-  left:180px
-}
-.pg-guide-item .img-container .icon-biz {
-  top:155px;
-  left:45px
-}
-.pg-guide-item .img-container .icon-ecomm {
-  top:210px;
-  left:220px
-}
-.pg-guide-security h1 {
-  padding-top:20px;
-  font-size:30px;
-  color:#0697da
-}
-.pg-guide-security h2 {
-  padding-bottom:10px;
-  font-size:24px;
-  color:#0697da
-}
-.pg-guide-security h3 {
-  color:#474747;
-  font-size:18px
-}
-.pg-guide-security .ph20 {
-  padding-bottom:30px
-}
-.pg-guide-security p.last {
-  margin-bottom:5px
-}
-.pg-guide-security .section {
-  margin:30px 0
-}
-.pg-guide-security .section.first {
-  margin-top:10px
-}
-.pg-guide-security .section.last {
-  margin-bottom:10px
-}
-
-
-</style>
-{/literal}
-<div class="pg-container-content">
-      
-  <div id="pg-guide-one">
-    <div class="container_12 mt10">
-      <div class="grid_12"> 
-        <div class="pg-guide-content">
-          <div class="pg-guide-title">
-            <ul class="mt10 fn-clear">
-            {loop module="speeds" function="GetTopicTypeMenu" var="item" limit="all" }
-              {if $_G.site_result.rnid==$item.nid}
-              <li class="active">
-                <a class="cursor-default">{$item.type_name}</a>
-              </li>
-              {else}
-              <li>
-                <a href="/financing/{$item.nid}.html">{$item.type_name}</a>
-              </li>
-              {/if}
-            {/loop}
-            </ul>
-          </div>
-          <div class="pg-guide-info mt20">
-            {loop module="speeds" function="GetTopicList" var="item" limit="all" cid="1" item=key rnid = $_G.site_result.rnid }
-            <div class="pg-guide-item {if $key %2 != 0}dark{/if}">
-              <h4 class="h4bg-{$key}"><span>{$item.name}</span></h4>
-              <div class="fn-clear">
-                <div class="grid_6 alpha">
-                  <div class="contents">
-                    {$item.contents}
-                  </div>
-                  <div class="link">
-                  <a href="" class="btn">������</a>
-                  <p>����{$item.count}�����״���Ʒ, <a href="/financinglists/{$item.id}.html">�鿴����</a></p>
-                  </div>
-                </div>
-                <div class="grid_6 omega text-center">
-                  <img alt="ר��ͼƬ" src="{$item.fileurl}">
-                </div>
-              </div>
-            </div>
-            {/loop}
-          
-
-
-            
-
-
-
-
-
-          </div>
+<div class="container">
+  <ol class="breadcrumb">
+    <li><a href=""> 首页</a></li>
+    <li><a href="">我要借款</a></li>
+    <li class="active">借款产品</li>
+  </ol>
+  <ul class="nav nav-pills show-grid">
+    {loop module="speeds" function="GetTopicTypeMenu" var="item" limit="all" }
+    {if $_G.site_result.rnid==$item.nid}
+    <li class="active"><a>{$item.type_name}</a></li>{else}
+    <li><a href="/financing/{$item.nid}.html">{$item.type_name}</a></li>{/if}
+    {/loop}
+  </ul>
+  <div class="row products">{loop module="speeds" function="GetTopicList" var="item" limit="all" cid="1" item=key rnid = $_G.site_result.rnid }
+    <div class="col-md-6 show-grid">
+      <div class="content-block"><img src="{$item.fileurl}"/>
+        <div class="padding-large">
+          <h3>{$item.name}&nbsp;<small>适用私营企业主和个体工商户</small><a href="/financinglists/{$item.id}.html" class="more detail btn btn-customize"></a></h3><small>{$item.contents}</small>
         </div>
       </div>
-    </div>
+    </div>{/loop}
   </div>
-
-</div>
-{literal}
-<script>
-function speed(){
-var loanAmount=$("#loanAmount").find("option:selected").text(); 
-var loanTerm=$("#loanTerm").find("option:selected").text();
-var profession=$("#profession").find("option:selected").text();
-var sex=$("input[name=sex]:checked").val();
-var userName=$("#userName").val();
-if(!userName) {alert("��������Ϊ��!");$("#userName").focus();return;}
-var phone=$("#phone").val();
-if(!phone) {alert("�ֻ�����Ϊ��!");$("#phone").focus();return;}
-var contactEmail=$("#contactEmail").val();
-if(!contactEmail) {alert("���䲻��Ϊ��!");$("#contactEmail").focus();return;}
-var mailingAddress=$("#mailingAddress").val();
-if(!mailingAddress) {alert("��ַ����Ϊ��!");$("#mailingAddress").focus();return;}
-var valicode=$("#valicode").val();
-if(!valicode) {alert("��֤�벻��Ϊ��!");$("#valicode").focus();return;}
-  /*�ύ��....*/
-  var B = {
-        loanamount:loanAmount,
-        loanterm:loanTerm,
-        profession:profession,
-    sex:sex,
-    username:userName,
-    phone:phone,
-    contactemail:contactEmail,
-    mailingaddress: mailingAddress,
-    valicode: valicode
-    };
-   $.ajax({
-        type: "POST",
-        url: "/speed/ajax.php",
-        dataType: "json",
-        data: B,
-        beforeSend: function() {
-          /*��������趨������...*/
-        },
-        error: function() {
-          alert("��������ϵͳ���󡣡���");
-        },
-        success: function(A) {
-    if(A.error){alert(A.error);return;}
-    alert(A.msg);
-        }
-    });
-  }
-</script>
-{/literal}
-{include file="quickoffer.html"}
-{include file="footer.html"}
+  <div class="content-block show-grid padding-large">
+    <h3 class="header">借款流程</h3><img src="/themes/new/gulp/img/product5.gif" class="center-block show-grid"/>
+  </div>
+  <div id="qa" class="content-block show-grid padding-large">
+    <div class="row padding-large">
+      <div class="col-md-6"><i class="fa fa-question-circle fa-3x text-primary pull-left"></i>
+        <div>
+          <h4>借款审核一般需要多长时间？</h4>
+          <p class="text-muted">借款资料提交成功后，工作人员会在 2 个工作日内进行审核，审核结果会以电话的形式通知。</p>
+        </div>
+      </div>
+      <div class="col-md-6"><i class="fa fa-question-circle fa-3x text-primary pull-left"></i>
+        <div>
+          <h4>借款额度是多少？</h4>
+          <p class="text-muted">薪金贷和小微企业类借款额度为3万元到30万元，车贷类借款额度上限为50万元。</p>
+        </div>
+      </div>
+      <div class="col-md-6"><i class="fa fa-question-circle fa-3x text-primary pull-left"></i>
+        <div>
+          <h4>还款方式有哪些？</h4>
+          <p class="text-muted">目前根据不同的借款产品支持等额本息、一次付息，到期还本和按月付息，到期还本的还款方式。</p>
+        </div>
+      </div>
+      <div class="col-md-6"><i class="fa fa-question-circle fa-3x text-primary pull-left"></i>
+        <div>
+          <h4>借款需要支付哪些费用？</h4>
+          <p class="text-muted">借款人借款成功后需要支付给投资人的利息费用，以及支付给你我贷平台和你我贷平台合作伙伴的服务费用。</p>
+        </div>
+      </div>
+    </div><img src="/themes/new/gulp/img/qa.gif"/>
+  </div>
+</div>{include file="footer.html"}
