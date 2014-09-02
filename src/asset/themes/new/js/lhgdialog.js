@@ -1,4 +1,4 @@
-﻿/*!
+/*!
  * lhgcore Dialog Plugin v4.2.0
  * Date: 2012-04-19 10:55:11 
  * http://code.google.com/p/lhgdialog/

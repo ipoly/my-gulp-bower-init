@@ -1,303 +1,194 @@
-{include file="header.html"}<div class="trans-login-div absolute white" style="width: 320px; height: 270px; z-index: 2; top: 150px; right: 212px;">
-    <div class="opacity-div absolute wp100" style="height: 270px; background-color: rgb(0, 0, 0); opacity: 0.2; border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; z-index: -1; background-position: initial initial; background-repeat: initial initial; "></div>
-     {if $_G.user_id==""}
-    <div id="unknown-user" style="padding: 20px 35px;">
-        <p class="f20">{$_G.system.con_webname}年化收益率</p>
-        <p><span class="f36 org">12%</span><span class="f36">-</span><span class="f36 org">15%</span></p>
-        <p>
-            <span class="f18 org">40</span>&nbsp;倍活期存款收益
-            <span class="f18 org">5</span>&nbsp;倍余额宝收益
-        </p>
-        <p><a href="/index.php?user&q=reg" class="block wp100 h45 txtC f18 mt10 mb10" style="color:#fff; background:#ff5301; letter-spacing:2px;">免费注册</a></p>
-        <p class="txtRight">已有账号? <a href="/index.php?user&q=login" style="color:#fff; text-decoration:underline;">立即登录</a></p>
+{include file="header.html"}
+<div class="trans-login-div absolute white" style="width: 320px; height: 270px; z-index: 2; top: 150px; right: 212px; ">
+        <div class="opacity-div absolute wp100" style="height: 270px; background-color: rgb(0, 0, 0); opacity: 0.2; border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; z-index: -1; background-position: initial initial; background-repeat: initial initial; "></div>
+         {if $_G.user_id==""}
+        <div id="unknown-user" class="hide" style="padding: 20px 35px; display: block; ">
+            <p class="f20">{$_G.system.con_webname}�껯������</p>
+            <p><span class="f36 org">12%</span><span class="f36">-</span><span class="f36 org">15%</span></p>
+            <p>
+                <span class="f18 org">40</span>&nbsp;�����ڴ������ 
+                <span class="f18 org">5</span>&nbsp;��������
+            </p>
+            <p><a href="/index.php?user&q=reg" class="block wp100 h45 txtC f18 mt10 mb10" style="color:#fff; background:#ff5301; letter-spacing:2px;">���ע��</a></p>
+            <p class="txtRight">�����˺�? <a href="/index.php?user&q=login" style="color:#fff; text-decoration:underline;">������¼</a></p>
+        </div>
+           {else}
+        <div id="logged-in-user" class="" style="padding: 20px 35px; display: block; ">
+            <p class="pt15 pb10 f18">��ӭ����{$_G.system.con_webname}</p>
+            <p>����ǰ��¼�˻��ǣ�<span class="user-name org">{$_G.user_result.username}</span></p>
+            <p class="txtC"><a href="/?user" class="block wp100 h45 f16 mt15" style="color:#fff; background:#ff5301; letter-spacing:1px;">�����ҵ��˻�</a></p>
+        </div>
+        {/if}
     </div>
-       {else}
-    <div id="logged-in-user" class="" style="padding: 20px 35px; display: block; ">
-        <p class="pt15 pb10 f18">欢迎来到{$_G.system.con_webname}</p>
-        <p>您当前登录账户是：<span class="user-name org">{$_G.user_result.username}</span></p>
-        <p class="txtC"><a href="/?user" class="block wp100 h45 f16 mt15" style="color:#fff; background:#ff5301; letter-spacing:1px;">进入我的账户</a></p>
+    <div class="pg-header-banner">
+    	<div id="full-screen-slider">
+            <ul id="slides">
+              			{loop module="scrollpic" function="GetList" limit="5" status="1"}
+                <li style="background:url('{$var.pic}') no-repeat center top">
+                    <a href="{$var.url}" target="_blank"></a>
+                </li>
+       {/loop} 
+            </ul>
+    	</div>
     </div>
-    {/if}
-</div>
-<div class="pg-header-banner show-grid">
-  <div id="full-screen-slider">
-        <ul id="slides">
-            {loop module="scrollpic" function="GetList" limit="5" status="1"}
-            <li style="background:url('{$var.pic}') no-repeat center top">
-                <a href="{$var.url}" target="_blank"></a>
-            </li>
+    <div class="pg-header-post">
+    	<div class="container_10">
+        	<div class="grid_1 pg-header-post-grid pg-header-post-title"><a href="/publicnotice/index.html" class="blue">�ٷ�����</a></div>
+            <div class="grid_9 pg-header-post-grid pg-header-post-cnt" id="pg-header-post-cnt">
+            <ul class="notice-list" style="margin-top: 0px; ">
+				{loop module="articles" function="GetList" var="var" limit="0,5" type_id="11" status=1}
+			<li class="ti10 relative"><a target="_blank" class="f16" href="/{$var.type_nid}/a{$var.id}.html">{$var.name}</a><a target="_blank" class="btn-4-db ti0 txtC more" href="/{$var.type_nid}/a{$var.id}.html">�鿴��ϸ</a><span class="c date">{$var.publish|truncate:10}</span></li>
+			  {/loop}
+			</ul>
+            </div>
+        </div>
+    </div>
+    <div id="pg-index" class="pt30">
+    	<div class="container_10" style="height:215px;">
+ 			<ul class="intro">
+            	<li class="grid_03">
+                	<a href="/invest/index.html" class="intro-link" target="_blank">
+                        <span class="intro-fig intro-fig-1"></span>
+                        <span class="intro-title h3 mt10">Ͷ������</span>
+                        <span class="intro-desc">��4��ע���ΪͶ���ˣ�����50Ԫ��Ͷ�����ż��Լ�12%-15%�ȶ��߶��껯���档���������������Զ�Ͷ�꣬�������Ƹ���ݡ�</span>
+                  	</a>
+                </li>
+            	<li class="grid_03">
+                	<a href="borrow/index.html" class="intro-link" target="_blank">
+                        <span class="intro-fig intro-fig-2"></span>
+                        <span class="intro-title h3 mt10">�������</span>
+                        <span class="intro-desc">�ύ������˳ɹ����Ϊ����ˣ�ͨ�����컮����ȡ������������� �����ϡ�������ȫ��쵱��ſ</span>
+                  	</a>
+                </li>
+            	<li class="grid_03">
+                	<a href="/zjaq/index.html" class="intro-link" target="_blank">
+                        <span class="intro-fig intro-fig-3"></span>
+                        <span class="intro-title h3 mt10">��ȫ����</span>
+                        <span class="intro-desc">�ϸ�ķ�����̽��ͷ��գ����뱾Ϣ���ϼƻ�������100%��Ϣ�������� �з���׼���𶵵ף�����������פ��</span>
+                  	</a>
+                </li>
+            </ul>       
+        </div>
+        <div class="container_10 pt30" style="height:330px;">
+        	<div class="grid_10 invest-title f16">�������Ʋ�Ʒ<span class="invest-bg iblock"></span></div>
+            <div class="grid_10 pt10">
+            	<table class="invest-list"  cellspacing="0">
+                   <thead>
+					 <tr >
+					   <th class="list-title gray fLeft" style='width:220px;'>��Ŀ����</th>
+					   <th class="list-title gray fLeft" style='width:85px;'>���õȼ�</th>
+					   <th class="list-title gray fLeft" style='width:110px;text-align:right;padding-right:25px;'>���ʽ��</th>
+					   <th class="list-title gray fLeft" style='width:115px;'>������</th>
+					   <th class="list-title gray fLeft" style='width:95px;'>�������</th>
+					   <th class="list-title gray w210 fLeft">Ͷ�����</th>
+					   <th class="list-title gray fLeft" style='width:110px;'>&nbsp;</th>
+					 </tr>
+                   </thead>
+
+                    <tbody id="borrow_list" style="height:204px; display:inline;">
+					
+					
+					{loop module="borrow" function="GetList" var="var" limit="4" status_nid="invest"  order="addtime" }	
+   	<tr class='invest-list-item fn-clear block' style='height:51px;'>
+   	<td class='fLeft list-field f16' style='height:50px;width:220px;'><em class='icon-invest-type f14'>{$var.borrow_type|linkages:'borrow_all_type'}</em>   	<a target='_blank' href='/invest/a{$var.borrow_nid}.html'  class='toea'>{$var.name}</a></td>
+   	<td class='fLeft list-field txtC' style='height:50px;width:85px;'>{articles module="borrow" function = "GetBorrowCredit" user_id="$var.user_id" var="Credit_var"}{$Credit_var.credit_total|credit:"borrow"}{/articles}</td>
+   	<td class='fLeft list-field txtRight' style='width:105px;padding-right:30px;'>{$var.account}<small>Ԫ</small></td>
+   	<td class='fLeft list-field txtC' style='width:115px;'>{$var.borrow_apr}<small>%</small></td>
+   	<td class='fLeft list-field txtC' style='width:95px;'>{$var.borrow_period_name}<small></small></td>
+   	   	<td class='w210 fLeft list-field txtLeft pl30'><span class='invest-list-speed-3 invest-list-speed mt20 mr10'><span class='bg' style='width:{$var.borrow_account_scale|round}%'></span><span class='point' style='left:-3.0%; top:-4px;'></span></span> <span class='ml5 w50'>{$var.borrow_account_scale|round}<small>%</small></span></td>
+				<td class='w80 fLeft list-field txtC'><a href='/invest/a{$var.borrow_nid}.html' class='btn-invest {if $$var.end_time<0}display mt15{elseif $var.borrow_account_scale==100.00}display mt15{else}mt10{/if}'>{if $$var.end_time<0}������{elseif $var.borrow_account_scale==100.00}������{else}Ͷ��{/if}</a></td></tr>
+		   
+		   
+		    {/loop} 
+		   
+		
+
+		                 	   </tbody>
+			   </table> 
+                    <div class="invest-list-more txtC mt5"><a href="invest/index.html">����鿴�������Ʋ�Ʒ</a></div>
+             
+            </div>
+        </div>
+        <div class="index-data">
+        	<div class="container_10 index-data-bg">
+             <!-- 	<span class="more fRight iblock mt20"><a class="hide" href="#">�鿴����</a></span>
+               <span class="fLeft data mt10">�ۼƳɽ��<em id="deal_account">63,200</em> ��Ԫ�� ע���û��ﵽ<em id="reg_num">72,369</em>�ˣ�Ϊ������׬ȡ���棺<em id="earn_money">3,000</em>��Ԫ</span>  -->
+                  <table class="leiji">
+                    <tbody><tr>
+                        <th class="chenjiao" width="220">�ۼƳɽ���<small>(Ԫ)</small></th>
+                        <th class="chenjiao" width="260">Ϊ������׬ȡ����<small>(Ԫ)</small></th>
+                        <th class="chenjiao" width="220">�ѻ���<small>(Ԫ)</small></th>
+						<th width="80"></th>
+                    </tr>
+                    <tr>
+					{article module="other" function="Getuser_zong" var="uservar"} 
+                        <td class="tdata" id="deal_account">{$uservar.borrow_all}</td>
+                        <td class="tdata" id="earn_money">{$uservar.user_num}</td>
+                        <td class="tdata" id="deposit">{$uservar.repay}</td>
+						<td width="80"></td>
+						 	{/article}
+                    </tr>
+					<tr>
+					  <td colspan="3" class="yesterday">	
+					  {article module="borrow" function="Getuser_zong" var="uservar"}			 
+                  �껯ƽ������Ϊ<span id="yes_success_account" class="wan">{$uservar.lixi}%</span>��&nbsp;
+				  ���ճɽ���<span id="yes_success_count" class="wan">{$uservar.borrow_Yesterday_num}</span>��&nbsp;
+				  �����ѳɽ���<span id="yes_tender_count" class="wan">{$uservar.borrow_Today_num}</span>
+				   {/article} 
+					  </td>
+					  <td width="80"></td>
+					</tr>
+                </tbody></table>
+   
+                <!-- <span class="fLeft data mt10">�ۼƳɽ��<em id="deal_account">63,200</em> ��Ԫ��Ϊ������׬ȡ���棺<em id="earn_money">3,000</em>��Ԫ�� ����׼�����ܶ�Ϊ<em id="deposit">555</em>��Ԫ</span> -->
+            </div>
+        </div>
+        <div class="container_10 pt30" style="height:310px;">
+            <div class="grid_5">
+                <div class=" invest-title f16">��ҵ����<span class="invest-bg div2 iblock"></span></div>
+                <div class="">
+                    <ul id="news-list" class="news-list pt20">
+						{loop module="articles" function="GetList" var="var" limit="0,4" type_id="40" status=1}
+                    <li><p><a target="_blank" class="f16" href="/{$var.type_nid}/a{$var.id}.html">{$var.name}</a></p></li>
            {/loop}
-        </ul>
-  </div>
-</div>
-<div class="container">
-  <div class="row features show-grid">
-    <div class="col-md-3">
-      <div click-jump="" class="content-block"><img src="/themes/new/gulp/img/3-1.gif"/><a href="" class="feature-head">高收益灵活投资</a>
-        <ul class="list-primary">
-          <li>50元起投</li>
-          <li>预期12%-14%年化收益率</li>
-          <li>投资90天后即可债权转让</li>
-        </ul>
-      </div>
-    </div>
-    <div class="col-md-3">
-      <div click-jump="" class="content-block"><img src="/themes/new/gulp/img/3-2.gif"/><a href="" class="feature-head">全方位安全保障</a>
-        <ul class="list-primary">
-          <li>5道安全防线</li>
-          <li>100%本金保障计划</li>
-          <li>专业的第三方资金托管</li>
-        </ul>
-      </div>
-    </div>
-    <div class="col-md-3">
-      <div click-jump="" class="content-block"><img src="/themes/new/gulp/img/3-3.gif"/><a href="" class="feature-head">一站式借款服务</a>
-        <ul class="list-primary">
-          <li>无抵押信用贷款</li>
-          <li>24小时放款</li>
-          <li>提前还款可减免服务费</li>
-        </ul>
-      </div>
-    </div>
-    <div class="col-md-3">
-      <div click-jump="" class="content-block"><img src="/themes/new/gulp/img/3-3.gif"/><a href="" class="feature-head">一站式借款服务</a>
-        <ul class="list-primary">
-          <li>无抵押信用贷款</li>
-          <li>24小时放款</li>
-          <li>提前还款可减免服务费</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-  <div class="row show-grid">
-    <div class="col-md-9">
-      <div style="height:264px;" class="content-block padding-large">
-        <h3 class="header">
-          <div class="strong">家财有道<small> T2014026 期</small></div><a href="" class="more detail"></a>
-        </h3>
-        <hr/>
-        <div class="row">
-          <div class="col-md-6"><img src="/themes/new/gulp/img/index-j.jpg"/></div>
-          <div class="col-md-6">
-            <div style="width:302px;" class="pull-right">
-              <div ng-if="countDown" class="text-center">
-                <p>募集金额：2,037,000元</p><a class="btn btn-warning btn-lg btn-block"><i class="fa fa-clock-o"></i>&nbsp;立即抢购</a>
-              </div>
-              <div ng-if="!countDown">
-                <p>计划金额：2,037,000元</p>
-                <p>距发售开始还有：</p>
-                <div style="height:55px" class="mb10">
-                  <div dead-line="2014-8-27 14:30" call-back="$parent.countDown=true" class="count-down-to"></div>
+                    </ul>
+                    <div class="news-list-more txtC"><a href="/news/index.html">����鿴������ҵ����</a></div>
                 </div>
-                <p class="text-right">省时省心，自动抢购 &nbsp;<a href="" class="btn btn-primary">立即预约</a></p>
-              </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-3">
-      <div class="content-block padding-large">
-        <h4 class="header">最新公告<a href="" class="more"></a></h4>
-        <ul class="list-primary">
-          <li><a href="" class="text-overflow">关于你我贷客户端的公告</a></li>
-          <li><a href="" class="text-overflow">关于网站借款频道升级公告</a></li>
-        </ul>
-        <hr/>
-        <h4 class="header">媒体报道<a href="" class="more"></a></h4>
-        <ul class="list-primary">
-          <li><a href="" class="text-overflow">关于你我贷客户端的公告</a></li>
-          <li><a href="" class="text-overflow">关于网站借款频道升级公告</a></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-  <div class="row show-grid">
-    <div class="col-md-9">
-      <div class="content-block padding-large">
-        <h3 class="header">债权列表<a class="more"></a></h3>
-        <table class="table table-striped table-fat">
-          <thead>
-            <tr>
-              <th>项目名称</th>
-              <th>借款年利率</th>
-              <th>期限</th>
-              <th>投资金额</th>
-              <th>进度</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><span class="invest-icon invest-1">诚信借款</span></td>
-              <td class="text-warning percentage">13.2</td>
-              <td>24个月</td>
-              <td>8673元</td>
-              <td>
-                <div progress="96.5" type="warning" class="progress progress-mini progress-inline"></div><span class="percentage">96.5</span>
-              </td>
-              <td><a class="btn btn-warning btn-fat">投 标</a></td>
-            </tr>
-            <tr>
-              <td><span class="invest-icon invest-2">济宁商户贷诚信借款</span></td>
-              <td class="text-warning percentage">7.2</td>
-              <td>36个月</td>
-              <td>9585元</td>
-              <td>
-                <div progress="41.05" type="warning" class="progress progress-mini progress-inline"></div><span class="percentage">41.05</span>
-              </td>
-              <td><a class="btn btn-warning btn-fat">投 标</a></td>
-            </tr>
-            <tr>
-              <td><span class="invest-icon invest-3">净值周转提前还款</span></td>
-              <td class="text-warning percentage">3.5</td>
-              <td>90天</td>
-              <td>3628元</td>
-              <td>
-                <div progress="20.5" type="warning" class="progress progress-mini progress-inline"></div><span class="percentage">20.5</span>
-              </td>
-              <td><a class="btn btn-warning btn-fat">投 标</a></td>
-            </tr>
-            <tr>
-              <td><span class="invest-icon invest-4">商户贷诚信借款</span></td>
-              <td class="text-warning percentage">1.2</td>
-              <td>12个月</td>
-              <td>1603元</td>
-              <td>
-                <div progress="86.25" type="warning" class="progress progress-mini progress-inline"></div><span class="percentage">86.25</span>
-              </td>
-              <td><a class="btn btn-warning btn-fat">投 标</a></td>
-            </tr>
-            <tr>
-              <td><span class="invest-icon invest-5">借款用于买房</span></td>
-              <td class="text-warning percentage">1.2</td>
-              <td>12个月</td>
-              <td>4604元</td>
-              <td>
-                <div progress="86.25" type="warning" class="progress progress-mini progress-inline"></div><span class="percentage">86.25</span>
-              </td>
-              <td><a class="btn btn-warning btn-fat">投 标</a></td>
-            </tr>
-            <tr>
-              <td><span class="invest-icon invest-6">临时周转请多多支持谢...</span></td>
-              <td class="text-warning percentage">3.2</td>
-              <td>30天</td>
-              <td>1610元</td>
-              <td>
-                <div progress="66.5" type="warning" class="progress progress-mini progress-inline"></div><span class="percentage">66.5</span>
-              </td>
-              <td><a class="btn btn-warning btn-fat">投 标</a></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-    <div class="col-md-3">
-      <div class="content-block padding-large show-grid">
-        <h4 class="header">关于我们<a href="" class="more"></a></h4>
-        <p>你我贷成立于2011年6月，旨在为有融资及投资需求的小微企业和个人建立起高效、透明、安全、便捷的互联网金融服务。</p>
-        <ul class="list-primary">
-          <li class="text-overflow"><a href="" class="text-muted">上海现代服务业联合会副会长单位</a></li>
-          <li class="text-overflow"><a href="" class="text-muted">中国小额信贷机构联席会理事单位</a></li>
-          <li class="text-overflow"><a href="" class="text-muted">上海中小企业融资服务优秀合作伙伴</a></li>
-        </ul>
-      </div>
-      <div class="content-block padding-large">
-        <h4 class="header">论坛精华<a href="" class="more"></a></h4>
-        <ul class="list-primary">
-          <li>关于你我贷客户端的公告</li>
-          <li>关于网站借款频道升级公告</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-  <div class="row show-grid">
-    <div class="col-md-9">
-      <div class="content-block padding-large">
-        <h3 class="header">投资公开课<a href="" class="more"></a></h3>
-        <div class="row vr show-grid">
-          <div class="col-md-4">
-            <div class="padding-base pull-left"><img src="/themes/new/gulp/img/class1.png"/></div>
-            <div class="padding-base pull-left">
-              <p>第五课</p>
-              <p>轻松投资</p>
-              <p>稳赚收益</p><a href="" class="btn btn-primary">进入课堂</a>
+        	
+            <div class="grid_5" style="">
+                <div class=" invest-title f16">ý�屨��<span class="invest-bg div2 iblock"></span></div>
+                <div class="">
+                    <ul id="media-list" class="news-list pt20">
+  			{loop module="articles" function="GetList" var="var" limit="0,4" type_id="22" status=1}
+                    <li><p><a target="_blank" class="f16" href="/{$var.type_nid}/a{$var.id}.html">{$var.name}</a></p></li>
+           {/loop}
+                    </ul>
+                    <div class="news-list-more txtC"><a href="/media/index.html">����鿴����ý�屨��</a></div>
+                </div>
             </div>
-          </div>
-          <div class="col-md-4">
-            <div class="padding-base pull-left"><img src="/themes/new/gulp/img/class2.png"/></div>
-            <div class="padding-base pull-left">
-              <p>第四课</p>
-              <p>什么是债权转让？</p>
-              <p>提高资金流动性</p><a href="" class="btn btn-primary">进入课堂</a>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="padding-base pull-left"><img src="/themes/new/gulp/img/class3.png"/></div>
-            <div class="padding-base pull-left">
-              <p>第三课</p>
-              <p>预约设置</p>
-              <p>账户充值</p><a href="" class="btn btn-primary">进入课堂</a>
-            </div>
-          </div>
-        </div>
-      </div>
+
+            
+        </div>    
     </div>
-    <div class="col-md-3">
-      <div id="tools" class="content-block padding-large"><a href=""><i class="fa fa-rocket fa-2x"></i><span class="font-size-large">智能抢标</span></a><a href=""><i class="fa fa-th-large fa-2x"></i><span class="font-size-large">投资计算器</span></a><a href=""><span class="fa-stack fa-lg"><i class="fa fa-user fa-stack-1x"></i><i class="fa fa-ban fa-stack-2x text-danger"></i></span><span class="font-size-large">逾期黑名单</span></a></div>
-    </div>
-  </div>
-  <div class="row show-grid">
-    <div class="col-md-9">
-      <div class="content-block padding-large">
-        <h3 class="header">板块新闻</h3>
-        <div class="row show-grid">
-          <div class="col-md-6">
-            <ul class="list-primary">
-              <li><a href="">薪金贷和小微企业类借款额度为3万</a>
-                <div class="text-muted pull-right">2014-8-28</div>
-              </li>
-              <li><a href="">薪金贷和小微企业类借款额度为3万</a>
-                <div class="text-muted pull-right">2014-8-28</div>
-              </li>
-              <li><a href="">薪金贷和小微企业类借款额度为3万</a>
-                <div class="text-muted pull-right">2014-8-28</div>
-              </li>
-              <li><a href="">薪金贷和小微企业类借款额度为3万</a>
-                <div class="text-muted pull-right">2014-8-28</div>
-              </li>
-              <li><a href="">薪金贷和小微企业类借款额度为3万</a>
-                <div class="text-muted pull-right">2014-8-28</div>
-              </li>
-              <li><a href="">薪金贷和小微企业类借款额度为3万</a>
-                <div class="text-muted pull-right">2014-8-28</div>
-              </li>
-            </ul>
-          </div>
-          <div class="col-md-6">
-            <ul class="list-primary">
-              <li><a href="">薪金贷和小微企业类借款额度为3万</a>
-                <div class="text-muted pull-right">2014-8-28</div>
-              </li>
-              <li><a href="">薪金贷和小微企业类借款额度为3万</a>
-                <div class="text-muted pull-right">2014-8-28</div>
-              </li>
-              <li><a href="">薪金贷和小微企业类借款额度为3万</a>
-                <div class="text-muted pull-right">2014-8-28</div>
-              </li>
-              <li><a href="">薪金贷和小微企业类借款额度为3万</a>
-                <div class="text-muted pull-right">2014-8-28</div>
-              </li>
-              <li><a href="">薪金贷和小微企业类借款额度为3万</a>
-                <div class="text-muted pull-right">2014-8-28</div>
-              </li>
-              <li><a href="">薪金贷和小微企业类借款额度为3万</a>
-                <div class="text-muted pull-right">2014-8-28</div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>{include file="footer.html"}
+    
+	
+	{include file="footer.html"}
+</div>
+{literal}
+<script>
+//���Ź���
+function AutoScroll(obj){
+        $(obj).find("ul:first").animate({
+                marginTop:"-51px"
+        },500,function(){
+                $(this).css({marginTop:"0px"}).find("li:first").appendTo(this);
+        });
+}
+$(document).ready(function(){
+    setInterval('AutoScroll("#pg-header-post-cnt")',4000); 
+}) 
+</script>
+{/literal}
+</body>
+</html>
