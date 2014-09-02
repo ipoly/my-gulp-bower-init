@@ -1,16 +1,16 @@
 define(function(require, exports, module) {
-	
+
 	exports.borrow = function (){
 		if (user_id==""){
-			$(".borrow_jie").live("click",function(){
+			$(".borrow_jie").on("click",function(){
 				$(this).attr("href","javascript:void(0)");
-				deayou.use("header",function(e){e.ajaxLogin()});							   
-			})	
+				deayou.use("header",function(e){e.ajaxLogin()});
+			})
 		}
-		$("#loan_form").submit(function(){	
-			var _var = [["name","借款标题不能为空"],["account","借款金额不能为空"],["borrow_apr","借款利率不能为空"]]; 
+		$("#loan_form").submit(function(){
+			var _var = [["name","借款标题不能为空"],["account","借款金额不能为空"],["borrow_apr","借款利率不能为空"]];
 			var _var_status=1;
-			for(var i=0;i<_var.length;i++) { 
+			for(var i=0;i<_var.length;i++) {
 				if ($("#"+_var[i][0]).val()==""){
 					alert(_var[i][1]);
 					_var_status = 0;
@@ -27,8 +27,8 @@ define(function(require, exports, module) {
 			}
 			var borrow_apr = parseFloat(borrow_apr);
 			var account = parseInt($("#account").val());
-			var amount_use = parseInt($("#amount_use").val());			
-			var lixi = (account*borrow_apr*0.01)/12;			
+			var amount_use = parseInt($("#amount_use").val());
+			var lixi = (account*borrow_apr*0.01)/12;
 			if (account%50 != 0 || account==0){
 				alert("借款金额需为50的倍数");
 				_var_status = 0;
@@ -49,14 +49,14 @@ define(function(require, exports, module) {
 			} */
 		})
 	}
-	
+
 	exports.detail = function (){
-	
+
 	}
-	
+
 	exports.tendering = function (){
-		$("#user_borrow_tendering").live("submit",function(){
-			require("submitform");	
+		$("#user_borrow_tendering").on("submit",function(){
+			require("submitform");
 			var borrow_nid = $("#borrow_nid").val();
    			$("#user_borrow_tendering").ajaxSubmit({
 				 success: function (result, status) {
@@ -71,11 +71,11 @@ define(function(require, exports, module) {
 			 });
 			 return false; // cancel conventional submit
 		 })
-	
+
 	}
-	
-	exports.borrow_check = function (){	
-		var email_status = $("#email_status").val();		
+
+	exports.borrow_check = function (){
+		var email_status = $("#email_status").val();
 		$("#borrow_type1").click(function(){
 			if(user_id==''){
 				alert("您还没登录，请先登录");
@@ -88,7 +88,7 @@ define(function(require, exports, module) {
 				location.href="/?user&q=code/borrow/loan&type=1";
 			}else{
 				location.href="/?user&q=code/borrow/loan_now&type=1";
-			}			
+			}
 		});
 		$("#borrow_type2").click(function(){
 			if(user_id==''){
@@ -102,7 +102,7 @@ define(function(require, exports, module) {
 				location.href="/?user&q=code/borrow/loan&type=2";
 			}else{
 				location.href="/?user&q=code/borrow/loan_now&type=2";
-			}			
+			}
 		});
 		$("#borrow_type3").click(function(){
 			if(user_id==''){
@@ -116,7 +116,7 @@ define(function(require, exports, module) {
 				location.href="/?user&q=code/borrow/loan&type=3";
 			}else{
 				location.href="/?user&q=code/borrow/loan_now&type=3";
-			}			
+			}
 		});
 		$("#borrow_type4").click(function(){
 			if(user_id==''){
@@ -128,8 +128,8 @@ define(function(require, exports, module) {
 			}else{
 				location.href="/?user&q=code/borrow/loan_now&type=4";
 			}
-			
-		});		
+
+		});
 		$("#borrow_type5").click(function(){
 			if(user_id==''){
 				alert("您还没登录，请先登录");
@@ -142,7 +142,7 @@ define(function(require, exports, module) {
 				location.href="/?user&q=code/account/recharge_new";
 			}else{
 				location.href="/?user&q=code/borrow/loan_now&type=5";
-			}			
+			}
 		});
 		$("#borrow_type6").click(function(){
 			if(user_id==''){
@@ -156,7 +156,7 @@ define(function(require, exports, module) {
 				location.href="/?user&q=code/borrow/loan&type=6";
 			}else{
 				location.href="/?user&q=code/borrow/loan_now&type=6";
-			}			
+			}
 		});
 		$("#borrow_type7").click(function(){
 			if(user_id==''){
@@ -170,13 +170,13 @@ define(function(require, exports, module) {
 				location.href="/?user&q=code/borrow/loan&type=6";
 			}else{
 				location.href="/?user&q=code/borrow/loan_now&type=6";
-			}			
-		});	
+			}
+		});
 	}
-		
+
 	exports.amount = function (){
-		$("#borrow_amount_form").live("submit",function(){
-			require("submitform");	
+		$("#borrow_amount_form").on("submit",function(){
+			require("submitform");
    			$("#borrow_amount_form").ajaxSubmit({
 				 success: function (result, status) {
 					if(result==1){
@@ -190,10 +190,10 @@ define(function(require, exports, module) {
 			 });
 			 return false; // cancel conventional submit
 		 })
-	
+
 	}
-	
-	
+
+
 	exports.loan = function (){
 		if (user_id==""){
 			deayou.use("header",function(e){e.ajaxError("你还未登陆，请先登陆","/?user&q=login");});
@@ -203,8 +203,8 @@ define(function(require, exports, module) {
 			}else if (amount_use<500){
 				deayou.use("header",function(e){e.ajaxError("您的可用额度低于500元，请先申请额度","/?user&q=code/borrow/amount");});
 			}else{
-				$("#loan_form").live("submit",function(){
-					require("submitform");	
+				$("#loan_form").on("submit",function(){
+					require("submitform");
 					$("#loan_form").ajaxSubmit({
 						 success: function (result, status) {
 							if(result==1){
@@ -214,25 +214,25 @@ define(function(require, exports, module) {
 							}
 							return false;
 						}
-		
+
 					 });
-					 return false; 
+					 return false;
 				 })
-			}			
+			}
 		}
 	}
 	exports.borrow_content = function (borrow_nid,email_status,realname_status,phone_status,borrow_status_nid,borrow_userid){
 
 
 
-		$(".borrow_type_class").live("click",function(){ 
+		$(".borrow_type_class").on("click",function(){
 			if(user_id==''){
 					alert("您还没登录，请先登录");
 					location.href = "/?user&q=login";
                     return false;
 			}else if (borrow_status_nid=="loan" ){
 				if (user_id==borrow_userid ){
-					alert("不能投自己的标");	
+					alert("不能投自己的标");
 				}else if(email_status==0){
 					alert("您还未进行安全信息认证，请先进入验证");
 					location.href = "/?user&q=code/borrow/loan&p=tender&type=email";
@@ -252,17 +252,17 @@ define(function(require, exports, module) {
 				    $(this).attr("href","#");
 					window.location.href = "/?user&q=code/borrow/tender&p=invest&borrow_nid="+borrow_nid;
                     return false;
-				
+
 				}
 			}
 		})
-    
+
 		//if (parseFloat(account)>parseFloat(borrow_account_yes)){
 			//$.get("/?user&q=code/borrow/loan_check_realname", function(result){
 			//	if (result==1){
 					//$(".borrow_tender_type").attr("href","/?user&q=code/borrow/loan_tender&borrow_nid="+borrow_nid);
-			//	}else{					
-				//	$(".borrow_tender_type").live("click",function(){
+			//	}else{
+				//	$(".borrow_tender_type").on("click",function(){
 				//	$(".borrow_tender_type").attr("href","javascript:void(0)");
 					if(user_id==''){
 						alert("您还没有登录，请先登录");
@@ -272,16 +272,16 @@ define(function(require, exports, module) {
 						//slocation.href="/?user&q=code/approve/email";
 					}else{
 						//deayou.use("header",function(e){e.ajaxDialog("填写实名信息","/index.php?user&q=code/borrow/realname&borrow_nid="+borrow_nid);});
-					}	
+					}
 			//	}
 			  //});
-				
-		
+
+
 	}
-	
+
 	exports.loan_tender = function (){
 	   //预期收益
-       $("#tender_money").live("keyup",function(){
+       $("#tender_money").on("keyup",function(){
             var _money = $(this).val();
             _money=_money.replace(/[^0-9]/g,'');
             $(this).val(_money);
@@ -325,10 +325,10 @@ define(function(require, exports, module) {
             }else{
                 $("#tender_income").hide();
             }
-            
+
             $(this).die();
        })
-       $("#tender_income").live("click",function(){
+       $("#tender_income").on("click",function(){
         $("#tender_detail").toggle();
          if($("#tender_income").text()=="展开收款明细"){
             $("#tender_income").text('缩起收款明细');
@@ -336,18 +336,18 @@ define(function(require, exports, module) {
             $("#tender_income").text('展开收款明细');
         }
         })
-       
-		$("#loan_tender_form").live("submit",function(){
-			
+
+		$("#loan_tender_form").on("submit",function(){
+
 			var max=$("#max").val();
 			var money=$("#money").val();
 			var min=$("#min").val();
 			if ($("#money").val()==""){
 				alert("投资金额不能为空");
-				return false;								
+				return false;
 			}else if (parseInt(max)<parseInt(money) && max>0){
 				alert("投资金额不能大于最大投标额");
-				return false;				
+				return false;
 			}else if (parseInt(min)>parseInt(money)){
 				alert("投资金额不能小于最小投标额");
 				return false;
@@ -360,24 +360,24 @@ define(function(require, exports, module) {
 			}else if ($("#valicode").val()==""){
 				alert("验证码不能为空。");
 				return false;
-			
-			}else{					
+
+			}else{
 				$("#loan_tender_form").ajaxSubmit({
 					 success: function (result) {
 						if(result==1){
 							alert("投标成功");
 							location.href = "/index.php?user&q=code/borrow/tender&p=now";
-                            return false;	
+                            return false;
 						}else{
-							alert(result);						
+							alert(result);
 						}
 						return false;
 					}
-	
+
 				 });
-				 return false; 	
+				 return false;
 			}
-			
+
 			return false;
 		 })
 	}

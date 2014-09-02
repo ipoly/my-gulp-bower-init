@@ -47,20 +47,20 @@
 
 {literal}
 <script>
-$(".change_borrow").live("click",function(){
+$(".change_borrow").on("click",function(){
     var _id = $(this).attr("data-id");
 var dia = $.dialog({
 				id: 'change_borrow',title:'进行债权转让',content: 'url:/?user&q=code/borrow/change&p=change&id='+_id,max: false,
 				min: false,lock:true});
-    
+
 })
 
-$(".change_web").live("click",function(){
+$(".change_web").on("click",function(){
     var _id = $(this).attr("data-id");
 var dia = $.dialog({
 				id: 'change_web',title:'转让给网站',content: 'url:/?user&q=code/borrow/change&p=web&id='+_id,max: false,
 				min: false,lock:true});
-    
+
 })
 </script>
 

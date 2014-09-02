@@ -27,7 +27,7 @@ function tipsWindown(title,content,width,height,drag,time,showbg,cssName) {
 			simpleWindown_html = "<div id=\"windownbg\" style=\"height:"+$(document).height()+"px;filter:alpha(opacity=0);opacity:0;z-index: 999901\"></div>";
 			simpleWindown_html += "<div id=\"windown-box\">";
 			simpleWindown_html += "<div id=\"windown-title\"><h2></h2><span id=\"windown-close\">关闭</span></div>";
-			simpleWindown_html += "<div id=\"windown-content-border\"><div id=\"windown-content\"></div></div>"; 
+			simpleWindown_html += "<div id=\"windown-content-border\"><div id=\"windown-content\"></div></div>";
 			simpleWindown_html += "</div>";
 			$("body").append(simpleWindown_html);
 			show = false;
@@ -95,21 +95,11 @@ function tipsWindown(title,content,width,height,drag,time,showbg,cssName) {
 		$("#windown-title").css({width:(parseInt(width)+10)+"px"});
 		$("#windown-content").css({width:width+"px",height:height+"px"});
 	}
-	var	cw = document.documentElement.clientWidth,ch = document.documentElement.clientHeight,est = document.documentElement.scrollTop; 
-	var _version = $.browser.version;
-	if ( _version == 6.0 ) {
-		$("#windown-box").css({left:"50%",top:(parseInt((ch)/2)+est)+"px",marginTop: -((parseInt(height)+53)/2)+"px",marginLeft:-((parseInt(width)+32)/2)+"px",zIndex: "999999"});
-	}else {
-		$("#windown-box").css({left:"50%",top:"50%",marginTop:-((parseInt(height)+53)/2)+"px",marginLeft:-((parseInt(width)+32)/2)+"px",zIndex: "999999"});
-	};
+	var	cw = document.documentElement.clientWidth,ch = document.documentElement.clientHeight,est = document.documentElement.scrollTop;
+	$("#windown-box").css({left:"50%",top:(parseInt((ch)/2)+est)+"px",marginTop: -((parseInt(height)+53)/2)+"px",marginLeft:-((parseInt(width)+32)/2)+"px",zIndex: "999999"});
 	var Drag_ID = document.getElementById("windown-box"),DragHead = document.getElementById("windown-title");
-		
-	var moveX = 0,moveY = 0,moveTop,moveLeft = 0,moveable = false;
-		if ( _version == 6.0 ) {
-			moveTop = est;
-		}else {
-			moveTop = 0;
-		}
+
+	var moveX = 0,moveY = 0,moveTop = 0,moveLeft = 0,moveable = false;
 	var	sw = Drag_ID.scrollWidth,sh = Drag_ID.scrollHeight;
 		DragHead.onmouseover = function(e) {
 			if(drag == "true"){DragHead.style.cursor = "move";}else{DragHead.style.cursor = "default";}
@@ -145,7 +135,7 @@ function tipsWindown(title,content,width,height,drag,time,showbg,cssName) {
 			$("#windownbg").remove();
 			$("#windown-box").fadeOut("slow",function(){$(this).remove();});
 		});
-	}else { 
+	}else {
 		setTimeout(closeWindown,time);
 	}
 }

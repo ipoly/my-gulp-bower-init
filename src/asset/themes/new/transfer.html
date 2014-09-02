@@ -2,7 +2,7 @@
 	<div class="conbox t20">
 	      <div class="main_left">
           <div>
- <div class="main_r_bor"> 
+ <div class="main_r_bor">
 				        <div class="m_r_title1" style="margin:0"><h1></h1></div>
 						<div>
 		       <table width="100%" cellspacing="0" cellpadding="0" border="0" class="sea_tab">
@@ -17,10 +17,10 @@
       <tbody><tr>
         <td align="right" class="sea_tableft">金额：</td>
         <td class="sea_tabright">
-     
+
         <a href="{$_A.query_url_all}?borrow_type={$magic.request.borrow_type}&borrow_interestrate={$magic.request.borrow_interestrate}&spread_month={$magic.request.spread_month}&account_status=" {if $magic.request.account_status==""}style="font-weight:bold; color:#2976a4"{/if}>不限</a>
         {foreach from=$_G.linkages.account_status key="key" item="item"}
-          <a {if $magic.request.account_status==$key}style="font-weight:bold; color:#2976a4"{/if} href="{$_A.query_url_all}?keywords={$magic.request.keywords}&borrow_area_city={$magic.request.borrow_area_city}&order={$magic.request.order}&hasinvest={$magic.request.hasinvest}&borrow_use={$magic.request.borrow_use}&borrow_type={$magic.request.borrow_type}&borrow_interestrate={$magic.request.borrow_interestrate}&spread_month={$magic.request.spread_month}&account_status={$key}">{$item}</a>   
+          <a {if $magic.request.account_status==$key}style="font-weight:bold; color:#2976a4"{/if} href="{$_A.query_url_all}?keywords={$magic.request.keywords}&borrow_area_city={$magic.request.borrow_area_city}&order={$magic.request.order}&hasinvest={$magic.request.hasinvest}&borrow_use={$magic.request.borrow_use}&borrow_type={$magic.request.borrow_type}&borrow_interestrate={$magic.request.borrow_interestrate}&spread_month={$magic.request.spread_month}&account_status={$key}">{$item}</a>
         {/foreach}
 	    <span style="width:150px;float:center;padding-left: 10px;">
             <form method="get" name="form1" id="form1" style="width:150px" action="{$_A.url_all}?borrow_type={$magic.request.borrow_type}&borrow_interestrate={$magic.request.borrow_interestrate}&spread_month={$magic.request.spread_month}&keywords={$magic.request.keywords}&startacount={$magic.request.startacount}&endacount={$magic.request.endacount}">
@@ -29,7 +29,7 @@
               -
               <input type="text" class="input_btn1" id="pr2" name="endacount" value="">
               万
-           
+
             </form>
             </span></div></td>
       </tr>
@@ -42,16 +42,16 @@
         <td class="sea_tabright">
         <a href="{$_A.query_url_all}?borrow_type={$magic.request.borrow_type}&account_status={$magic.request.account_status}&borrow_interestrate=&spread_month={$magic.request.spread_month}" {if $magic.request.borrow_interestrate==""}style="font-weight:bold; color:#2976a4"{/if}>不限</a>
         {foreach from=$_G.linkages.borrow_interestrate item="item" key="key"}
-          <a {if $magic.request.borrow_interestrate==$key}style="font-weight:bold; color:#2976a4"{/if}  href="{$_A.query_url_all}?keywords={$magic.request.keywords}&borrow_area_city={$magic.request.borrow_area_city}&order={$magic.request.order}&hasinvest={$magic.request.hasinvest}&borrow_use={$magic.request.borrow_use}&borrow_type={$magic.request.borrow_type}&borrow_interestrate={$key}&spread_month={$magic.request.spread_month}&account_status={$magic.request.account_status}">{$item}</a>   
+          <a {if $magic.request.borrow_interestrate==$key}style="font-weight:bold; color:#2976a4"{/if}  href="{$_A.query_url_all}?keywords={$magic.request.keywords}&borrow_area_city={$magic.request.borrow_area_city}&order={$magic.request.order}&hasinvest={$magic.request.hasinvest}&borrow_use={$magic.request.borrow_use}&borrow_type={$magic.request.borrow_type}&borrow_interestrate={$key}&spread_month={$magic.request.spread_month}&account_status={$magic.request.account_status}">{$item}</a>
         {/foreach}
         </td>
 		<td></td>
       </tr>
     </tbody></table></td>
     </tr>
-  
-  
- 
+
+
+
 </tbody></table>
 
 		  </div>
@@ -81,13 +81,13 @@
 
 				   </div>
    </div></div>
-         
+
 		  {include file="borrow_xh.html"}
 		       <div class="main_box">
          	{list module='borrow' function='GetChangeList' plugins="change" status='2' late_status=1 keywords="request" account_status="request" borrow_interestrate="request" var="loop" order="status"}
 
 	<div class="px_bor"><div class="jk_list_l">找到相关借款<b style=" color:#FF0000">{$loop.total|default:"0"}</b>条</div>
-  {/list}  
+  {/list}
 	<div class="jk_list_r">排序：
        <select onChange="checkorder()" id="checkordertype" name="type">
             <option {if $magic.request.order==""}selected=true{/if} value="1">默认排序</option>
@@ -97,9 +97,9 @@
             <option {if $magic.request.order=="apr_up"}selected=true{/if} value="5">利率从高到低</option>
         </select>
 		<a href="/{$_G.site_result.nid}/index.html?order={if $magic.request.order!='account_up' || $magic.request.order=='account_down'}account_up{elseif $magic.request.order=='account_up'}account_down{/if}" {if $magic.request.order=="account_up"} class="h_arrow1"{elseif $magic.request.order=="account_down"} class="h_arrow2"{else} class="h_arrow"{/if}>金额
-		</a> 
-	<!--	<a href="/{$_G.site_result.nid}/index.html?order={if $magic.request.order!='period_up' || $magic.request.order=='period_down'}period_up{elseif $magic.request.order=='period_up'}period_down{/if}" {if $magic.request.order=="period_up"} class="h_arrow1"{elseif $magic.request.order=="period_down"} class="h_arrow2"{else} class="h_arrow"{/if}>期限</a> 
-	-->	<a href="/{$_G.site_result.nid}/index.html?order={if $magic.request.order!='apr_up' || $magic.request.order=='apr_down'}apr_up{elseif $magic.request.order=='apr_up'}apr_down{/if}" {if  $magic.request.order=="apr_up"} class="h_arrow1"{elseif $magic.request.order=="apr_down"} class="h_arrow2"{else} class="h_arrow"{/if}>利率</a> 
+		</a>
+	<!--	<a href="/{$_G.site_result.nid}/index.html?order={if $magic.request.order!='period_up' || $magic.request.order=='period_down'}period_up{elseif $magic.request.order=='period_up'}period_down{/if}" {if $magic.request.order=="period_up"} class="h_arrow1"{elseif $magic.request.order=="period_down"} class="h_arrow2"{else} class="h_arrow"{/if}>期限</a>
+	-->	<a href="/{$_G.site_result.nid}/index.html?order={if $magic.request.order!='apr_up' || $magic.request.order=='apr_down'}apr_up{elseif $magic.request.order=='apr_up'}apr_down{/if}" {if  $magic.request.order=="apr_up"} class="h_arrow1"{elseif $magic.request.order=="apr_down"} class="h_arrow2"{else} class="h_arrow"{/if}>利率</a>
 	<!--	<a href="/{$_G.site_result.nid}/index.html?order={if $magic.request.order!='scale_up' ||$magic.request.order=='scale_down'}scale_up{elseif $magic.request.order=='scale_up'}scale_down{/if}" {if  $magic.request.order=="scale_up"} class="h_arrow1"{elseif $magic.request.order=="scale_down"} class="h_arrow2"{else} class="h_arrow"{/if}>进度</a>
 -->
 	</div></div>
@@ -108,7 +108,7 @@
     function checkorder(){
         var type=document.getElementById('checkordertype').value;
         switch(type){
-            case "1": 
+            case "1":
             location.href="?order=";
             break;
             case "2":
@@ -128,11 +128,11 @@
    Request = {
  QueryString : function(item){
   var svalue = location.search.match(new RegExp("[\?\&]" + item + "=([^\&]*)(\&?)","i"));
-  
+
   return svalue ? svalue[1] : "";
  }
 }
-</script>	{/literal}	
+</script>	{/literal}
 			        <div class="">
 					     <div class="zq_list">
 						 <ul>
@@ -166,24 +166,24 @@
 			  </div>
   {/list}
 		  </div>
-          	 
+
 {literal}
 <script>
-$(".change_buy").live("click",function(){
+$(".change_buy").on("click",function(){
     var _id = $(this).attr("data-id");
 var dia = $.dialog({
 				id: 'change_borrow',title:'购买债权',content: 'url:/?user&q=code/borrow/change&p=buy&id='+_id,max: false,
 				min: false,lock:true});
-    
+
 })
 $(function(){$(".input_btn1").focus(function(){$(".input_btn2").css({"display":"block"})});
               $(".input_btn1").blur(function(){$(".input_btn2").css({"display":"block"})})
 			  })
 </script>
 
-{/literal}	
- 	  
-{include file="tender_right.html"} 
+{/literal}
+
+{include file="tender_right.html"}
 		 <div class="cle"></div>
 	</div>
 
