@@ -62,67 +62,73 @@
                         	<li class="account-index-tab active"><a class="cc">借款负债表</a></li>
                             <li class="account-index-tab"><a class="cc">投资损益表</a></li>
                         </ul>
-                        <div class="account-index-tab-txt">
+                        <div class="account-index-tab-txt row">
 						{articles module="borrow" plugins="count" function="GetUsersCount" user_id="$_G.user_id" var="item"}
 {articles module="borrow" plugins="count" function="GetUsersRecoverCount" var="recover_var" user_id="$_G.user_id"}
-                        	<ul class="fn-clear mt20 w340 ml10 mr20 fLeft ml20" style="border:1px solid #1bb8e2;">
-                            	<li class="account-title-blue h40 f18">
-                                	<span class="fLeft pl20 w140 relative">
-                                    	资产总额
-                                    	<em id="tips_1" class="iconfont tips"></em>
-                                        <div class="tips-shadow"  style="left:140px; top:0px;z-index:999">
-                                            <div class="tips-content w360 txtLeft">资产总额=可用资金+冻结资金+待收总额</div>
-                                        </div>
+                            <div class="col-md-6 show-grid">
+                            	<ul style="border:1px solid #1bb8e2;">
+                                	<li class="account-title-blue h40 f18">
+                                    	<span class="fLeft pl20 w140 relative">
+                                        	资产总额
+                                        	<em id="tips_1" class="iconfont tips"></em>
+                                            <div class="tips-shadow"  style="left:140px; top:0px;z-index:999">
+                                                <div class="tips-content w360 txtLeft">资产总额=可用资金+冻结资金+待收总额</div>
+                                            </div>
 
-                                    </span>
-                                    <span class="fLeft pl20 w140 txtRight" id="total-money">{$Avar.total|default:0.00}元</span>
-                                </li>
-                            	<li class="h40 f14">
-                                	<span class="fLeft pl20 w140">可用资金</span>
-                                    <span class="fLeft pl20 w140 txtRight" id="use-money">{$Avar.balance|default:0.00}元</span>
-                                </li>
-                            	<li class="h40 f14">
-                                	<span class="fLeft pl20 w140">冻结资金</span>
-                                    <span class="fLeft pl20 w140 txtRight" id="nouse-money">{$Avar.frost|default:0.00}元</span>
-                                </li>
+                                        </span>
+                                        <span class="fLeft pl20 w140 txtRight" id="total-money">{$Avar.total|default:0.00}元</span>
+                                    </li>
+                                	<li class="h40 f14">
+                                    	<span class="fLeft pl20 w140">可用资金</span>
+                                        <span class="fLeft pl20 w140 txtRight" id="use-money">{$Avar.balance|default:0.00}元</span>
+                                    </li>
+                                	<li class="h40 f14">
+                                    	<span class="fLeft pl20 w140">冻结资金</span>
+                                        <span class="fLeft pl20 w140 txtRight" id="nouse-money">{$Avar.frost|default:0.00}元</span>
+                                    </li>
 
-                            </ul>
+                                </ul>
+                            </div>
 							{/articles}{/articles}
-                        	<ul class="fn-clear mt20 w340 ml10 fLeft" style="border:1px solid #ffa200;">
-							{articles module="borrow" plugins="count" function="GetUsersRepayCount" var="repay_var" user_id="$_G.user_id"}
-                            	<li class="account-title-org h40 f18">
-                                	<span class="fLeft pl20 w140 relative">
-                                    	负债总额
-                                        <em id="tips_1" class="iconfont tips org"></em>
-                                        <div class="tips-shadow"  style="left:140px; top:0px;z-index:999">
-                                            <div class="tips-content w360 txtLeft">负债总额=待还总额</div>
-                                        </div>
-                                    </span>
-                                    <span class="fLeft pl20 w140 txtRight" id="repayment-debt">{$repay_var.repay_wait_account|default:0}元</span>
-                                </li>
+                            <div class='col-md-6 show-grid'>
+                            	<ul style="border:1px solid #ffa200;">
+    							{articles module="borrow" plugins="count" function="GetUsersRepayCount" var="repay_var" user_id="$_G.user_id"}
+                                	<li class="account-title-org h40 f18">
+                                    	<span class="fLeft pl20 w140 relative">
+                                        	负债总额
+                                            <em id="tips_1" class="iconfont tips org"></em>
+                                            <div class="tips-shadow"  style="left:140px; top:0px;z-index:999">
+                                                <div class="tips-content w360 txtLeft">负债总额=待还总额</div>
+                                            </div>
+                                        </span>
+                                        <span class="fLeft pl20 w140 txtRight" id="repayment-debt">{$repay_var.repay_wait_account|default:0}元</span>
+                                    </li>
 
-                            	<li class="h40 f14">
-                                	<span class="fLeft pl20 w140 ti30">待还本息</span>
-                                    <span class="fLeft pl20 w140 txtRight" id="wait-repayment-capital">{$repay_var.repay_wait_account|default:0}元</span>
-                                </li>
-                            	<li class="h40 f14">
-                                    <span class="fLeft pl20 w140 ti30">待还利息</span>
-                                    <span class="fLeft pl20 w140 txtRight" id="wait-repayment-interest">{$repay_var.repay_yes_account|default:0}元</span>
-                                </li>
+                                	<li class="h40 f14">
+                                    	<span class="fLeft pl20 w140 ti30">待还本息</span>
+                                        <span class="fLeft pl20 w140 txtRight" id="wait-repayment-capital">{$repay_var.repay_wait_account|default:0}元</span>
+                                    </li>
+                                	<li class="h40 f14">
+                                        <span class="fLeft pl20 w140 ti30">待还利息</span>
+                                        <span class="fLeft pl20 w140 txtRight" id="wait-repayment-interest">{$repay_var.repay_yes_account|default:0}元</span>
+                                    </li>
 
-                            </ul>
-                        	<ul class="fn-clear pt30 fLeft ml20" style="width:714px;">
-                            	<li class="h40 f18" style="background:#d8fabf;">
-                                	<span class="fLeft pl20 w160 relative">
-                                    	净资产
-                                        <em id="tips_1" class="iconfont tips"></em>
-                                        <div class="tips-shadow"  style="left:110px; top:0px;z-index:999">
-                                            <div class="tips-content w360 txtLeft">净资产=资产总额-负债总额</div>
-                                        </div>
-                                    </span>
-                                    <span class="fRight pr20 w140 txtRight" id="jin-money">{$Avar.balance|default:0.00}元</span>
-                                </li>
-                            </ul>
+                                </ul>
+                            </div>
+                            <div class="col-md-12 show-grid">
+                            	<ul style="width:714px;">
+                                	<li class="h40 f18" style="background:#d8fabf;">
+                                    	<span class="fLeft pl20 w160 relative">
+                                        	净资产
+                                            <em id="tips_1" class="iconfont tips"></em>
+                                            <div class="tips-shadow"  style="left:110px; top:0px;z-index:999">
+                                                <div class="tips-content w360 txtLeft">净资产=资产总额-负债总额</div>
+                                            </div>
+                                        </span>
+                                        <span class="fRight pr20 w140 txtRight" id="jin-money">{$Avar.balance|default:0.00}元</span>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
 						{/articles}
                         <div class="account-index-tab-txt hide">

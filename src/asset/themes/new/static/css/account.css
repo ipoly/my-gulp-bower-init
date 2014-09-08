@@ -82,7 +82,7 @@ clear:both;
 }
 .userinfobox{
 float:left;
-padding:0px 20px 0px 20px;
+padding:0px 20px 30px 20px;
 width:758px;
 border: 1px solid #E0E0E0;
 box-shadow: 0 0 2px 1px #EFEFEF;
@@ -121,11 +121,10 @@ padding-left:30px;
 float:left;
 width:112px;
 height:112px;
-margin:20px 0px 0px 0px;
 border:1px solid #888888;
 }
 .user-info-container{
-padding:14px 0px 6px 30px;
+padding-left:20px;
 float:left;
 }
 #pg-account-index .user-info-safe{
