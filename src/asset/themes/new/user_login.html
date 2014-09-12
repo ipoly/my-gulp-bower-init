@@ -16,27 +16,78 @@ padding-bottom: 40px;
                 <div class="login-pic" id="focus">
                     <ul class="rslides f426x240">
                         <li><img src="{$tpldir}/static/img/banner/login-pic1.jpg"/></li>
-                    
+
                     </ul>
                 </div>
             </div>
             <div class="box mt20 fRight" style="width:440px;">
-            	<div class="loginform p20">
-                	<form action="/index.php?user&q=login" method="post">
-                	<p class="pt30"><label class="w80 iblock txtRight pr10">用户名</label><input name="keywords" type="text"  class="login-input" type="text" /></p>
-                    <p class="pt10"><label class="w80 iblock txtRight pr10"> </label><span class="Validform_checktip"></span></p>
-                    <p class="pt10"><label class="w80 iblock txtRight pr10">登录密码</label><input class="login-input psw" name="password" type="password"  /></p>
-                    <p class="pt10"><label class="w80 iblock txtRight pr10"> </label><span class="Validform_checktip"></span></p>
-                    <p class="hide"><label class="w80 iblock txtRight pr10"></label><input type="checkbox" /> 记住用户名<span class="fRight mr30"></span></p>
-                    <p class="mt10"><label class="w80 iblock txtRight pr10"></label><input type="submit" style="padding:5px 30px;" class="icon-gray-link input-btn f16 txtC" value="登录" id='btn_login'/><span id="loading" class="hide"><img style="width:80px;" src="static/img/pic/loading.gif" /></span></p>
-                    
-                    <p class="mt10 pb20"><label class="w80 iblock txtRight pr10"></label>还没有加入{$_G.system.con_webname}？<a href="/index.php?user&q=reg" class="blue">免费注册</a><a class="blue ml20" href="/?user&q=getpwd">忘记密码</a></p>
-					<input name="cktime" type="hidden" id="cktime" value="30" />
+            	<div class="loginform p20" ng-init='loginType = 0' ng-switch='loginType' ng-cloak>
+                	<form action="/index.php?user&q=login" method="post" class="form-horizontal" novalidate name='login'>
+                        <h4 class="header">
+                            <label><input type="radio" name='type' ng-model='loginType' ng-value='0'> 用户名密码登录</label>
+                            <label><input type="radio" name='type' ng-model='loginType' ng-value='1'> 手机验证码登录</label>
+                        </h4>
+                        <hr>
+                        <div ng-switch-default>
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">用户名</label>
+                                <div class="col-md-9">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-user" style='font-size:0.7em;'></i></span>
+                                        <input class="form-control" name="keywords" ng-model='keywords' type="text" type="text" required/>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">密码</label>
+                                <div class="col-md-9">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                                        <input class="form-control" name="password" ng-model='password' type="password"  required/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div ng-switch-when='1'>
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">手机号</label>
+                                <div class="col-md-9">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-mobile" style='font-size:1.4em;'></i></span>
+                                        <input class="form-control" name="keywords" ng-model='keywords' type="text" type="text" required/>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">验证码</label>
+                                <div class="col-md-5">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                                        <input class="form-control" name="password" ng-model='password' type="password"  required/>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <button type='button' class="btn btn-default btn-block">发送验证码</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-9 col-md-offset-3">
+                                <p>
+                                    <input type="submit" style="padding:5px 30px;" class="btn btn-warning btn-lg btn-block" value="登录" id='btn_login' ng-disabled='login.$invalid'/>
+                                </p>
+                                还没有加入{$_G.system.con_webname}？<a href="/index.php?user&q=reg" class="blue">免费注册</a><a class="blue ml20" href="/?user&q=getpwd">忘记密码</a>
+                            </div>
+                        </div>
+
+    					<input name="cktime" type="hidden" id="cktime" value="30" />
                 	</form>
                 	{if $_G.system.con_qqlogin_status==0&&$_G.system.con_sinalogin_status==0}
 <div style="display: none; color:#999999">还可以通过第三方账号进行登录：</div>
 {else}
-<div>还可以通过第三方账号进行登录：{if $_G.system.con_qqlogin_status==1} 
+<div>还可以通过第三方账号进行登录：{if $_G.system.con_qqlogin_status==1}
 <a href="/?user&q=api/qq/login" style="color:#0063DC">
                     <img src="/themes/blue/images/qq.gif" width="15" height="16"> QQ登录</a>
                     {else}
@@ -49,11 +100,11 @@ padding-bottom: 40px;
                     {else}
                     <a style="display: none;" href="/?user&q=api/sina/login" style="color:#0063DC">
                         <img style="display: none;" src="/themes/blue/images/sina.gif" width="25" height="16"> sina微博登录</a>
-                    {/if}</div>			   
-{/if} 
+                    {/if}</div>
+{/if}
                 </div>
             </div>
         </div>
     </div>
-	
+
  {include file='footer.html'}
