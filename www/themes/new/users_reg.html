@@ -55,32 +55,7 @@ function sendemail() {
     });
 }
 </script>
-{/literal} {else} {literal}
-<script>
-function checksms() {
-    var newphone = $("#phone").val();
-    if (newphone == "") {
-        alert("请填写手机号码！");
-        window.location.href = "/index.php?user&q=reg";
-        return false;
-    }
-    $.get("/?user&q=code/users/checkphone", {
-        phone: newphone
-    }, function(result) {
-        if (result == true) {
-            alert("手机号码已存在！");
-            return false;
-        } else {
-            $.post("/?user&q=code/approve/phone", {
-                phone: newphone
-            }, function(data) {
-                alert("发送成功。");
-            });
-        }
-    });
-}
-</script>
-{/literal}
+{/literal} {else}
 <div class="pg-one" id="page-reg">
     <div class="container_10 mt30 fn-clear">
         <div class="reg-container p10 grid_9">
@@ -89,7 +64,7 @@ function checksms() {
             </div>
             <div class="content-block p20 mt20">
                 <div class="borrow-add-from mt10 registerform">
-                    <form action="#" method="post" id="reg_form" class="form-horizontal" novalidate name='register' ng-init='is_server=true; invite_username="{$magic.session.reginvite_user_id}"'>
+                    <form action="#" method="post" class="form-horizontal" novalidate name='reg_form' ng-init='is_server=true; invite_username="{$magic.session.reginvite_user_id}x"'>
                         <h3 classs='header'>用户注册</h3>
                         <hr>
                         <div class="form-group">
@@ -147,7 +122,7 @@ function checksms() {
                                 <input name="valicode" ng-model='valicode' id="valicode" type="text" class="form-control" required title='请填写验证码'/>
                             </div>
                             <div class="col-md-2">
-                                <input class='btn btn-info btn-block' type="button" value="发送验证码" id="dxtc" ng-disabled='register.mobile.$invalid'>
+                                <input class='btn btn-info btn-block' type="button" value="发送验证码" id="dxtc" ng-disabled='reg_form.mobile.$invalid'>
                             </div>
                         </div>
                         <div class="form-group">
@@ -165,8 +140,8 @@ function checksms() {
 
                         <div class="form-group">
                             <div class="col-md-4 col-md-offset-3">
-                                <input type="submit" name="submit" class='btn btn-lg btn-success btn-block' ng-disabled='!is_server || register.$invalid'>
                                 <input type="hidden" name="type" value="ajax" />
+                                <button type="submit" class='btn btn-lg btn-success btn-block' ng-disabled='!is_server || reg_form.$invalid'>提 交</button>
                             </div>
                         </div>
 
