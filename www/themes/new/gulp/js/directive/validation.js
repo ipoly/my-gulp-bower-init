@@ -25,7 +25,7 @@
     '$compile', function($compile) {
       return {
         restrict: 'C',
-        scope: true,
+        scope: {},
         link: function($scope, $elm, $attr) {
           var helper;
           helper = $compile('<span class="error-msg" ng-if="errorMsg && onfocus">{{errorMsg}}</span>')($scope);

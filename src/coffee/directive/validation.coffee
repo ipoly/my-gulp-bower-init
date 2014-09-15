@@ -20,7 +20,7 @@ angular.module 'validation.directive',[]
   '$compile'
   ($compile)->
     restrict: 'C'
-    scope: true
+    scope: {}
     link: ($scope, $elm, $attr)->
       helper = $compile('<span class="error-msg" ng-if="errorMsg && onfocus">{{errorMsg}}</span>')($scope)
 
@@ -35,3 +35,4 @@ angular.module 'validation.directive',[]
         $scope.onfocus = e.type is 'focusin'
         $scope.$apply()
 ]
+
