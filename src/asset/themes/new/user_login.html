@@ -24,8 +24,8 @@ padding-bottom: 40px;
             	<div class="loginform p20" ng-init='loginType = 0' ng-switch='loginType' ng-cloak>
                 	<form action="/index.php?user&q=login" method="post" class="form-horizontal" novalidate name='login'>
                         <h4 class="header">
-                            <label><input type="radio" name='type' ng-model='loginType' ng-value='0'> 用户名密码登录</label>
-                            <label><input type="radio" name='type' ng-model='loginType' ng-value='1'> 手机验证码登录</label>
+                            <label ng-class='loginType=="1" && "font-weight-normal"'><input type="radio" name='type' ng-model='loginType' ng-value='0'> 用户名密码登录</label>
+                            <label ng-class='loginType=="0" && "font-weight-normal"'><input type="radio" name='type' ng-model='loginType' ng-value='1'> 手机验证码登录</label>
                         </h4>
                         <hr>
                         <div ng-switch-default>

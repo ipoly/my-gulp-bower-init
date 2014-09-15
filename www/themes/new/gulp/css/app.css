@@ -6203,6 +6203,12 @@ a:focus {
 .font-size-large {
   font-size: 18px;
 }
+.font-weight-normal {
+  font-weight: normal;
+}
+.font-weight-bold {
+  font-weight: bold;
+}
 .line-height-base {
   line-height: 1.42857143;
 }

@@ -103,7 +103,7 @@ gulp.task "less", ['assets'], ->
 gulp.task "watch", ['build'], ->
     gulp.watch SRC.images, ['images']
     gulp.watch SRC.bower, ['bower']
-    # gulp.watch SRC.jade, ['jade']
+    gulp.watch SRC.jade, ['jade']
     gulp.watch SRC.coffee, ['coffee']
     gulp.watch SRC.less, ['less']
     gulp.watch SRC.assets, ['assets']
@@ -117,5 +117,5 @@ gulp.task "webserver", (next)->
   .use connect.static APP_ROOT
   .listen process.env.PORT || 9000, next
 
-gulp.task "build", ['bower', 'assets', 'coffee', 'less', 'images']
+gulp.task "build", ['bower', 'assets', 'jade', 'coffee', 'less', 'images']
 gulp.task "default", ['build', 'webserver', 'watch']
