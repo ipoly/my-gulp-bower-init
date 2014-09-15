@@ -55,32 +55,7 @@ function sendemail() {
     });
 }
 </script>
-{/literal} {else} {literal}
-<script>
-function checksms() {
-    var newphone = $("#phone").val();
-    if (newphone == "") {
-        alert("请填写手机号码！");
-        window.location.href = "/index.php?user&q=reg";
-        return false;
-    }
-    $.get("/?user&q=code/users/checkphone", {
-        phone: newphone
-    }, function(result) {
-        if (result == true) {
-            alert("手机号码已存在！");
-            return false;
-        } else {
-            $.post("/?user&q=code/approve/phone", {
-                phone: newphone
-            }, function(data) {
-                alert("发送成功。");
-            });
-        }
-    });
-}
-</script>
-{/literal}
+{/literal} {else}
 <div class="pg-one" id="page-reg">
     <div class="container_10 mt30 fn-clear">
         <div class="reg-container p10 grid_9">
