@@ -1,0 +1,92 @@
+<form name="loan" id="applyloan" novalidate="novalidate" action="#" method="post" class="form-horizontal">
+  <div class="form-group">
+    <label class="col-md-3 control-label">希望贷款金额</label>
+    <div class="col-md-4">
+      <div class="input-group">
+        <input type="number" required="required" name="loanamount" ng-model="loanamount" placeholder="3~30" min="3" max="30" class="form-control"/><span class="input-group-addon">万元</span>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-md-3 control-label">计划贷款期限</label>
+    <div class="col-md-4">
+      <div class="input-group">
+        <input type="number" required="required" name="loanterm" ng-model="loanterm" placeholder="3~30" min="1" class="form-control"/><span class="input-group-addon">个月</span>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-md-3 control-label">什么时候要</label>
+    <div class="col-md-9">
+      <select required="required" name="need_time" class="form-control">
+              <option value="0">请选择</option>
+              {loop module="speeds" function="need_time" var="item" limit="all" }
+                <option value="{$key}">{$item}</option>
+              {/loop}
+      </select>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-md-3 control-label">融资意向</label>
+    <div class="col-md-9">
+      <div class="radio">
+        <label>
+          <input type="radio" name="priority" checked="checked" value="0" />费用最低
+        </label>
+        <label>
+          <input type="radio" name="priority" value="1" />速度最快
+        </label>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-md-3 control-label">职业身份</label>
+    <div class="col-md-9">
+      <select required="required" name="profession" class="form-control">
+      <option value="0">请选择</option>
+      {loop module="speeds" function="idneed" var="item" limit="all" }
+        <option value="{$key}">{$item}</option>
+      {/loop}
+      </select>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-md-3 control-label">资产情况</label>
+    <div class="col-md-9">
+      <select required="required" name="asset" class="form-control">
+      <option value="0">请选择</option>
+              {loop module="speeds" function="moneed" var="item" limit="all" }
+                <option value="{$key}">{$item}</option>
+              {/loop}
+      </select>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-md-3 control-label">您的称呼</label>
+    <div class="col-md-9">
+      <input type="text" required="required" name="username" ng-model="username" placeholder="请输入称呼" class="form-control"/>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-md-3 control-label">手机号码</label>
+    <div class="col-md-9">
+      <input type="mobile" required="required" name="mobile" ng-model="mobile" placeholder="请输入11位手机号" class="form-control"/>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-md-3 control-label">动态码</label>
+    <div class="col-md-4">
+      <input type="text" required="required" name="mobilecode" ng-model="mobilecode" placeholder="请输入验证码" class="form-control"/>
+    </div>
+    <div class="col-md-5">
+      {literal}
+      <zl-vcode class='btn btn-info btn-block' params='{mobile:mobile, username:username}' ng-disabled='loan.mobile.$invalid'/>
+      {/literal}
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-md-9 col-md-offset-3">
+      <input type="submit"  class="btn btn-warning btn-lg btn-block" value="立即申请" ng-disabled='loan.$invalid'>
+    </div>
+  </div>
+</form>

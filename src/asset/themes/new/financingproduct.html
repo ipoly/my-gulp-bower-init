@@ -1,166 +1,120 @@
-{include file="header.html"}
-{literal}
+{include file="header.html"} {literal}
 <style type="text/css">
-
 </style>
 {/literal}
-<div id="page-invest-page" class="pg-invest">
-       
-      <div class="container_10 fn-clear mt10"><a href="/invest/index.html">项目理财列表</a> &gt; <a href="#">查看详细</a></div>
-      <div class="container_10 fn-clear mt10 top">
+<div id="page-invest-page" class="pg-invest container">
+    <ol class="breadcrumb">
+      <li><a href="/"> 首页</a></li>
+      <li><a href="/invest/index.html">项目理财列表</a></li>
+      <li class="active">查看详细</li>
+    </ol>
+
+    <div class="show-grid content-block padding-large">
         <div class="title">
-        <h4 id="bname" class="f20 fLeft">{$_G.FinancingProduct.name}
-          <span>{$_G.FinancingProduct.title}</span></h4>
+            <h4 id="bname">{$_G.FinancingProduct.name}
+                <span>{$_G.FinancingProduct.title}</span>
+            </h4>
         </div>
-      </div>
-        <div class="container_10 fn-clear mt10">
-          <div class="invest-intro box p20 fn-clear fLeft">
-                <div>
-                  <ul class="fn-clear fLeft">
-                    <li class="fn-clear pb10">
-                          <span class="fLeft w200">额度范围：{$_G.FinancingProduct.min_limit/10000}~{$_G.FinancingProduct.max_limit/10000} 万元</span>
-                          <span class="fLeft w160">期限范围：{$_G.FinancingProduct.min_time}～{$_G.FinancingProduct.max_time} 个月</span>
-                    </li>
-                    
-                    <li class="fn-clear pb10">
-                          <span class="fLeft w200">年化成本：{$_G.FinancingProduct.borrow_apr}%</span>
-                          <span class="fLeft w160">月均利息：{$_G.FinancingProduct.month_apr}%</span>
-                    </li>
+    </div>
+    <div class="row show-grid">
+        <div class="col-md-8">
+          <div class="invest-intro content-block padding-large show-grid">
+            <div class="row show-grid">
+              <ul class="col-md-8">
+                  <li class="row mb10">
+                      <span class="col-md-6">额度范围：{$_G.FinancingProduct.min_limit/10000}~{$_G.FinancingProduct.max_limit/10000} 万元</span>
+                      <span class="col-md-6">期限范围：{$_G.FinancingProduct.min_time}～{$_G.FinancingProduct.max_time} 个月</span>
+                  </li>
 
-                    <li class="fn-clear pb10">
-                          <span class="fLeft w200"> 还款方式：{$_G.FinancingProduct.repay_type} </span>
-                          <span class="fLeft w160"> 放款周期：{$_G.FinancingProduct.min_loan_time}~{$_G.FinancingProduct.max_loan_time}个工作日 </span>
-                    </li>
+                  <li class="row mb10">
+                      <span class="col-md-6">年化成本：{$_G.FinancingProduct.borrow_apr}%</span>
+                      <span class="col-md-6">月均利息：{$_G.FinancingProduct.month_apr}%</span>
+                  </li>
 
-                  </ul>
+                  <li class="row mb10">
+                      <span class="col-md-6">还款方式：{$_G.FinancingProduct.repay_type}</span>
+                      <span class="col-md-6">放款周期：{$_G.FinancingProduct.min_loan_time}~{$_G.FinancingProduct.max_loan_time}个工作日</span>
+                  </li>
 
-                  <div class="action fRight">
-                    <div><a class="btn">立即申请贷款</a></div>
-                    <span>已有{$_G.FinancingProduct.app_number}人申请,其中{$_G.FinancingProduct.vouch_type}人成功放款</span>
-                  </div>
-                </div>
-                <div class="load fLeft">
-                  <div class="status">
+              </ul>
+
+              <div class="col-md-4 text-center">
+                  <a class="btn btn-success btn-block">立即申请贷款</a>
+                  <small>已有{$_G.FinancingProduct.app_number}人申请,其中{$_G.FinancingProduct.vouch_type}人成功放款</small>
+              </div>
+            </div>
+            <div class="load">
+                <div class="status">
                     <div class="ico">1</div>
                     <div class="txt">提交申请</div>
-                  </div>
-                  <div class="line"><span></span></div>
-                  <div class="status">
+                </div>
+                <div class="line">
+                    <span></span>
+                </div>
+                <div class="status">
                     <div class="ico">2</div>
                     <div class="txt">在线申请</div>
-                  </div>
-                  <div class="line"><span></span></div>
-                  <div class="status">
+                </div>
+                <div class="line">
+                    <span></span>
+                </div>
+                <div class="status">
                     <div class="ico">3</div>
                     <div class="txt">合同面签</div>
-                  </div>
-                  <div class="line"><span></span></div>
-                  <div class="status">
+                </div>
+                <div class="line">
+                    <span></span>
+                </div>
+                <div class="status">
                     <div class="ico">4</div>
                     <div class="txt">成功放款</div>
-                  </div>
                 </div>
             </div>
-            <div class="invest-qucik-tender qucik-right box p10 fn-clear fRight">
-              <div class="fn-clear boder-gray pb10 pt10">
-                <h5 class="fLeft f24">贷款计算器</h5>
-                  </div>
-                <div class="fn-clear pt15 pb10 boder-gray">
-                <form method="post" action="/lixi/index.html">
-                <table width="100%" cellspacing="10" cellpadding="0" border="0">
-                  <tbody><tr>
-                    <td width="31%" align="right">初始投资</td>
-                    <td><input type="text" value="" name="account">
-                      元</td>
-                  </tr>
-                  <tr>
-                    <td align="right">年利率</td>
-                    <td><input type="text" value="" name="lilv">
-                      %</td>
-                  </tr>
-                  <tr>
-                    <td align="right">投资期限</td>
-                    <td><input type="text" value="" name="times">
-                      月</td>
-                  </tr>
-                  <tr>
-                  <td align="right">还款方式</td>
-                  <td><select style="width:90px" name="type"><option value="month">按月等额本息</option><option value="endmonth">按月付息</option><option value="endmonths"> 按月付息到期还本</option><option value="end">到期还本还息</option><option value="season">按季还款</option></select></td>
-                   </tr>
-                  <tr>
-                    <td>&nbsp;</td>
-                    <td><input type="submit" value="计算" name="Submit" id="button"></td>
-                  </tr>
-                </tbody></table>
-                </form>
+          </div>
 
-
-                          </div>
-
-            </div>
-        </div>
-
-        <div class="container_10 fn-clear mt10 ">
-          <div class="fLeft contents-left">
-            <div class="box invest-intro p20 fn-clear">
-                <h3>贷款须知</h3>
-                <div class="iteminfo">
-                  <h4><span class="ico"></span>申请条件</h4>
+          <div class="content-block invest-intro padding-large">
+              <h3 class='header'>贷款须知</h3>
+              <div class="iteminfo show-grid">
+                  <h4>
+                      <span class="ico"></span>申请条件</h4>
                   <hr />
                   <div class="contents">
-                    {$_G.FinancingProduct.conditions}
+                      {$_G.FinancingProduct.conditions}
                   </div>
-                </div>
-                <div class="iteminfo">
-                  <h4><span class="ico"></span>所需资料</h4>
+              </div>
+              <div class="iteminfo show-grid">
+                  <h4>
+                      <span class="ico"></span>所需资料</h4>
                   <hr />
                   <div class="contents">
-                    {$_G.FinancingProduct.needdata}
+                      {$_G.FinancingProduct.needdata}
                   </div>
-                </div>
-                <div class="iteminfo">
-                  <h4><span class="ico"></span>成功案例</h4>
+              </div>
+              <div class="iteminfo show-grid">
+                  <h4>
+                      <span class="ico"></span>成功案例</h4>
                   <hr />
                   <div class="contents"></div>
-                </div>
-                <div class="bottomlink">
-                  <div><a class="btn">立即申请贷款</a></div>
-                </div>
-            </div>
-            <div class="box invest-intro p20 fn-clear">
-
-            </div>
-          </div>
-
-          <div class="contents-right fRight">
-             <div class="box p10  fn-clear qucik-right ">
-               <h4>为什么选择点金贷</h4>
-               <ul></ul>
-             </div>
-             <div class="box p10  fn-clear qucik-right ">
-                <h4>相关信用贷款推荐</h4>
-                <ul></ul>
-             </div>
+              </div>
+              <div class="show-grid">
+                <a class="btn btn-success btn-block">立即申请贷款</a>
+              </div>
           </div>
         </div>
+        <div class="col-md-4">
+          {include file="caculator.html"}
+
+          <div class="content-block padding-large show-grid">
+              <h4 class='header'>为什么选择点金贷</h4>
+              <ul></ul>
+          </div>
+          <div class="content-block padding-large">
+              <h4 class='header'>相关信用贷款推荐</h4>
+              <ul></ul>
+          </div>
+        </div>
+    </div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- </div>
- {include file="footer.html"}
+</div>
+{include file="footer.html"}

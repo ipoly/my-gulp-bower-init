@@ -1,7 +1,7 @@
 {include file="header.html"}
 <div class="container">
   <ol class="breadcrumb">
-    <li><a href=""> 首页</a></li>
+    <li><a href="/"> 首页</a></li>
     <li><a href="">我要借款</a></li>
     <li class="active">借款产品</li>
   </ol>
@@ -83,7 +83,7 @@
             <div class="form-group">
               <label class="col-md-3 control-label">手机号码</label>
               <div class="col-md-9">
-                <input type="text" required="required" name="mobile" ng-model="mobile" placeholder="请输入11位手机号" {literal}ng-pattern="/^\d{11}$/"{/literal} class="form-control"/>
+                <input type="mobile" required="required" name="mobile" ng-model="mobile" placeholder="请输入11位手机号" class="form-control"/>
               </div>
             </div>
             <div class="form-group">
@@ -248,54 +248,7 @@
       </div>
     </div>
     <div class="col-md-5">
-      <div class="content-block padding-large">
-        <h3 class="header"><i class="fa fa-th-large text-primary"></i>&nbsp;借款计算器</h3>
-        <hr/>
-        <form class="form-horizontal" action="/lixi/index.html" method="post">
-          <div class="form-group">
-            <label class="col-md-3 control-label">借款金额</label>
-            <div class="col-md-9">
-              <div class="input-group">
-                <input type="number" required="required" name="account" placeholder="3万-30万" class="form-control"/><span class="input-group-addon">元</span>
-              </div>
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-md-3 control-label">借款期限</label>
-            <div class="col-md-9">
-              <div class="input-group">
-                <input type="number" name="times" placeholder="请输入借款期限" class="form-control"/><span class="input-group-addon">月</span>
-              </div>
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-md-3 control-label">借款利率</label>
-            <div class="col-md-9">
-              <div class="input-group">
-                <input type="rate" required="required" name="lilv" placeholder="贷款利率范围1%-26.24%之间" class="form-control"/><span class="input-group-addon">%</span>
-              </div>
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-md-3 control-label">还款方式</label>
-            <div class="col-md-9">
-              <select required="required" name="type" class="form-control">
-				<option value="month">按月等额本息</option>
-				<option value="endmonth">按月付息</option>
-				<option value="endmonths"> 按月付息到期还本</option>
-				<option value="end">到期还本还息</option>
-				<option value="season">按季还款</option>
-              </select>
-            </div>
-          </div>
-          <div class="form-group">
-            <div class="col-md-9 col-md-offset-3">
-              <button class="btn btn-primary btn-lg btn-block mb10">开始计算</button>
-              <div class="font-size-small text-muted">*利率范围：不超过中国人民银行基准利率的4倍</div>
-            </div>
-          </div>
-        </form>
-      </div>
+      {include file="caculator.html"}
     </div>
   </div>
 </div>

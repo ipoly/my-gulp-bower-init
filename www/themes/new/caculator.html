@@ -1,0 +1,48 @@
+<div class="content-block padding-large show-grid">
+  <h3 class="header"><i class="fa fa-th-large text-primary"></i>&nbsp;借款计算器</h3>
+  <hr/>
+  <form class="form-horizontal" action="/lixi/index.html" method="post" name='caculator'>
+    <div class="form-group">
+      <label class="col-md-3 control-label">借款金额</label>
+      <div class="col-md-9">
+        <div class="input-group">
+          <input type="number" name="account" ng-model='account' min='3' max='30' placeholder="3万-30万" class="form-control" required/><span class="input-group-addon">元</span>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-md-3 control-label">借款期限</label>
+      <div class="col-md-9">
+        <div class="input-group">
+          <input type="number" name="times" ng-model='times' min='1' placeholder="请输入借款期限" class="form-control" required/><span class="input-group-addon">月</span>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-md-3 control-label">借款利率</label>
+      <div class="col-md-9">
+        <div class="input-group">
+          <input type="number" name="lilv" ng-model='lilv' placeholder="贷款利率范围1%-26.24%之间" max='26.24' min='1' step='0.01' class="form-control" required/><span class="input-group-addon">%</span>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-md-3 control-label">还款方式</label>
+      <div class="col-md-9">
+        <select required="required" name="type" class="form-control">
+          <option value="month">按月等额本息</option>
+          <option value="endmonth">按月付息</option>
+          <option value="endmonths"> 按月付息到期还本</option>
+          <option value="end">到期还本还息</option>
+          <option value="season">按季还款</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-md-9 col-md-offset-3">
+        <button type='submit' ng-disabled='caculator.$invalid' class="btn btn-primary btn-lg btn-block mb10">开始计算</button>
+        <div class="font-size-small text-muted">*利率范围：不超过中国人民银行基准利率的4倍</div>
+      </div>
+    </div>
+  </form>
+</div>
