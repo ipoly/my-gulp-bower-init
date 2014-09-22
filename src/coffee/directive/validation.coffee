@@ -41,4 +41,6 @@ angular.module 'validation.directive',[]
     compile: ($elm, $attr)->
       if $attr.type is 'mobile'
         $attr.$set 'ngPattern', '/^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1}))+\\d{8})$/'
+      if $attr.type is 'username'
+        $attr.$set 'ngPattern', '/[\\u4e00-\\u9fa5]{2,}|\\w{4,}/'
 ]

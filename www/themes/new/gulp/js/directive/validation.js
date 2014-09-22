@@ -46,7 +46,10 @@
         restrict: 'E',
         compile: function($elm, $attr) {
           if ($attr.type === 'mobile') {
-            return $attr.$set('ngPattern', '/^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1}))+\\d{8})$/');
+            $attr.$set('ngPattern', '/^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1}))+\\d{8})$/');
+          }
+          if ($attr.type === 'username') {
+            return $attr.$set('ngPattern', '/[\\u4e00-\\u9fa5]{2,}|\\w{4,}/');
           }
         }
       };
