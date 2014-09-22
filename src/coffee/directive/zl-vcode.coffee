@@ -1,5 +1,5 @@
 "use restrict"
-# generate progress bar
+# request vcode
 angular.module 'zl-vcode.directive',[]
 .directive 'zlVcode', [
   '$timeout'

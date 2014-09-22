@@ -7,6 +7,7 @@ modules = [
   'go-top.directive'
   'validation.directive'
   'zl-vcode.directive'
+  'zl-popup-loan.directive'
 ]
 angular.module 'dianJinDai', modules
 

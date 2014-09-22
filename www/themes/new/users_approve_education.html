@@ -45,7 +45,7 @@
 
 
 
-		<form action="" name="form1" method="post" enctype="multipart/form-data">
+		<form action="#" name="form1" method="post" enctype="multipart/form-data">
 		{if $_G.system.con_edu_fee!=0}
 		<br />学历认证费用为<strong style="color:red">{$_G.system.con_edu_fee}元</strong>。你现在的可用<strong style="color:red">余额为{$_G.user_result.use_money|default:"0"} [<a href="/?user&q=code/account/recharge_new" target="_blank">我要充值</a>]</strong>。<br/>
 		{else}

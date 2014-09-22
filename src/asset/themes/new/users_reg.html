@@ -83,9 +83,21 @@ function sendemail() {
                         {/literal}
 
                         <div class="form-group">
+                            <label class="col-md-3 control-label">验证码</label>
+                            <div class="col-md-2">
+                                <input name="valicode" ng-model='valicode' id="valicode" type="text" class="form-control" required title='请填写验证码'/>
+                            </div>
+                            <div class="col-md-2">
+                                {literal}
+                                <zl-vcode class='btn btn-info btn-block' params='{mobile:mobile, username:username}' ng-disabled='reg_form.mobile.$invalid'/>
+                                {/literal}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
                             <label class="col-md-3 control-label">电子邮箱</label>
                             <div class="col-md-4">
-                                <input name="email" ng-model='email' id="email" type="text" class="form-control" required title='请输入您常用的邮箱地址'/>
+                                <input name="email" ng-model='email' id="email" type="email" class="form-control" required title='请输入您常用的邮箱地址'/>
                             </div>
                         </div>
 
@@ -100,31 +112,6 @@ function sendemail() {
                             <label class="col-md-3 control-label">确认登录密码</label>
                             <div class="col-md-4">
                                 <input name="confirm_password" ng-model='confirm_password' id="confirm_password" type="password" class="form-control" required title='请重复输入上面的密码' zl-match='password'/>
-                            </div>
-                        </div>
-
-                        {if $magic.session.reginvite_user_id==""}
-                        <div class="form-group">
-                            <label class="col-md-3 control-label">推荐人<small>(选填)</small></label>
-                            <div class="col-md-4">
-
-                                <input name="invite_username" ng-model='invite_username' id="invite_username" type="text" class="form-control" />
-                            </div>
-                        </div>
-                        {else}
-                        <input name="invite_user_id" id="invite_user_id" type="hidden"/>
-                        {/if}
-
-
-                        <div class="form-group">
-                            <label class="col-md-3 control-label">验证码</label>
-                            <div class="col-md-2">
-                                <input name="valicode" ng-model='valicode' id="valicode" type="text" class="form-control" required title='请填写验证码'/>
-                            </div>
-                            <div class="col-md-2">
-                                {literal}
-                                <zl-vcode class='btn btn-info btn-block' params='{mobile:mobile, username:username}' ng-disabled='reg_form.mobile.$invalid'/>
-                                {/literal}
                             </div>
                         </div>
                         <div class="form-group">

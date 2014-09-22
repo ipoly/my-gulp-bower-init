@@ -1,5 +1,5 @@
 	<div>
-	   关键字：<input type="text" name="keywords" id="keywords" size="15" value="{$magic.request.keywords|urldecode}" /> 
+	   关键字：<input type="text" name="keywords" id="keywords" size="15" value="{$magic.request.keywords|urldecode}" />
 		<input value="搜索" type="submit" onclick="sousuo('{$_U.query_url}/tender&p=detail')" />
 		</div>
 
@@ -9,7 +9,7 @@
 					<td colspan="11">借出明细账</td>
 				</tr>
 
-			  <form action="" method="post">
+			  <form action="#" method="post">
 
 
 				<tr class="ytit1" >
@@ -82,7 +82,7 @@
 
 					<td  >
                    {$item.recover_times|default:0}期/{$item.borrow_period}期</td>
-                    
+
 
 					<td  >{if $item.change_status==1}已转让{else}-{/if}</td>
 
@@ -93,7 +93,7 @@
 
 
 
-			</form>	
+			</form>
 
 
 		</table>

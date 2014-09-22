@@ -11,9 +11,9 @@
 <br />
 
 
-		
+
 		{else}
-        <form action="" method="post" id="account_cash_form"  onsubmit="return checkform();">
+        <form action="#" method="post" id="account_cash_form"  onsubmit="return checkform();">
         {articles module="users" function="GetUsersVip" user_id="$_G.user_id" var="Vvar"}
 		<div style="margin:10px">注：
               1、请输入您要取出金额,我们将在1至3个工作日(国家节假日除外)之内将钱转入您网站上填写的银行帐号。 <br />
@@ -49,7 +49,7 @@
             {else}
                  <input type="hidden" value="{$_U.account_fee_result.all_account_scale_max}" id="money_max" name="money_max">
             {/if}
-           
+
         {/if}
 		{/articles}
 		<div class="user_right_border">
@@ -63,7 +63,7 @@
 			<div class="c">
 				{if $_G.user_info.realname!=''}
 				{$_G.user_info.realname|truncate:1}**
-				{/if}				
+				{/if}
 			</div>
 		</div>
 		{articles module="account" function="GetOne" var="var" user_id="$_G.user_id"}
@@ -74,7 +74,7 @@
 			</div>
 		</div>
 		{/articles}
-		
+
 		<div class="user_right_border">
 			<div class="l">银行账号：</div>
 			<div class="c">
@@ -98,17 +98,17 @@
 		<div class="user_right_border">
 			<div class="l"><font color="#FF0000">*</font>提现费用：</div>
 				<div class="c">
-						
+
 					<font color="#FF0000" id="real_money">0</font> 元
 				</div>
 		</div>
 		<div class="user_right_border">
 			<div class="l"><font color="#FF0000">*</font>实际到账金额：</div>
-				<div class="c">						
+				<div class="c">
 					<font color="#FF0000" id="r_money">0</font> 元
 				</div>
 		</div>
-	
+
 		<div class="user_right_border">
 			<div class="l"><font color="#FF0000">*</font>手机验证码：</div>
 			<div class="c">
@@ -121,8 +121,8 @@
 		<div class="user_right_border">
 			<div class="l"></div>
 			<div class="c">
-				<input  id="button" type="submit" name="name"  value="确认提交" size="30"/> 
-				
+				<input  id="button" type="submit" name="name"  value="确认提交" size="30"/>
+
 			</div>
 		</div>
 			<input type="hidden" name="type" value="ajax" />
@@ -133,8 +133,8 @@
 		<div class="user_right_foot">
 		* 温馨提示：禁止信用卡套现
 		</div>
-	{/if}	
-	
+	{/if}
+
 </div>
 </div></div>
 </div>
@@ -148,7 +148,7 @@ var all_max = {$_var.all_account_scale_max};
  var vip_status = {$_G.user_result.vip_status|default:0};
 	{articles module="users" plugins="vip" function="GetUsersVip" user_id="$_G.user_id" var="_vip"}
 		var status={$_vip.status};
-	{/articles}	
+	{/articles}
 		var real_money=5;
 		{literal}
 		if(status==1){
@@ -157,7 +157,7 @@ var all_max = {$_var.all_account_scale_max};
 		  fee = all_fee;
 		}
 		function commit(obj) {
-		  if (parseFloat(obj.value) > 0 ) 
+		  if (parseFloat(obj.value) > 0 )
 			{
 			     obj.value=obj.value.replace(/^(\-)*(\d+)\.(\d\d).*$/,'$1$2.$3');
                	var realMoney=parseFloat(obj.value);
@@ -170,8 +170,8 @@ var all_max = {$_var.all_account_scale_max};
     				$("#r_money").text(Math.round(parseFloat(realMoney-parseFloat(account))*100)/100);
                    }
                 });
-			
-				
+
+
 			}else{
 				var realMoney=parseFloat(obj.value);
 				document.getElementById("real_money").innerText =0;
@@ -200,9 +200,9 @@ function checkform(){
 	var msg = '';
     if(paypassword==''){
 		msg += "请输入交易密码\n\n";
-	}	
+	}
 	if(money==''){
-		msg += "请输入提现金额\n\n";	
+		msg += "请输入提现金额\n\n";
 	}
 	if(ajax_phone_code==''){
 		msg += "手机验证码不能为空\n\n";
@@ -214,7 +214,7 @@ function checkform(){
 		alert(msg);
 		return false;
 	}
-	
+
 }
 </script>
 {/literal}

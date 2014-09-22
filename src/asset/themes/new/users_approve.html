@@ -20,27 +20,27 @@
 <div class="account-tab-content p20 pt10 tenderbox" style="display:block;">
 		{if $_U.query_type=="realname"}
 		{include file="users_approve_realname.html"}
-		
+
 		{elseif $_U.query_type=="email"}
 		{include file="users_approve_email.html"}
-		
+
 		{elseif $_U.query_type=="myapp"}
 		{include file="users_approve_myapp.html"}
-		
+
 		{elseif $_U.query_type=="phone"}
 		{include file="users_approve_phone.html"}
-		
+
 		{elseif $_U.query_type=="video"}
 		{include file="users_approve_video.html"}
-		
+
 		{elseif $_U.query_type=="scene"}
 		{include file="users_approve_scene.html"}
-		
+
 		{elseif $_U.query_type=="education"}
 		{include file="users_approve_education.html"}
 
 		{elseif $_U.query_type=="edu_status"}
-		
+
 
 
 
@@ -123,18 +123,18 @@
 			{/articles}
 		</table>
 		{elseif $_U.query_type=="myapp"}
-		
-		
 
-		
 
-		
+
+
+
+
 
 		<!--信用积分 开始-->
 
 		{elseif $_U.query_type=="credit"}
 
-		<div class="user_main_title1" > 
+		<div class="user_main_title1" >
 
 		<strong>信用总得分：</strong> <font size="3" color="#FF0000"><strong>{$_G.user_result.credit}</strong></font>  {$_G.user_result.credit|credit}
 
@@ -142,7 +142,7 @@
 
 		<table  border="0"  cellspacing="1" class="user_list_table" style="width:98%">
 
-			  <form action="" method="post">
+			  <form action="#" method="post">
 
 				<tr class="head" >
 
@@ -163,7 +163,7 @@
 
 				</tr>
 
-			</form>	
+			</form>
 
 		</table>
 

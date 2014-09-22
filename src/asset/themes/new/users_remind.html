@@ -3,7 +3,7 @@
 为了您的交易安全，部分重要信息不能取消接收。 <br />
 <span style="color:#FF0000;display:none">手机提醒只有在手机认证通过后才可以启用。</span></div>
 		<table  border="0"  cellspacing="1" class="tabyel" style="width:98%">
-			  <form action="" method="post">
+			  <form action="#" method="post">
 			  {foreach from= $_U.remind_list item="item"}
 				<tr class="head" >
 					<td  colspan="4">{$item.name}</td>
@@ -18,19 +18,19 @@
 					<td>
 				<input type="checkbox"  {if $var.email==1 || $var.email==3}checked="checked"{/if} name="email_{$var.nid}" id="email_{$var.nid}" value="1" {if $var.email==1 || $var.email==2} disabled="disabled"{/if}/>
 						<label for=email_{$var.nid}>邮件提醒 </label></span> </td>
-					
+
 				</tr>
 				{/foreach}
 			{/foreach }
-				
+
 		</table>
 		<div class="user_submit" align="center">
 				<input type="hidden" name="type" value="1" />
-				<input  id="button" type="submit" name="name"  value="确认提交" size="30" /> 
-			
+				<input  id="button" type="submit" name="name"  value="确认提交" size="30" />
+
 		</div>
 		</form>
-		
+
 		<!--<div class="user_right_foot">
 		* 温馨提示：如果手机短信功能没空的话，所有的短信功能将不能使用
 		</div>-->

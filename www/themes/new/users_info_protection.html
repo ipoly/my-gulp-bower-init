@@ -3,14 +3,14 @@
 		<!--密码保护 开始-->
 
 
-		 <form action="" method="post">
+		 <form action="#" method="post">
 
 
 		{if $_U.answer_type=="2" || $_G.user_result.answer == "" }
 
 
 		<div class="user_main_title1">请选择一个新的帐号保护问题,并输入答案。帐号保护可以为您以后在忘记密码、重要设置等操作的时候,提供安全保障。 </div>
-		
+
 		<div class="t20">
 
 		<div class="user_right_border">
@@ -40,7 +40,7 @@
 			<div class="c">
 
 
-				<input type="text" name="answer" /><input type="hidden" name="type" value="2" /> 
+				<input type="text" name="answer" /><input type="hidden" name="type" value="2" />
 
 
 			</div>
@@ -65,14 +65,14 @@
 
 
 		</div>
-		
+
 		</div>
-		
+
 		{else}
 
 
 		<div class="user_main_title1">您已经设置了密码保护功能，请先输入答案再进行修改。 </div>
-		
+
 		<div class="t20">
 
 		<div class="user_right_border">
@@ -84,7 +84,7 @@
 			<div class="c">
 
 
-				{$_G.user_result.question} 
+				{$_G.user_result.question}
 
 
 			</div>
@@ -111,7 +111,7 @@
 		</div>
 
 
-		
+
 
 
 		{/if}
@@ -126,7 +126,7 @@
 			<div class="c">
 
 
-				<input  id="button" type="submit" name="name"  value="确认提交" size="30" /> 
+				<input  id="button" type="submit" name="name"  value="确认提交" size="30" />
 
 
 			</div>
@@ -142,7 +142,7 @@
 
 		</div>
 
-		
+
 		</div>
 
 

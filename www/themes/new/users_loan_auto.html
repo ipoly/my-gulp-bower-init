@@ -24,7 +24,7 @@ min: false,lock:true});
 			5、借出排序规则如下：</br>
 						&nbsp;&nbsp;&nbsp;&nbsp;a）借出顺序按照开启自动借出功能的时间先后进行排序</br>
 						&nbsp;&nbsp;&nbsp;&nbsp;b）每个会员每个借款仅自动借出一次，借出后，排到所有自动借出会员的队尾</br>
-						
+
 		</div>
 
 		<div class="t20">
@@ -34,7 +34,7 @@ min: false,lock:true});
 				<td colspan="13">自动借出</td>
 			</tr>
 
-			  <form action="" method="post">
+			  <form action="#" method="post">
 
 
 				<tr class="ytit1" >
@@ -56,11 +56,11 @@ min: false,lock:true});
 
 
 					<td  >利率范围</td>
-					
-					
+
+
 					<td  >是否奖励</td>
-					
-					
+
+
 					<td  >标种</td>
 
 
@@ -82,24 +82,24 @@ min: false,lock:true});
 					<td>{if $var.status==1}启用{else}未启用{/if}</td>
 
 					<td>￥{$var.tender_account}</td>
-					
+
 					<td>{if $var.borrow_credit_first!=0}
                     {foreach from="$_G.credit.rank" item="_var" key="key"}
    {if $_var.id==$var.borrow_credit_first}{$_var.name} ~
     {/if}
-    
+
     {if $_var.id==$var.borrow_credit_last}{$_var.name}
     {/if}
     {/foreach}
-    
+
 					{/if}</td>
 
 					<td>{$var.timelimit_month_first}个月~{$var.timelimit_month_last}个月</td>
-					
+
 					<td>{$var.apr_first}%~{$var.apr_last}%</td>
-					
+
 					<td>{if $var.award_status=="0"}全部{else}奖励{/if}</td>
-					
+
 					<td>{foreach from="$var.borrow_types" item="_var" key="key"}
 						{if $_var=="credit"}信用标
 						{elseif $_var=="worth"}净值标
@@ -109,7 +109,7 @@ min: false,lock:true});
 						{/if}
 						{/foreach}
 					</td>
-					
+
 					<td>{$var.min_account}</td>
 
 					<td><a href="/index.php?user&q=code/borrow/auto_new&id={$var.id}">修改</a> <a href="#" onclick="javascript:if(confirm('你确定要删除此自动投标吗？')) location.href='{$_U.query_url}/auto_del&id={$var.id}'">删除</a></td>
@@ -121,7 +121,7 @@ min: false,lock:true});
 				{/loop}
 
 
-			</form>	
+			</form>
 
 
 		</table>
@@ -134,7 +134,7 @@ min: false,lock:true});
 				<td colspan="13">自动借出记录</td>
 			</tr>
 
-			  <form action="" method="post">
+			  <form action="#" method="post">
 
 
 				<tr class="ytit1" >
@@ -162,7 +162,7 @@ min: false,lock:true});
 
 
 					<td  >进度</td>
-					
+
 
 					<td  >状态</td>
 
@@ -180,25 +180,25 @@ min: false,lock:true});
 					<td><a href="/invest/a{$item.borrow_nid}.html">{$item.name}</a></td>
 
 					<td>{$item.borrow_type|linkages:"borrow_all_type"}</td>
-					
+
 					<td>{$item.credit.credit_total|credit:"borrow"}</td>
 
 					<td>{$item.borrow_apr}</td>
-					
+
 					<td>{$item.borrow_period}个月</td>
-					
+
 					<td>{$item.account}</td>
-					
+
 					<td>{$item.borrow_account_scale}%</td>
 
 					<td>{$item.status_nid|linkages:"borrow_status"}</td>
 
 				</tr>
 				{/foreach}
-				
+
 				{/list}
 
-			</form>	
+			</form>
 
 
 		</table>

@@ -1,8 +1,8 @@
 <div>
-		<div> 
+		<div>
 
 
-		发布时间：<input type="text" name="dotime1" id="dotime1" value="{$magic.request.dotime1}" size="15" onclick="change_picktime()"/> 到 <input type="text"  name="dotime2" value="{$magic.request.dotime2}" id="dotime2" size="15" onclick="change_picktime()"/>  关键字：<input type="text" name="keywords" id="keywords" size="15" value="{$magic.request.keywords|urldecode}" /> 
+		发布时间：<input type="text" name="dotime1" id="dotime1" value="{$magic.request.dotime1}" size="15" onclick="change_picktime()"/> 到 <input type="text"  name="dotime2" value="{$magic.request.dotime2}" id="dotime2" size="15" onclick="change_picktime()"/>  关键字：<input type="text" name="keywords" id="keywords" size="15" value="{$magic.request.keywords|urldecode}" />
 
 
 		<input value="搜索" type="submit" onclick="sousuo('{$_U.query_url}/{$_U.query_type}&p=repay&type=late')" />
@@ -14,10 +14,10 @@
 		<div class="t20">
 		<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tabyel">
 
-			  <form action="" method="post">
+			  <form action="#" method="post">
 
 				{list module="borrow" var="loop" function="GetRepayList" plugins="loan" user_id="0" keywords="request" dotime1="request" dotime2="request" late="1"}
-					
+
 				<tr class="ytit">
 					<td colspan="11">逾期的借款</td>
 				</tr>
@@ -47,7 +47,7 @@
 
 
 					<td  >应还本息</td>
-					
+
 					<td  >实还总额</td>
 
 					<td  >逾期天数</td>
@@ -100,13 +100,13 @@
 				{/foreach}
 
 
-			</form>	
+			</form>
 
 
 		</table>
 		</div>
 		<div style="padding:10px 0; text-align:center">{$loop.pages|showpage}</div>
-		
+
 
 
 				{/list}

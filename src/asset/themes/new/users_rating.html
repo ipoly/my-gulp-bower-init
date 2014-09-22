@@ -12,64 +12,64 @@
 				<li class="fLeft account-tab-item {if $_U.query_type=="basic"}current{/if}"><a  class="account-tab-item-link {if $_U.query_type=="basic"}current{/if}" href="{$_U.query_url}/basic" {if $_U.query_type=="basic"} class="onn"{/if}>基本信息</a></li>
 
 				<li class="fLeft account-tab-item {if $_U.query_type=="job"}current{/if}"><a  class="account-tab-item-link {if $_U.query_type=="job"}current{/if}"href="{$_U.query_url}/job" {if $_U.query_type=="job"} class="onn"{/if}>单位资料</a></li>
-				
+
 				<li class="fLeft account-tab-item {if $_U.query_type=="company"}current{/if}"><a  class="account-tab-item-link {if $_U.query_type=="company"}current{/if}"href="{$_U.query_url}/company" {if $_U.query_type=="company"} class="onn"{/if}>私营业主</a></li>
 
 				<li class="fLeft account-tab-item {if $_U.query_type=="contact"}current{/if}"><a  class="account-tab-item-link {if $_U.query_type=="contact"}current{/if}"href="{$_U.query_url}/contact" {if $_U.query_type=="contact"} class="onn"{/if}>联系方式</a></li>
-				
+
 				<li class="fLeft account-tab-item {if $_U.query_type=="finance"}current{/if}"><a  class="account-tab-item-link {if $_U.query_type=="finance"}current{/if}"href="{$_U.query_url}/finance" {if $_U.query_type=="finance"} class="onn"{/if}>财务状况</a></li>
-				
+
 				<li class="fLeft account-tab-item {if $_U.query_type=="houses"}current{/if}"><a  class="account-tab-item-link {if $_U.query_type=="houses"}current{/if}"href="{$_U.query_url}/houses" {if $_U.query_type=="houses"} class="onn"{/if}>房产资料</a></li>
 
 
-			
+
 			{elseif $_U.query_type=="addpayment"}
-			
-	
+
+
 				<li class="fLeft account-tab-item {if $_U.query_type=="addpayment"}current{/if}"><a  class="account-tab-item-link {if $_U.query_type=="addpayment"}current{/if}"href="{$_U.query_url}/addpayment" {if $_U.query_type=="addpayment"} class="onn"{/if}>添加支出状况</a></li>
-		
+
 			{elseif $_U.query_type=="addrevenue"}
-		
+
 				<li class="fLeft account-tab-item {if $_U.query_type=="addrevenue"}current{/if}"><a  class="account-tab-item-link {if $_U.query_type=="addrevenue"}current{/if}"href="{$_U.query_url}/addrevenue" {if $_U.query_type=="addrevenue"} class="onn"{/if}>添加收入状况</a></li>
-		
+
 			{elseif $_U.query_type=="addassets"}
-		
+
 				<li class="fLeft account-tab-item {if $_U.query_type=="addassets"}current{/if}"><a  class="account-tab-item-link {if $_U.query_type=="addassets"}current{/if}"href="{$_U.query_url}/addassets" {if $_U.query_type=="addassets"} class="onn"{/if}>添加资产状况</a></li>
-			
+
 			{/if}
 			</ul>
 		</div>
-		
+
 <div class="account-tab-content p20 pt10 tenderbox" style="display:block;">
 			{if $_U.query_type=="basic"}
-			
+
 			{include file="users_rating_basic.html"}
-			
+
 			{elseif $_U.query_type=="job"}
-			
+
 				{include file="users_rating_job.html"}
-			
+
 			{elseif $_U.query_type=="contact"}
-			
+
 				{include file="users_rating_contact.html"}
-				
+
 			{elseif $_U.query_type=="company"}
-			
+
 				{include file="users_rating_company.html"}
-				
+
 			{elseif $_U.query_type=="finance"}
-			
+
 				{include file="users_rating_finance.html"}
-				
+
 			{elseif $_U.query_type=="houses"}
-			
+
 				{include file="users_rating_houses.html"}
-			
+
 			{elseif $_U.query_type=="assets"}
 			<div class="user_main_title1" >
 				<font color="#ff0000">*</font>为必填资料，所有资料均会严格保密
 			</div>
-			
+
 			<div class="t20">
 			<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tabyel">
 				<tr class="ytit">
@@ -94,10 +94,10 @@
 				{/foreach}
 				{/list}
 			</table>
-			</div>		
-				
+			</div>
+
 			{elseif $_U.query_type=="addassets"}
-			<form action="" method="post">
+			<form action="#" method="post">
 			<div class="user_right_border">
 				<div class="l">负债类别：</div>
 				<div class="c">{linkages name="assetstype" nid="rating_assetstype" type="value" value="$_U.rating_result.assetstype"} <font color="#ff0000">*</font>
@@ -123,7 +123,7 @@
 				<div class="c"><input type="hidden" name="submit" value="submit"><input  id="button" type="submit" name="submit" value="提交"></div>
 			</div>
 			{elseif $_U.query_type=="addpayment"}
-			<form action="" method="post">
+			<form action="#" method="post">
 			<div class="user_right_border">
 				<div class="l">支出类别：</div>
 				<div class="c">{linkages name="type" nid="rating_payment" type="value" value="$_U.rating_result.type"} <font color="#ff0000">*</font>
@@ -149,7 +149,7 @@
 				<div class="c"><input type="hidden" name="submit" value="submit"><input  id="button" type="submit" name="submit" value="提交"></div>
 			</div>
 			{elseif $_U.query_type=="addrevenue"}
-			<form action="" method="post">
+			<form action="#" method="post">
 			<div class="user_right_border">
 				<div class="l">收入类别：</div>
 				<div class="c">{linkages name="type" nid="rating_revenue" type="value" value="$_U.rating_result.type"} <font color="#ff0000">*</font>
@@ -177,12 +177,12 @@
 			{/if}
 			</form>
 		</div>
-	
+
 	</div>
-	
+
 </div>
 	</div>
-	
+
 </div>
 <div style="clear:both;"></div>
 

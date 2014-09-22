@@ -3,12 +3,12 @@
 		<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tabyel">
 
 
-			  <form action="" method="post">
+			  <form action="#" method="post">
 
  <tr class="ytit">
 
           <td colspan="8"><span style="float: right;">
-          用户名：<input name="username" id="username" value="{$magic.request.username|urldecode}" type="text" /> 提交时间：<input type="text" name="dotime1" id="dotime1" value="{$magic.request.dotime1}" size="15" onclick="change_picktime()"/> 到 <input type="text"  name="dotime2" value="{$magic.request.dotime2}" id="dotime2" size="15" onclick="change_picktime()"/>  
+          用户名：<input name="username" id="username" value="{$magic.request.username|urldecode}" type="text" /> 提交时间：<input type="text" name="dotime1" id="dotime1" value="{$magic.request.dotime1}" size="15" onclick="change_picktime()"/> 到 <input type="text"  name="dotime2" value="{$magic.request.dotime2}" id="dotime2" size="15" onclick="change_picktime()"/>
 
 
 <input type="button" value="搜索" onclick="sousuo('{$_U.query_url}/log');" />
@@ -35,7 +35,7 @@
 			<td class="main_td1" align="center" style="width: 50px;" >{$item.id}</td>
 			<td class="main_td1" align="center">{$item.username}</td>
 			<td class="main_td1" align="center">{$item.spreads_typename}</td>
-			<td class="main_td1" align="center">{if $item.account_type=="account"}本息{elseif $item.account_type=="capital"}本金{else}利息{/if}</td>	
+			<td class="main_td1" align="center">{if $item.account_type=="account"}本息{elseif $item.account_type=="capital"}本金{else}利息{/if}</td>
             <td class="main_td1" align="center">{$item.scales}%</td>
 			<td class="main_td1" align="center">￥{$item.account}</td>
             <td class="main_td1" align="center">{$item.addtime|date_format}</td>
@@ -48,7 +48,7 @@
 	{/list}
 
 
-			</form>	
+			</form>
 
 
 		</table>

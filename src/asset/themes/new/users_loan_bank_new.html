@@ -14,18 +14,18 @@
 				{$_G.user_info.realname}
 			</div>
 		</div>
-		
-		<form action="" method="post">
-	
-	
+
+		<form action="#" method="post">
+
+
 	<div class="user_right_border">
 		<div class="l">所属银行：</div>
 		<div class="c">
 		{linkages nid="account_bank" name="bank" type="value" value="$_U.account_bank_result.bank"}
-			
+
 		</div>
 	</div>
-	
+
 	<div class="user_right_border">
 		<div class="l">所在地：</div>
 		<div class="c">
@@ -39,7 +39,7 @@
 <span>**分行**支行**分理处或营业部(如：上海分行杨浦支行控江路分理处),如果您无法确定,建议您致电您的开户银行客服进行询问。 </span>
 			</div>
 		</div>
-		
+
 		<div class="user_right_border">
 			<div class="l">银行账号：</div>
 			<div class="c">
@@ -47,13 +47,13 @@
 <span>特别提醒：上述银行卡号的开户人姓名必须为“<!--{$_U.account_bank_result.realname}-->{$_G.user_info.realname}”, 个人银行账号必须填写正确,否则你的提现资金将存在风险。 如果要修改的话必须要补全, 可以任何时候修改以您的姓名开户的银行卡号。</span>
 			</div>
 		</div>
-		
+
 		<div class="user_right_border">
 			<div class="l"></div>
 			<div class="c">
 				{if $magic.request.id!=""}<input type="hidden" name="id" value="{$magic.request.id}" />{/if}
 				<input type="hidden" name="user_id" value="{$_G.user_id}" />
-				<input  id="button" type="submit" name="name"  value="确认提交" size="30" /> 
+				<input  id="button" type="submit" name="name"  value="确认提交" size="30" />
 			</div>
 		</div>
 		</form>

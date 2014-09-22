@@ -1,12 +1,12 @@
 
 		<!--还款明细 开始-->
 
-		
+
 		<div>
 		<div>
 
 
-		应还日期：<input type="text" name="dotime1" id="dotime1" value="{$magic.request.dotime1}" size="15" onclick="change_picktime()"/> 到 <input type="text"  name="dotime2" value="{$magic.request.dotime2}" id="dotime2" size="15" onclick="change_picktime()"/>  关键字：<input type="text" name="keywords" id="keywords" size="15" value="{$magic.request.keywords|urldecode}" /> 
+		应还日期：<input type="text" name="dotime1" id="dotime1" value="{$magic.request.dotime1}" size="15" onclick="change_picktime()"/> 到 <input type="text"  name="dotime2" value="{$magic.request.dotime2}" id="dotime2" size="15" onclick="change_picktime()"/>  关键字：<input type="text" name="keywords" id="keywords" size="15" value="{$magic.request.keywords|urldecode}" />
 
 
 		<input value="搜索" type="submit" onclick="sousuo('{$_U.query_url}/loan&p=repay&type=detail')" />
@@ -19,7 +19,7 @@
 		<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tabyel">
 
 
-			  <form action="" method="post">
+			  <form action="#" method="post">
 				<tr class="ytit">
 					<td colspan="10">还款明细</td>
 				</tr>
@@ -51,7 +51,7 @@
 
 
 				</tr>
-				
+
 				{articles module="users" plugins="vip" function="GetUsersVip" var="Vvar" user_id="$_G.user_id"}
 				{list module="borrow" var="loop" plugins="loan" function ="GetRepayList"  user_id="0" keywords="request" dotime1="request" dotime2="request" order="repay_time" repay_status="0"  }
 
@@ -83,14 +83,14 @@
 
 
 				<td>{if $var.repay_status==1}-{else}<a href="javascript:void(0)" onclick="repay({$item.id},{$item.borrow_nid})">还款</a>{/if}</td>
-				
+
 
 
 				</tr>
 
 
 				{/foreach}
-			</form>	
+			</form>
 
 
 		</table>

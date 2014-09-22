@@ -3,8 +3,8 @@
     <div class="user_main_title1">
     <b>第一步：核实原手机信息</b></div>
     {articles module="approve" function="GetSmsOne" user_id="$_G.user_id" var="pvar"}
-      <table width="100%" border="0" cellspacing="15" cellpadding="0">  
-      <form action="" method="post" onsubmit="return checkform();">
+      <table width="100%" border="0" cellspacing="15" cellpadding="0">
+      <form action="#" method="post" onsubmit="return checkform();">
       <tr>
         <td style="text-align:right"><span>*</span>原手机号码：
         </td>
@@ -13,7 +13,7 @@
            {/if}
          <input type="hidden" name="ajax_phone" id="ajax_phone" value="{$pvar.phone}" /> <input type="button" id="ajax_phone_get_tixian" value="获取验证码" />
         </td>
-      </tr>  
+      </tr>
       <tr>
         <td style="text-align:right"><span>*</span>手机验证码：</td>
         <td><input type="text" name="ajax_phone_code" id="ajax_phone_code" onkeyup="value=value.replace(/[^0-9Xx]/g,'')" /> </td>
@@ -30,7 +30,7 @@
         </form>
     </table>
     {/articles}
-    {else}   
+    {else}
     <div class="user_main_title1">
     <b>第二步：新手机号码验证</b></div>
     {articles module="approve" function="GetSmsOne" user_id="$_G.user_id" var="pvar"}
@@ -41,7 +41,7 @@
             <td>
              <input type="text" name="ajax_phone" id="ajax_phone" onkeyup="value=value.replace(/[^0-9Xx]/g,'')" /> <input type="button" id="ajax_phone_get" value="获取验证码" />
             </td>
-            </tr>  
+            </tr>
           <tr>
             <td style="text-align:right"><span>*</span>验 证 码 ：</td>
             <td><input type="text" name="ajax_phone_code" id="ajax_phone_code" onkeyup="value=value.replace(/[^0-9Xx]/g,'')" /> </td>
@@ -67,13 +67,13 @@
 	{else}
 		<div class="user_main_title1">
 		<b>您的手机还没通过认证。</b></div>
-          <table width="100%" border="0" cellspacing="15" cellpadding="0">  
+          <table width="100%" border="0" cellspacing="15" cellpadding="0">
           <tr>
             <td style="text-align:right"><span>*</span>手机号码：</td>
             <td>
              <input type="text" name="ajax_phone" id="ajax_phone" onkeyup="value=value.replace(/[^0-9Xx]/g,'')" /> <input type="button" id="ajax_phone_get" value="获取验证码" />
             </td>
-            </tr>  
+            </tr>
           <tr>
             <td style="text-align:right"><span>*</span>验 证 码 ：</td>
             <td><input type="text" name="ajax_phone_code" id="ajax_phone_code" onkeyup="value=value.replace(/[^0-9Xx]/g,'')" /> </td>
@@ -96,16 +96,16 @@ function checkform(){
 	var msg = '';
     if(ajax_phone_code==''){
 		msg += "手机验证码不能为空\n";
-	}	
-	if(paypwd==''){
-		msg += "交易密码不能为空\n";		
 	}
-    
+	if(paypwd==''){
+		msg += "交易密码不能为空\n";
+	}
+
 	if(msg!=''){
 		alert(msg);
 		return false;
 	}
-	
+
 }
 </script>
 {/literal}

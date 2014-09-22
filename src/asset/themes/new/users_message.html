@@ -2,20 +2,20 @@
 {literal}
 <script>
 var con_id = Array();
-function checkFormAll(form) {	
+function checkFormAll(form) {
 	if(form.allcheck.checked==true){
 		con_id.length=0;
 	}
 	for (var i=1;i<form.elements.length;i++){
-		 if(form.elements[i].type=="checkbox"){ 
-            e=form.elements[i]; 
-            e.checked=(form.allcheck.checked)?true:false; 
+		 if(form.elements[i].type=="checkbox"){
+            e=form.elements[i];
+            e.checked=(form.allcheck.checked)?true:false;
 			if(form.allcheck.checked==true){
 				con_id[con_id.length] = e.value;
 			}else{
 				con_id.length=0;
 			}
-        } 
+        }
 	}
 }
 function on_submit(path,id){
@@ -47,7 +47,7 @@ function on_submit(path,id){
 		<input type="button" value="标记已读" onclick="on_submit('{$_G.query_url}/sented',2)"/>
 		<!-- <input type="button" value="标记未读" onclick="on_submit('{$_G.query_url}/sented',3)"/>-->
 		</div>
-		
+
 		<div class="t20">
 		<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tabyel">
 			<form action="{$_U.query_url}/senteds" method="post" id="form1">
@@ -76,11 +76,11 @@ function on_submit(path,id){
 				</tr>
 
 				{/list}
-			</form>	
+			</form>
 			</table>
 			<!--收件箱 结束-->
 		</div>
-		
+
 		<!--发件箱 开始-->
 		{elseif $_U.query_type=="sented"}
 		<div class="user_main_title1" ><input type="button"  value="删除" onclick="on_submit('{$_G.query_url}/sented',1)" /></div>
@@ -124,13 +124,13 @@ function on_submit(path,id){
 				</tr>
 				{/list}
 				<input type="hidden" name="type" id="type" value="0" />
-			</form>	
+			</form>
 			</table>
 			<!--发件箱 结束-->
 		</div>
 		<!--发件箱 开始-->
 		{elseif $_U.query_type=="sent"}
-		<form method="post" action="" id="sent_form">
+		<form method="post" action="#" id="sent_form">
 		<div class="user_right_border">
 			<div class="l">发件人：</div>
 			<div class="c">
@@ -155,7 +155,7 @@ function on_submit(path,id){
 				<textarea name="contents" rows="7" cols="50"  tabindex="3"></textarea>
 			</div>
 		</div>
-		
+
 		<div class="user_right_border">
 			<div class="l">验证码：</div>
 			<div class="c">
@@ -171,7 +171,7 @@ function on_submit(path,id){
 		<div class="user_right_border">
 			<div class="l">&nbsp;</div>
 			<div class="c">
-				<input type="button" onclick="check_form();"  value="确认提交" size="30"  tabindex="6" /> 
+				<input type="button" onclick="check_form();"  value="确认提交" size="30"  tabindex="6" />
 			</div>
 		</div>
 		</form>
@@ -179,7 +179,7 @@ function on_submit(path,id){
 	  var username = '{$_G.user_result.username}';
 	    {literal}
 	  	function check_form(){
-	  	    
+
 			var receive_user = $("#receive_user").val();
             var valicode=$("#valicode").val();
 			if(receive_user==username){
@@ -193,35 +193,35 @@ function on_submit(path,id){
 			     return true;
 			}
 		}
-	  
+
 	  </script>
 	  {/literal}
-		
+
 		<!--查看 开始-->
 		{elseif $_U.query_type=="view"}
 		<div class="user_main_title1" ><input type="button" onclick="javascript:location.href='{$_U.query_url}'" value="返回" /> <input type="button" value="删除" onclick="javascript:location.href='{$_U.query_url}/deled&id={$_U.message_result.id}'"/></div>
-		<form method="post" action="" >
+		<form method="post" action="#" >
 		<div class="user_right_border">
 			<div class="l">标题：</div>
 			<div class="c">
 				{$_U.message_result.name}
 			</div>
 		</div>
-		
+
 		<div class="user_right_border">
 			<div class="l">发送人：</div>
 			<div class="c">
 				{$_U.message_result.send_username|default:"系统"}
 			</div>
 		</div>
-		
+
 		<div class="user_right_border">
 			<div class="l">发送时间：</div>
 			<div class="c">
 				{$_U.message_result.addtime|date_format:"Y-m-d H:i"}
 			</div>
 		</div>
-		
+
 		<div class="user_right_border">
 			<div class="l">发送内容：</div>
 			<div class="c">
@@ -240,13 +240,13 @@ function on_submit(path,id){
 			<div class="c">
 				<input type="hidden" name="id" value="{$_U.message_result.id}" />
 				<input type="hidden" name="receive_user" value="{$_U.message_result.send_username}" />
-				<input  id="button" type="submit"  value="回复"  /> 
+				<input  id="button" type="submit"  value="回复"  />
 			</div>
 		</div>
 		{/if}
 		</form>
 		<!--查看 结束-->
-		
+
 		<!--查看 开始-->
 		{elseif $_U.query_type=="viewed"}
 		<div class="user_main_title1" ><input type="button" onclick="javascript:location.href='{$_U.query_url}/sented'" value="返回" /> <input type="button" value="删除" onclick="javascript:location.href='{$_U.query_url}/deled&id={$_U.message_result.id}'"/></div>
@@ -256,30 +256,30 @@ function on_submit(path,id){
 				{$_U.message_result.name}
 			</div>
 		</div>
-		
+
 		<div class="user_right_border">
 			<div class="l">收件人：</div>
 			<div class="c">
 				{$_U.message_result.receive_username|default:"系统"}
 			</div>
 		</div>
-		
+
 		<div class="user_right_border">
 			<div class="l">发送时间：</div>
 			<div class="c">
 				{$_U.message_result.addtime|date_format:"Y-m-d H:i"}
 			</div>
 		</div>
-		
+
 		<div class="user_right_border">
 			<div class="l">发送内容：</div>
 			<div class="c">
 				{$_U.message_result.contents}
 			</div>
 		</div>
-		
+
 		<!--查看 结束-->
-		
+
 		{/if}
 	</div>
 	</div>

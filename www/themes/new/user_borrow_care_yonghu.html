@@ -1,5 +1,5 @@
 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tabyel">
-<form action="" method="post">
+<form action="#" method="post">
 				<tr class="ytit">
 					<td colspan="6">我关注的用户</td>
 				</tr>
@@ -16,7 +16,7 @@
 				</tr>
 
 
-				
+
 				{list module="users" plugins="Care" function="GetUserCareList" var="loop" user_id="$_G.user_id"}
 
 
@@ -29,7 +29,7 @@
 
 
 					<td  ><a href="/u/{$item.care_user_id}">{$item.care_username}</a></td>
-					
+
 					<td  ><a href="#" onclick="javascript:if(confirm('你确定要删除此关注用户吗？')) location.href='?user&q=code/borrow/yonghu&id={$item.id}'">删除</a></td>
 				</tr>
 
@@ -39,7 +39,7 @@
 
 
 
-			</form>	
+			</form>
 
 
 		</table>

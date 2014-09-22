@@ -6,7 +6,7 @@
 		<div class="user_right_border">
 			<div class="l">标题：</div>
 			<div class="c">
-				<a href="/invest/a{$_U.borrow_result.borrow_nid}.html" target="_blank">{$_U.borrow_result.name}</a> 
+				<a href="/invest/a{$_U.borrow_result.borrow_nid}.html" target="_blank">{$_U.borrow_result.name}</a>
                 {if $_U.borrow_result.repay_full_status!=1 && $_U.borrow_result.borrow_type!="roam" && $_U.borrow_result.borrow_type!="day" && $_U.borrow_result.repay_wait_times>1} <input type="button" value="提前还款" onclick="repay_advance({$_U.borrow_result.borrow_nid})" />{/if}
 			</div>
 		</div>
@@ -39,7 +39,7 @@
 
 
 			<div class="rb">
-			
+
 {$_U.borrow_result.borrow_period_name}
 
 
@@ -50,7 +50,7 @@
 			<div class="rb">
 
 {$_U.borrow_result.style_title}
-				 
+
 
 
 			</div>
@@ -95,7 +95,7 @@
 		<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tabyel">
 
 
-			  <form action="" method="post">
+			  <form action="#" method="post">
 
 
 				<tr class="ytit1" >
@@ -158,7 +158,7 @@
 
 
 					<td>{if $var.repay_status==1}-{else}<a href="javascript:void(0)" onclick="repay({$var.id},{$var.borrow_nid})">还款</a>{/if}</td>
-					
+
 
 				</tr>
 
@@ -166,7 +166,7 @@
 				{/loop}
 
 
-			</form>	
+			</form>
 
 
 		</table>

@@ -8,7 +8,7 @@
 {else}
 <div style=" margin:10px 20px">
 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tabyel">
-			<form action="" method="post">
+			<form action="#" method="post">
 			<tr class="ytit">
 				<td colspan="8">ÒøĞĞÕËºÅ</td>
 			</tr>
@@ -30,7 +30,7 @@
 					<td><a href="{$_U.query_url}/bank_new&id={$item.id}">±à¼­</a> <!--<a href="#" data-href="{$_U.query_url}/bank_del&id={$item.id}" class="bank_del">É¾³ı</a>--></td>
 				</tr>
 				{ /loop}
-			</form>	
+			</form>
 </table></div>
 		<script>{literal}deayou.use("account",function(e){e.bank_del();});</script>{/literal}
 {/if}

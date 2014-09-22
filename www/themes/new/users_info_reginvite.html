@@ -3,7 +3,7 @@
 		<!--好友邀请 开始-->
 
 
-		<div class="user_main_title1" > 
+		<div class="user_main_title1" >
 
 
 			温馨提示：请不要发送邀请信给不熟悉的人士,避免给别人带来不必要的困扰。<br />
@@ -32,7 +32,7 @@
 		<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tabyel">
 
 
-			  <form action="" method="post">
+			  <form action="#" method="post">
 
 
 				<tr class="ytit1" >
@@ -67,7 +67,7 @@
 					{articles module="users" plugins="vip" function="GetUsersVip" var="Vvar" user_id="$item.friends_userid"}
 					<td>{if $Vvar.status==1}{$_G.system.con_friend_vip_money}{else}0{/if}</td>
 					{/articles}
-					
+
 				</tr>
 
 
@@ -82,7 +82,7 @@
 				{/list}
 
 
-			</form>	
+			</form>
 
 
 		</table>
@@ -94,10 +94,10 @@
 		<script>
 
 
-		
 
 
-		function doCopy(id) { 
+
+		function doCopy(id) {
 
 
 		  var codeid;
@@ -148,4 +148,3 @@
 		<!--好友请求 结束-->
 
 
-		
