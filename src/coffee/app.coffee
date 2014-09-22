@@ -6,6 +6,7 @@ modules = [
   'click-jump.directive'
   'go-top.directive'
   'validation.directive'
+  'zl-vcode.directive'
 ]
 angular.module 'dianJinDai', modules
 

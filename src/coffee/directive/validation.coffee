@@ -35,4 +35,10 @@ angular.module 'validation.directive',[]
         $scope.onfocus = e.type is 'focusin'
         $scope.$apply()
 ]
-
+.directive 'input',[
+  ->
+    restrict: 'E'
+    compile: ($elm, $attr)->
+      if $attr.type is 'mobile'
+        $attr.$set 'ngPattern', '/^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1}))+\\d{8})$/'
+]

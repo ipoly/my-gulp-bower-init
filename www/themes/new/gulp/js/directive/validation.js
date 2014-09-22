@@ -40,6 +40,17 @@
         }
       };
     }
+  ]).directive('input', [
+    function() {
+      return {
+        restrict: 'E',
+        compile: function($elm, $attr) {
+          if ($attr.type === 'mobile') {
+            return $attr.$set('ngPattern', '/^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1}))+\\d{8})$/');
+          }
+        }
+      };
+    }
   ]);
 
 }).call(this);
