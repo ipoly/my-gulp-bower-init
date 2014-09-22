@@ -38,7 +38,7 @@ DIST = {
 
 APP_ROOT = 'www'
 
-MULTI_SCRIPT_REGEX = /[\s\t]*<script src=(['"])\/(.+\*.+)\1><\/script>/igm
+MULTI_SCRIPT_REGEX = /[\s\t]*<script.* src=(['"])\/([^'"<>]+\*[^'"<>]+)\1( .*)?><\/script>/igm
 
 REPLACE_MULTI_SCRIPT_FUNC = ->
   replace MULTI_SCRIPT_REGEX, (match, $1, $2, offset, string)->
