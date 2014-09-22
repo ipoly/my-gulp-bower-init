@@ -152,12 +152,12 @@
                                          Ajax
                  </div> -->
 
-          {list module="speeds" function="GetList" var="loop" keywords="$magic.request.keywords" timeselect="$magic.request.timeselect" borrow_type="$magic.request.borrow_type" idneed="$magic.request.idneed" repay_type="$magic.request.repay_type" vouch_type="$magic.request.vouch_type" mechanismtype="$magic.request.mechanismtype" epage="10" order="$magic.request.order"  query_type="$_G.site_result.nid"}
+          {list module="speeds" function="GetList" var="loop" keywords="$magic.request.keywords" timeselect="$magic.request.timeselect" borrow_type="$magic.request.borrow_type" idneed="$magic.request.idneed" repay_type="$magic.request.repay_type" vouch_type="$magic.request.vouch_type" mechanismtype="$magic.request.mechanismtype" page="$magic.request.page" epage="10" order="$magic.request.order"  query_type="$_G.site_result.nid"}
 {foreach from="$loop.list" item="var" }
          <li class="fn-clear lists">
          <span class="list-title gray fLeft" style="width:300px;border-right:1px solid #f6f6f6;">
             <span class="ico">
-              <a href="/financingproduct/{$var.id}.html"><img src="{$var.fileurl}" /></a>
+              <a href="/financingproduct/{$var.id}.html"><img src="{$var.thumburl}" /></a>
             </span>
             <p class="title"><a href="/financingproduct/{$var.id}.html">{$var.name}</a></p>
             <p>信用贷</p>
@@ -175,7 +175,12 @@
 
          </li>
           {/foreach}   
-        <div id="page-list" class="page-list mt20 fn-clear">{$loop.pages|showpage:"2,dy"}</div>
+        <div id="page-list" class="page-list mt20 fn-clear"></div>
+        <div class="text-center">
+            <ul class="pagination">
+            {$loop.pages|showpage:"2,fl"}
+            </ul>
+        </div>
         {/list}
          </ul>
                 

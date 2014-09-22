@@ -1,9 +1,9 @@
 {include file="header.html"}
 <div class="container">
   <ol class="breadcrumb">
-    <li><a href=""> 首页</a></li>
-    <li><a href="">我要借款</a></li>
-    <li class="active">借款产品</li>
+    <li><a href=""> ��ҳ</a></li>
+    <li><a href="">��Ҫ���</a></li>
+    <li class="active">����Ʒ</li>
   </ol>
   <ul class="nav nav-pills show-grid">
     {loop module="speeds" function="GetTopicTypeMenu" var="item" limit="all" }
@@ -16,38 +16,39 @@
     <div class="col-md-6 show-grid">
       <div class="content-block"><img src="{$item.fileurl}"/>
         <div class="padding-large">
-          <h3>{$item.name}&nbsp;<small>适用私营企业主和个体工商户</small><a href="/financinglists/{$item.id}.html" class="more detail btn btn-customize"></a></h3><small>{$item.contents}</small>
+          <h3>{$item.name}&nbsp;<small>����˽Ӫ��ҵ���͸��幤�̻�</small><a href="/financingview/{$item.id}.html" class="more detail btn btn-customize"></a></h3><small>{$item.contents}</small>
+          <p>����{$item.count}�����״���Ʒ, <a href="/financinglists/{$item.id}.html">�鿴����</a></p>
         </div>
       </div>
     </div>{/loop}
   </div>
   <div class="content-block show-grid padding-large">
-    <h3 class="header">借款流程</h3><img src="/themes/new/gulp/img/product5.gif" class="center-block show-grid"/>
+    <h3 class="header">�������</h3><img src="/themes/new/gulp/img/product5.gif" class="center-block show-grid"/>
   </div>
   <div id="qa" class="content-block show-grid padding-large">
     <div class="row padding-large">
       <div class="col-md-6"><i class="fa fa-question-circle fa-3x text-primary pull-left"></i>
         <div>
-          <h4>借款审核一般需要多长时间？</h4>
-          <p class="text-muted">借款资料提交成功后，工作人员会在 2 个工作日内进行审核，审核结果会以电话的形式通知。</p>
+          <h4>������һ����Ҫ�೤ʱ�䣿</h4>
+          <p class="text-muted">��������ύ�ɹ��󣬹�����Ա���� 2 ���������ڽ�����ˣ���˽�����Ե绰����ʽ֪ͨ��</p>
         </div>
       </div>
       <div class="col-md-6"><i class="fa fa-question-circle fa-3x text-primary pull-left"></i>
         <div>
-          <h4>借款额度是多少？</h4>
-          <p class="text-muted">薪金贷和小微企业类借款额度为3万元到30万元，车贷类借款额度上限为50万元。</p>
+          <h4>������Ƕ��٣�</h4>
+          <p class="text-muted">н�����С΢��ҵ������Ϊ3��Ԫ��30��Ԫ����������������Ϊ50��Ԫ��</p>
         </div>
       </div>
       <div class="col-md-6"><i class="fa fa-question-circle fa-3x text-primary pull-left"></i>
         <div>
-          <h4>还款方式有哪些？</h4>
-          <p class="text-muted">目前根据不同的借款产品支持等额本息、一次付息，到期还本和按月付息，到期还本的还款方式。</p>
+          <h4>���ʽ����Щ��</h4>
+          <p class="text-muted">Ŀǰ���ݲ�ͬ�Ľ���Ʒ֧�ֵȶϢ��һ�θ�Ϣ�����ڻ����Ͱ��¸�Ϣ�����ڻ����Ļ��ʽ��</p>
         </div>
       </div>
       <div class="col-md-6"><i class="fa fa-question-circle fa-3x text-primary pull-left"></i>
         <div>
-          <h4>借款需要支付哪些费用？</h4>
-          <p class="text-muted">借款人借款成功后需要支付给投资人的利息费用，以及支付给你我贷平台和你我贷平台合作伙伴的服务费用。</p>
+          <h4>�����Ҫ֧����Щ���ã�</h4>
+          <p class="text-muted">����˽��ɹ�����Ҫ֧����Ͷ���˵���Ϣ���ã��Լ�֧�������Ҵ�ƽ̨�����Ҵ�ƽ̨�������ķ�����á�</p>
         </div>
       </div>
     </div><img src="/themes/new/gulp/img/qa.gif"/>
