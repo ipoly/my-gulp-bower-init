@@ -1,5 +1,5 @@
 "use restrict"
-# generate progress bar
+# form some place can't use a link
 angular.module 'click-jump.directive',[]
 .directive 'clickJump', [
   ->

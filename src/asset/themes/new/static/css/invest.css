@@ -119,28 +119,28 @@ float:left;
 }
 .pg-invest .invest-list-speed-1{
 	border:1px solid #d88e19;
-} 
+}
 .pg-invest .invest-list-speed-1 .bg{
 	background:url(../img/bg/speed_1.jpg) repeat-x;
-} 
+}
 .pg-invest .invest-list-speed-1 .point{
 	background-position:0px -32px;
 }
 .pg-invest .invest-list-speed-2{
 	border:1px solid #d83d00;
-} 
+}
 .pg-invest .invest-list-speed-2 .bg{
 	background:url(../img/bg/speed_2.jpg) repeat-x;
-} 
+}
 .pg-invest .invest-list-speed-2 .point{
 	background-position:0px 0px;
 }
 .pg-invest .invest-list-speed-3{
 	border:1px solid #7ca707;
-} 
+}
 .pg-invest .invest-list-speed-3 .bg{
 	background:url(../img/bg/speed_3.jpg) repeat-x;
-} 
+}
 .pg-invest .invest-list-speed-3 .point{
 	background-position:0px -16px;
 }
@@ -176,6 +176,13 @@ float:left;
 #page-invest-page .invest-tender-btn.gray{
 	background:gray;
 }
+.invest-tab {
+	position: relative;
+	z-index: 1;
+}
+.invest-tab ul {
+	margin-bottom: -1px;
+}
 #page-invest-page .invest-tab-item{
 	border-top:4px solid #fafafa;
 	margin-right:5px;
@@ -206,7 +213,6 @@ float:left;
 	background:#fff;
 	border:1px solid #d9d9d9;
 	display:none;
-	width:958px;
 }
 #page-invest-page .invest-container-title{
 	height: 36px;
@@ -239,7 +245,7 @@ float:left;
 #page-invest-page .invest-check-title{
 	background:#f3f3f3;
 	height:32px;
-	line-height:32px;	
+	line-height:32px;
 }
 #page-invest-page .invest-vouch{
 	width:415px;
@@ -266,27 +272,21 @@ float:left;
 #page-invest-page .invest-pic-item:hover{
 	border:2px solid #5faee7;
 }
-#page-invest-page .invest-pic-item img{	
+#page-invest-page .invest-pic-item img{
 }
 /* 改成table样式后的css */
 .investcustom{
 padding:10px 20px 20px 20px;
 }
 .cusinfortit{
-width:958px;
-height: 36px;
 line-height: 36px;
 border-bottom: 1px solid #d0e8fd;
 background: #ecf5fd;
 text-indent: 15px;
 color: #067bce;
-float:left;
 margin:10px 0px 10px 0px;
 }
 .custominfor{
-display:block;
-width:958px;
-float:left;
 margin:0px;
 padding:0px;
 border-collapse:collapse;
@@ -359,7 +359,7 @@ float:left;
 .bid thead{
 margin:0px;
 padding:0px;
-border:none; 
+border:none;
 }
 .bid thead tr th{
 display:block;

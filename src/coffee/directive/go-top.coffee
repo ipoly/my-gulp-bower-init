@@ -1,5 +1,5 @@
 "use restrict"
-# generate progress bar
+# scroll to page top
 angular.module 'go-top.directive',[]
 .directive 'goTop', [
   ->

@@ -9,10 +9,10 @@
 .user_right_border b { color:#FF0000; font-weight:normal; margin-left:5px;}
 .user_main_title{border-bottom:1px solid #FFCF88; background-color:#FFFDEC; text-align:left; font-size:12px; padding-left:10px;height:auto; padding-top:7px;line-height:20px;}
 .user_right_foot{font-size:12px;border:1px solid #bfbfbf;background-color:#F0F7FC;width:660px;margin-bottom:10px;padding:10px 10px 10px 10px;margin-top:10px;height:auto;line-height:20px;}
-      
-.item {padding:0 10px; line-height: 25px; height: 150px; overflow: hidden;  }      
-.item li { padding:5px 0; margin: 0;overflow: hidden; height:39px;border-bottom: 1px dotted #DFE6EA;}       
-.item li .color {font-weight:normal;}    
+
+.item {padding:0 10px; line-height: 25px; height: 150px; overflow: hidden;  }
+.item li { padding:5px 0; margin: 0;overflow: hidden; height:39px;border-bottom: 1px dotted #DFE6EA;}
+.item li .color {font-weight:normal;}
 .item li .mtop5 {margin-bottom: 0;height:15px; overflow:hidden}
 
 
