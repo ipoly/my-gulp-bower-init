@@ -1,8 +1,8 @@
 "use restrict"
 modules = [
   'ngAnimate'
+  'ui.bootstrap'
   'count-down-to.directive'
-  'progrress-bar.directive'
   'click-jump.directive'
   'go-top.directive'
   'validation.directive'

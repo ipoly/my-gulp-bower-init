@@ -2,7 +2,7 @@
   "use restrict";
   var modules;
 
-  modules = ['ngAnimate', 'count-down-to.directive', 'progrress-bar.directive', 'click-jump.directive', 'go-top.directive', 'validation.directive', 'zl-vcode.directive', 'zl-popup-loan.directive'];
+  modules = ['ngAnimate', 'ui.bootstrap', 'count-down-to.directive', 'click-jump.directive', 'go-top.directive', 'validation.directive', 'zl-vcode.directive', 'zl-popup-loan.directive'];
 
   angular.module('dianJinDai', modules);
 
