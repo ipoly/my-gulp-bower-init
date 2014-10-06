@@ -12,6 +12,7 @@ globs = require("glob").sync
 concat = require "gulp-concat"
 livereload = require "gulp-livereload"
 connect = require "connect"
+serveStatic = require('serve-static')
 
 bowerFiles = require "main-bower-files"
 coffee = require "gulp-coffee"
@@ -114,7 +115,7 @@ gulp.task "watch", ['build'], ->
 
 gulp.task "webserver", (next)->
   connect()
-  .use connect.static APP_ROOT
+  .use serveStatic APP_ROOT
   .listen process.env.PORT || 9000, next
 
 gulp.task "build", ['bower', 'assets', 'jade', 'coffee', 'less', 'images']
