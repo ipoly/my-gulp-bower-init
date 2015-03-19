@@ -6,7 +6,7 @@ errorHandler = require './error-handler'
 merged = require 'merge-stream'
 lazypipe = require 'lazypipe'
 
-dest_path = "#{config.PATH_APP}/static/js"
+dest_path = "#{config.PATH_APP}/js"
 
 mergeCoffee = (output)->
   lazypipe()

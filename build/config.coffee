@@ -88,22 +88,6 @@ exports.IS_DEVELOP = TYPE == BUILD_TYPES.DEVELOP
 exports.IS_PRODUCTION = TYPE == BUILD_TYPES.PRODUCTION
 
 
-replace = require 'gulp-replace'
-
-path = require "path"
-globs = require("glob").sync
-MULTI_SCRIPT_REGEX = /(<script src="[\w\/\.\*]*)(js\/[\w\/\.\*]*\*[\w\/\.\*]*\.js)("><\/script>)/ig
-exports.REPLACE_MULTI_SCRIPT_FUNC = ->
-  replace MULTI_SCRIPT_REGEX, (match, before, key, after)->
-    pattern = path.join PATH_APP + '/static', key
-    files = globs(pattern).map (filename)->
-      path.relative PATH_APP + '/static', filename
-
-    before + files.join(after + before) + after
-
-
-Q = require "q"
-exports.SERVER = Q.defer()
 
 console.log "Bulid type: #{TYPE}."
 console.log "Destination path: #{PATH_APP}."

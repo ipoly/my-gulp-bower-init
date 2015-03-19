@@ -13,6 +13,5 @@ gulp.task "jade", ["coffee"], ->
     .pipe plugins.jade
       locals:environment:develop: config.IS_LOCAL
       pretty: config.IS_LOCAL
-    .pipe config.REPLACE_MULTI_SCRIPT_FUNC() # must be after jade plugin
     .pipe gulp.dest dest_path
     .pipe plugins.livereload()

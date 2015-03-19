@@ -4,12 +4,11 @@ config = require './config.coffee'
 errorHandler = require './error-handler'
 
 task =  ->
-  dest_path = "#{config.PATH_APP}/static/js/"
+  dest_path = "#{config.PATH_APP}/js/"
 
   stream = gulp.src config.TEMPLATES.concat('!**/_*')
   .pipe plugins.plumber({errorHandler: errorHandler('JADE-P')})
   .pipe plugins.jade locals:environment:develop: config.IS_LOCAL
-  .pipe config.REPLACE_MULTI_SCRIPT_FUNC() # must be after jade plugin
   .pipe plugins.angularTemplatecache
     root: '/'
     module: "templates",
