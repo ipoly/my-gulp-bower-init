@@ -11,11 +11,11 @@ dest_path = "#{config.PATH_APP}/js"
 mergeCoffee = (output)->
   lazypipe()
   .pipe plugins.plumber, {errorHandler: errorHandler('MERGE-COFFEE')}
-  .pipe plugins.if, config.IS_LOCAL, plugins.sourcemaps.init()
+  .pipe plugins.if, config.local, plugins.sourcemaps.init()
   .pipe plugins.coffee
   .pipe plugins.concat, output
-  .pipe plugins.if, !config.IS_LOCAL, plugins.uglify()
-  .pipe plugins.if, config.IS_LOCAL, plugins.sourcemaps.write()
+  .pipe plugins.if, !config.local, plugins.uglify()
+  .pipe plugins.if, config.local, plugins.sourcemaps.write()
   .pipe gulp.dest, dest_path
 
 gulp.task "coffee", ->

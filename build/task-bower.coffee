@@ -12,10 +12,10 @@ dest_path = "#{config.PATH_APP}/vendor"
 mergeJS = (output)->
   lazypipe()
   .pipe plugins.plumber, {errorHandler: errorHandler('MERGE-LIBRAY')}
-  .pipe plugins.if, config.IS_LOCAL, plugins.sourcemaps.init loadMaps: true
+  .pipe plugins.if, config.local, plugins.sourcemaps.init loadMaps: true
   .pipe plugins.concat, output
-  .pipe plugins.if, !config.IS_LOCAL, plugins.uglify()
-  .pipe plugins.if, config.IS_LOCAL, plugins.sourcemaps.write()
+  .pipe plugins.if, !config.local, plugins.uglify()
+  .pipe plugins.if, config.local, plugins.sourcemaps.write()
   .pipe gulp.dest, dest_path
 
 
@@ -27,8 +27,8 @@ gulp.task 'copyBowerFiles', ->
 
 gulp.task 'mergeLibrary', ['copyBowerFiles'], ->
   merge = mergeJS 'library.js'
-  gulp.src config.LIBRARY
+  gulp.src config.LIBRARY_ORDERS
   .pipe merge()
 
 gulp.task 'bower', ['mergeLibrary'], (cb)->
-  del config.LIBRARY, cb
+  del config.LIBRARY_ORDERS, cb

@@ -11,7 +11,7 @@ gulp.task "jade", ["coffee"], ->
     gulp.src config.PAGES.concat('!**/_*')
     .pipe plugins.plumber({errorHandler: errorHandler('JADE')})
     .pipe plugins.jade
-      locals:environment:develop: config.IS_LOCAL
-      pretty: config.IS_LOCAL
+      locals:environment:develop: config.local
+      pretty: config.local
     .pipe gulp.dest dest_path
     .pipe plugins.livereload()

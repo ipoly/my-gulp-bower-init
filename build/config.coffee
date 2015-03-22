@@ -1,4 +1,3 @@
-argv = require("minimist")(process.argv.slice(2))
 
 exports.PATH_SRC = PATH_SRC = "src"
 exports.PATH_APP = PATH_APP = "app"
@@ -46,7 +45,7 @@ exports.BOWER_SRC = 'vendor'
 
 vendor = "#{PATH_APP}/vendor"
 
-exports.LIBRARY = [
+exports.LIBRARY_ORDERS = [
   "#{vendor}/lodash/**/*.js"
 
   "#{vendor}/jquery/**/*.js"
@@ -55,30 +54,14 @@ exports.LIBRARY = [
   "#{vendor}/angular*/**/*.js"
 ]
 
-BUILD_TYPES =
-  LOCAL:      "local"
-  DEVELOP:    "develop"
-  STAGING:    "staging"
-  PRODUCTION:    "production"
+_ = require 'lodash'
+argv = require("minimist")(process.argv.slice(2))
+argv = _.omit argv, '_', 'require'
 
-for arg in argv._
-  for key, type of BUILD_TYPES
-    if arg.toUpperCase() == type.toUpperCase()
-      TYPE = type
-      break
+TYPE = 'Local' if argv.local
+TYPE = 'Release' if argv.release
 
-  if TYPE?
-    break
-
-
-exports.TYPE = TYPE = TYPE || BUILD_TYPES.LOCAL
-
-exports.IS_STAGING = TYPE == BUILD_TYPES.STAGING
-exports.IS_LOCAL = TYPE == BUILD_TYPES.LOCAL
-exports.IS_DEVELOP = TYPE == BUILD_TYPES.DEVELOP
-exports.IS_PRODUCTION = TYPE == BUILD_TYPES.PRODUCTION
-
-
+_.merge exports, argv
 
 console.log "Bulid type: #{TYPE}."
 console.log "Destination path: #{PATH_APP}."

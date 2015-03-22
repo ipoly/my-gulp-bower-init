@@ -8,7 +8,7 @@ task =  ->
 
   gulp.src config.TEMPLATES.concat('!**/_*')
   .pipe plugins.plumber({errorHandler: errorHandler('JADE-P')})
-  .pipe plugins.jade locals:environment:develop: config.IS_LOCAL
+  .pipe plugins.jade locals:environment:develop: config.local
   .pipe plugins.angularTemplatecache
     root: '/'
     module: "templates",

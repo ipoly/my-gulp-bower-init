@@ -3,7 +3,7 @@ plugins = require('gulp-load-plugins')()
 config = require './config.coffee'
 
 gulp.task "watch", ["build"], ->
-  if config.IS_LOCAL
+  if config.local
     plugins.livereload.listen quiet: true
 
     gulp.watch config.LESS_SRC , ["less"]

@@ -2,10 +2,10 @@
   "name": "ipoly-frontend-builder",
   "version": "1.0.0",
   "scripts": {
-    "start": "rm -rf ./app && ./node_modules/.bin/gulp --require coffee-script/register",
-    "develop": "rm -rf ./app && ./node_modules/.bin/gulp release --require coffee-script/register",
-    "unit": "./node_modules/.bin/gulp unit --require coffee-script/register",
-    "unit-live": "./node_modules/.bin/gulp unit-live --require coffee-script/register"
+    "start":     "gulp --local --require coffee-script/register",
+    "release":   "gulp --release --require coffee-script/register",
+    "unit":      "gulp unit --require coffee-script/register",
+    "unit-live": "gulp unit-live --require coffee-script/register"
   },
   "private": true,
   "dependencies": {},
@@ -43,6 +43,7 @@
     "karma-junit-reporter": "^0.2.2",
     "karma-phantomjs-launcher": "^0.1.4",
     "lazypipe": "^0.2.2",
+    "lodash": "^3.5.0",
     "main-bower-files": "^2.4.1",
     "merge-stream": "^0.1.6",
     "minimist": "~1.1.0",
