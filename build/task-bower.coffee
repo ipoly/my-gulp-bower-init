@@ -18,8 +18,10 @@ mergeJS = (output)->
   .pipe plugins.if, config.isLocal, plugins.sourcemaps.write()
   .pipe gulp.dest, dest_path
 
+gulp.task 'clean-bower', (cb)->
+  del [dest_path], cb
 
-gulp.task 'copyBowerFiles', ->
+gulp.task 'copyBowerFiles', ['clean-bower'],->
   gulp.src bowerFiles(), base: config.BOWER_SRC
   .pipe plugins.plumber {errorHandler: errorHandler('BOWER_FILES')}
   .pipe gulp.dest dest_path
