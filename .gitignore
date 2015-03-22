@@ -85,7 +85,4 @@ node_modules
 .lock-wscript
 
 
-### Bower ###
-bower_components
-
 app
