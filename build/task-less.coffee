@@ -6,7 +6,6 @@ errorHandler = require './error-handler'
 gulp.task "less", ->
   dest_path = "#{config.PATH_APP}/css"
 
-  # public styles
   isRelease = config.IS_STAGING or config.IS_PRODUCTION
 
   gulp.src config.LESS_SRC

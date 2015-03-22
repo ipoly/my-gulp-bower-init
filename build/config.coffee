@@ -1,14 +1,7 @@
 argv = require("minimist")(process.argv.slice(2))
 
 exports.PATH_SRC = PATH_SRC = "src"
-
-PATH_SRC = "src"
-if argv.output?
-  PATH_APP = argv.output
-else
-  PATH_APP = "app"
-
-exports.PATH_APP = PATH_APP
+exports.PATH_APP = PATH_APP = "app"
 
 # variables.less was shared between client and public, should placed after bootstrap.less
 exports.LESS_SRC = [
@@ -61,8 +54,6 @@ exports.LIBRARY = [
   "#{vendor}/angular/**/*.js"
   "#{vendor}/angular*/**/*.js"
 ]
-
-argv = require("minimist")(process.argv.slice(2))
 
 BUILD_TYPES =
   LOCAL:      "local"

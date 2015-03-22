@@ -6,7 +6,7 @@ errorHandler = require './error-handler'
 task =  ->
   dest_path = "#{config.PATH_APP}/js/"
 
-  stream = gulp.src config.TEMPLATES.concat('!**/_*')
+  gulp.src config.TEMPLATES.concat('!**/_*')
   .pipe plugins.plumber({errorHandler: errorHandler('JADE-P')})
   .pipe plugins.jade locals:environment:develop: config.IS_LOCAL
   .pipe plugins.angularTemplatecache

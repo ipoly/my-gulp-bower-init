@@ -3,12 +3,9 @@
   "version": "1.0.0",
   "scripts": {
     "start": "rm -rf ./app && ./node_modules/.bin/gulp --require coffee-script/register",
-    "develop": "rm -rf ./app && ./node_modules/.bin/gulp develop --require coffee-script/register",
-    "staging": "rm -rf ./app && ./node_modules/.bin/gulp staging --require coffee-script/register",
-    "production": "rm -rf ./app && ./node_modules/.bin/gulp production --require coffee-script/register",
+    "develop": "rm -rf ./app && ./node_modules/.bin/gulp release --require coffee-script/register",
     "unit": "./node_modules/.bin/gulp unit --require coffee-script/register",
-    "unit-live": "./node_modules/.bin/gulp unit-live --require coffee-script/register",
-    "test": "export NODE_PATH=`npm root -g` && karma start unit_test_conf.js"
+    "unit-live": "./node_modules/.bin/gulp unit-live --require coffee-script/register"
   },
   "private": true,
   "dependencies": {},
