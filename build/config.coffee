@@ -1,49 +1,49 @@
 
-exports.PATH_SRC = PATH_SRC = "src"
-exports.PATH_APP = PATH_APP = "app"
+exports.path_src = path_src = "src"
+exports.path_app = path_app = "app"
 
 # variables.less was shared between client and public, should placed after bootstrap.less
-exports.LESS_SRC = [
-  "#{PATH_SRC}/less/bootstrap.less"
-  "#{PATH_SRC}/less/**/*.less"
-  "#{PATH_SRC}/**/*.less"
+exports.less_src = [
+  "#{path_src}/less/bootstrap.less"
+  "#{path_src}/less/**/*.less"
+  "#{path_src}/**/*.less"
 ]
 
-exports.PAGES = [
-  "#{PATH_SRC}/*.jade"
+exports.pages = [
+  "#{path_src}/*.jade"
 ]
 exports.TEMPLATES = [
-  "#{PATH_SRC}/**/*.jade"
-  "!#{PATH_SRC}/*.jade"
-  "!#{PATH_SRC}/**/_*.jade"
+  "#{path_src}/**/*.jade"
+  "!#{path_src}/*.jade"
+  "!#{path_src}/**/_*.jade"
 ]
 
-exports.OTHER_SRC = [
-  "#{PATH_SRC}/**/*.*"
-  "!#{PATH_SRC}/**/*.coffee"
-  "!#{PATH_SRC}/**/*.jade"
-  "!#{PATH_SRC}/**/*.less"
-  "!#{PATH_SRC}/**/*.jpg"
-  "!#{PATH_SRC}/**/*.gif"
-  "!#{PATH_SRC}/**/*.png"
-  "!#{PATH_SRC}/**/_*.*"
+exports.other_src = [
+  "#{path_src}/**/*.*"
+  "!#{path_src}/**/*.coffee"
+  "!#{path_src}/**/*.jade"
+  "!#{path_src}/**/*.less"
+  "!#{path_src}/**/*.jpg"
+  "!#{path_src}/**/*.gif"
+  "!#{path_src}/**/*.png"
+  "!#{path_src}/**/_*.*"
 ]
 
-exports.IMG_SRC = [
-  "#{PATH_SRC}/**/*.jpg"
-  "#{PATH_SRC}/**/*.gif"
-  "#{PATH_SRC}/**/*.png"
-  "#{PATH_SRC}/**/*.svg"
-  "#{PATH_SRC}/**/*.ico"
+exports.img_src = [
+  "#{path_src}/**/*.jpg"
+  "#{path_src}/**/*.gif"
+  "#{path_src}/**/*.png"
+  "#{path_src}/**/*.svg"
+  "#{path_src}/**/*.ico"
 ]
 
-exports.COFFEE_SRC = [
-  "#{PATH_SRC}/**/*.coffee"
+exports.coffee_src = [
+  "#{path_src}/**/*.coffee"
 ]
 
 exports.BOWER_SRC = 'vendor'
 
-vendor = "#{PATH_APP}/vendor"
+vendor = "#{path_app}/vendor"
 
 exports.LIBRARY_ORDERS = [
   "#{vendor}/lodash/**/*.js"
@@ -54,14 +54,10 @@ exports.LIBRARY_ORDERS = [
   "#{vendor}/angular*/**/*.js"
 ]
 
-_ = require 'lodash'
 argv = require("minimist")(process.argv.slice(2))
-argv = _.omit argv, '_', 'require'
 
-TYPE = 'Local' if argv.local
-TYPE = 'Release' if argv.release
+type = argv._[0] or 'local'
+exports.isLocal = type is 'local'
 
-_.merge exports, argv
-
-console.log "Bulid type: #{TYPE}."
-console.log "Destination path: #{PATH_APP}."
+console.log "Bulid type: #{type}."
+console.log "Destination path: #{path_app}."

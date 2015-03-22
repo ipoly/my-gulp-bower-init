@@ -7,7 +7,7 @@ serveStatic = require 'serve-static'
 
 gulp.task "webserver", (next)->
   connect()
-  .use serveStatic path.resolve config.PATH_APP
+  .use serveStatic path.resolve config.path_app
   .listen process.env.PORT || 9000, next
 
 

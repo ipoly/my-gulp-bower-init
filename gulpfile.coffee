@@ -7,9 +7,6 @@ gulp.task "build", ["preprocessor", "clean-up"]
 
 gulp.task "default", ["build", "watch", "webserver"]
 
-gulp.task "develop", ["build"]
+gulp.task "release", ["build"]
 
-gulp.task "staging", ["build"]
-
-gulp.task "production", ["build"]
 

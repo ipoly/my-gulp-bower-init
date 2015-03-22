@@ -4,11 +4,11 @@ config = require './config.coffee'
 errorHandler = require './error-handler'
 
 gulp.task "less", ->
-  dest_path = "#{config.PATH_APP}/css"
+  dest_path = "#{config.path_app}/css"
 
   isRelease = config.IS_STAGING or config.IS_PRODUCTION
 
-  gulp.src config.LESS_SRC
+  gulp.src config.less_src
   .pipe plugins.plumber({errorHandler: errorHandler('LESS')})
   .pipe plugins.if !isRelease, plugins.sourcemaps.init()
   .pipe plugins.concat("app.less")

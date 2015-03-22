@@ -2,9 +2,9 @@
   "name": "ipoly-frontend-builder",
   "version": "1.0.0",
   "scripts": {
-    "start":     "gulp --local --require coffee-script/register",
-    "release":   "gulp --release --require coffee-script/register",
-    "unit":      "gulp unit --require coffee-script/register",
+    "start":     "gulp           --require coffee-script/register",
+    "release":   "gulp release   --require coffee-script/register",
+    "unit":      "gulp unit      --require coffee-script/register",
     "unit-live": "gulp unit-live --require coffee-script/register"
   },
   "private": true,

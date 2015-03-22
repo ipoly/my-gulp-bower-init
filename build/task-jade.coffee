@@ -6,12 +6,11 @@ del = require 'del'
 
 gulp.task "jade", ["coffee"], ->
 
-  dest_path = "#{config.PATH_APP}"
+  dest_path = "#{config.path_app}"
   del "#{dest_path}/**/*.html", ->
-    gulp.src config.PAGES.concat('!**/_*')
+    gulp.src config.pages.concat('!**/_*')
     .pipe plugins.plumber({errorHandler: errorHandler('JADE')})
     .pipe plugins.jade
-      locals:environment:develop: config.local
-      pretty: config.local
+      pretty: config.isLocal
     .pipe gulp.dest dest_path
     .pipe plugins.livereload()

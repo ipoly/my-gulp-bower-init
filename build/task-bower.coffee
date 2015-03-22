@@ -7,15 +7,15 @@ del = require 'del'
 errorHandler = require './error-handler'
 config = require './config'
 
-dest_path = "#{config.PATH_APP}/vendor"
+dest_path = "#{config.path_app}/vendor"
 
 mergeJS = (output)->
   lazypipe()
   .pipe plugins.plumber, {errorHandler: errorHandler('MERGE-LIBRAY')}
-  .pipe plugins.if, config.local, plugins.sourcemaps.init loadMaps: true
+  .pipe plugins.if, config.isLocal, plugins.sourcemaps.init loadMaps: true
   .pipe plugins.concat, output
-  .pipe plugins.if, !config.local, plugins.uglify()
-  .pipe plugins.if, config.local, plugins.sourcemaps.write()
+  .pipe plugins.if, !config.isLocal, plugins.uglify()
+  .pipe plugins.if, config.isLocal, plugins.sourcemaps.write()
   .pipe gulp.dest, dest_path
 
 
