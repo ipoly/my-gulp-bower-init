@@ -4,11 +4,18 @@ config = require './config.coffee'
 errorHandler = require './error-handler'
 bower_src = require('./task-bower').bower_src
 path_app = config.path_app
+path_src = config.path_src
+
+files = [
+  "#{path_src}/less/bootstrap.less"
+  "#{path_src}/less/**/*.less"
+  "#{path_src}/**/*.less"
+]
 
 gulp.task "less", ->
   dest_path = "#{path_app}/css"
 
-  gulp.src config.less_src
+  gulp.src files
   .pipe plugins.plumber({errorHandler: errorHandler('LESS')})
   .pipe plugins.if config.isRelease, plugins.sourcemaps.init()
   .pipe plugins.concat("app.less")
@@ -19,5 +26,8 @@ gulp.task "less", ->
   .pipe plugins.autoprefixer()
   .pipe plugins.if config.isRelease, plugins.sourcemaps.write()
   .pipe gulp.dest dest_path
-  .pipe plugins.livereload()
+  .on 'end', plugins.livereload.reload
+
+exports.watch = ->
+  gulp.watch files , ['less']
 

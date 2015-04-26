@@ -3,14 +3,14 @@ plugins = require('gulp-load-plugins')()
 config = require './config.coffee'
 
 bower = require './task-bower'
+less = require './task-less'
 
 gulp.task "watch", ["build"], ->
   if config.isLocal
     plugins.livereload.listen quiet: true
 
     bower.watch()
-
-    gulp.watch config.less_src , ["less"]
+    less.watch()
 
     gulp.watch config.coffee_src, ["coffee"]
 
