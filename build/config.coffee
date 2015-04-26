@@ -41,18 +41,8 @@ exports.coffee_src = [
   "#{path_src}/**/*.coffee"
 ]
 
-exports.BOWER_SRC = 'vendor'
 
-vendor = "#{path_app}/vendor"
 
-exports.LIBRARY_ORDERS = [
-  "#{vendor}/lodash/**/*.js"
-
-  "#{vendor}/jquery/**/*.js"
-
-  "#{vendor}/angular/**/*.js"
-  "#{vendor}/angular*/**/*.js"
-]
 
 argv = require("minimist")(process.argv.slice(2))
 

@@ -6,31 +6,42 @@ del = require 'del'
 
 errorHandler = require './error-handler'
 config = require './config'
+path_app = config.path_app
 
-dest_path = "#{config.path_app}/vendor"
+dest_path = "#{path_app}/vendor"
+bower_src = 'vendor'
+vendor = "#{path_app}/vendor"
+library_orders = [
+  "#{vendor}/lodash/**/*.js"
+  "#{vendor}/jquery/**/*.js"
+  "#{vendor}/angular/**/*.js"
+  "#{vendor}/angular*/**/*.js"
+]
 
-mergeJS = (output)->
+mergeJS = (key)->
   lazypipe()
-  .pipe plugins.plumber, {errorHandler: errorHandler('MERGE-LIBRAY')}
+  .pipe plugins.plumber, {errorHandler: errorHandler('MERGE-LIBRARY-'+key.toUpperCase())}
   .pipe plugins.if, config.isLocal, plugins.sourcemaps.init loadMaps: true
-  .pipe plugins.concat, output
+  .pipe plugins.concat, "#{key}.js"
   .pipe plugins.if, !config.isLocal, plugins.uglify()
   .pipe plugins.if, config.isLocal, plugins.sourcemaps.write()
   .pipe gulp.dest, dest_path
 
-gulp.task 'clean-bower', (cb)->
-  del [dest_path], cb
-
-gulp.task 'copyBowerFiles', ['clean-bower'],->
-  gulp.src bowerFiles(), base: config.BOWER_SRC
+gulp.task 'copyBowerFiles', ->
+  gulp.src bowerFiles(), base: bower_src
   .pipe plugins.plumber {errorHandler: errorHandler('BOWER_FILES')}
   .pipe gulp.dest dest_path
 
+gulp.task 'mergeJs', ['copyBowerFiles'], ->
+    gulp.src library_orders
+    .pipe mergeJS('library')()
+    .on 'end', plugins.livereload.reload
 
-gulp.task 'mergeLibrary', ['copyBowerFiles'], ->
-  merge = mergeJS 'library.js'
-  gulp.src config.LIBRARY_ORDERS
-  .pipe merge()
+gulp.task 'bower', ['mergeJs'], (cb)->
+  del library_orders, cb
 
-gulp.task 'bower', ['mergeLibrary'], (cb)->
-  del config.LIBRARY_ORDERS, cb
+exports.watch = ->
+  gulp.watch bowerFiles() , ['bower']
+
+exports.bower_src = bower_src
+
