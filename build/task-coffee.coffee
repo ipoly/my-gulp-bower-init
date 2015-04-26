@@ -6,22 +6,28 @@ errorHandler = require './error-handler'
 merged = require 'merge-stream'
 lazypipe = require 'lazypipe'
 
+path_src = config.path_src
 dest_path = "#{config.path_app}/js"
 
-mergeCoffee = (output)->
+files = [
+  "#{path_src}/**/*.coffee"
+]
+
+mergeCoffee = (key)->
   lazypipe()
-  .pipe plugins.plumber, {errorHandler: errorHandler('MERGE-COFFEE')}
-  .pipe plugins.if, config.isLocal, plugins.sourcemaps.init()
+  .pipe plugins.if, config.IS_LOCAL, plugins.sourcemaps.init()
   .pipe plugins.coffee
-  .pipe plugins.concat, output
-  .pipe plugins.if, !config.isLocal, plugins.uglify()
-  .pipe plugins.if, config.isLocal, plugins.sourcemaps.write()
+  .pipe plugins.concat, "#{key}.js"
+  .pipe plugins.if, !config.IS_LOCAL, plugins.uglify()
+  .pipe plugins.if, config.IS_LOCAL, plugins.sourcemaps.write()
   .pipe gulp.dest, dest_path
 
 gulp.task "coffee", ->
-  gulp.src config.coffee_src
-  .pipe plugins.plumber({errorHandler: errorHandler('COFFEE-CLIENT')})
-  .pipe mergeCoffee('app.js')()
-  .pipe plugins.livereload()
+  gulp.src files
+  .pipe plugins.plumber({errorHandler: errorHandler('COFFEE')})
+  .pipe mergeCoffee('app')()
+  .on 'end', plugins.livereload.reload
 
 
+exports.watch = ->
+  gulp.watch files , ['coffee']

@@ -31,9 +31,6 @@ exports.img_src = [
   "#{path_src}/**/*.ico"
 ]
 
-exports.coffee_src = [
-  "#{path_src}/**/*.coffee"
-]
 
 
 

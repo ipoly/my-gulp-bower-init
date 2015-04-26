@@ -4,6 +4,7 @@ config = require './config.coffee'
 
 bower = require './task-bower'
 less = require './task-less'
+coffee = require './task-coffee'
 
 gulp.task "watch", ["build"], ->
   if config.isLocal
@@ -11,8 +12,7 @@ gulp.task "watch", ["build"], ->
 
     bower.watch()
     less.watch()
-
-    gulp.watch config.coffee_src, ["coffee"]
+    coffee.watch()
 
     gulp.watch config.pages, ["jade"]
 
