@@ -3,9 +3,6 @@ exports.path_src = path_src = "src"
 exports.path_app = path_app = "app"
 
 
-exports.pages = [
-  "#{path_src}/*.jade"
-]
 exports.TEMPLATES = [
   "#{path_src}/**/*.jade"
   "!#{path_src}/*.jade"

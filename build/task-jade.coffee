@@ -4,13 +4,24 @@ config = require './config.coffee'
 errorHandler = require './error-handler'
 del = require 'del'
 
-gulp.task "jade", ["coffee"], ->
+path_src = config.path_src
+dest_path = "#{config.path_app}"
 
-  dest_path = "#{config.path_app}"
+files = [
+  "#{path_src}/*.jade"
+]
+
+task = ->
   del "#{dest_path}/**/*.html", ->
-    gulp.src config.pages.concat('!**/_*')
+    gulp.src files.concat('!**/_*')
     .pipe plugins.plumber({errorHandler: errorHandler('JADE')})
     .pipe plugins.jade
       pretty: config.isLocal
     .pipe gulp.dest dest_path
-    .pipe plugins.livereload()
+    .on 'end', plugins.livereload.reload
+
+gulp.task "jade", ["coffee"], task
+gulp.task "jade-live", task
+
+exports.watch = ->
+  gulp.watch files , ['jade-live']

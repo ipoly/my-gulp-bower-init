@@ -5,6 +5,7 @@ config = require './config.coffee'
 bower = require './task-bower'
 less = require './task-less'
 coffee = require './task-coffee'
+jade = require './task-jade'
 
 gulp.task "watch", ["build"], ->
   if config.isLocal
@@ -13,6 +14,7 @@ gulp.task "watch", ["build"], ->
     bower.watch()
     less.watch()
     coffee.watch()
+    jade.watch()
 
     gulp.watch config.pages, ["jade"]
 
