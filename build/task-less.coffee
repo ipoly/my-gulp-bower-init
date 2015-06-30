@@ -17,14 +17,15 @@ gulp.task "less", ->
 
   gulp.src files
   .pipe plugins.plumber({errorHandler: errorHandler('LESS')})
-  .pipe plugins.if config.isRelease, plugins.sourcemaps.init()
+  # concat,less,autoprefixer may have error with sourcemaps, disable them for next version.
+  #.pipe plugins.if config.isRelease, plugins.sourcemaps.init()
   .pipe plugins.concat("app.less")
   .pipe(plugins.less
     paths: ["#{bower_src}/bootstrap/less/"] # Specify search paths for @import directives
     compress: true
   )
   .pipe plugins.autoprefixer()
-  .pipe plugins.if config.isRelease, plugins.sourcemaps.write()
+  #.pipe plugins.if config.isRelease, plugins.sourcemaps.write()
   .pipe gulp.dest dest_path
   .on 'end', plugins.livereload.reload
 
