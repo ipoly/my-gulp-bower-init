@@ -15,6 +15,7 @@ files = [
 
 mergeCoffee = (key)->
   lazypipe()
+  # concat,less,autoprefixer may have error with sourcemaps, disable them for next version.
   .pipe plugins.if, config.IS_LOCAL, plugins.sourcemaps.init()
   .pipe plugins.coffee
   .pipe plugins.concat, "#{key}.js"
@@ -24,6 +25,9 @@ mergeCoffee = (key)->
 
 gulp.task "coffee", ->
   gulp.src files
+  # https://github.com/gulpjs/gulp/issues/687
+  # https://github.com/sirlantis/gulp-order/issues/9
+  .pipe plugins.order(files, base: process.cwd())
   .pipe plugins.plumber({errorHandler: errorHandler('COFFEE')})
   .pipe mergeCoffee('app')()
   .on 'end', plugins.livereload.reload
