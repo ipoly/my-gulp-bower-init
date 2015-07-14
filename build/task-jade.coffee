@@ -20,8 +20,7 @@ task = ->
     .pipe gulp.dest dest_path
     .on 'end', plugins.livereload.reload
 
-gulp.task "jade", ["coffee"], task
-gulp.task "jade-live", task
+gulp.task "jade", task
 
 exports.watch = ->
-  gulp.watch files , ['jade-live']
+  gulp.watch files , ['jade']

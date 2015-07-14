@@ -15,7 +15,6 @@ files = [
 
 mergeCoffee = (key)->
   lazypipe()
-  # concat,less,autoprefixer may have error with sourcemaps, disable them for next version.
   .pipe plugins.if, config.IS_LOCAL, plugins.sourcemaps.init()
   .pipe plugins.coffee
   .pipe plugins.concat, "#{key}.js"

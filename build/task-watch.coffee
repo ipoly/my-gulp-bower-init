@@ -6,6 +6,9 @@ bower = require './task-bower'
 less = require './task-less'
 coffee = require './task-coffee'
 jade = require './task-jade'
+template = require './task-jade-p'
+other = require './task-copy'
+image = require './task-image'
 
 gulp.task "watch", ["build"], ->
   if config.isLocal
@@ -15,15 +18,9 @@ gulp.task "watch", ["build"], ->
     less.watch()
     coffee.watch()
     jade.watch()
-
-    gulp.watch config.pages, ["jade"]
-
-    gulp.watch config.TEMPLATES, ["jade-p-live"]
-
-    gulp.watch config.img_src, ["image"]
-
-    gulp.watch config.other_src, ["copy"]
-
+    template.watch()
+    other.watch()
+    image.watch()
 
   return
 
